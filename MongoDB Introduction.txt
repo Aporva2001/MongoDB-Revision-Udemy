@@ -1,0 +1,72 @@
+Please enter a MongoDB connection string (Default: mongodb://localhost/):
+
+Current Mongosh Log ID: 678b4a24aa04c43789ed944f
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.1
+Using MongoDB:          7.0.4
+Using Mongosh:          2.1.1
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-10-28T11:05:20.897+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs
+admin   40.00 KiB
+config  60.00 KiB
+local   72.00 KiB
+test    12.00 KiB
+test> use shop
+switched to db shop
+shop> db.products.insertOne({name: "Book", price: 150})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678b4c80aa04c43789ed9450')
+}
+shop> db.products.find()
+[
+  {
+    _id: ObjectId('678b4c80aa04c43789ed9450'),
+    name: 'Book',
+    price: 150
+  }
+]
+shop> db.products.find().pretty()
+[
+  {
+    _id: ObjectId('678b4c80aa04c43789ed9450'),
+    name: 'Book',
+    price: 150
+  }
+]
+shop> db.products.insertOne({name: "Another Book", price: 120, description: "dhflf"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678b4d24aa04c43789ed9451')
+}
+shop> db.products.find()
+[
+  {
+    _id: ObjectId('678b4c80aa04c43789ed9450'),
+    name: 'Book',
+    price: 150
+  },
+  {
+    _id: ObjectId('678b4d24aa04c43789ed9451'),
+    name: 'Another Book',
+    price: 120,
+    description: 'dhflf'
+  }
+]
+shop> db.products.insertOne({name: "A computer", price: 12000, description: "this is a computer"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678b4db2aa04c43789ed9452')
+}
+shop> db.products.insertOne({name: "A computer 2", price: 15000, description: "this is a computer with details",details: {}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678b4e06aa04c43789ed9453')
+}
+shop>
