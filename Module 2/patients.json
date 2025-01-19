@@ -1,0 +1,36 @@
+
+[
+    {
+    "firstName": "Abc",
+    "lastName": "Xyz",
+    "age": 35,
+    "history": [
+        {
+            "disease": "cold",
+            "treatment": "T01"
+        }
+    ]
+},
+{
+    "firstName": "Pqr",
+    "lastName": "Xyz",
+    "age": 20,
+    "history": [
+        {
+            "disease": "cough",
+            "treatment": "T02"
+        }
+    ]
+},
+{
+    "firstName": "Lkj",
+    "lastName": "Bnh",
+    "age": 40,
+    "history": [
+        {
+            "disease": "cold",
+            "treatment": "T01"
+        }
+    ]
+}
+]

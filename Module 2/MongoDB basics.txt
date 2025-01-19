@@ -1,0 +1,1482 @@
+
+Current Mongosh Log ID: 678c9e44f8084960b30c8c19
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.1
+Using MongoDB:          7.0.4
+Using Mongosh:          2.1.1
+mongosh 2.3.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-10-28T11:05:20.897+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs
+admin   40.00 KiB
+config  72.00 KiB
+local   72.00 KiB
+shop    72.00 KiB
+test    12.00 KiB
+test> use shop
+switched to db shop
+shop> use flights
+switched to db flights
+flights> show dbs
+admin    40.00 KiB
+config  108.00 KiB
+local    72.00 KiB
+shop     72.00 KiB
+test     12.00 KiB
+flights> db.flightData.insertOne({
+...     "departureAirport": "MUC",
+...     "arrivalAirport": "SFO",
+...     "aircraft": "Airbus A380",
+...     "distance": 12000,
+...     "intercontinental": true
+...   })
+{
+  acknowledged: true,
+  insertedId: ObjectId('678ca321f8084960b30c8c1a')
+}
+flights> db.flightData.find()
+[
+  {
+    _id: ObjectId('678ca321f8084960b30c8c1a'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true
+  }
+]
+flights> db.flightData.find().pretty()
+[
+  {
+    _id: ObjectId('678ca321f8084960b30c8c1a'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true
+  }
+]
+flights> db.flightData.insertOne({departureAirport: "DEL", arrivalAirport: "MUC"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678ca5eff8084960b30c8c1b')
+}
+flights> db.flightData.find()
+[
+  {
+    _id: ObjectId('678ca321f8084960b30c8c1a'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true
+  },
+  {
+    _id: ObjectId('678ca5eff8084960b30c8c1b'),
+    departureAirport: 'DEL',
+    arrivalAirport: 'MUC'
+  }
+]
+flights> db.flightData.insertOne({departureAirport: "DEL", arrivalAirport: "MUC", _id: "del-muc-1"})
+{ acknowledged: true, insertedId: 'del-muc-1' }
+flights> db.flightData.find()
+[
+  {
+    _id: ObjectId('678ca321f8084960b30c8c1a'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true
+  },
+  {
+    _id: ObjectId('678ca5eff8084960b30c8c1b'),
+    departureAirport: 'DEL',
+    arrivalAirport: 'MUC'
+  },
+  { _id: 'del-muc-1', departureAirport: 'DEL', arrivalAirport: 'MUC' }
+]
+flights> db.flightData.find().pretty()
+[
+  {
+    _id: ObjectId('678ca321f8084960b30c8c1a'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true
+  },
+  {
+    _id: ObjectId('678ca5eff8084960b30c8c1b'),
+    departureAirport: 'DEL',
+    arrivalAirport: 'MUC'
+  },
+  { _id: 'del-muc-1', departureAirport: 'DEL', arrivalAirport: 'MUC' }
+]
+flights> db.flightData.insertOne({departureAirport: "DEL", arrivalAirport: "MUC", _id: "del-muc-1"})
+MongoServerError: E11000 duplicate key error collection: flights.flightData index: _id_ dup key: { _id: "del-muc-1" }
+flights> db.flightData.deleteOne({departureAirport: "DEL"})
+{ acknowledged: true, deletedCount: 1 }
+flights> db.flightData.find()
+[
+  {
+    _id: ObjectId('678ca321f8084960b30c8c1a'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true
+  },
+  { _id: 'del-muc-1', departureAirport: 'DEL', arrivalAirport: 'MUC' }
+]
+flights> db.flightData.deleteMany()
+MongoshInvalidInputError: [COMMON-10001] Missing required argument at position 0 (Collection.deleteMany)
+flights> db.flightData.updateOne({distance: 12000}, {marker: "delete"})
+MongoInvalidArgumentError: Update document requires atomic operators
+flights> db.flightData.updateOne({distance: 12000}, {$set: {marker: "delete"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+flights> db.flightData.find()
+[
+  {
+    _id: ObjectId('678ca321f8084960b30c8c1a'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true,
+    marker: 'delete'
+  },
+  { _id: 'del-muc-1', departureAirport: 'DEL', arrivalAirport: 'MUC' }
+]
+flights> db.flightData.updateMany({},{$set: {marker: 'toDelete'})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:55)
+
+> 1 | db.flightData.updateMany({},{$set: {marker: 'toDelete'})
+    |                                                        ^
+  2 |
+
+flights> db.flightData.updateMany({},{$set: {marker: 'toDelete'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+flights> db.flightData.find()
+[
+  {
+    _id: ObjectId('678ca321f8084960b30c8c1a'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true,
+    marker: 'toDelete'
+  },
+  {
+    _id: 'del-muc-1',
+    departureAirport: 'DEL',
+    arrivalAirport: 'MUC',
+    marker: 'toDelete'
+  }
+]
+flights> db.flightData.deleteMany({marker: "toDelete"})
+{ acknowledged: true, deletedCount: 2 }
+flights> db.flightData.find()
+
+flights> db.flightData.insertMany([
+...   {
+...     "departureAirport": "MUC",
+...     "arrivalAirport": "SFO",
+...     "aircraft": "Airbus A380",
+...     "distance": 12000,
+...     "intercontinental": true
+...   },
+...   {
+...     "departureAirport": "LHR",
+...     "arrivalAirport": "TXL",
+...     "aircraft": "Airbus A320",
+...     "distance": 950,
+...     "intercontinental": false
+...   }
+... ]
+... )
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('678cac8ff8084960b30c8c1c'),
+    '1': ObjectId('678cac8ff8084960b30c8c1d')
+  }
+}
+flights> db.flightData.find()
+[
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1c'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true
+  },
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1d'),
+    departureAirport: 'LHR',
+    arrivalAirport: 'TXL',
+    aircraft: 'Airbus A320',
+    distance: 950,
+    intercontinental: false
+  }
+]
+flights> db.flightData.find({intercontinental: true})
+[
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1c'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true
+  }
+]
+flights> db.flightData.find({distance: {$gt: 10000}})
+[
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1c'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true
+  }
+]
+flights> db.flightData.find({distance: {$gt: 900}})
+[
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1c'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true
+  },
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1d'),
+    departureAirport: 'LHR',
+    arrivalAirport: 'TXL',
+    aircraft: 'Airbus A320',
+    distance: 950,
+    intercontinental: false
+  }
+]
+flights> db.flightData.findOne({distance: {$gt: 900}})
+{
+  _id: ObjectId('678cac8ff8084960b30c8c1c'),
+  departureAirport: 'MUC',
+  arrivalAirport: 'SFO',
+  aircraft: 'Airbus A380',
+  distance: 12000,
+  intercontinental: true
+}
+flights>
+
+flights>
+
+flights> db.flightData.find()
+[
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1c'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true
+  },
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1d'),
+    departureAirport: 'LHR',
+    arrivalAirport: 'TXL',
+    aircraft: 'Airbus A320',
+    distance: 950,
+    intercontinental: false
+  }
+]
+flights> db.flightData.updateOne({_id:  ObjectId('678cac8ff8084960b30c8c1c')}, {$set: {delayed: true}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+flights> db.flightData.find()
+[
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1c'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true,
+    delayed: true
+  },
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1d'),
+    departureAirport: 'LHR',
+    arrivalAirport: 'TXL',
+    aircraft: 'Airbus A320',
+    distance: 950,
+    intercontinental: false
+  }
+]
+flights> db.flightData.update({_id:  ObjectId('678cac8ff8084960b30c8c1c')}, {$set: {delayed: false}})
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+flights> db.flightData.find()
+[
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1c'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true,
+    delayed: false
+  },
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1d'),
+    departureAirport: 'LHR',
+    arrivalAirport: 'TXL',
+    aircraft: 'Airbus A320',
+    distance: 950,
+    intercontinental: false
+  }
+]
+flights> db.flightData.updateMany({_id:  ObjectId('678cac8ff8084960b30c8c1c')}, {delayed: false})
+MongoInvalidArgumentError: Update document requires atomic operators
+flights> db.flightData.updateOne({_id:  ObjectId('678cac8ff8084960b30c8c1c')}, {delayed: false})
+MongoInvalidArgumentError: Update document requires atomic operators
+flights> db.flightData.update({_id:  ObjectId('678cac8ff8084960b30c8c1c')}, {delayed: false})
+MongoInvalidArgumentError: Update document requires atomic operators
+flights> db.flightData.update({_id:  ObjectId('678cac8ff8084960b30c8c1c')}, {delayed: false})
+MongoInvalidArgumentError: Update document requires atomic operators
+flights> db.flightData.replaceOne({_id:  ObjectId('678cac8ff8084960b30c8c1c')},  {
+...     "departureAirport": "MUC",
+...     "arrivalAirport": "SFO",
+...     "aircraft": "Airbus A380",
+...     "distance": 12000,
+...     "intercontinental": true
+...   })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+flights> db.flightData.find()
+[
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1c'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true
+  },
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1d'),
+    departureAirport: 'LHR',
+    arrivalAirport: 'TXL',
+    aircraft: 'Airbus A320',
+    distance: 950,
+    intercontinental: false
+  }
+]
+flights>
+
+flights>
+
+flights> db.passengers.insertMany([
+...   {
+...     "name": "Max Schwarzmueller",
+...     "age": 29
+...   },
+...   {
+...     "name": "Manu Lorenz",
+...     "age": 30
+...   },
+...   {
+...     "name": "Chris Hayton",
+...     "age": 35
+...   },
+...   {
+...     "name": "Sandeep Kumar",
+...     "age": 28
+...   },
+...   {
+...     "name": "Maria Jones",
+...     "age": 30
+...   },
+...   {
+...     "name": "Alexandra Maier",
+...     "age": 27
+...   },
+...   {
+...     "name": "Dr. Phil Evans",
+...     "age": 47
+...   },
+...   {
+...     "name": "Sandra Brugge",
+...     "age": 33
+...   },
+...   {
+...     "name": "Elisabeth Mayr",
+...     "age": 29
+...   },
+...   {
+...     "name": "Frank Cube",
+...     "age": 41
+...   },
+...   {
+...     "name": "Karandeep Alun",
+...     "age": 48
+...   },
+...   {
+...     "name": "Michaela Drayer",
+...     "age": 39
+...   },
+...   {
+...     "name": "Bernd Hoftstadt",
+...     "age": 22
+...   },
+...   {
+...     "name": "Scott Tolib",
+...     "age": 44
+...   },
+...   {
+...     "name": "Freddy Melver",
+...     "age": 41
+...   },
+...   {
+...     "name": "Alexis Bohed",
+...     "age": 35
+...   },
+...   {
+...     "name": "Melanie Palace",
+...     "age": 27
+...   },
+...   {
+...     "name": "Armin Glutch",
+...     "age": 35
+...   },
+...   {
+...     "name": "Klaus Arber",
+...     "age": 53
+...   },
+...   {
+...     "name": "Albert Twostone",
+...     "age": 68
+...   },
+...   {
+...     "name": "Gordon Black",
+...     "age": 38
+...   }
+... ]
+... )
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('678cb1c8f8084960b30c8c1e'),
+    '1': ObjectId('678cb1c8f8084960b30c8c1f'),
+    '2': ObjectId('678cb1c8f8084960b30c8c20'),
+    '3': ObjectId('678cb1c8f8084960b30c8c21'),
+    '4': ObjectId('678cb1c8f8084960b30c8c22'),
+    '5': ObjectId('678cb1c8f8084960b30c8c23'),
+    '6': ObjectId('678cb1c8f8084960b30c8c24'),
+    '7': ObjectId('678cb1c8f8084960b30c8c25'),
+    '8': ObjectId('678cb1c8f8084960b30c8c26'),
+    '9': ObjectId('678cb1c8f8084960b30c8c27'),
+    '10': ObjectId('678cb1c8f8084960b30c8c28'),
+    '11': ObjectId('678cb1c8f8084960b30c8c29'),
+    '12': ObjectId('678cb1c8f8084960b30c8c2a'),
+    '13': ObjectId('678cb1c8f8084960b30c8c2b'),
+    '14': ObjectId('678cb1c8f8084960b30c8c2c'),
+    '15': ObjectId('678cb1c8f8084960b30c8c2d'),
+    '16': ObjectId('678cb1c8f8084960b30c8c2e'),
+    '17': ObjectId('678cb1c8f8084960b30c8c2f'),
+    '18': ObjectId('678cb1c8f8084960b30c8c30'),
+    '19': ObjectId('678cb1c8f8084960b30c8c31'),
+    '20': ObjectId('678cb1c8f8084960b30c8c32')
+  }
+}
+flights>
+
+flights> db.passengers.find()
+[
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c1e'),
+    name: 'Max Schwarzmueller',
+    age: 29
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c1f'),
+    name: 'Manu Lorenz',
+    age: 30
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c20'),
+    name: 'Chris Hayton',
+    age: 35
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c21'),
+    name: 'Sandeep Kumar',
+    age: 28
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c22'),
+    name: 'Maria Jones',
+    age: 30
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c23'),
+    name: 'Alexandra Maier',
+    age: 27
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c24'),
+    name: 'Dr. Phil Evans',
+    age: 47
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c25'),
+    name: 'Sandra Brugge',
+    age: 33
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c26'),
+    name: 'Elisabeth Mayr',
+    age: 29
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c27'),
+    name: 'Frank Cube',
+    age: 41
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c28'),
+    name: 'Karandeep Alun',
+    age: 48
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c29'),
+    name: 'Michaela Drayer',
+    age: 39
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2a'),
+    name: 'Bernd Hoftstadt',
+    age: 22
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2b'),
+    name: 'Scott Tolib',
+    age: 44
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2c'),
+    name: 'Freddy Melver',
+    age: 41
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2d'),
+    name: 'Alexis Bohed',
+    age: 35
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2e'),
+    name: 'Melanie Palace',
+    age: 27
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2f'),
+    name: 'Armin Glutch',
+    age: 35
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c30'),
+    name: 'Klaus Arber',
+    age: 53
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c31'),
+    name: 'Albert Twostone',
+    age: 68
+  }
+]
+Type "it" for more
+flights> it
+[
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c32'),
+    name: 'Gordon Black',
+    age: 38
+  }
+]
+flights> db.passengers.find().toArray()
+[
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c1e'),
+    name: 'Max Schwarzmueller',
+    age: 29
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c1f'),
+    name: 'Manu Lorenz',
+    age: 30
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c20'),
+    name: 'Chris Hayton',
+    age: 35
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c21'),
+    name: 'Sandeep Kumar',
+    age: 28
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c22'),
+    name: 'Maria Jones',
+    age: 30
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c23'),
+    name: 'Alexandra Maier',
+    age: 27
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c24'),
+    name: 'Dr. Phil Evans',
+    age: 47
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c25'),
+    name: 'Sandra Brugge',
+    age: 33
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c26'),
+    name: 'Elisabeth Mayr',
+    age: 29
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c27'),
+    name: 'Frank Cube',
+    age: 41
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c28'),
+    name: 'Karandeep Alun',
+    age: 48
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c29'),
+    name: 'Michaela Drayer',
+    age: 39
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2a'),
+    name: 'Bernd Hoftstadt',
+    age: 22
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2b'),
+    name: 'Scott Tolib',
+    age: 44
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2c'),
+    name: 'Freddy Melver',
+    age: 41
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2d'),
+    name: 'Alexis Bohed',
+    age: 35
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2e'),
+    name: 'Melanie Palace',
+    age: 27
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2f'),
+    name: 'Armin Glutch',
+    age: 35
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c30'),
+    name: 'Klaus Arber',
+    age: 53
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c31'),
+    name: 'Albert Twostone',
+    age: 68
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c32'),
+    name: 'Gordon Black',
+    age: 38
+  }
+]
+flights> db.passengers.find().forEach((passengerData)=> printjson(passengerData))
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c1e'),
+  name: 'Max Schwarzmueller',
+  age: 29
+}
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c1f'),
+  name: 'Manu Lorenz',
+  age: 30
+}
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c20'),
+  name: 'Chris Hayton',
+  age: 35
+}
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c21'),
+  name: 'Sandeep Kumar',
+  age: 28
+}
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c22'),
+  name: 'Maria Jones',
+  age: 30
+}
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c23'),
+  name: 'Alexandra Maier',
+  age: 27
+}
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c24'),
+  name: 'Dr. Phil Evans',
+  age: 47
+}
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c25'),
+  name: 'Sandra Brugge',
+  age: 33
+}
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c26'),
+  name: 'Elisabeth Mayr',
+  age: 29
+}
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c27'),
+  name: 'Frank Cube',
+  age: 41
+}
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c28'),
+  name: 'Karandeep Alun',
+  age: 48
+}
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c29'),
+  name: 'Michaela Drayer',
+  age: 39
+}
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c2a'),
+  name: 'Bernd Hoftstadt',
+  age: 22
+}
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c2b'),
+  name: 'Scott Tolib',
+  age: 44
+}
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c2c'),
+  name: 'Freddy Melver',
+  age: 41
+}
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c2d'),
+  name: 'Alexis Bohed',
+  age: 35
+}
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c2e'),
+  name: 'Melanie Palace',
+  age: 27
+}
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c2f'),
+  name: 'Armin Glutch',
+  age: 35
+}
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c30'),
+  name: 'Klaus Arber',
+  age: 53
+}
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c31'),
+  name: 'Albert Twostone',
+  age: 68
+}
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c32'),
+  name: 'Gordon Black',
+  age: 38
+}
+
+flights>
+
+flights>
+
+flights>
+
+flights> db.passengers.find().toArray()
+[
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c1e'),
+    name: 'Max Schwarzmueller',
+    age: 29
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c1f'),
+    name: 'Manu Lorenz',
+    age: 30
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c20'),
+    name: 'Chris Hayton',
+    age: 35
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c21'),
+    name: 'Sandeep Kumar',
+    age: 28
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c22'),
+    name: 'Maria Jones',
+    age: 30
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c23'),
+    name: 'Alexandra Maier',
+    age: 27
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c24'),
+    name: 'Dr. Phil Evans',
+    age: 47
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c25'),
+    name: 'Sandra Brugge',
+    age: 33
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c26'),
+    name: 'Elisabeth Mayr',
+    age: 29
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c27'),
+    name: 'Frank Cube',
+    age: 41
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c28'),
+    name: 'Karandeep Alun',
+    age: 48
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c29'),
+    name: 'Michaela Drayer',
+    age: 39
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2a'),
+    name: 'Bernd Hoftstadt',
+    age: 22
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2b'),
+    name: 'Scott Tolib',
+    age: 44
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2c'),
+    name: 'Freddy Melver',
+    age: 41
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2d'),
+    name: 'Alexis Bohed',
+    age: 35
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2e'),
+    name: 'Melanie Palace',
+    age: 27
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2f'),
+    name: 'Armin Glutch',
+    age: 35
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c30'),
+    name: 'Klaus Arber',
+    age: 53
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c31'),
+    name: 'Albert Twostone',
+    age: 68
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c32'),
+    name: 'Gordon Black',
+    age: 38
+  }
+]
+flights> db.passengers.find({},{name: 1})
+[
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c1e'),
+    name: 'Max Schwarzmueller'
+  },
+  { _id: ObjectId('678cb1c8f8084960b30c8c1f'), name: 'Manu Lorenz' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c20'), name: 'Chris Hayton' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c21'), name: 'Sandeep Kumar' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c22'), name: 'Maria Jones' },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c23'),
+    name: 'Alexandra Maier'
+  },
+  { _id: ObjectId('678cb1c8f8084960b30c8c24'), name: 'Dr. Phil Evans' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c25'), name: 'Sandra Brugge' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c26'), name: 'Elisabeth Mayr' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c27'), name: 'Frank Cube' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c28'), name: 'Karandeep Alun' },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c29'),
+    name: 'Michaela Drayer'
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2a'),
+    name: 'Bernd Hoftstadt'
+  },
+  { _id: ObjectId('678cb1c8f8084960b30c8c2b'), name: 'Scott Tolib' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c2c'), name: 'Freddy Melver' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c2d'), name: 'Alexis Bohed' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c2e'), name: 'Melanie Palace' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c2f'), name: 'Armin Glutch' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c30'), name: 'Klaus Arber' },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c31'),
+    name: 'Albert Twostone'
+  }
+]
+Type "it" for more
+flights> db.passengers.find({},{name: 1}).pretty()
+[
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c1e'),
+    name: 'Max Schwarzmueller'
+  },
+  { _id: ObjectId('678cb1c8f8084960b30c8c1f'), name: 'Manu Lorenz' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c20'), name: 'Chris Hayton' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c21'), name: 'Sandeep Kumar' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c22'), name: 'Maria Jones' },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c23'),
+    name: 'Alexandra Maier'
+  },
+  { _id: ObjectId('678cb1c8f8084960b30c8c24'), name: 'Dr. Phil Evans' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c25'), name: 'Sandra Brugge' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c26'), name: 'Elisabeth Mayr' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c27'), name: 'Frank Cube' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c28'), name: 'Karandeep Alun' },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c29'),
+    name: 'Michaela Drayer'
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2a'),
+    name: 'Bernd Hoftstadt'
+  },
+  { _id: ObjectId('678cb1c8f8084960b30c8c2b'), name: 'Scott Tolib' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c2c'), name: 'Freddy Melver' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c2d'), name: 'Alexis Bohed' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c2e'), name: 'Melanie Palace' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c2f'), name: 'Armin Glutch' },
+  { _id: ObjectId('678cb1c8f8084960b30c8c30'), name: 'Klaus Arber' },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c31'),
+    name: 'Albert Twostone'
+  }
+]
+Type "it" for more
+flights> db.passengers.find({},{name: 1,_id: 0, age: 0}).pretty()
+MongoServerError: Cannot do exclusion on field age in inclusion projection
+flights> db.passengers.find({},{name: 1,_id: 0}).pretty()
+[
+  { name: 'Max Schwarzmueller' },
+  { name: 'Manu Lorenz' },
+  { name: 'Chris Hayton' },
+  { name: 'Sandeep Kumar' },
+  { name: 'Maria Jones' },
+  { name: 'Alexandra Maier' },
+  { name: 'Dr. Phil Evans' },
+  { name: 'Sandra Brugge' },
+  { name: 'Elisabeth Mayr' },
+  { name: 'Frank Cube' },
+  { name: 'Karandeep Alun' },
+  { name: 'Michaela Drayer' },
+  { name: 'Bernd Hoftstadt' },
+  { name: 'Scott Tolib' },
+  { name: 'Freddy Melver' },
+  { name: 'Alexis Bohed' },
+  { name: 'Melanie Palace' },
+  { name: 'Armin Glutch' },
+  { name: 'Klaus Arber' },
+  { name: 'Albert Twostone' }
+]
+Type "it" for more
+flights>
+
+flights>
+
+flights>
+
+flights> db.flightData.find()
+[
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1c'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true
+  },
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1d'),
+    departureAirport: 'LHR',
+    arrivalAirport: 'TXL',
+    aircraft: 'Airbus A320',
+    distance: 950,
+    intercontinental: false
+  }
+]
+flights> db.flightData.updateMany({},{$set: {status: {description: "on-time", lastUpdated: "1-hour-ago"}}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+flights> db.flightData.find()
+[
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1c'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true,
+    status: { description: 'on-time', lastUpdated: '1-hour-ago' }
+  },
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1d'),
+    departureAirport: 'LHR',
+    arrivalAirport: 'TXL',
+    aircraft: 'Airbus A320',
+    distance: 950,
+    intercontinental: false,
+    status: { description: 'on-time', lastUpdated: '1-hour-ago' }
+  }
+]
+flights> db.flightData.updateMany({},{$set: {status: {description: "on-time", lastUpdated: "1-hour-ago", details: {responsible: "Abc"}}}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+flights> db.flightData.find()
+[
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1c'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true,
+    status: {
+      description: 'on-time',
+      lastUpdated: '1-hour-ago',
+      details: { responsible: 'Abc' }
+    }
+  },
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1d'),
+    departureAirport: 'LHR',
+    arrivalAirport: 'TXL',
+    aircraft: 'Airbus A320',
+    distance: 950,
+    intercontinental: false,
+    status: {
+      description: 'on-time',
+      lastUpdated: '1-hour-ago',
+      details: { responsible: 'Abc' }
+    }
+  }
+]
+flights>
+
+flights>
+
+flights> db.passengers.find()
+[
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c1e'),
+    name: 'Max Schwarzmueller',
+    age: 29
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c1f'),
+    name: 'Manu Lorenz',
+    age: 30
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c20'),
+    name: 'Chris Hayton',
+    age: 35
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c21'),
+    name: 'Sandeep Kumar',
+    age: 28
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c22'),
+    name: 'Maria Jones',
+    age: 30
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c23'),
+    name: 'Alexandra Maier',
+    age: 27
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c24'),
+    name: 'Dr. Phil Evans',
+    age: 47
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c25'),
+    name: 'Sandra Brugge',
+    age: 33
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c26'),
+    name: 'Elisabeth Mayr',
+    age: 29
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c27'),
+    name: 'Frank Cube',
+    age: 41
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c28'),
+    name: 'Karandeep Alun',
+    age: 48
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c29'),
+    name: 'Michaela Drayer',
+    age: 39
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2a'),
+    name: 'Bernd Hoftstadt',
+    age: 22
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2b'),
+    name: 'Scott Tolib',
+    age: 44
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2c'),
+    name: 'Freddy Melver',
+    age: 41
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2d'),
+    name: 'Alexis Bohed',
+    age: 35
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2e'),
+    name: 'Melanie Palace',
+    age: 27
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2f'),
+    name: 'Armin Glutch',
+    age: 35
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c30'),
+    name: 'Klaus Arber',
+    age: 53
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c31'),
+    name: 'Albert Twostone',
+    age: 68
+  }
+]
+Type "it" for more
+flights> db.passengers.updateOne({name: "Albert Twostone"}, {hobbies: [cooking, sports]})
+ReferenceError: cooking is not defined
+flights> db.passengers.updateOne({name: "Albert Twostone"}, {hobbies: ["cooking", "sports"]})
+MongoInvalidArgumentError: Update document requires atomic operators
+flights> db.passengers.updateOne({name: "Albert Twostone"}, {$set: {hobbies: ["cooking", "sports"]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+flights> db.passengers.find()
+[
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c1e'),
+    name: 'Max Schwarzmueller',
+    age: 29
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c1f'),
+    name: 'Manu Lorenz',
+    age: 30
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c20'),
+    name: 'Chris Hayton',
+    age: 35
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c21'),
+    name: 'Sandeep Kumar',
+    age: 28
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c22'),
+    name: 'Maria Jones',
+    age: 30
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c23'),
+    name: 'Alexandra Maier',
+    age: 27
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c24'),
+    name: 'Dr. Phil Evans',
+    age: 47
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c25'),
+    name: 'Sandra Brugge',
+    age: 33
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c26'),
+    name: 'Elisabeth Mayr',
+    age: 29
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c27'),
+    name: 'Frank Cube',
+    age: 41
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c28'),
+    name: 'Karandeep Alun',
+    age: 48
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c29'),
+    name: 'Michaela Drayer',
+    age: 39
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2a'),
+    name: 'Bernd Hoftstadt',
+    age: 22
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2b'),
+    name: 'Scott Tolib',
+    age: 44
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2c'),
+    name: 'Freddy Melver',
+    age: 41
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2d'),
+    name: 'Alexis Bohed',
+    age: 35
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2e'),
+    name: 'Melanie Palace',
+    age: 27
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c2f'),
+    name: 'Armin Glutch',
+    age: 35
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c30'),
+    name: 'Klaus Arber',
+    age: 53
+  },
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c31'),
+    name: 'Albert Twostone',
+    age: 68,
+    hobbies: [ 'cooking', 'sports' ]
+  }
+]
+Type "it" for more
+flights> db.passengers.findOne({name: "Albert Twostone"})
+{
+  _id: ObjectId('678cb1c8f8084960b30c8c31'),
+  name: 'Albert Twostone',
+  age: 68,
+  hobbies: [ 'cooking', 'sports' ]
+}
+flights> db.passengers.findOne({name: "Albert Twostone"}).hobbies
+[ 'cooking', 'sports' ]
+flights> db.passengers.find({hobbies: "sports"})
+[
+  {
+    _id: ObjectId('678cb1c8f8084960b30c8c31'),
+    name: 'Albert Twostone',
+    age: 68,
+    hobbies: [ 'cooking', 'sports' ]
+  }
+]
+flights>
+
+flights>
+
+flights> db.flightData.find()
+[
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1c'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true,
+    status: {
+      description: 'on-time',
+      lastUpdated: '1-hour-ago',
+      details: { responsible: 'Abc' }
+    }
+  },
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1d'),
+    departureAirport: 'LHR',
+    arrivalAirport: 'TXL',
+    aircraft: 'Airbus A320',
+    distance: 950,
+    intercontinental: false,
+    status: {
+      description: 'on-time',
+      lastUpdated: '1-hour-ago',
+      details: { responsible: 'Abc' }
+    }
+  }
+]
+flights> db.flightData.find({status.description: "on-time"})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:26)
+
+> 1 | db.flightData.find({status.description: "on-time"})
+    |                           ^
+  2 |
+
+flights> db.flightData.find({"status.description": "on-time"})
+[
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1c'),
+    departureAirport: 'MUC',
+    arrivalAirport: 'SFO',
+    aircraft: 'Airbus A380',
+    distance: 12000,
+    intercontinental: true,
+    status: {
+      description: 'on-time',
+      lastUpdated: '1-hour-ago',
+      details: { responsible: 'Abc' }
+    }
+  },
+  {
+    _id: ObjectId('678cac8ff8084960b30c8c1d'),
+    departureAirport: 'LHR',
+    arrivalAirport: 'TXL',
+    aircraft: 'Airbus A320',
+    distance: 950,
+    intercontinental: false,
+    status: {
+      description: 'on-time',
+      lastUpdated: '1-hour-ago',
+      details: { responsible: 'Abc' }
+    }
+  }
+]
+flights>

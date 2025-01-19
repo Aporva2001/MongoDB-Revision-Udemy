@@ -1,0 +1,134 @@
+flights> use patients
+switched to db patients
+patients> db.patientData.insertMany([
+...     {
+...     "firstName": "Abc",
+...     "lastName": "Xyz",
+...     "age": 35,
+...     "history": [
+...         {
+...             "disease": "cold",
+...             "treatment": "T01"
+...         }
+...     ]
+... },
+... {
+...     "firstName": "Pqr",
+...     "lastName": "Xyz",
+...     "age": 20,
+...     "history": [
+...         {
+...             "disease": "cough",
+...             "treatment": "T02"
+...         }
+...     ]
+... },
+... {
+...     "firstName": "Lkj",
+...     "lastName": "Bnh",
+...     "age": 40,
+...     "history": [
+...         {
+...             "disease": "cold",
+...             "treatment": "T01"
+...         }
+...     ]
+... }
+... ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('678cbda3f8084960b30c8c33'),
+    '1': ObjectId('678cbda3f8084960b30c8c34'),
+    '2': ObjectId('678cbda3f8084960b30c8c35')
+  }
+}
+patients> db.p
+db.propertyIsEnumerable  db.printCollectionStats  db.patientData
+
+patients> db.patientData.updateOne({firstName: "Abc"},{$set: {firstName: "Abcd", lastName: "Xyz", age: 30, history: [{disease: "cough", treatment: "T03"}]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+patients> db.patientData.find()
+[
+  {
+    _id: ObjectId('678cbda3f8084960b30c8c33'),
+    firstName: 'Abcd',
+    lastName: 'Xyz',
+    age: 30,
+    history: [ { disease: 'cough', treatment: 'T03' } ]
+  },
+  {
+    _id: ObjectId('678cbda3f8084960b30c8c34'),
+    firstName: 'Pqr',
+    lastName: 'Xyz',
+    age: 20,
+    history: [ { disease: 'cough', treatment: 'T02' } ]
+  },
+  {
+    _id: ObjectId('678cbda3f8084960b30c8c35'),
+    firstName: 'Lkj',
+    lastName: 'Bnh',
+    age: 40,
+    history: [ { disease: 'cold', treatment: 'T01' } ]
+  }
+]
+patients> db.patientData.find({age: {$gt: 30}})
+[
+  {
+    _id: ObjectId('678cbda3f8084960b30c8c35'),
+    firstName: 'Lkj',
+    lastName: 'Bnh',
+    age: 40,
+    history: [ { disease: 'cold', treatment: 'T01' } ]
+  }
+]
+patients> db.patientData.find()
+[
+  {
+    _id: ObjectId('678cbda3f8084960b30c8c33'),
+    firstName: 'Abcd',
+    lastName: 'Xyz',
+    age: 30,
+    history: [ { disease: 'cough', treatment: 'T03' } ]
+  },
+  {
+    _id: ObjectId('678cbda3f8084960b30c8c34'),
+    firstName: 'Pqr',
+    lastName: 'Xyz',
+    age: 20,
+    history: [ { disease: 'cough', treatment: 'T02' } ]
+  },
+  {
+    _id: ObjectId('678cbda3f8084960b30c8c35'),
+    firstName: 'Lkj',
+    lastName: 'Bnh',
+    age: 40,
+    history: [ { disease: 'cold', treatment: 'T01' } ]
+  }
+]
+patients> db.patientData.deleteMany({"history.disease": "cold"})
+{ acknowledged: true, deletedCount: 1 }
+patients> db.patientData.find()
+[
+  {
+    _id: ObjectId('678cbda3f8084960b30c8c33'),
+    firstName: 'Abcd',
+    lastName: 'Xyz',
+    age: 30,
+    history: [ { disease: 'cough', treatment: 'T03' } ]
+  },
+  {
+    _id: ObjectId('678cbda3f8084960b30c8c34'),
+    firstName: 'Pqr',
+    lastName: 'Xyz',
+    age: 20,
+    history: [ { disease: 'cough', treatment: 'T02' } ]
+  }
+]
+patients>
