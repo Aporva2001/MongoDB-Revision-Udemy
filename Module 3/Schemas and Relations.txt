@@ -1,0 +1,1496 @@
+Please enter a MongoDB connection string (Default: mongodb://localhost/):
+
+Current Mongosh Log ID: 678ddf262bb6bd214733a5eb
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.1
+Using MongoDB:          7.0.4
+Using Mongosh:          2.1.1
+mongosh 2.3.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-10-28T11:05:20.897+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs
+admin      40.00 KiB
+config     72.00 KiB
+flights   116.00 KiB
+local      72.00 KiB
+patients   72.00 KiB
+shop       72.00 KiB
+test       12.00 KiB
+test> use shop
+switched to db shop
+shop> db.dropDatabase()
+{ ok: 1, dropped: 'shop' }
+shop> show dbs
+admin      40.00 KiB
+config     72.00 KiB
+flights   116.00 KiB
+local      72.00 KiB
+patients   72.00 KiB
+test       12.00 KiB
+shop> use shop
+already on db shop
+shop> show dbs
+admin      40.00 KiB
+config     72.00 KiB
+flights   116.00 KiB
+local      72.00 KiB
+patients   72.00 KiB
+test       12.00 KiB
+shop> use test
+switched to db test
+test> use shop
+switched to db shop
+shop> show dbs
+admin      40.00 KiB
+config     72.00 KiB
+flights   116.00 KiB
+local      72.00 KiB
+patients   72.00 KiB
+test       12.00 KiB
+shop> db.products.insertOne({name: "A book", price: 12.99})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678de0972bb6bd214733a5ec')
+}
+shop> db.products.insertOne({title: "T-Shirt", seller: {name: "Abc", age: 29}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678de0fa2bb6bd214733a5ed')
+}
+shop> db.products.find()
+[
+  {
+    _id: ObjectId('678de0972bb6bd214733a5ec'),
+    name: 'A book',
+    price: 12.99
+  },
+  {
+    _id: ObjectId('678de0fa2bb6bd214733a5ed'),
+    title: 'T-Shirt',
+    seller: { name: 'Abc', age: 29 }
+  }
+]
+shop> db.products.deleteMany({})
+{ acknowledged: true, deletedCount: 2 }
+shop> db.products.insertOne({name: "A book", price: 12.99})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678de6c02bb6bd214733a5ee')
+}
+shop> db.products.insertOne({name: "T-Shirt", price: 20.99})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678de6ce2bb6bd214733a5ef')
+}
+shop> db.products.find()
+[
+  {
+    _id: ObjectId('678de6c02bb6bd214733a5ee'),
+    name: 'A book',
+    price: 12.99
+  },
+  {
+    _id: ObjectId('678de6ce2bb6bd214733a5ef'),
+    name: 'T-Shirt',
+    price: 20.99
+  }
+]
+shop> db.products.insertOne({name: "A computer", price: 1299, details: {cpu: "Intel i7 8770"}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678de7642bb6bd214733a5f0')
+}
+shop> db.products.find()
+[
+  {
+    _id: ObjectId('678de6c02bb6bd214733a5ee'),
+    name: 'A book',
+    price: 12.99
+  },
+  {
+    _id: ObjectId('678de6ce2bb6bd214733a5ef'),
+    name: 'T-Shirt',
+    price: 20.99
+  },
+  {
+    _id: ObjectId('678de7642bb6bd214733a5f0'),
+    name: 'A computer',
+    price: 1299,
+    details: { cpu: 'Intel i7 8770' }
+  }
+]
+shop> db.products.deleteMany({})
+{ acknowledged: true, deletedCount: 3 }
+shop> db.products.insertOne({name: "A book", price: 12.99, details: null})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678de7f22bb6bd214733a5f1')
+}
+shop> db.products.insertOne({name: "T-Shirt", price: 20.99, details: null})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678de8002bb6bd214733a5f2')
+}
+shop> db.products.insertOne({name: "A computer", price: 1299, details: {cpu: "Intel i7 8770"}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678de8032bb6bd214733a5f3')
+}
+shop> db.products.find()
+[
+  {
+    _id: ObjectId('678de7f22bb6bd214733a5f1'),
+    name: 'A book',
+    price: 12.99,
+    details: null
+  },
+  {
+    _id: ObjectId('678de8002bb6bd214733a5f2'),
+    name: 'T-Shirt',
+    price: 20.99,
+    details: null
+  },
+  {
+    _id: ObjectId('678de8032bb6bd214733a5f3'),
+    name: 'A computer',
+    price: 1299,
+    details: { cpu: 'Intel i7 8770' }
+  }
+]
+shop> db.dropDatabase()
+{ ok: 1, dropped: 'shop' }
+shop> use companyData
+switched to db companyData
+companyData> db.companies.insertOne({name: "Abc", isStartup: true})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678debff2bb6bd214733a5f4')
+}
+companyData> db.dropDatabase()
+{ ok: 1, dropped: 'companyData' }
+companyData> use companyData
+already on db companyData
+companyData> db.companies.insertOne({name: "Abc", isStartup: true, employees: 33,funding: 12345678901234567890, details: {ceo: "Mark Super"}, tags: [{title: "super"}, {title: "perfect"}], foundingDate: new Date(), insertedAt: new Timestamp()})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678dedd02bb6bd214733a5f5')
+}
+companyData> db.companyData.find()
+
+companyData> show dbs
+admin         40.00 KiB
+companyData    8.00 KiB
+config       108.00 KiB
+flights      116.00 KiB
+local         72.00 KiB
+patients      72.00 KiB
+test          12.00 KiB
+companyData> use test
+switched to db test
+test> use companyData
+switched to db companyData
+companyData> db.companies.find()
+[
+  {
+    _id: ObjectId('678dedd02bb6bd214733a5f5'),
+    name: 'Abc',
+    isStartup: true,
+    employees: 33,
+    funding: 12345678901234567000,
+    details: { ceo: 'Mark Super' },
+    tags: [ { title: 'super' }, { title: 'perfect' } ],
+    foundingDate: ISODate('2025-01-20T06:31:44.561Z'),
+    insertedAt: Timestamp({ t: 1737354704, i: 1 })
+  }
+]
+companyData> db.numbers.insertOne({a: 1})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678def412bb6bd214733a5f6')
+}
+companyData> db.find()
+TypeError: db.find is not a function
+companyData> db.numbers.find()
+[ { _id: ObjectId('678def412bb6bd214733a5f6'), a: 1 } ]
+companyData> db.stats()
+{
+  db: 'companyData',
+  collections: Long('2'),
+  views: Long('0'),
+  objects: Long('2'),
+  avgObjSize: 124,
+  dataSize: 248,
+  storageSize: 24576,
+  indexes: Long('2'),
+  indexSize: 24576,
+  totalSize: 49152,
+  scaleFactor: Long('1'),
+  fsUsedSize: 101523656704,
+  fsTotalSize: 511180795904,
+  ok: 1
+}
+companyData> db.companies.drop()
+true
+companyData> db.stats()
+{
+  db: 'companyData',
+  collections: Long('1'),
+  views: Long('0'),
+  objects: Long('1'),
+  avgObjSize: 29,
+  dataSize: 29,
+  storageSize: 20480,
+  indexes: Long('1'),
+  indexSize: 20480,
+  totalSize: 40960,
+  scaleFactor: Long('1'),
+  fsUsedSize: 101528469504,
+  fsTotalSize: 511180795904,
+  ok: 1
+}
+companyData> db.numbers.deleteMany()
+MongoshInvalidInputError: [COMMON-10001] Missing required argument at position 0 (Collection.deleteMany)
+companyData> db.numbers.deleteMany({})
+{ acknowledged: true, deletedCount: 1 }
+companyData> db.stats()
+{
+  db: 'companyData',
+  collections: Long('1'),
+  views: Long('0'),
+  objects: Long('0'),
+  avgObjSize: 0,
+  dataSize: 0,
+  storageSize: 20480,
+  indexes: Long('1'),
+  indexSize: 20480,
+  totalSize: 40960,
+  scaleFactor: Long('1'),
+  fsUsedSize: 101528526848,
+  fsTotalSize: 511180795904,
+  ok: 1
+}
+companyData> db.numbers.insertOne({a: NumberInt(1)})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678defed2bb6bd214733a5f7')
+}
+companyData> db.stats()
+{
+  db: 'companyData',
+  collections: Long('1'),
+  views: Long('0'),
+  objects: Long('1'),
+  avgObjSize: 29,
+  dataSize: 29,
+  storageSize: 24576,
+  indexes: Long('1'),
+  indexSize: 24576,
+  totalSize: 49152,
+  scaleFactor: Long('1'),
+  fsUsedSize: 101528920064,
+  fsTotalSize: 511180795904,
+  ok: 1
+}
+companyData> typeof db.numbers.findOne().a
+number
+companyData> use hospital
+switched to db hospital
+hospital> db.patients.insertOne({name: "Max", age: 29, diseaseSummary: 'summary-max-1'})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678df3b32bb6bd214733a5f8')
+}
+hospital> db.patients.findOne()
+{
+  _id: ObjectId('678df3b32bb6bd214733a5f8'),
+  name: 'Max',
+  age: 29,
+  diseaseSummary: 'summary-max-1'
+}
+hospital> db.diseaseSummaries.insertOne({_id: "summary-max-1", diseases:["cold","broken leg"]})
+{ acknowledged: true, insertedId: 'summary-max-1' }
+hospital> db.patients.findOne()
+{
+  _id: ObjectId('678df3b32bb6bd214733a5f8'),
+  name: 'Max',
+  age: 29,
+  diseaseSummary: 'summary-max-1'
+}
+hospital> db.diseaseSummaries.findOne()
+{ _id: 'summary-max-1', diseases: [ 'cold', 'broken leg' ] }
+hospital> db.patients.findOne().diseaseSummary
+summary-max-1
+hospital> var dsid= db.patients.findOne().diseaseSummary
+
+hospital> dsid
+summary-max-1
+hospital> db.diseaseSummaries.findOne({_id: dsif})
+ReferenceError: dsif is not defined
+hospital> db.diseaseSummaries.findOne({_id: dsid})
+{ _id: 'summary-max-1', diseases: [ 'cold', 'broken leg' ] }
+hospital> db.patients.deleteMany()
+MongoshInvalidInputError: [COMMON-10001] Missing required argument at position 0 (Collection.deleteMany)
+hospital> db.patients.deleteMany({})
+{ acknowledged: true, deletedCount: 1 }
+hospital> db.patients.insertOne({name: "Max", age: 29, diseaseSummary: {diseases: ["cold","broken leg"]}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678df60d2bb6bd214733a5f9')
+}
+hospital>
+
+hospital> db.patients.findOne()
+{
+  _id: ObjectId('678df60d2bb6bd214733a5f9'),
+  name: 'Max',
+  age: 29,
+  diseaseSummary: { diseases: [ 'cold', 'broken leg' ] }
+}
+hospital> use carData
+switched to db carData
+carData> db.persons.insertOne(name: "Max", car: {model: "BMW", price: 40000})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:25)
+
+> 1 | db.persons.insertOne(name: "Max", car: {model: "BMW", price: 40000})
+    |                          ^
+  2 |
+
+carData> db.persons.insertOne({name: "Max", car: {model: "BMW", price: 40000}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678df7232bb6bd214733a5fa')
+}
+carData> db.persons.findOne()
+{
+  _id: ObjectId('678df7232bb6bd214733a5fa'),
+  name: 'Max',
+  car: { model: 'BMW', price: 40000 }
+}
+carData> use test
+switched to db test
+test> use carData
+switched to db carData
+carData> db.dropDatabase()
+{ ok: 1, dropped: 'carData' }
+carData> db.persons.insertOne({name: "Max", age: 30, salary: 3000})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678df82d2bb6bd214733a5fb')
+}
+carData> db.cars.insertOne({model: "BMW", price: 40000, owner:  ObjectId('678df82d2bb6bd214733a5fb')})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678df8922bb6bd214733a5fc')
+}
+carData> use support
+switched to db support
+support> db.questionThreads.insertOne({creator: "Max", question: "How does that all works ?", answers: ["q1a1","q1a2"]})
+
+{
+  acknowledged: true,
+  insertedId: ObjectId('678df9502bb6bd214733a5fd')
+}
+support> db.questionThreads.findOne()
+{
+  _id: ObjectId('678df9502bb6bd214733a5fd'),
+  creator: 'Max',
+  question: 'How does that all works ?',
+  answers: [ 'q1a1', 'q1a2' ]
+}
+support> db.answers.insertMany([{_id: "q1a1", text: "It works like that!"}, {_id: "q1a2", text: "This works like this!"}])
+{ acknowledged: true, insertedIds: { '0': 'q1a1', '1': 'q1a2' } }
+support> db.answers.find()
+[
+  { _id: 'q1a1', text: 'It works like that!' },
+  { _id: 'q1a2', text: 'This works like this!' }
+]
+support> db.questionThreads.deleteMany({})
+{ acknowledged: true, deletedCount: 1 }
+support> db.questionThreads.insertOne({creator: "Max", question: "How does that all works ?", answers: [{_id: "q1a1", text: "This works like that"},{_id: "q1a2", text: "This works like this!"}]})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678dfa882bb6bd214733a5fe')
+}
+support> db.questionThreads.find()
+[
+  {
+    _id: ObjectId('678dfa882bb6bd214733a5fe'),
+    creator: 'Max',
+    question: 'How does that all works ?',
+    answers: [
+      { _id: 'q1a1', text: 'This works like that' },
+      { _id: 'q1a2', text: 'This works like this!' }
+    ]
+  }
+]
+support> use cityData
+switched to db cityData
+cityData> db.cities.insertOne({name:"New York City", coordinates: {lat: 21,lng: 55}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678dfbc12bb6bd214733a5ff')
+}
+cityData> db.cities.findOne()
+{
+  _id: ObjectId('678dfbc12bb6bd214733a5ff'),
+  name: 'New York City',
+  coordinates: { lat: 21, lng: 55 }
+}
+cityData> db.citizens.insertMany([{name: "Max", cityId:  ObjectId('678dfbc12bb6bd214733a5ff')}, {name: "Manuel", cityId:  ObjectId('678dfbc12bb6bd214733a5ff')}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('678dfc3b2bb6bd214733a600'),
+    '1': ObjectId('678dfc3b2bb6bd214733a601')
+  }
+}
+cityData> db.citizens.find()
+[
+  {
+    _id: ObjectId('678dfc3b2bb6bd214733a600'),
+    name: 'Max',
+    cityId: ObjectId('678dfbc12bb6bd214733a5ff')
+  },
+  {
+    _id: ObjectId('678dfc3b2bb6bd214733a601'),
+    name: 'Manuel',
+    cityId: ObjectId('678dfbc12bb6bd214733a5ff')
+  }
+]
+cityData> use shop
+switched to db shop
+shop> db.books.insertOne({name: "Book1", price: 129})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678e00a42bb6bd214733a602')
+}
+shop> db.authors.insertMany([{name: "Max", age: 29},{name: "Manuel", age:30}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('678e01062bb6bd214733a603'),
+    '1': ObjectId('678e01062bb6bd214733a604')
+  }
+}
+shop> db.books.insertOne({name: "Book2", price: 120})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678e01112bb6bd214733a605')
+}
+shop> db.books.updateOne({}, {$set: {authors: [ObjectId('678e01062bb6bd214733a603'),  ObjectId('678e01062bb6bd214733a604')]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+shop> db.books.find()
+[
+  {
+    _id: ObjectId('678e00a42bb6bd214733a602'),
+    name: 'Book1',
+    price: 129,
+    authors: [
+      ObjectId('678e01062bb6bd214733a603'),
+      ObjectId('678e01062bb6bd214733a604')
+    ]
+  },
+  {
+    _id: ObjectId('678e01112bb6bd214733a605'),
+    name: 'Book2',
+    price: 120
+  }
+]
+shop> db.authors.updateOne({}, {$set: {books: [ ObjectId('678e00a42bb6bd214733a602')]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+shop> db.authors.find()
+[
+  {
+    _id: ObjectId('678e01062bb6bd214733a603'),
+    name: 'Max',
+    age: 29,
+    books: [ ObjectId('678e00a42bb6bd214733a602') ]
+  },
+  {
+    _id: ObjectId('678e01062bb6bd214733a604'),
+    name: 'Manuel',
+    age: 30
+  }
+]
+shop> db.books.aggregate([{$lookup: {from: "authors", localField: "authors", foriegnField: "_id", as: "creators"}}])
+MongoServerError: unknown argument to $lookup: foriegnField
+shop> db.books.aggregate([{$lookup: {from: "authors", localField: "authors", foreignField: "_id", as: "creators"}}])
+[
+  {
+    _id: ObjectId('678e00a42bb6bd214733a602'),
+    name: 'Book1',
+    price: 129,
+    authors: [
+      ObjectId('678e01062bb6bd214733a603'),
+      ObjectId('678e01062bb6bd214733a604')
+    ],
+    creators: [
+      {
+        _id: ObjectId('678e01062bb6bd214733a604'),
+        name: 'Manuel',
+        age: 30
+      },
+      {
+        _id: ObjectId('678e01062bb6bd214733a603'),
+        name: 'Max',
+        age: 29,
+        books: [ ObjectId('678e00a42bb6bd214733a602') ]
+      }
+    ]
+  },
+  {
+    _id: ObjectId('678e01112bb6bd214733a605'),
+    name: 'Book2',
+    price: 120,
+    creators: []
+  }
+]
+shop>
+
+shop>
+
+shop>
+
+shop> use blog
+switched to db blog
+blog> db.users.insertMany([{name: "Max", age: 29, email: "test1@test.com"},{name: "Manuel", age: 30, email: "test2@test.com"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('678e07402bb6bd214733a606'),
+    '1': ObjectId('678e07402bb6bd214733a607')
+  }
+}
+blog> db.users.find()
+[
+  {
+    _id: ObjectId('678e07402bb6bd214733a606'),
+    name: 'Max',
+    age: 29,
+    email: 'test1@test.com'
+  },
+  {
+    _id: ObjectId('678e07402bb6bd214733a607'),
+    name: 'Manuel',
+    age: 30,
+    email: 'test2@test.com'
+  }
+]
+blog> db.posts.insertOne({title: "My First Post!", text: "this is the text for the post", tags: ["tech","new"], creator:  ObjectId('678e07402bb6bd214733a607'), comments: [{text: "This is a nice post", author:  ObjectId('678e07402bb6bd214733a606')}]})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678e08a22bb6bd214733a608')
+}
+blog> db.posts.findOne()
+{
+  _id: ObjectId('678e08a22bb6bd214733a608'),
+  title: 'My First Post!',
+  text: 'this is the text for the post',
+  tags: [ 'tech', 'new' ],
+  creator: ObjectId('678e07402bb6bd214733a607'),
+  comments: [
+    {
+      text: 'This is a nice post',
+      author: ObjectId('678e07402bb6bd214733a606')
+    }
+  ]
+}
+blog> db.posts.drop()
+true
+blog> db.posts
+blog.posts
+blog> db.posts.findOne()
+null
+blog> db.createCollection("posts", {
+...   validator: {
+...     $jsonSchema: {
+...       bsonType: "object",
+...       required: ["title", "text", "creator", "comments"],
+...       properties: {
+...         title: {
+...             bsonType: "string",
+...             description: "Must be a string and is required"
+...         },
+...         text: {
+...             bsonType: "string",
+...             description: "Must be a string and is required"
+...         }
+...       },
+...       creator: {
+...         bsonType: "objectId",
+...         description: "Must be an objectID and is required"
+...       },
+...       comments: {
+...         bsonType: "array",
+...         description: "Must be an array and is required",
+...         items: {
+...             bsonType: "object",
+...             required: ["text","author"],
+...             properties: {
+...                 text: {
+...                     bsonType: "string",
+...                     description: "Must be a string and is not required"
+...                 },
+...                 author: {
+...                     bsonType: "objectId",
+...                     description: "Must be a objectId and is not required"
+...                 }
+...             }
+...         }
+...     }
+...     },
+...   },
+... });
+MongoServerError: Unknown $jsonSchema keyword: creator
+  validator: {
+...     $jsonSchema: {
+...       bsonType: "object",
+...       required: ["title", "text", "creator", "comments"],
+Uncaught:
+SyntaxError: Missing semicolon. (4:14)
+
+  2 |     $jsonSchema: {
+  3 |       bsonType: "object",
+> 4 |       required: ["title", "text", "creator", "comments"],
+    |               ^
+  5 |
+
+blog>       properties: {
+...         title: {
+...             bsonType: "string",
+...             description: "Must be a string and is required"
+Uncaught:
+SyntaxError: Missing semicolon. (4:23)
+
+  2 |         title: {
+  3 |             bsonType: "string",
+> 4 |             description: "Must be a string and is required"
+    |                        ^
+  5 |
+
+blog>         },
+Uncaught:
+SyntaxError: Unexpected token (1:8)
+
+> 1 |         },
+    |         ^
+  2 |
+
+blog>         text: {
+...             bsonType: "string",
+...             description: "Must be a string and is required"
+Uncaught:
+SyntaxError: Missing semicolon. (3:23)
+
+  1 |         text: {
+  2 |             bsonType: "string",
+> 3 |             description: "Must be a string and is required"
+    |                        ^
+  4 |
+
+blog>         }
+Uncaught:
+SyntaxError: Unexpected token (1:8)
+
+> 1 |         }
+    |         ^
+  2 |
+
+blog>       },
+Uncaught:
+SyntaxError: Unexpected token (1:6)
+
+> 1 |       },
+    |       ^
+  2 |
+
+blog>       creator: {
+...         bsonType: "objectId",
+...         description: "Must be an objectID and is required"
+Uncaught:
+SyntaxError: Missing semicolon. (3:19)
+
+  1 |       creator: {
+  2 |         bsonType: "objectId",
+> 3 |         description: "Must be an objectID and is required"
+    |                    ^
+  4 |
+
+blog>       },
+Uncaught:
+SyntaxError: Unexpected token (1:6)
+
+> 1 |       },
+    |       ^
+  2 |
+
+blog>       comments: {
+...         bsonType: "array",
+...         description: "Must be an array and is required",
+Uncaught:
+SyntaxError: Missing semicolon. (3:19)
+
+  1 |       comments: {
+  2 |         bsonType: "array",
+> 3 |         description: "Must be an array and is required",
+    |                    ^
+  4 |
+
+blog>         items: {
+...             bsonType: "object",
+...             required: ["text","author"],
+Uncaught:
+SyntaxError: Missing semicolon. (3:20)
+
+  1 |         items: {
+  2 |             bsonType: "object",
+> 3 |             required: ["text","author"],
+    |                     ^
+  4 |
+
+blog>             properties: {
+...                 text: {
+...                     bsonType: "string",
+...                     description: "Must be a string and is not required"
+Uncaught:
+SyntaxError: Missing semicolon. (4:31)
+
+  2 |                 text: {
+  3 |                     bsonType: "string",
+> 4 |                     description: "Must be a string and is not required"
+    |                                ^
+  5 |
+
+blog>                 },
+Uncaught:
+SyntaxError: Unexpected token (1:16)
+
+> 1 |                 },
+    |                 ^
+  2 |
+
+blog>                 author: {
+...                     bsonType: "objectId",
+...                     description: "Must be a objectId and is not required"
+Uncaught:
+SyntaxError: Missing semicolon. (3:31)
+
+  1 |                 author: {
+  2 |                     bsonType: "objectId",
+> 3 |                     description: "Must be a objectId and is not required"
+    |                                ^
+  4 |
+
+blog>                 }
+Uncaught:
+SyntaxError: Unexpected token (1:16)
+
+> 1 |                 }
+    |                 ^
+  2 |
+
+blog>             }
+Uncaught:
+SyntaxError: Unexpected token (1:12)
+
+> 1 |             }
+    |             ^
+  2 |
+
+blog>         }
+Uncaught:
+SyntaxError: Unexpected token (1:8)
+
+> 1 |         }
+    |         ^
+  2 |
+
+blog>     }
+Uncaught:
+SyntaxError: Unexpected token (1:4)
+
+> 1 |     }
+    |     ^
+  2 |
+
+blog>     },
+Uncaught:
+SyntaxError: Unexpected token (1:4)
+
+> 1 |     },
+    |     ^
+  2 |
+
+blog>   },
+Uncaught:
+SyntaxError: Unexpected token (1:2)
+
+> 1 |   },
+    |   ^
+  2 |
+
+blog> });
+Uncaught:
+SyntaxError: Unexpected token (1:0)
+
+> 1 | });
+    | ^
+  2 |
+
+blog>
+
+blog>
+
+blog>
+
+blog> db.createCollection("posts", {
+...   validator: {
+...     $jsonSchema: {
+...       bsonType: "object",
+...       required: ["title", "text", "creator", "comments"],
+...       properties: {
+...         title: {
+...             bsonType: "string",
+...             description: "Must be a string and is required"
+...         },
+...         text: {
+...             bsonType: "string",
+...             description: "Must be a string and is required"
+...         }
+...       },
+...       creator: {
+...         bsonType: "objectId",
+...         description: "Must be an objectID and is required"
+...       },
+...       comments: {
+...         bsonType: "array",
+...         description: "Must be an array and is required",
+...         items: {
+...             bsonType: "object",
+...             required: ["text","author"],
+...             properties: {
+...                 text: {
+...                     bsonType: "string",
+...                     description: "Must be a string and is not required"
+...                 },
+...                 author: {
+...                     bsonType: "objectId",
+...                     description: "Must be a objectId and is not required"
+...                 }
+...             }
+...         }
+...     }
+...     },
+...   },
+... });
+MongoServerError: Unknown $jsonSchema keyword: creator
+  validator: {
+...     $jsonSchema: {
+...       bsonType: 'object',
+...       required: ['title', 'text', 'creator', 'comments'],
+Uncaught:
+SyntaxError: Missing semicolon. (4:14)
+
+  2 |     $jsonSchema: {
+  3 |       bsonType: 'object',
+> 4 |       required: ['title', 'text', 'creator', 'comments'],
+    |               ^
+  5 |
+
+blog>       properties: {
+...         title: {
+...           bsonType: 'string',
+...           description: 'must be a string and is required'
+Uncaught:
+SyntaxError: Missing semicolon. (4:21)
+
+  2 |         title: {
+  3 |           bsonType: 'string',
+> 4 |           description: 'must be a string and is required'
+    |                      ^
+  5 |
+
+blog>         },
+Uncaught:
+SyntaxError: Unexpected token (1:8)
+
+> 1 |         },
+    |         ^
+  2 |
+
+blog>         text: {
+...           bsonType: 'string',
+...           description: 'must be a string and is required'
+Uncaught:
+SyntaxError: Missing semicolon. (3:21)
+
+  1 |         text: {
+  2 |           bsonType: 'string',
+> 3 |           description: 'must be a string and is required'
+    |                      ^
+  4 |
+
+blog>         },
+Uncaught:
+SyntaxError: Unexpected token (1:8)
+
+> 1 |         },
+    |         ^
+  2 |
+
+blog>         creator: {
+...           bsonType: 'objectId',
+...           description: 'must be an objectid and is required'
+Uncaught:
+SyntaxError: Missing semicolon. (3:21)
+
+  1 |         creator: {
+  2 |           bsonType: 'objectId',
+> 3 |           description: 'must be an objectid and is required'
+    |                      ^
+  4 |
+
+blog>         },
+Uncaught:
+SyntaxError: Unexpected token (1:8)
+
+> 1 |         },
+    |         ^
+  2 |
+
+blog>         comments: {
+...           bsonType: 'array',
+...           description: 'must be an array and is required',
+Uncaught:
+SyntaxError: Missing semicolon. (3:21)
+
+  1 |         comments: {
+  2 |           bsonType: 'array',
+> 3 |           description: 'must be an array and is required',
+    |                      ^
+  4 |
+
+blog>           items: {
+...             bsonType: 'object',
+...             required: ['text', 'author'],
+Uncaught:
+SyntaxError: Missing semicolon. (3:20)
+
+  1 |           items: {
+  2 |             bsonType: 'object',
+> 3 |             required: ['text', 'author'],
+    |                     ^
+  4 |
+
+blog>             properties: {
+...               text: {
+...                 bsonType: 'string',
+...                 description: 'must be a string and is required'
+Uncaught:
+SyntaxError: Missing semicolon. (4:27)
+
+  2 |               text: {
+  3 |                 bsonType: 'string',
+> 4 |                 description: 'must be a string and is required'
+    |                            ^
+  5 |
+
+blog>               },
+Uncaught:
+SyntaxError: Unexpected token (1:14)
+
+> 1 |               },
+    |               ^
+  2 |
+
+blog>               author: {
+...                 bsonType: 'objectId',
+...                 description: 'must be an objectid and is required'
+Uncaught:
+SyntaxError: Missing semicolon. (3:27)
+
+  1 |               author: {
+  2 |                 bsonType: 'objectId',
+> 3 |                 description: 'must be an objectid and is required'
+    |                            ^
+  4 |
+
+blog>               }
+Uncaught:
+SyntaxError: Unexpected token (1:14)
+
+> 1 |               }
+    |               ^
+  2 |
+
+blog>             }
+Uncaught:
+SyntaxError: Unexpected token (1:12)
+
+> 1 |             }
+    |             ^
+  2 |
+
+blog>           }
+Uncaught:
+SyntaxError: Unexpected token (1:10)
+
+> 1 |           }
+    |           ^
+  2 |
+
+blog>         }
+Uncaught:
+SyntaxError: Unexpected token (1:8)
+
+> 1 |         }
+    |         ^
+  2 |
+
+blog>       }
+Uncaught:
+SyntaxError: Unexpected token (1:6)
+
+> 1 |       }
+    |       ^
+  2 |
+
+blog>     }
+Uncaught:
+SyntaxError: Unexpected token (1:4)
+
+> 1 |     }
+    |     ^
+  2 |
+
+blog>   }
+Uncaught:
+SyntaxError: Unexpected token (1:2)
+
+> 1 |   }
+    |   ^
+  2 |
+
+blog> });
+Uncaught:
+SyntaxError: Unexpected token (1:0)
+
+> 1 | });
+    | ^
+  2 |
+
+blog>
+
+blog>
+
+blog> db.createCollection('posts', {
+...   validator: {
+...     $jsonSchema: {
+...       bsonType: 'object',
+...       required: ['title', 'text', 'creator', 'comments'],
+...       properties: {
+...         title: {
+...           bsonType: 'string',
+...           description: 'must be a string and is required'
+...         },
+...         text: {
+...           bsonType: 'string',
+...           description: 'must be a string and is required'
+...         },
+...         creator: {
+...           bsonType: 'objectId',
+...           description: 'must be an objectid and is required'
+...         },
+...         comments: {
+...           bsonType: 'array',
+...           description: 'must be an array and is required',
+...           items: {
+...             bsonType: 'object',
+...             required: ['text', 'author'],
+...             properties: {
+...               text: {
+...                 bsonType: 'string',
+...                 description: 'must be a string and is required'
+...               },
+...               author: {
+...                 bsonType: 'objectId',
+...                 description: 'must be an objectid and is required'
+...               }
+...             }
+...           }
+...         }
+...       }
+...     }
+...   }
+... });
+{ ok: 1 }
+blog>
+
+blog> db.posts.findOne()
+null
+blog> db.posts.insertOne({title: "My First Post!", text: "this is the text for the post", tags: ["tech","new"], creator:  ObjectId('678e07402bb6bd214733a607'), comments: [{text: "This is a nice post", author:  ObjectId('678e07402bb6bd214733a606')}]})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678e10152bb6bd214733a609')
+}
+blog> db.posts.findOne()
+{
+  _id: ObjectId('678e10152bb6bd214733a609'),
+  title: 'My First Post!',
+  text: 'this is the text for the post',
+  tags: [ 'tech', 'new' ],
+  creator: ObjectId('678e07402bb6bd214733a607'),
+  comments: [
+    {
+      text: 'This is a nice post',
+      author: ObjectId('678e07402bb6bd214733a606')
+    }
+  ]
+}
+blog> db.posts.insertOne({title: 1, text: "this is the text for the post", tags: ["tech","new"], creator:  ObjectId('678e07402bb6bd214733a607'), comments: [{text: "This is a nice post", author:  ObjectId('678e07402bb6bd214733a606')}]})
+Uncaught:
+MongoServerError: Document failed validation
+Additional information: {
+  failingDocumentId: ObjectId('678e10442bb6bd214733a60a'),
+  details: {
+    operatorName: '$jsonSchema',
+    schemaRulesNotSatisfied: [
+      {
+        operatorName: 'properties',
+        propertiesNotSatisfied: [
+          {
+            propertyName: 'title',
+            description: 'must be a string and is required',
+            details: [
+              {
+                operatorName: 'bsonType',
+                specifiedAs: { bsonType: 'string' },
+                reason: 'type did not match',
+                consideredValue: 1,
+                consideredType: 'int'
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+blog> db.runCommand({collMod: "posts",validator: {
+...     $jsonSchema: {
+...       bsonType: 'object',
+...       required: ['title', 'text', 'creator', 'comments'],
+...       properties: {
+...         title: {
+...           bsonType: 'string',
+...           description: 'must be a string and is required'
+...         },
+...         text: {
+...           bsonType: 'string',
+...           description: 'must be a string and is required'
+...         },
+...         creator: {
+...           bsonType: 'objectId',
+...           description: 'must be an objectid and is required'
+...         },
+...         comments: {
+...           bsonType: 'array',
+...           description: 'must be an array and is required',
+...           items: {
+...             bsonType: 'object',
+...             required: ['text', 'author'],
+...             properties: {
+...               text: {
+...                 bsonType: 'string',
+...                 description: 'must be a string and is required'
+...               },
+...               author: {
+...                 bsonType: 'objectId',
+...                 description: 'must be an objectid and is required'
+...               }
+...             }
+...           }
+...         }
+...       }
+...     }
+...   }})
+{ ok: 1 }
+  collMod: "posts",
+...   validator: {
+Uncaught:
+SyntaxError: Missing semicolon. (2:11)
+
+  1 |   collMod: "posts",
+> 2 |   validator: {
+    |            ^
+  3 |
+
+blog>     $jsonSchema: {
+...       bsonType: "object",
+...       required: ["title", "text", "creator", "comments"],
+Uncaught:
+SyntaxError: Missing semicolon. (3:14)
+
+  1 |     $jsonSchema: {
+  2 |       bsonType: "object",
+> 3 |       required: ["title", "text", "creator", "comments"],
+    |               ^
+  4 |
+
+blog>       properties: {
+...         title: {
+...           bsonType: "string",
+...           description: "must be a string and is required",
+Uncaught:
+SyntaxError: Missing semicolon. (4:21)
+
+  2 |         title: {
+  3 |           bsonType: "string",
+> 4 |           description: "must be a string and is required",
+    |                      ^
+  5 |
+
+blog>         },
+Uncaught:
+SyntaxError: Unexpected token (1:8)
+
+> 1 |         },
+    |         ^
+  2 |
+
+blog>         text: {
+...           bsonType: "string",
+...           description: "must be a string and is required",
+Uncaught:
+SyntaxError: Missing semicolon. (3:21)
+
+  1 |         text: {
+  2 |           bsonType: "string",
+> 3 |           description: "must be a string and is required",
+    |                      ^
+  4 |
+
+blog>         },
+Uncaught:
+SyntaxError: Unexpected token (1:8)
+
+> 1 |         },
+    |         ^
+  2 |
+
+blog>         creator: {
+...           bsonType: "objectId",
+...           description: "must be an objectid and is required",
+Uncaught:
+SyntaxError: Missing semicolon. (3:21)
+
+  1 |         creator: {
+  2 |           bsonType: "objectId",
+> 3 |           description: "must be an objectid and is required",
+    |                      ^
+  4 |
+
+blog>         },
+Uncaught:
+SyntaxError: Unexpected token (1:8)
+
+> 1 |         },
+    |         ^
+  2 |
+
+blog>         comments: {
+...           bsonType: "array",
+...           description: "must be an array and is required",
+Uncaught:
+SyntaxError: Missing semicolon. (3:21)
+
+  1 |         comments: {
+  2 |           bsonType: "array",
+> 3 |           description: "must be an array and is required",
+    |                      ^
+  4 |
+
+blog>           items: {
+...             bsonType: "object",
+...             required: ["text", "author"],
+Uncaught:
+SyntaxError: Missing semicolon. (3:20)
+
+  1 |           items: {
+  2 |             bsonType: "object",
+> 3 |             required: ["text", "author"],
+    |                     ^
+  4 |
+
+blog>             properties: {
+...               text: {
+...                 bsonType: "string",
+...                 description: "must be a string and is required",
+Uncaught:
+SyntaxError: Missing semicolon. (4:27)
+
+  2 |               text: {
+  3 |                 bsonType: "string",
+> 4 |                 description: "must be a string and is required",
+    |                            ^
+  5 |
+
+blog>               },
+Uncaught:
+SyntaxError: Unexpected token (1:14)
+
+> 1 |               },
+    |               ^
+  2 |
+
+blog>               author: {
+...                 bsonType: "objectId",
+...                 description: "must be an objectid and is required",
+Uncaught:
+SyntaxError: Missing semicolon. (3:27)
+
+  1 |               author: {
+  2 |                 bsonType: "objectId",
+> 3 |                 description: "must be an objectid and is required",
+    |                            ^
+  4 |
+
+blog>               },
+Uncaught:
+SyntaxError: Unexpected token (1:14)
+
+> 1 |               },
+    |               ^
+  2 |
+
+blog>             },
+Uncaught:
+SyntaxError: Unexpected token (1:12)
+
+> 1 |             },
+    |             ^
+  2 |
+
+blog>           },
+Uncaught:
+SyntaxError: Unexpected token (1:10)
+
+> 1 |           },
+    |           ^
+  2 |
+
+blog>         },
+Uncaught:
+SyntaxError: Unexpected token (1:8)
+
+> 1 |         },
+    |         ^
+  2 |
+
+blog>       },
+Uncaught:
+SyntaxError: Unexpected token (1:6)
+
+> 1 |       },
+    |       ^
+  2 |
+
+blog>     },
+Uncaught:
+SyntaxError: Unexpected token (1:4)
+
+> 1 |     },
+    |     ^
+  2 |
+
+blog>   },
+Uncaught:
+SyntaxError: Unexpected token (1:2)
+
+> 1 |   },
+    |   ^
+  2 |
+
+blog>   validationAction: "warn"
+warn
+blog> });
+Uncaught:
+SyntaxError: Unexpected token (1:0)
+
+> 1 | });
+    | ^
+  2 |
+
+blog>
+
+blog>
+
+blog> db.runCommand({
+...   collMod: "posts",
+...   validator: {
+...     $jsonSchema: {
+...       bsonType: "object",
+...       required: ["title", "text", "creator", "comments"],
+...       properties: {
+...         title: {
+...           bsonType: "string",
+...           description: "must be a string and is required",
+...         },
+...         text: {
+...           bsonType: "string",
+...           description: "must be a string and is required",
+...         },
+...         creator: {
+...           bsonType: "objectId",
+...           description: "must be an objectid and is required",
+...         },
+...         comments: {
+...           bsonType: "array",
+...           description: "must be an array and is required",
+...           items: {
+...             bsonType: "object",
+...             required: ["text", "author"],
+...             properties: {
+...               text: {
+...                 bsonType: "string",
+...                 description: "must be a string and is required",
+...               },
+...               author: {
+...                 bsonType: "objectId",
+...                 description: "must be an objectid and is required",
+...               },
+...             },
+...           },
+...         },
+...       },
+...     },
+...   },
+...   validationAction: "warn"
+... });
+{ ok: 1 }
+blog>
+
+blog> db.posts.insertOne({title: 1, text: "this is the text for the post", tags: ["tech","new"], creator:  ObjectId('678e07402bb6bd214733a607'), comments: [{text: "This is a nice post", author:  ObjectId('678e07402bb6bd214733a606')}]})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678e125a2bb6bd214733a60b')
+}
+blog>
