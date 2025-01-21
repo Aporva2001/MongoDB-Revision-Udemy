@@ -1,0 +1,15 @@
+Microsoft Windows [Version 10.0.22621.2134]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\System32>net start MongoDB
+The requested service has already been started.
+
+More help is available by typing NET HELPMSG 2182.
+
+
+C:\Windows\System32>net stop MongoDB
+The MongoDB Server (MongoDB) service is stopping.
+The MongoDB Server (MongoDB) service was stopped successfully.
+
+
+C:\Windows\System32>

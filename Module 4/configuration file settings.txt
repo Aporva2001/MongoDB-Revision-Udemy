@@ -1,0 +1,15 @@
+Microsoft Windows [Version 10.0.22621.2134]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\aporv>mongod -f C:\Development\MongoDB\mongod.cfg
+Error parsing YAML config file: yaml-cpp: error at line 2, column 18: unknown escape character: D
+try 'mongod --help' for more information
+
+C:\Users\aporv>mongod -f C:\Development\MongoDB\mongod.cfg
+{"t":{"$date":"2025-01-21T07:28:32.098Z"},"s":"F",  "c":"CONTROL",  "id":20574,   "ctx":"thread1","msg":"Error during global initialization","attr":{"error":{"code":38,"codeName":"FileNotOpen","errmsg":"Can't initialize rotatable log file :: caused by :: Failed to open C:/logs"}}}
+
+C:\Users\aporv>mongod -f C:\Development\MongoDB\mongod.cfg
+{"t":{"$date":"2025-01-21T07:29:19.753Z"},"s":"F",  "c":"CONTROL",  "id":20574,   "ctx":"thread1","msg":"Error during global initialization","attr":{"error":{"code":38,"codeName":"FileNotOpen","errmsg":"logpath \"C:/Development/MongoDB/logs\" should name a file, not a directory."}}}
+
+C:\Users\aporv>mongod -f C:\Development\MongoDB\mongod.cfg
+{"t":{"$date":"2025-01-21T07:29:36.869Z"},"s":"I",  "c":"CONTROL",  "id":20697,   "ctx":"thread1","msg":"Renamed existing log file","attr":{"oldLogPath":"C:/Development/MongoDB/logs/log.log","newLogPath":"C:/Development/MongoDB/logs/log.log.2025-01-21T07-29-36"}}
