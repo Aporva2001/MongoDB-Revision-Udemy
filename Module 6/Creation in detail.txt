@@ -1,0 +1,345 @@
+MongoDB connection string (Default: mongodb://localhost/):
+
+Current Mongosh Log ID: 678f53397732386b1ce21c8d
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.1
+Using MongoDB:          7.0.4
+Using Mongosh:          2.1.1
+mongosh 2.3.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-01-21T12:38:39.330+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs
+admin         40.00 KiB
+blog         112.00 KiB
+carData       80.00 KiB
+cityData      80.00 KiB
+companyData   48.00 KiB
+config        60.00 KiB
+flights      116.00 KiB
+hospital      88.00 KiB
+local         72.00 KiB
+patients      72.00 KiB
+shop         128.00 KiB
+support       88.00 KiB
+test          12.00 KiB
+test> use contactData
+switched to db contactData
+contactData> db.persons.insertOne({name: "Max", age: 30, hobbies: ["Sports", "Cooking"]})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678f53c87732386b1ce21c8e')
+}
+contactData> db.persons.insertOne({name: "Manuel", age: 31, hobbies: ["Cars", "Cooking"]})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678f53e07732386b1ce21c8f')
+}
+contactData> db.persons.insertMany([{name: "Maria", age: 25}, {name: "Cris", age: 35}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('678f546a7732386b1ce21c90'),
+    '1': ObjectId('678f546a7732386b1ce21c91')
+  }
+}
+contactData>
+
+contactData> db.insert({name: "Tom", age: 40})
+TypeError: db.insert is not a function
+contactData> db.persons.insert({name: "Tom", age: 40})
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('678f54c77732386b1ce21c92') }
+}
+contactData> db.persons.insert([{name: "Thomas", age: 28},{name: "Harry", age: 45}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('678f55387732386b1ce21c93'),
+    '1': ObjectId('678f55387732386b1ce21c94')
+  }
+}
+contactData> db.hobbies.insertMany([{_id: "sports", name: "Sports"}, {_id: "cooking", name: "Cooking"}, {_id: 'cars', name: "Cars"}])
+{
+  acknowledged: true,
+  insertedIds: { '0': 'sports', '1': 'cooking', '2': 'cars' }
+}
+contactData> db.hobbies.find()
+[
+  { _id: 'sports', name: 'Sports' },
+  { _id: 'cooking', name: 'Cooking' },
+  { _id: 'cars', name: 'Cars' }
+]
+contactData> db.hobbies.insertMany([{_id: "yoga", name: "Yoga"}, {_id: "cooking", name: "Cooking"}, {_id: 'hiking', name: "Hiking"}])
+Uncaught:
+MongoBulkWriteError: E11000 duplicate key error collection: contactData.hobbies index: _id_ dup key: { _id: "cooking" }
+Result: BulkWriteResult {
+  insertedCount: 1,
+  matchedCount: 0,
+  modifiedCount: 0,
+  deletedCount: 0,
+  upsertedCount: 0,
+  upsertedIds: {},
+  insertedIds: { '0': 'yoga' }
+}
+Write Errors: [
+  WriteError {
+    err: {
+      index: 1,
+      code: 11000,
+      errmsg: 'E11000 duplicate key error collection: contactData.hobbies index: _id_ dup key: { _id: "cooking" }',
+      errInfo: undefined,
+      op: { _id: 'cooking', name: 'Cooking' }
+    }
+  }
+]
+contactData> db.hobbies.find()
+[
+  { _id: 'sports', name: 'Sports' },
+  { _id: 'cooking', name: 'Cooking' },
+  { _id: 'cars', name: 'Cars' },
+  { _id: 'yoga', name: 'Yoga' }
+]
+contactData> db.hobbies.insertMany([{_id: "yoga", name: "Yoga"}, {_id: "cooking", name: "Cooking"}, {_id: 'hiking', name: "Hiking"}], {ordered: false})
+Uncaught:
+MongoBulkWriteError: E11000 duplicate key error collection: contactData.hobbies index: _id_ dup key: { _id: "yoga" }
+Result: BulkWriteResult {
+  insertedCount: 1,
+  matchedCount: 0,
+  modifiedCount: 0,
+  deletedCount: 0,
+  upsertedCount: 0,
+  upsertedIds: {},
+  insertedIds: { '2': 'hiking' }
+}
+Write Errors: [
+  WriteError {
+    err: {
+      index: 0,
+      code: 11000,
+      errmsg: 'E11000 duplicate key error collection: contactData.hobbies index: _id_ dup key: { _id: "yoga" }',
+      errInfo: undefined,
+      op: { _id: 'yoga', name: 'Yoga' }
+    }
+  },
+  WriteError {
+    err: {
+      index: 1,
+      code: 11000,
+      errmsg: 'E11000 duplicate key error collection: contactData.hobbies index: _id_ dup key: { _id: "cooking" }',
+      errInfo: undefined,
+      op: { _id: 'cooking', name: 'Cooking' }
+    }
+  }
+]
+contactData> db.persons.insertOne({name: "John", age: 47}, {writeConcern: {w:0}})
+{
+  acknowledged: false,
+  insertedId: ObjectId('678f5d2c7732386b1ce21c95')
+}
+contactData> db.persons.find()
+[
+  {
+    _id: ObjectId('678f53c87732386b1ce21c8e'),
+    name: 'Max',
+    age: 30,
+    hobbies: [ 'Sports', 'Cooking' ]
+  },
+  {
+    _id: ObjectId('678f53e07732386b1ce21c8f'),
+    name: 'Manuel',
+    age: 31,
+    hobbies: [ 'Cars', 'Cooking' ]
+  },
+  { _id: ObjectId('678f546a7732386b1ce21c90'), name: 'Maria', age: 25 },
+  { _id: ObjectId('678f546a7732386b1ce21c91'), name: 'Cris', age: 35 },
+  { _id: ObjectId('678f54c77732386b1ce21c92'), name: 'Tom', age: 40 },
+  {
+    _id: ObjectId('678f55387732386b1ce21c93'),
+    name: 'Thomas',
+    age: 28
+  },
+  { _id: ObjectId('678f55387732386b1ce21c94'), name: 'Harry', age: 45 },
+  { _id: ObjectId('678f5d2c7732386b1ce21c95'), name: 'John', age: 47 }
+]
+contactData> db.persons.insertOne({name: "Alex", age: 41}, {writeConcern: {w:1}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678f5de37732386b1ce21c96')
+}
+contactData> db.persons.insertOne({name: "Johnny", age: 46}, {writeConcern: {w:0, j: false}})
+{
+  acknowledged: false,
+  insertedId: ObjectId('678f5e2a7732386b1ce21c97')
+}
+contactData> db.persons.insertOne({name: "Johnny", age: 46}, {writeConcern: {w:1, j: false}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678f5e367732386b1ce21c98')
+}
+contactData> db.persons.insertOne({name: "Andrew", age: 40}, {writeConcern: {w:1, j: true}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678f5e557732386b1ce21c99')
+}
+contactData> db.persons.insertOne({name: "Simons", age: 25}, {writeConcern: {w:1, j: true, wtimeout: 1}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678f5eb27732386b1ce21c9a')
+}
+contactData> show dbs
+admin         40.00 KiB
+blog         112.00 KiB
+carData       80.00 KiB
+cityData      80.00 KiB
+companyData   48.00 KiB
+config       108.00 KiB
+contactData  144.00 KiB
+flights      116.00 KiB
+hospital      88.00 KiB
+local         72.00 KiB
+patients      72.00 KiB
+shop         128.00 KiB
+support       88.00 KiB
+test          12.00 KiB
+contactData> use companyData
+switched to db companyData
+companyData> db.dropDatabase()
+{ ok: 1, dropped: 'companyData' }
+companyData> use test
+switched to db test
+test> use companyData
+switched to db companyData
+companyData> companyData.companies.insertOne({_id: "tata",name: "Tata", founded: 1878})
+ReferenceError: companyData is not defined
+companyData> db.companies.insertOne({_id: "tata",name: "Tata", founded: 1878})
+{ acknowledged: true, insertedId: 'tata' }
+companyData> db.companies.insertMany([{_id: "honda", name: "Honda", founded: 1907},{_id: "maruti", name: "Maruti", founded: 1948}])
+{ acknowledged: true, insertedIds: { '0': 'honda', '1': 'maruti' } }
+companyData> db.companies.find()
+[
+  { _id: 'tata', name: 'Tata', founded: 1878 },
+  { _id: 'honda', name: 'Honda', founded: 1907 },
+  { _id: 'maruti', name: 'Maruti', founded: 1948 }
+]
+companyData> db.companies.insertMany([{_id: "jaguar", name: "Jaguar", founded: 1910},{_id: "maruti", name: "Maruti", founded: 1948},{_id: "tesla", name: "Tesla", founded: 1985}])
+Uncaught:
+MongoBulkWriteError: E11000 duplicate key error collection: companyData.companies index: _id_ dup key: { _id: "maruti" }
+Result: BulkWriteResult {
+  insertedCount: 1,
+  matchedCount: 0,
+  modifiedCount: 0,
+  deletedCount: 0,
+  upsertedCount: 0,
+  upsertedIds: {},
+  insertedIds: { '0': 'jaguar' }
+}
+Write Errors: [
+  WriteError {
+    err: {
+      index: 1,
+      code: 11000,
+      errmsg: 'E11000 duplicate key error collection: companyData.companies index: _id_ dup key: { _id: "maruti" }',
+      errInfo: undefined,
+      op: { _id: 'maruti', name: 'Maruti', founded: 1948 }
+    }
+  }
+]
+companyData> db.companies.find()
+[
+  { _id: 'tata', name: 'Tata', founded: 1878 },
+  { _id: 'honda', name: 'Honda', founded: 1907 },
+  { _id: 'maruti', name: 'Maruti', founded: 1948 },
+  { _id: 'jaguar', name: 'Jaguar', founded: 1910 }
+]
+companyData> db.companies.insertMany([{_id: "jaguar", name: "Jaguar", founded: 1910},{_id: "maruti", name: "Maruti", founded: 1948},{_id: "tesla", name: "Tesla", founded: 1985}],{unordered: false})
+Uncaught:
+MongoBulkWriteError: E11000 duplicate key error collection: companyData.companies index: _id_ dup key: { _id: "jaguar" }
+Result: BulkWriteResult {
+  insertedCount: 0,
+  matchedCount: 0,
+  modifiedCount: 0,
+  deletedCount: 0,
+  upsertedCount: 0,
+  upsertedIds: {},
+  insertedIds: {}
+}
+Write Errors: [
+  WriteError {
+    err: {
+      index: 0,
+      code: 11000,
+      errmsg: 'E11000 duplicate key error collection: companyData.companies index: _id_ dup key: { _id: "jaguar" }',
+      errInfo: undefined,
+      op: { _id: 'jaguar', name: 'Jaguar', founded: 1910 }
+    }
+  }
+]
+companyData> db.companies.find()
+[
+  { _id: 'tata', name: 'Tata', founded: 1878 },
+  { _id: 'honda', name: 'Honda', founded: 1907 },
+  { _id: 'maruti', name: 'Maruti', founded: 1948 },
+  { _id: 'jaguar', name: 'Jaguar', founded: 1910 }
+]
+companyData> db.companies.insertMany([{_id: "jaguar", name: "Jaguar", founded: 1910},{_id: "maruti", name: "Maruti", founded: 1948},{_id: "tesla", name: "Tesla", founded: 1985}],{ordered: false})
+Uncaught:
+MongoBulkWriteError: E11000 duplicate key error collection: companyData.companies index: _id_ dup key: { _id: "jaguar" }
+Result: BulkWriteResult {
+  insertedCount: 1,
+  matchedCount: 0,
+  modifiedCount: 0,
+  deletedCount: 0,
+  upsertedCount: 0,
+  upsertedIds: {},
+  insertedIds: { '2': 'tesla' }
+}
+Write Errors: [
+  WriteError {
+    err: {
+      index: 0,
+      code: 11000,
+      errmsg: 'E11000 duplicate key error collection: companyData.companies index: _id_ dup key: { _id: "jaguar" }',
+      errInfo: undefined,
+      op: { _id: 'jaguar', name: 'Jaguar', founded: 1910 }
+    }
+  },
+  WriteError {
+    err: {
+      index: 1,
+      code: 11000,
+      errmsg: 'E11000 duplicate key error collection: companyData.companies index: _id_ dup key: { _id: "maruti" }',
+      errInfo: undefined,
+      op: { _id: 'maruti', name: 'Maruti', founded: 1948 }
+    }
+  }
+]
+companyData> db.companies.find()
+[
+  { _id: 'tata', name: 'Tata', founded: 1878 },
+  { _id: 'honda', name: 'Honda', founded: 1907 },
+  { _id: 'maruti', name: 'Maruti', founded: 1948 },
+  { _id: 'jaguar', name: 'Jaguar', founded: 1910 },
+  { _id: 'tesla', name: 'Tesla', founded: 1985 }
+]
+companyData> db.companies.insertOne({_id: "suzuki", name: "Suzuki", founded: 1988},{writeConcern: {w:1, j:true}})
+{ acknowledged: true, insertedId: 'suzuki' }
+companyData> db.companies.insertOne({_id: "boeing", name: "Boeing", founded: 1987},{writeConcern: {w:1, j:false}})
+{ acknowledged: true, insertedId: 'boeing' }
+companyData> db.companies.find()
+[
+  { _id: 'tata', name: 'Tata', founded: 1878 },
+  { _id: 'honda', name: 'Honda', founded: 1907 },
+  { _id: 'maruti', name: 'Maruti', founded: 1948 },
+  { _id: 'jaguar', name: 'Jaguar', founded: 1910 },
+  { _id: 'tesla', name: 'Tesla', founded: 1985 },
+  { _id: 'suzuki', name: 'Suzuki', founded: 1988 },
+  { _id: 'boeing', name: 'Boeing', founded: 1987 }
+]
+companyData>
