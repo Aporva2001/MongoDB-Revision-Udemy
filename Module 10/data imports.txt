@@ -1,0 +1,14 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Development\MongoDB\Module 10> mongoimport .\persons.json
+PS C:\Development\MongoDB\Module 10> mongoimport .\persons.json -d contactData -c contacts --jsonArray --drop
+2025-01-24T10:44:00.413+0530    connected to: mongodb://localhost/
+2025-01-24T10:44:00.415+0530    dropping: contactData.contacts
+2025-01-24T10:44:00.697+0530    5000 document(s) imported successfully. 0 document(s) failed to import.
+PS C:\Development\MongoDB\Module 10>
+
+
+

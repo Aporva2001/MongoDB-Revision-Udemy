@@ -1,0 +1,4754 @@
+Please enter a MongoDB connection string (Default: mongodb://localhost/):
+
+Current Mongosh Log ID: 679321e54299e22befd1c2c3
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.1
+Using MongoDB:          7.0.4
+Using Mongosh:          2.1.1
+mongosh 2.3.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-01-21T12:38:39.330+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs
+SportData        72.00 KiB
+admin            40.00 KiB
+blog            112.00 KiB
+boxOffice        80.00 KiB
+carData          80.00 KiB
+cityData         80.00 KiB
+companyData      72.00 KiB
+config           84.00 KiB
+contactData       2.95 MiB
+finnancialData   40.00 KiB
+flights         116.00 KiB
+hospital         88.00 KiB
+local            72.00 KiB
+movieData       192.00 KiB
+patients         72.00 KiB
+shop            128.00 KiB
+support          88.00 KiB
+test             12.00 KiB
+test> use contactData
+switched to db contactData
+contactData> db.contacts.findOne()
+{
+  _id: ObjectId('6793219828bec88fd56b3f87'),
+  gender: 'male',
+  name: { title: 'mr', first: 'carl', last: 'jacobs' },
+  location: {
+    street: '6948 springfield road',
+    city: 'arklow',
+    state: 'wicklow',
+    postcode: 71309,
+    coordinates: { latitude: '-29.6721', longitude: '-154.6037' },
+    timezone: { offset: '-11:00', description: 'Midway Island, Samoa' }
+  },
+  email: 'carl.jacobs@example.com',
+  login: {
+    uuid: '4f591981-b214-4430-9902-70bc0faa7e81',
+    username: 'organicladybug144',
+    password: 'hank',
+    salt: 'PC6Ig6sD',
+    md5: 'd94aac977512cb2bb005dfa360b40018',
+    sha1: 'a5ffeb65557693e443e195bdf9c066dca33dc47d',
+    sha256: 'f9aa851b943d9a8a876062e48b91b9af190a37779df009a20bc268c25ce48a7f'
+  },
+  dob: { date: '1984-09-30T01:20:26Z', age: 33 },
+  registered: { date: '2008-10-29T02:25:24Z', age: 9 },
+  phone: '031-501-5147',
+  cell: '081-090-3541',
+  id: { name: 'PPS', value: '9806982T' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/44.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/44.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/44.jpg'
+  },
+  nat: 'IE'
+}
+contactData> db.contacts.find({"dob.age": {$gt: 60}})
+[
+  {
+    _id: ObjectId('6793219828bec88fd56b3f89'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'madeleine', last: 'till' },
+    location: {
+      street: 'im winkel 166',
+      city: 'villingen-schwenningen',
+      state: 'baden-württemberg',
+      postcode: 32227,
+      coordinates: { latitude: '83.3998', longitude: '-172.3753' },
+      timezone: {
+        offset: '+5:30',
+        description: 'Bombay, Calcutta, Madras, New Delhi'
+      }
+    },
+    email: 'madeleine.till@example.com',
+    login: {
+      uuid: 'e70766b6-9d4f-419f-85c5-efc3c42db023',
+      username: 'goldencat450',
+      password: 'panthers',
+      salt: 'mHOsDM43',
+      md5: 'a97539f5d7b6c7302d3f3c1dd1d389b5',
+      sha1: 'a991dd190a83856b04d41a5e64bc41b5728b6903',
+      sha256: 'bd123b2b2aae61c6e8d3449bb14c6a032b4860275da781f8ffc73f5500e667bd'
+    },
+    dob: { date: '1954-05-01T02:34:40Z', age: 64 },
+    registered: { date: '2008-06-14T03:14:37Z', age: 10 },
+    phone: '0209-9573743',
+    cell: '0173-1226290',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/27.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/27.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/27.jpg'
+    },
+    nat: 'DE'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3f8e'),
+    gender: 'female',
+    name: { title: 'miss', first: 'shona', last: 'kemperman' },
+    location: {
+      street: '2685 adriaen van ostadelaan',
+      city: 'giessenlanden',
+      state: 'noord-brabant',
+      postcode: 57798,
+      coordinates: { latitude: '-14.4912', longitude: '-8.5570' },
+      timezone: { offset: '-12:00', description: 'Eniwetok, Kwajalein' }
+    },
+    email: 'shona.kemperman@example.com',
+    login: {
+      uuid: '45d4a86e-c007-45af-9489-49ff77c4905c',
+      username: 'bluetiger298',
+      password: 'xander',
+      salt: 'ANHBICA9',
+      md5: '56560a9b266dac51c04c43a9a845b7af',
+      sha1: '419f27be45ebb9635904e61c7e865ce13d963f63',
+      sha256: '10e7dab700ebd2b0edfced679f2cd4e4f67d2f65711d7af62e04d282b65a4161'
+    },
+    dob: { date: '1948-04-23T03:40:22Z', age: 70 },
+    registered: { date: '2003-12-29T05:37:33Z', age: 14 },
+    phone: '(132)-806-7647',
+    cell: '(766)-268-3084',
+    id: { name: 'BSN', value: '99563655' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/14.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/14.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/14.jpg'
+    },
+    nat: 'NL'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3f90'),
+    gender: 'female',
+    name: { title: 'miss', first: 'mestan', last: 'kaplangı' },
+    location: {
+      street: '2575 abanoz sk',
+      city: 'elazığ',
+      state: 'kırşehir',
+      postcode: 48715,
+      coordinates: { latitude: '25.1614', longitude: '43.9085' },
+      timezone: {
+        offset: '+4:00',
+        description: 'Abu Dhabi, Muscat, Baku, Tbilisi'
+      }
+    },
+    email: 'mestan.kaplangı@example.com',
+    login: {
+      uuid: '1c449a8b-db88-4754-aae5-b66e0338a479',
+      username: 'bigelephant762',
+      password: 'patty',
+      salt: 'n2sxEnSR',
+      md5: '6f6904b481cb51f2e068fad23ceffa73',
+      sha1: '276e8c992cf366ff06c868290a164a2727cc1d41',
+      sha256: '14a2d569e3ac745afcb07991b61e95e8c85d9e04c1f8725163e466284f4a5900'
+    },
+    dob: { date: '1951-12-17T20:03:33Z', age: 66 },
+    registered: { date: '2006-04-05T12:24:26Z', age: 12 },
+    phone: '(729)-603-0876',
+    cell: '(250)-580-1253',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/42.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/42.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/42.jpg'
+    },
+    nat: 'TR'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3f9e'),
+    gender: 'male',
+    name: { title: 'mr', first: 'alfred', last: 'jensen' },
+    location: {
+      street: '9046 østervænget',
+      city: 'fredeikssund',
+      state: 'midtjylland',
+      postcode: 41217,
+      coordinates: { latitude: '-84.5153', longitude: '149.2542' },
+      timezone: {
+        offset: '0:00',
+        description: 'Western Europe Time, London, Lisbon, Casablanca'
+      }
+    },
+    email: 'alfred.jensen@example.com',
+    login: {
+      uuid: '7c98d741-ac05-4ab8-80a4-931da8f10cdb',
+      username: 'browngorilla386',
+      password: 'good',
+      salt: '8MYPa5RU',
+      md5: 'bc1309ff26cb3244aad66d14f887a6c1',
+      sha1: '4b6d42a013e69e36dc7922d0fa520769e4929036',
+      sha256: 'c50182dcb91599580f722fadc1caee4ae78725a48668e24f057fb8a1d9b1e200'
+    },
+    dob: { date: '1957-06-28T13:29:32Z', age: 61 },
+    registered: { date: '2018-04-26T14:45:03Z', age: 0 },
+    phone: '63143258',
+    cell: '79862806',
+    id: { name: 'CPR', value: '813996-3008' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/94.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/94.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/94.jpg'
+    },
+    nat: 'DK'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3f9f'),
+    gender: 'female',
+    name: { title: 'ms', first: 'maya', last: 'macdonald' },
+    location: {
+      street: '100 george st',
+      city: 'winfield',
+      state: 'yukon',
+      postcode: 'K4Q 2U2',
+      coordinates: { latitude: '9.4191', longitude: '-102.1065' },
+      timezone: {
+        offset: '+9:00',
+        description: 'Tokyo, Seoul, Osaka, Sapporo, Yakutsk'
+      }
+    },
+    email: 'maya.macdonald@example.com',
+    login: {
+      uuid: '934e8a54-0d46-4cd7-accd-a0a67f19299b',
+      username: 'bigfish793',
+      password: 'kiss',
+      salt: 'IYteMQWZ',
+      md5: '6d975a2ef56a3f129949ee6133dca67e',
+      sha1: '22a304b1577abe6b303f016d4069f81c4aac814c',
+      sha256: 'da09a9dff1d93bc54044e89c18df814f1bc651331708834a310458a96145260c'
+    },
+    dob: { date: '1953-01-17T16:10:03Z', age: 65 },
+    registered: { date: '2009-10-08T16:00:18Z', age: 8 },
+    phone: '343-367-3594',
+    cell: '329-394-0526',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/73.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/73.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/73.jpg'
+    },
+    nat: 'CA'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fa3'),
+    gender: 'male',
+    name: { title: 'mr', first: 'lincoln', last: 'lewis' },
+    location: {
+      street: '8384 high street',
+      city: 'whangarei',
+      state: "hawke's bay",
+      postcode: 14855,
+      coordinates: { latitude: '-2.2081', longitude: '62.5954' },
+      timezone: {
+        offset: '-6:00',
+        description: 'Central Time (US & Canada), Mexico City'
+      }
+    },
+    email: 'lincoln.lewis@example.com',
+    login: {
+      uuid: '997a6fa7-75b9-4b3d-8ab8-686a641046a2',
+      username: 'ticklishtiger804',
+      password: 'markie',
+      salt: 'NfePDtuT',
+      md5: '04203f9f47bfac62440df395e683f028',
+      sha1: '395540221f6e6308e58580f180876f22124c9a0c',
+      sha256: '70a223d2a27f4a12ec4a99209bba528db9a0d712f416bc3ef73a2aabbbae45b2'
+    },
+    dob: { date: '1948-08-16T11:51:26Z', age: 70 },
+    registered: { date: '2016-10-14T19:57:42Z', age: 1 },
+    phone: '(161)-779-6350',
+    cell: '(660)-055-2689',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/75.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/75.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/75.jpg'
+    },
+    nat: 'NZ'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fae'),
+    gender: 'female',
+    name: { title: 'miss', first: 'elsie', last: 'sullivan' },
+    location: {
+      street: '8882 central st',
+      city: 'devonport',
+      state: 'tasmania',
+      postcode: 1802,
+      coordinates: { latitude: '2.9175', longitude: '-18.8868' },
+      timezone: {
+        offset: '-4:00',
+        description: 'Atlantic Time (Canada), Caracas, La Paz'
+      }
+    },
+    email: 'elsie.sullivan@example.com',
+    login: {
+      uuid: 'e6e361fc-7412-434b-92fb-0f417588980a',
+      username: 'brownelephant930',
+      password: 'walnut',
+      salt: 'QpIFbS9F',
+      md5: '715eda0767aca6941b47e955766b76e9',
+      sha1: '002b8e35bf0ee92d9a9f5e837cfee9ffdaf34aff',
+      sha256: 'd24b1a77c54fe92ddb989bb74464e7601506b527efb45ee6972f5f9de0285562'
+    },
+    dob: { date: '1946-05-15T06:22:30Z', age: 72 },
+    registered: { date: '2009-04-18T21:54:52Z', age: 9 },
+    phone: '09-7910-0569',
+    cell: '0486-471-663',
+    id: { name: 'TFN', value: '721909596' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/69.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/69.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/69.jpg'
+    },
+    nat: 'AU'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fb3'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'anaya', last: 'sangolt' },
+    location: {
+      street: 'oluf onsums vei 3798',
+      city: 'elverum',
+      state: 'oslo',
+      postcode: '5228',
+      coordinates: { latitude: '-43.9431', longitude: '-62.8704' },
+      timezone: {
+        offset: '+10:00',
+        description: 'Eastern Australia, Guam, Vladivostok'
+      }
+    },
+    email: 'anaya.sangolt@example.com',
+    login: {
+      uuid: '25ee1329-8199-4f98-b502-cc9bd08ff68d',
+      username: 'angrypanda603',
+      password: 'expert',
+      salt: 'LTnKy0B0',
+      md5: '6180c7a97a0511bad9d4109d8d97db6a',
+      sha1: '3f8af5c93cf5cb41803cbe941f9e0f606eeb9577',
+      sha256: '79fdb76f8cd50bb64b181e70b5470d898abf4e4bf10980ba84c9d22888442d75'
+    },
+    dob: { date: '1957-02-09T02:45:42Z', age: 61 },
+    registered: { date: '2015-02-26T12:41:18Z', age: 3 },
+    phone: '64808750',
+    cell: '92457213',
+    id: { name: 'FN', value: '09025740707' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/84.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/84.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/84.jpg'
+    },
+    nat: 'NO'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fb6'),
+    gender: 'male',
+    name: { title: 'mr', first: 'vilho', last: 'saarela' },
+    location: {
+      street: '1153 satakennankatu',
+      city: 'rusko',
+      state: 'northern savonia',
+      postcode: 83170,
+      coordinates: { latitude: '62.4539', longitude: '-67.0065' },
+      timezone: {
+        offset: '+8:00',
+        description: 'Beijing, Perth, Singapore, Hong Kong'
+      }
+    },
+    email: 'vilho.saarela@example.com',
+    login: {
+      uuid: '56ef4449-8595-4374-91fa-a481dbd50456',
+      username: 'bigkoala821',
+      password: '1005',
+      salt: 'ag0xkbII',
+      md5: 'cfcbbec97d47dcc95ac85d9f10e27ae9',
+      sha1: '586e3806cb0eebadf6180a38f94c05764f12db66',
+      sha256: '39672b300f4e00e437d4122f99b9342e515b4d06ecba8b346c78ccec2680bf3d'
+    },
+    dob: { date: '1954-02-20T14:31:35Z', age: 64 },
+    registered: { date: '2010-03-07T16:57:22Z', age: 8 },
+    phone: '06-484-237',
+    cell: '047-504-75-70',
+    id: { name: 'HETU', value: 'NaNNA423undefined' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/90.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/90.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/90.jpg'
+    },
+    nat: 'FI'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fb7'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'isobel', last: 'lewis' },
+    location: {
+      street: '2999 fraser street',
+      city: 'nelson',
+      state: 'southland',
+      postcode: 31241,
+      coordinates: { latitude: '-12.0354', longitude: '-36.1723' },
+      timezone: { offset: '-11:00', description: 'Midway Island, Samoa' }
+    },
+    email: 'isobel.lewis@example.com',
+    login: {
+      uuid: '93f6e608-5923-4794-8091-da1710600554',
+      username: 'blackduck464',
+      password: 'airwolf',
+      salt: 'hLH8bhVE',
+      md5: '1a09c2b46f6102adfa8cd260f30e5486',
+      sha1: 'b5ce104132ad30d64543fcdef30fd9086121a951',
+      sha256: '904004a3bdb59ad4e8bcfa2c01cf9a3081cba8957da16b483dc9f8b2ae91f467'
+    },
+    dob: { date: '1951-04-18T03:58:19Z', age: 67 },
+    registered: { date: '2016-02-08T13:45:26Z', age: 2 },
+    phone: '(105)-076-9099',
+    cell: '(134)-115-7068',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/37.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/37.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/37.jpg'
+    },
+    nat: 'NZ'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fba'),
+    gender: 'male',
+    name: { title: 'mr', first: 'julio', last: 'martin' },
+    location: {
+      street: '8525 parker rd',
+      city: 'warrnambool',
+      state: 'victoria',
+      postcode: 5104,
+      coordinates: { latitude: '61.8618', longitude: '-68.8352' },
+      timezone: {
+        offset: '+10:00',
+        description: 'Eastern Australia, Guam, Vladivostok'
+      }
+    },
+    email: 'julio.martin@example.com',
+    login: {
+      uuid: '4037ef36-5f9c-4a0e-bc63-653ffa636538',
+      username: 'browngoose330',
+      password: 'apollo13',
+      salt: 'M9mwvgR5',
+      md5: 'da8b1289c97d104b3219fbbdec1b2155',
+      sha1: '6f32c3670d8be73387177b8b39854927445aaefb',
+      sha256: 'e8af77373c33d226850c85fcbf0253254c122cbf02c8943568e85c627ce098ad'
+    },
+    dob: { date: '1956-02-23T05:47:13Z', age: 62 },
+    registered: { date: '2015-10-13T17:34:35Z', age: 2 },
+    phone: '02-3129-9559',
+    cell: '0474-284-226',
+    id: { name: 'TFN', value: '349776453' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/97.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/97.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/97.jpg'
+    },
+    nat: 'AU'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fbd'),
+    gender: 'male',
+    name: { title: 'mr', first: 'mathias', last: 'sørensen' },
+    location: {
+      street: '5362 egebjergvej',
+      city: 'bælum',
+      state: 'syddanmark',
+      postcode: 13205,
+      coordinates: { latitude: '20.0541', longitude: '97.0354' },
+      timezone: {
+        offset: '+5:00',
+        description: 'Ekaterinburg, Islamabad, Karachi, Tashkent'
+      }
+    },
+    email: 'mathias.sørensen@example.com',
+    login: {
+      uuid: 'fbefdfde-1214-4d2f-a439-7178e0bf9b00',
+      username: 'smallduck705',
+      password: 'twelve',
+      salt: 'MXHBaNmT',
+      md5: '446e6cc7b84b6074f90209475623bf27',
+      sha1: '87be1829460454afecf246dd0bb8aed3ca1b2616',
+      sha256: 'f43e3db16504a319ff6777c486061246071e3cda802a3973ae4288fe6b690600'
+    },
+    dob: { date: '1949-01-16T22:29:04Z', age: 69 },
+    registered: { date: '2009-02-14T03:29:37Z', age: 9 },
+    phone: '52827060',
+    cell: '43207994',
+    id: { name: 'CPR', value: '056794-1171' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/6.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/6.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/6.jpg'
+    },
+    nat: 'DK'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fc1'),
+    gender: 'male',
+    name: { title: 'mr', first: 'nicklas', last: 'sørensen' },
+    location: {
+      street: '1605 hobrovej',
+      city: 'bælum',
+      state: 'hovedstaden',
+      postcode: 80673,
+      coordinates: { latitude: '42.1130', longitude: '-98.0795' },
+      timezone: { offset: '-3:30', description: 'Newfoundland' }
+    },
+    email: 'nicklas.sørensen@example.com',
+    login: {
+      uuid: '709394ed-53d1-440b-8c48-fa5266cd7f03',
+      username: 'sadtiger625',
+      password: '1945',
+      salt: 'pNv8JeeQ',
+      md5: 'fd4570facdcf9b3875d15d3bda0ba47c',
+      sha1: 'c40d710cde3254113b2b8a31a2b281b46adf6a23',
+      sha256: '6be9c1df666445692c41b688afc8a19f77cfa517a1cffb963bb007fd318afd72'
+    },
+    dob: { date: '1955-09-14T19:31:39Z', age: 62 },
+    registered: { date: '2009-09-29T10:07:04Z', age: 8 },
+    phone: '63595350',
+    cell: '10534596',
+    id: { name: 'CPR', value: '517431-3080' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/47.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/47.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/47.jpg'
+    },
+    nat: 'DK'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fc2'),
+    gender: 'male',
+    name: { title: 'mr', first: 'adrian', last: 'fowler' },
+    location: {
+      street: '464 paddock way',
+      city: 'mckinney',
+      state: 'arkansas',
+      postcode: 96516,
+      coordinates: { latitude: '-8.1114', longitude: '-122.1404' },
+      timezone: {
+        offset: '-3:00',
+        description: 'Brazil, Buenos Aires, Georgetown'
+      }
+    },
+    email: 'adrian.fowler@example.com',
+    login: {
+      uuid: '7bd604e6-3514-4e90-9e51-ac9d91011e8b',
+      username: 'happykoala413',
+      password: 'style',
+      salt: '5nuBIntI',
+      md5: '270bc63dd7bd31333a61aa2c84ca954b',
+      sha1: '20093fa7eb42d2078bccde278b14e6179fce9132',
+      sha256: '7f0e507286732b09e037569fa296fe6bad9cc15cc0824aeebde1fbaeabea1bb0'
+    },
+    dob: { date: '1951-02-08T01:01:01Z', age: 67 },
+    registered: { date: '2014-11-26T01:38:11Z', age: 3 },
+    phone: '(074)-196-1098',
+    cell: '(212)-963-8756',
+    id: { name: 'SSN', value: '865-93-7479' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/14.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/14.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/14.jpg'
+    },
+    nat: 'US'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fca'),
+    gender: 'female',
+    name: { title: 'ms', first: 'kelya', last: 'philippe' },
+    location: {
+      street: '3688 quai chauveau',
+      city: 'avignon',
+      state: 'aisne',
+      postcode: 47002,
+      coordinates: { latitude: '2.4082', longitude: '153.9632' },
+      timezone: {
+        offset: '+4:00',
+        description: 'Abu Dhabi, Muscat, Baku, Tbilisi'
+      }
+    },
+    email: 'kelya.philippe@example.com',
+    login: {
+      uuid: '511bf094-e04a-415b-aa38-80bf8f34e06b',
+      username: 'purplebird756',
+      password: 'chichi',
+      salt: 'UWpBe3rC',
+      md5: 'b98a85e6d3174c702cd8519b152ec8c2',
+      sha1: 'bf8f0d11a1cbc07bd166098bd72ce57210c91686',
+      sha256: 'a7a3aae9af098534cab95b10ad67a1e7594e61fe58062d236f1ad7c76acc189c'
+    },
+    dob: { date: '1950-08-05T15:04:26Z', age: 68 },
+    registered: { date: '2016-07-08T13:22:38Z', age: 2 },
+    phone: '01-92-61-93-34',
+    cell: '06-06-75-63-58',
+    id: { name: 'INSEE', value: '2NNaN90767214 43' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/20.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/20.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/20.jpg'
+    },
+    nat: 'FR'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fd5'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'lea', last: 'margaret' },
+    location: {
+      street: '6686 3rd st',
+      city: 'grand falls',
+      state: 'yukon',
+      postcode: 'U3N 8B7',
+      coordinates: { latitude: '40.0719', longitude: '21.3568' },
+      timezone: { offset: '-8:00', description: 'Pacific Time (US & Canada)' }
+    },
+    email: 'lea.margaret@example.com',
+    login: {
+      uuid: '3cda7d0d-c80c-4378-8325-4268be540d41',
+      username: 'lazywolf219',
+      password: 'critter',
+      salt: 'Ck0aaFNY',
+      md5: 'bf8c5cee4ca4a63802887119b1122007',
+      sha1: 'fbd3998de447f88d0b08c315d391957f15a59af4',
+      sha256: 'df5d27621e2b03951b1e41e5b75e79a0aa4ab48e480ff762819cba0a131de2d9'
+    },
+    dob: { date: '1947-01-20T21:07:58Z', age: 71 },
+    registered: { date: '2007-09-27T13:27:21Z', age: 10 },
+    phone: '327-903-0126',
+    cell: '442-382-8891',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/64.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/64.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/64.jpg'
+    },
+    nat: 'CA'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fd6'),
+    gender: 'female',
+    name: { title: 'ms', first: 'thaïs', last: 'bertrand' },
+    location: {
+      street: "1758 place de l'abbé-basset",
+      city: 'saint-denis',
+      state: 'aisne',
+      postcode: 74709,
+      coordinates: { latitude: '-16.5203', longitude: '-83.0052' },
+      timezone: { offset: '+9:30', description: 'Adelaide, Darwin' }
+    },
+    email: 'thaïs.bertrand@example.com',
+    login: {
+      uuid: '9bc6f5a4-e795-4b78-901b-63326a15f9fa',
+      username: 'biggorilla218',
+      password: 'clowns',
+      salt: '8voY9kyp',
+      md5: 'c96f7ee9891d31d4306b771b0fa30fcd',
+      sha1: 'b734887c1221fa11994d76a9fe6d3e68b17ec6c2',
+      sha256: 'e200355fc00257f7b095650ac40fe12c7be54bedc2b22a1615f153a4e751de0a'
+    },
+    dob: { date: '1956-11-24T08:35:17Z', age: 61 },
+    registered: { date: '2016-09-17T19:24:28Z', age: 1 },
+    phone: '05-86-91-79-08',
+    cell: '06-55-69-88-07',
+    id: { name: 'INSEE', value: '2NNaN43827612 27' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/77.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/77.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/77.jpg'
+    },
+    nat: 'FR'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fd7'),
+    gender: 'female',
+    name: { title: 'miss', first: 'elizabeth', last: 'li' },
+    location: {
+      street: '5836 coronation avenue',
+      city: 'invercargill',
+      state: 'waikato',
+      postcode: 66651,
+      coordinates: { latitude: '50.7192', longitude: '-102.7020' },
+      timezone: {
+        offset: '+3:00',
+        description: 'Baghdad, Riyadh, Moscow, St. Petersburg'
+      }
+    },
+    email: 'elizabeth.li@example.com',
+    login: {
+      uuid: '3eab325d-74d1-4f3b-9a5a-142450ec1bb6',
+      username: 'orangebutterfly116',
+      password: 'momoney',
+      salt: 'pZz6d2Hi',
+      md5: '8fd1c5d1b2330b4ff18eec64cb0ca104',
+      sha1: 'ea9aab57d4a36b40465b93de1a3e08ed5c0af659',
+      sha256: '51c3b1f24ac0db905571ffe286cbc83490d21d88514cdf2d9577fa2ceddeb49f'
+    },
+    dob: { date: '1950-05-24T10:02:09Z', age: 68 },
+    registered: { date: '2013-11-17T04:28:34Z', age: 4 },
+    phone: '(034)-452-6621',
+    cell: '(398)-869-9834',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/66.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/66.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/66.jpg'
+    },
+    nat: 'NZ'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fda'),
+    gender: 'male',
+    name: { title: 'mr', first: 'larry', last: 'johnson' },
+    location: {
+      street: '6979 bruce st',
+      city: 'baltimore',
+      state: 'georgia',
+      postcode: 12056,
+      coordinates: { latitude: '11.6793', longitude: '-132.8939' },
+      timezone: { offset: '-2:00', description: 'Mid-Atlantic' }
+    },
+    email: 'larry.johnson@example.com',
+    login: {
+      uuid: '7bf0acde-e341-4d0d-a363-fdef780bf9b0',
+      username: 'silverzebra945',
+      password: '1950',
+      salt: 'foM4IIBQ',
+      md5: 'c8e14075894554f8b0b13b4aa8134698',
+      sha1: '316e9f642e954573f34367a13de3b4e67fe05d84',
+      sha256: '61492f37eb55beac254f318ddb4ac58d622e0807e622ec9ff1442d0f54028d48'
+    },
+    dob: { date: '1954-03-14T16:37:25Z', age: 64 },
+    registered: { date: '2010-11-22T05:06:33Z', age: 7 },
+    phone: '(964)-129-3195',
+    cell: '(829)-410-6409',
+    id: { name: 'SSN', value: '828-99-1439' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/90.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/90.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/90.jpg'
+    },
+    nat: 'US'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fdc'),
+    gender: 'female',
+    name: { title: 'miss', first: 'eline', last: 'dupont' },
+    location: {
+      street: '7383 rue saint-georges',
+      city: 'amiens',
+      state: 'hauts-de-seine',
+      postcode: 28598,
+      coordinates: { latitude: '-25.0642', longitude: '-96.7924' },
+      timezone: { offset: '+7:00', description: 'Bangkok, Hanoi, Jakarta' }
+    },
+    email: 'eline.dupont@example.com',
+    login: {
+      uuid: '2af7be85-99ef-4f47-b93b-fdb2e21f1e46',
+      username: 'smallsnake535',
+      password: 'nana',
+      salt: 'olh0oYLJ',
+      md5: '0858a203f9ae9f7dc6127e207a45352a',
+      sha1: '0e24b4e342a4dc4b0bf8d8f68dfae8e267cb5c30',
+      sha256: '4633638e6f20c81c59e68df0d2d8e91a5e9dd58c34596cf9757089d6c1dcb016'
+    },
+    dob: { date: '1949-11-07T21:23:10Z', age: 68 },
+    registered: { date: '2003-07-08T07:24:55Z', age: 15 },
+    phone: '02-79-81-50-69',
+    cell: '06-69-00-52-24',
+    id: { name: 'INSEE', value: '2NNaN10525095 32' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/46.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/46.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/46.jpg'
+    },
+    nat: 'FR'
+  }
+]
+Type "it" for more
+contactData> db.contacts.find({"dob.age": {$gt: 60}}).count()
+1222
+contactData> db.contacts.explain().find({"dob.age": {$gt: 60}})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.contacts',
+    indexFilterSet: false,
+    parsedQuery: { 'dob.age': { '$gt': 60 } },
+    queryHash: '3545665C',
+    planCacheKey: '150AC22A',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'COLLSCAN',
+        planNodeId: 1,
+        filter: { 'dob.age': { '$gt': 60 } },
+        direction: 'forward'
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s5 env: { s7 = 60, s3 = 1737696022491 (NOW), s2 = Nothing (SEARCH_META), s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB) }',
+        stages: '[1] filter {traverseF(s4, lambda(l1.0) { traverseF(getField(l1.0, "age"), lambda(l2.0) { ((l2.0 > s7) ?: false) }, false) }, false)} \n' +
+          '[1] scan s5 s6 none none none none lowPriority [s4 = dob] @"1386acc8-29f7-4e97-985e-9abdda575be5" true false '
+      }
+    },
+    rejectedPlans: []
+  },
+  command: {
+    find: 'contacts',
+    filter: { 'dob.age': { '$gt': 60 } },
+    '$db': 'contactData'
+  },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> db.contacts.explain("executionStats").find({"dob.age": {$gt: 60}})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.contacts',
+    indexFilterSet: false,
+    parsedQuery: { 'dob.age': { '$gt': 60 } },
+    queryHash: '3545665C',
+    planCacheKey: '150AC22A',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'COLLSCAN',
+        planNodeId: 1,
+        filter: { 'dob.age': { '$gt': 60 } },
+        direction: 'forward'
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s5 env: { s3 = 1737696151924 (NOW), s2 = Nothing (SEARCH_META), s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB), s7 = 60 }',
+        stages: '[1] filter {traverseF(s4, lambda(l1.0) { traverseF(getField(l1.0, "age"), lambda(l2.0) { ((l2.0 > s7) ?: false) }, false) }, false)} \n' +
+          '[1] scan s5 s6 none none none none lowPriority [s4 = dob] @"1386acc8-29f7-4e97-985e-9abdda575be5" true false '
+      }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 1222,
+    executionTimeMillis: 5,
+    totalKeysExamined: 0,
+    totalDocsExamined: 5000,
+    executionStages: {
+      stage: 'filter',
+      planNodeId: 1,
+      nReturned: 1222,
+      executionTimeMillisEstimate: 5,
+      opens: 1,
+      closes: 1,
+      saveState: 5,
+      restoreState: 5,
+      isEOF: 1,
+      numTested: 5000,
+      filter: 'traverseF(s4, lambda(l1.0) { traverseF(getField(l1.0, "age"), lambda(l2.0) { ((l2.0 > s7) ?: false) }, false) }, false) ',
+      inputStage: {
+        stage: 'scan',
+        planNodeId: 1,
+        nReturned: 5000,
+        executionTimeMillisEstimate: 5,
+        opens: 1,
+        closes: 1,
+        saveState: 5,
+        restoreState: 5,
+        isEOF: 1,
+        numReads: 5000,
+        recordSlot: 5,
+        recordIdSlot: 6,
+        fields: [ 'dob' ],
+        outputSlots: [ Long('4') ]
+      }
+    }
+  },
+  command: {
+    find: 'contacts',
+    filter: { 'dob.age': { '$gt': 60 } },
+    '$db': 'contactData'
+  },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> db.contacts.createIndex({"dob.age": 1})
+dob.age_1
+contactData> db.contacts.explain("executionStats").find({"dob.age": {$gt: 60}})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.contacts',
+    indexFilterSet: false,
+    parsedQuery: { 'dob.age': { '$gt': 60 } },
+    queryHash: '3545665C',
+    planCacheKey: 'A9F3ABD4',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'FETCH',
+        planNodeId: 2,
+        inputStage: {
+          stage: 'IXSCAN',
+          planNodeId: 1,
+          keyPattern: { 'dob.age': 1 },
+          indexName: 'dob.age_1',
+          isMultiKey: false,
+          multiKeyPaths: { 'dob.age': [] },
+          isUnique: false,
+          isSparse: false,
+          isPartial: false,
+          indexVersion: 2,
+          direction: 'forward',
+          indexBounds: { 'dob.age': [ '(60, inf.0]' ] }
+        }
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s11 env: { s2 = Nothing (SEARCH_META), s3 = 1737696407373 (NOW), s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB), s5 = KS(2B78FE04), s6 = KS(33FFFFFFFFFFFFFFFFFE04), s10 = {"dob.age" : 1} }',
+        stages: '[2] nlj inner [] [s4, s7, s8, s9, s10] \n' +
+          '    left \n' +
+          '        [1] cfilter {(exists(s5) && exists(s6))} \n' +
+          '        [1] ixseek s5 s6 s9 s4 s7 s8 [] @"1386acc8-29f7-4e97-985e-9abdda575be5" @"dob.age_1" true \n' +
+          '    right \n' +
+          '        [2] limit 1 \n' +
+          '        [2] seek s4 s11 s12 s7 s8 s9 s10 [] @"1386acc8-29f7-4e97-985e-9abdda575be5" true false \n'
+      }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 1222,
+    executionTimeMillis: 18,
+    totalKeysExamined: 1222,
+    totalDocsExamined: 1222,
+    executionStages: {
+      stage: 'nlj',
+      planNodeId: 2,
+      nReturned: 1222,
+      executionTimeMillisEstimate: 15,
+      opens: 1,
+      closes: 1,
+      saveState: 2,
+      restoreState: 2,
+      isEOF: 1,
+      totalDocsExamined: 1222,
+      totalKeysExamined: 1222,
+      collectionScans: 0,
+      collectionSeeks: 1222,
+      indexScans: 0,
+      indexSeeks: 1,
+      indexesUsed: [ 'dob.age_1' ],
+      innerOpens: 1222,
+      innerCloses: 1,
+      outerProjects: [],
+      outerCorrelated: [ Long('4'), Long('7'), Long('8'), Long('9'), Long('10') ],
+      outerStage: {
+        stage: 'cfilter',
+        planNodeId: 1,
+        nReturned: 1222,
+        executionTimeMillisEstimate: 15,
+        opens: 1,
+        closes: 1,
+        saveState: 2,
+        restoreState: 2,
+        isEOF: 1,
+        numTested: 1,
+        filter: '(exists(s5) && exists(s6)) ',
+        inputStage: {
+          stage: 'ixseek',
+          planNodeId: 1,
+          nReturned: 1222,
+          executionTimeMillisEstimate: 15,
+          opens: 1,
+          closes: 1,
+          saveState: 2,
+          restoreState: 2,
+          isEOF: 1,
+          indexName: 'dob.age_1',
+          keysExamined: 1222,
+          seeks: 1,
+          numReads: 1223,
+          indexKeySlot: 9,
+          recordIdSlot: 4,
+          snapshotIdSlot: 7,
+          indexIdentSlot: 8,
+          outputSlots: [],
+          indexKeysToInclude: '00000000000000000000000000000000',
+          seekKeyLow: 's5 ',
+          seekKeyHigh: 's6 '
+        }
+      },
+      innerStage: {
+        stage: 'limit',
+        planNodeId: 2,
+        nReturned: 1222,
+        executionTimeMillisEstimate: 0,
+        opens: 1222,
+        closes: 1,
+        saveState: 2,
+        restoreState: 2,
+        isEOF: 1,
+        limit: 1,
+        inputStage: {
+          stage: 'seek',
+          planNodeId: 2,
+          nReturned: 1222,
+          executionTimeMillisEstimate: 0,
+          opens: 1222,
+          closes: 1,
+          saveState: 2,
+          restoreState: 2,
+          isEOF: 0,
+          numReads: 1222,
+          recordSlot: 11,
+          recordIdSlot: 12,
+          seekKeySlot: 4,
+          snapshotIdSlot: 7,
+          indexIdentSlot: 8,
+          indexKeySlot: 9,
+          indexKeyPatternSlot: 10,
+          fields: [],
+          outputSlots: []
+        }
+      }
+    }
+  },
+  command: {
+    find: 'contacts',
+    filter: { 'dob.age': { '$gt': 60 } },
+    '$db': 'contactData'
+  },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> db.contacts.explain("executionStats").find({"dob.age": {$gt: 20}})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.contacts',
+    indexFilterSet: false,
+    parsedQuery: { 'dob.age': { '$gt': 20 } },
+    queryHash: '3545665C',
+    planCacheKey: 'A9F3ABD4',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'FETCH',
+        planNodeId: 2,
+        inputStage: {
+          stage: 'IXSCAN',
+          planNodeId: 1,
+          keyPattern: { 'dob.age': 1 },
+          indexName: 'dob.age_1',
+          isMultiKey: false,
+          multiKeyPaths: { 'dob.age': [] },
+          isUnique: false,
+          isSparse: false,
+          isPartial: false,
+          indexVersion: 2,
+          direction: 'forward',
+          indexBounds: { 'dob.age': [ '(20, inf.0]' ] }
+        }
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s11 env: { s5 = KS(2B28FE04), s2 = Nothing (SEARCH_META), s10 = {"dob.age" : 1}, s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB), s6 = KS(33FFFFFFFFFFFFFFFFFE04), s3 = 1737696695770 (NOW) }',
+        stages: '[2] nlj inner [] [s4, s7, s8, s9, s10] \n' +
+          '    left \n' +
+          '        [1] cfilter {(exists(s5) && exists(s6))} \n' +
+          '        [1] ixseek s5 s6 s9 s4 s7 s8 [] @"1386acc8-29f7-4e97-985e-9abdda575be5" @"dob.age_1" true \n' +
+          '    right \n' +
+          '        [2] limit 1 \n' +
+          '        [2] seek s4 s11 s12 s7 s8 s9 s10 [] @"1386acc8-29f7-4e97-985e-9abdda575be5" true false \n'
+      }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 5000,
+    executionTimeMillis: 9,
+    totalKeysExamined: 5000,
+    totalDocsExamined: 5000,
+    executionStages: {
+      stage: 'nlj',
+      planNodeId: 2,
+      nReturned: 5000,
+      executionTimeMillisEstimate: 9,
+      opens: 1,
+      closes: 1,
+      saveState: 5,
+      restoreState: 5,
+      isEOF: 1,
+      totalDocsExamined: 5000,
+      totalKeysExamined: 5000,
+      collectionScans: 0,
+      collectionSeeks: 5000,
+      indexScans: 0,
+      indexSeeks: 1,
+      indexesUsed: [ 'dob.age_1' ],
+      innerOpens: 5000,
+      innerCloses: 1,
+      outerProjects: [],
+      outerCorrelated: [ Long('4'), Long('7'), Long('8'), Long('9'), Long('10') ],
+      outerStage: {
+        stage: 'cfilter',
+        planNodeId: 1,
+        nReturned: 5000,
+        executionTimeMillisEstimate: 9,
+        opens: 1,
+        closes: 1,
+        saveState: 5,
+        restoreState: 5,
+        isEOF: 1,
+        numTested: 1,
+        filter: '(exists(s5) && exists(s6)) ',
+        inputStage: {
+          stage: 'ixseek',
+          planNodeId: 1,
+          nReturned: 5000,
+          executionTimeMillisEstimate: 9,
+          opens: 1,
+          closes: 1,
+          saveState: 5,
+          restoreState: 5,
+          isEOF: 1,
+          indexName: 'dob.age_1',
+          keysExamined: 5000,
+          seeks: 1,
+          numReads: 5001,
+          indexKeySlot: 9,
+          recordIdSlot: 4,
+          snapshotIdSlot: 7,
+          indexIdentSlot: 8,
+          outputSlots: [],
+          indexKeysToInclude: '00000000000000000000000000000000',
+          seekKeyLow: 's5 ',
+          seekKeyHigh: 's6 '
+        }
+      },
+      innerStage: {
+        stage: 'limit',
+        planNodeId: 2,
+        nReturned: 5000,
+        executionTimeMillisEstimate: 0,
+        opens: 5000,
+        closes: 1,
+        saveState: 5,
+        restoreState: 5,
+        isEOF: 1,
+        limit: 1,
+        inputStage: {
+          stage: 'seek',
+          planNodeId: 2,
+          nReturned: 5000,
+          executionTimeMillisEstimate: 0,
+          opens: 5000,
+          closes: 1,
+          saveState: 5,
+          restoreState: 5,
+          isEOF: 0,
+          numReads: 5000,
+          recordSlot: 11,
+          recordIdSlot: 12,
+          seekKeySlot: 4,
+          snapshotIdSlot: 7,
+          indexIdentSlot: 8,
+          indexKeySlot: 9,
+          indexKeyPatternSlot: 10,
+          fields: [],
+          outputSlots: []
+        }
+      }
+    }
+  },
+  command: {
+    find: 'contacts',
+    filter: { 'dob.age': { '$gt': 20 } },
+    '$db': 'contactData'
+  },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> db.contacts.dropIndex({"dob.age": 1})
+{ nIndexesWas: 2, ok: 1 }
+contactData> db.contacts.explain("executionStats").find({"dob.age": {$gt: 20}})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.contacts',
+    indexFilterSet: false,
+    parsedQuery: { 'dob.age': { '$gt': 20 } },
+    queryHash: '3545665C',
+    planCacheKey: '43C72533',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'COLLSCAN',
+        planNodeId: 1,
+        filter: { 'dob.age': { '$gt': 20 } },
+        direction: 'forward'
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s5 env: { s2 = Nothing (SEARCH_META), s7 = 20, s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB), s3 = 1737696765189 (NOW) }',
+        stages: '[1] filter {traverseF(s4, lambda(l1.0) { traverseF(getField(l1.0, "age"), lambda(l2.0) { ((l2.0 > s7) ?: false) }, false) }, false)} \n' +
+          '[1] scan s5 s6 none none none none lowPriority [s4 = dob] @"1386acc8-29f7-4e97-985e-9abdda575be5" true false '
+      }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 5000,
+    executionTimeMillis: 3,
+    totalKeysExamined: 0,
+    totalDocsExamined: 5000,
+    executionStages: {
+      stage: 'filter',
+      planNodeId: 1,
+      nReturned: 5000,
+      executionTimeMillisEstimate: 4,
+      opens: 1,
+      closes: 1,
+      saveState: 5,
+      restoreState: 5,
+      isEOF: 1,
+      numTested: 5000,
+      filter: 'traverseF(s4, lambda(l1.0) { traverseF(getField(l1.0, "age"), lambda(l2.0) { ((l2.0 > s7) ?: false) }, false) }, false) ',
+      inputStage: {
+        stage: 'scan',
+        planNodeId: 1,
+        nReturned: 5000,
+        executionTimeMillisEstimate: 4,
+        opens: 1,
+        closes: 1,
+        saveState: 5,
+        restoreState: 5,
+        isEOF: 1,
+        numReads: 5000,
+        recordSlot: 5,
+        recordIdSlot: 6,
+        fields: [ 'dob' ],
+        outputSlots: [ Long('4') ]
+      }
+    }
+  },
+  command: {
+    find: 'contacts',
+    filter: { 'dob.age': { '$gt': 20 } },
+    '$db': 'contactData'
+  },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> db.contacts.findOne()
+{
+  _id: ObjectId('6793219828bec88fd56b3f87'),
+  gender: 'male',
+  name: { title: 'mr', first: 'carl', last: 'jacobs' },
+  location: {
+    street: '6948 springfield road',
+    city: 'arklow',
+    state: 'wicklow',
+    postcode: 71309,
+    coordinates: { latitude: '-29.6721', longitude: '-154.6037' },
+    timezone: { offset: '-11:00', description: 'Midway Island, Samoa' }
+  },
+  email: 'carl.jacobs@example.com',
+  login: {
+    uuid: '4f591981-b214-4430-9902-70bc0faa7e81',
+    username: 'organicladybug144',
+    password: 'hank',
+    salt: 'PC6Ig6sD',
+    md5: 'd94aac977512cb2bb005dfa360b40018',
+    sha1: 'a5ffeb65557693e443e195bdf9c066dca33dc47d',
+    sha256: 'f9aa851b943d9a8a876062e48b91b9af190a37779df009a20bc268c25ce48a7f'
+  },
+  dob: { date: '1984-09-30T01:20:26Z', age: 33 },
+  registered: { date: '2008-10-29T02:25:24Z', age: 9 },
+  phone: '031-501-5147',
+  cell: '081-090-3541',
+  id: { name: 'PPS', value: '9806982T' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/44.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/44.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/44.jpg'
+  },
+  nat: 'IE'
+}
+contactData> db.contacts.createIndex({gender: 1})
+gender_1
+contactData> db.contacts.explain().find({gender: "male"})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.contacts',
+    indexFilterSet: false,
+    parsedQuery: { gender: { '$eq': 'male' } },
+    queryHash: '3A97C264',
+    planCacheKey: 'D01CC5B1',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'FETCH',
+        planNodeId: 2,
+        inputStage: {
+          stage: 'IXSCAN',
+          planNodeId: 1,
+          keyPattern: { gender: 1 },
+          indexName: 'gender_1',
+          isMultiKey: false,
+          multiKeyPaths: { gender: [] },
+          isUnique: false,
+          isSparse: false,
+          isPartial: false,
+          indexVersion: 2,
+          direction: 'forward',
+          indexBounds: { gender: [ '["male", "male"]' ] }
+        }
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s11 env: { s6 = KS(3C6D616C6500FE04), s10 = {"gender" : 1}, s3 = 1737697197049 (NOW), s2 = Nothing (SEARCH_META), s5 = KS(3C6D616C65000104), s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB) }',
+        stages: '[2] nlj inner [] [s4, s7, s8, s9, s10] \n' +
+          '    left \n' +
+          '        [1] cfilter {(exists(s5) && exists(s6))} \n' +
+          '        [1] ixseek s5 s6 s9 s4 s7 s8 [] @"1386acc8-29f7-4e97-985e-9abdda575be5" @"gender_1" true \n' +
+          '    right \n' +
+          '        [2] limit 1 \n' +
+          '        [2] seek s4 s11 s12 s7 s8 s9 s10 [] @"1386acc8-29f7-4e97-985e-9abdda575be5" true false \n'
+      }
+    },
+    rejectedPlans: []
+  },
+  command: {
+    find: 'contacts',
+    filter: { gender: 'male' },
+    '$db': 'contactData'
+  },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> db.contacts.explain("executionStats").find({gender: "male"})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.contacts',
+    indexFilterSet: false,
+    parsedQuery: { gender: { '$eq': 'male' } },
+    queryHash: '3A97C264',
+    planCacheKey: 'D01CC5B1',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'FETCH',
+        planNodeId: 2,
+        inputStage: {
+          stage: 'IXSCAN',
+          planNodeId: 1,
+          keyPattern: { gender: 1 },
+          indexName: 'gender_1',
+          isMultiKey: false,
+          multiKeyPaths: { gender: [] },
+          isUnique: false,
+          isSparse: false,
+          isPartial: false,
+          indexVersion: 2,
+          direction: 'forward',
+          indexBounds: { gender: [ '["male", "male"]' ] }
+        }
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s11 env: { s6 = KS(3C6D616C6500FE04), s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB), s5 = KS(3C6D616C65000104), s2 = Nothing (SEARCH_META), s3 = 1737697236774 (NOW), s10 = {"gender" : 1} }',
+        stages: '[2] nlj inner [] [s4, s7, s8, s9, s10] \n' +
+          '    left \n' +
+          '        [1] cfilter {(exists(s5) && exists(s6))} \n' +
+          '        [1] ixseek s5 s6 s9 s4 s7 s8 [] @"1386acc8-29f7-4e97-985e-9abdda575be5" @"gender_1" true \n' +
+          '    right \n' +
+          '        [2] limit 1 \n' +
+          '        [2] seek s4 s11 s12 s7 s8 s9 s10 [] @"1386acc8-29f7-4e97-985e-9abdda575be5" true false \n'
+      }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 2435,
+    executionTimeMillis: 13,
+    totalKeysExamined: 2435,
+    totalDocsExamined: 2435,
+    executionStages: {
+      stage: 'nlj',
+      planNodeId: 2,
+      nReturned: 2435,
+      executionTimeMillisEstimate: 12,
+      opens: 1,
+      closes: 1,
+      saveState: 2,
+      restoreState: 2,
+      isEOF: 1,
+      totalDocsExamined: 2435,
+      totalKeysExamined: 2435,
+      collectionScans: 0,
+      collectionSeeks: 2435,
+      indexScans: 0,
+      indexSeeks: 1,
+      indexesUsed: [ 'gender_1' ],
+      innerOpens: 2435,
+      innerCloses: 1,
+      outerProjects: [],
+      outerCorrelated: [ Long('4'), Long('7'), Long('8'), Long('9'), Long('10') ],
+      outerStage: {
+        stage: 'cfilter',
+        planNodeId: 1,
+        nReturned: 2435,
+        executionTimeMillisEstimate: 2,
+        opens: 1,
+        closes: 1,
+        saveState: 2,
+        restoreState: 2,
+        isEOF: 1,
+        numTested: 1,
+        filter: '(exists(s5) && exists(s6)) ',
+        inputStage: {
+          stage: 'ixseek',
+          planNodeId: 1,
+          nReturned: 2435,
+          executionTimeMillisEstimate: 2,
+          opens: 1,
+          closes: 1,
+          saveState: 2,
+          restoreState: 2,
+          isEOF: 1,
+          indexName: 'gender_1',
+          keysExamined: 2435,
+          seeks: 1,
+          numReads: 2436,
+          indexKeySlot: 9,
+          recordIdSlot: 4,
+          snapshotIdSlot: 7,
+          indexIdentSlot: 8,
+          outputSlots: [],
+          indexKeysToInclude: '00000000000000000000000000000000',
+          seekKeyLow: 's5 ',
+          seekKeyHigh: 's6 '
+        }
+      },
+      innerStage: {
+        stage: 'limit',
+        planNodeId: 2,
+        nReturned: 2435,
+        executionTimeMillisEstimate: 10,
+        opens: 2435,
+        closes: 1,
+        saveState: 2,
+        restoreState: 2,
+        isEOF: 1,
+        limit: 1,
+        inputStage: {
+          stage: 'seek',
+          planNodeId: 2,
+          nReturned: 2435,
+          executionTimeMillisEstimate: 10,
+          opens: 2435,
+          closes: 1,
+          saveState: 2,
+          restoreState: 2,
+          isEOF: 0,
+          numReads: 2435,
+          recordSlot: 11,
+          recordIdSlot: 12,
+          seekKeySlot: 4,
+          snapshotIdSlot: 7,
+          indexIdentSlot: 8,
+          indexKeySlot: 9,
+          indexKeyPatternSlot: 10,
+          fields: [],
+          outputSlots: []
+        }
+      }
+    }
+  },
+  command: {
+    find: 'contacts',
+    filter: { gender: 'male' },
+    '$db': 'contactData'
+  },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> db.contacts.dropIndex({gender: "male"})
+MongoshInternalError: can't find index with key: { gender: "male" }
+contactData> db.contacts.dropIndex({gender: 1})
+{ nIndexesWas: 2, ok: 1 }
+contactData> db.contacts.dropIndex({gender: 1})
+contactData> db.contacts.createIndex({"dob.age": 1, gender: 1})
+dob.age_1_gender_1
+contactData> db.contacts.explain().find({"dob.age": 35, gender: "male"})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.contacts',
+    indexFilterSet: false,
+    parsedQuery: {
+      '$and': [ { 'dob.age': { '$eq': 35 } }, { gender: { '$eq': 'male' } } ]
+    },
+    queryHash: '488C214F',
+    planCacheKey: 'ACE9C167',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'FETCH',
+        planNodeId: 2,
+        inputStage: {
+          stage: 'IXSCAN',
+          planNodeId: 1,
+          keyPattern: { 'dob.age': 1, gender: 1 },
+          indexName: 'dob.age_1_gender_1',
+          isMultiKey: false,
+          multiKeyPaths: { 'dob.age': [], gender: [] },
+          isUnique: false,
+          isSparse: false,
+          isPartial: false,
+          indexVersion: 2,
+          direction: 'forward',
+          indexBounds: { 'dob.age': [ '[35, 35]' ], gender: [ '["male", "male"]' ] }
+        }
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s11 env: { s6 = KS(2B463C6D616C6500FE04), s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB), s5 = KS(2B463C6D616C65000104), s2 = Nothing (SEARCH_META), s3 = 1737697592102 (NOW), s10 = {"dob.age" : 1, "gender" : 1} }',
+        stages: '[2] nlj inner [] [s4, s7, s8, s9, s10] \n' +
+          '    left \n' +
+          '        [1] cfilter {(exists(s5) && exists(s6))} \n' +
+          '        [1] ixseek s5 s6 s9 s4 s7 s8 [] @"1386acc8-29f7-4e97-985e-9abdda575be5" @"dob.age_1_gender_1" true \n' +
+          '    right \n' +
+          '        [2] limit 1 \n' +
+          '        [2] seek s4 s11 s12 s7 s8 s9 s10 [] @"1386acc8-29f7-4e97-985e-9abdda575be5" true false \n'
+      }
+    },
+    rejectedPlans: []
+  },
+  command: {
+    find: 'contacts',
+    filter: { 'dob.age': 35, gender: 'male' },
+    '$db': 'contactData'
+  },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> db.contacts.explain().find({"dob.age": 35})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.contacts',
+    indexFilterSet: false,
+    parsedQuery: { 'dob.age': { '$eq': 35 } },
+    queryHash: '78B08F42',
+    planCacheKey: 'A2D87ACC',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'FETCH',
+        planNodeId: 2,
+        inputStage: {
+          stage: 'IXSCAN',
+          planNodeId: 1,
+          keyPattern: { 'dob.age': 1, gender: 1 },
+          indexName: 'dob.age_1_gender_1',
+          isMultiKey: false,
+          multiKeyPaths: { 'dob.age': [], gender: [] },
+          isUnique: false,
+          isSparse: false,
+          isPartial: false,
+          indexVersion: 2,
+          direction: 'forward',
+          indexBounds: { 'dob.age': [ '[35, 35]' ], gender: [ '[MinKey, MaxKey]' ] }
+        }
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s11 env: { s6 = KS(2B46F0FE04), s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB), s5 = KS(2B460A0104), s2 = Nothing (SEARCH_META), s3 = 1737697637891 (NOW), s10 = {"dob.age" : 1, "gender" : 1} }',
+        stages: '[2] nlj inner [] [s4, s7, s8, s9, s10] \n' +
+          '    left \n' +
+          '        [1] cfilter {(exists(s5) && exists(s6))} \n' +
+          '        [1] ixseek s5 s6 s9 s4 s7 s8 [] @"1386acc8-29f7-4e97-985e-9abdda575be5" @"dob.age_1_gender_1" true \n' +
+          '    right \n' +
+          '        [2] limit 1 \n' +
+          '        [2] seek s4 s11 s12 s7 s8 s9 s10 [] @"1386acc8-29f7-4e97-985e-9abdda575be5" true false \n'
+      }
+    },
+    rejectedPlans: []
+  },
+  command: { find: 'contacts', filter: { 'dob.age': 35 }, '$db': 'contactData' },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> db.contacts.explain().find({gender: })
+Uncaught:
+SyntaxError: Unexpected token (1:36)
+
+> 1 | db.contacts.explain().find({gender: })
+    |                                     ^
+  2 |
+
+contactData>
+
+contactData> db.contacts.explain().find({gender: "male"})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.contacts',
+    indexFilterSet: false,
+    parsedQuery: { gender: { '$eq': 'male' } },
+    queryHash: '3A97C264',
+    planCacheKey: 'FA002F4C',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'COLLSCAN',
+        planNodeId: 1,
+        filter: { gender: { '$eq': 'male' } },
+        direction: 'forward'
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s5 env: { s2 = Nothing (SEARCH_META), s3 = 1737697745033 (NOW), s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB), s7 = "male" }',
+        stages: '[1] filter {traverseF(s4, lambda(l1.0) { ((l1.0 == s7) ?: false) }, false)} \n' +
+          '[1] scan s5 s6 none none none none lowPriority [s4 = gender] @"1386acc8-29f7-4e97-985e-9abdda575be5" true false '
+      }
+    },
+    rejectedPlans: []
+  },
+  command: {
+    find: 'contacts',
+    filter: { gender: 'male' },
+    '$db': 'contactData'
+  },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> db.contacts.explain().find({"dob.age": 35}).sort({gender: 1})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.contacts',
+    indexFilterSet: false,
+    parsedQuery: { 'dob.age': { '$eq': 35 } },
+    queryHash: '5DAC2E50',
+    planCacheKey: '04E75049',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'FETCH',
+        planNodeId: 2,
+        inputStage: {
+          stage: 'IXSCAN',
+          planNodeId: 1,
+          keyPattern: { 'dob.age': 1, gender: 1 },
+          indexName: 'dob.age_1_gender_1',
+          isMultiKey: false,
+          multiKeyPaths: { 'dob.age': [], gender: [] },
+          isUnique: false,
+          isSparse: false,
+          isPartial: false,
+          indexVersion: 2,
+          direction: 'forward',
+          indexBounds: { 'dob.age': [ '[35, 35]' ], gender: [ '[MinKey, MaxKey]' ] }
+        }
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s11 env: { s3 = 1737697950385 (NOW), s2 = Nothing (SEARCH_META), s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB), s5 = KS(2B460A0104), s6 = KS(2B46F0FE04), s10 = {"dob.age" : 1, "gender" : 1} }',
+        stages: '[2] nlj inner [] [s4, s7, s8, s9, s10] \n' +
+          '    left \n' +
+          '        [1] cfilter {(exists(s5) && exists(s6))} \n' +
+          '        [1] ixseek s5 s6 s9 s4 s7 s8 [] @"1386acc8-29f7-4e97-985e-9abdda575be5" @"dob.age_1_gender_1" true \n' +
+          '    right \n' +
+          '        [2] limit 1 \n' +
+          '        [2] seek s4 s11 s12 s7 s8 s9 s10 [] @"1386acc8-29f7-4e97-985e-9abdda575be5" true false \n'
+      }
+    },
+    rejectedPlans: []
+  },
+  command: {
+    find: 'contacts',
+    filter: { 'dob.age': 35 },
+    sort: { gender: 1 },
+    '$db': 'contactData'
+  },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> db.contacts.getIndexes()
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  {
+    v: 2,
+    key: { 'dob.age': 1, gender: 1 },
+    name: 'dob.age_1_gender_1'
+  }
+]
+contactData> db.contacts.findOne()
+{
+  _id: ObjectId('6793219828bec88fd56b3f87'),
+  gender: 'male',
+  name: { title: 'mr', first: 'carl', last: 'jacobs' },
+  location: {
+    street: '6948 springfield road',
+    city: 'arklow',
+    state: 'wicklow',
+    postcode: 71309,
+    coordinates: { latitude: '-29.6721', longitude: '-154.6037' },
+    timezone: { offset: '-11:00', description: 'Midway Island, Samoa' }
+  },
+  email: 'carl.jacobs@example.com',
+  login: {
+    uuid: '4f591981-b214-4430-9902-70bc0faa7e81',
+    username: 'organicladybug144',
+    password: 'hank',
+    salt: 'PC6Ig6sD',
+    md5: 'd94aac977512cb2bb005dfa360b40018',
+    sha1: 'a5ffeb65557693e443e195bdf9c066dca33dc47d',
+    sha256: 'f9aa851b943d9a8a876062e48b91b9af190a37779df009a20bc268c25ce48a7f'
+  },
+  dob: { date: '1984-09-30T01:20:26Z', age: 33 },
+  registered: { date: '2008-10-29T02:25:24Z', age: 9 },
+  phone: '031-501-5147',
+  cell: '081-090-3541',
+  id: { name: 'PPS', value: '9806982T' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/44.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/44.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/44.jpg'
+  },
+  nat: 'IE'
+}
+contactData> db.contacts.createIndex({email: 1},{unique: true})
+MongoServerError: Index build failed: a145803e-9df2-4a9f-8126-7228a833d925: Collection contactData.contacts ( 1386acc8-29f7-4e97-985e-9abdda575be5 ) :: caused by :: E11000 duplicate key error collection: contactData.contacts index: email_1 dup key: { email: "abigail.clark@example.com" }
+contactData> db.contacts.find({email: "abigail.clark@example.com"})
+[
+  {
+    _id: ObjectId('6793219828bec88fd56b472b'),
+    gender: 'female',
+    name: { title: 'miss', first: 'abigail', last: 'clark' },
+    location: {
+      street: '9677 st. lawrence ave',
+      city: 'aylmer',
+      state: 'québec',
+      postcode: 'F6J 8U1',
+      coordinates: { latitude: '-61.8849', longitude: '-84.5766' },
+      timezone: { offset: '+9:30', description: 'Adelaide, Darwin' }
+    },
+    email: 'abigail.clark@example.com',
+    login: {
+      uuid: 'a716f860-ba7b-4cb4-890d-2f05ba8f1130',
+      username: 'whitefish879',
+      password: '1955',
+      salt: 'LnZqDwt4',
+      md5: '2bfe0c8e7a9ba85f6621a4964fc7776c',
+      sha1: 'fec92eeaaab5913f075d839db986cfa8f095ca82',
+      sha256: '099e44d8b9f7902df90f22f3914d5d4641296ff7ab364bcf1d64e346cfd9cd23'
+    },
+    dob: { date: '1968-01-18T05:26:30Z', age: 50 },
+    registered: { date: '2014-09-22T01:38:30Z', age: 3 },
+    phone: '438-193-7599',
+    cell: '184-658-2267',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/93.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/93.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/93.jpg'
+    },
+    nat: 'CA'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b4d64'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'abigail', last: 'clark' },
+    location: {
+      street: '8067 argyle st',
+      city: 'grand falls',
+      state: 'prince edward island',
+      postcode: 'K0M 1H7',
+      coordinates: { latitude: '42.2225', longitude: '45.5194' },
+      timezone: {
+        offset: '-5:00',
+        description: 'Eastern Time (US & Canada), Bogota, Lima'
+      }
+    },
+    email: 'abigail.clark@example.com',
+    login: {
+      uuid: '08ee8142-1126-4e94-9587-13ea17d8e8da',
+      username: 'greenzebra872',
+      password: 'doudou',
+      salt: 'eHejWeiE',
+      md5: 'fd466a6c5417bce67d14966c4a5b87d8',
+      sha1: '22e48f2072a8365eea0a15331430f0522bfd6cb7',
+      sha256: 'fb1bad920e555342d414c3ef3ce15dac487d174ec8983781667070065a10f1ef'
+    },
+    dob: { date: '1948-12-08T01:09:03Z', age: 69 },
+    registered: { date: '2014-05-22T14:42:50Z', age: 4 },
+    phone: '522-306-4813',
+    cell: '910-566-1400',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/21.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/21.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/21.jpg'
+    },
+    nat: 'CA'
+  }
+]
+contactData> db.contacts.find({email: "abigail.clark@example.com"}).count()
+2
+contactData> db.contacts.getIndexes()
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  {
+    v: 2,
+    key: { 'dob.age': 1, gender: 1 },
+    name: 'dob.age_1_gender_1'
+  }
+]
+contactData> db.contacts.dropIndex({"dob.age": 1, {gender: 1}})
+Uncaught:
+SyntaxError: Unexpected token (1:37)
+
+> 1 | db.contacts.dropIndex({"dob.age": 1, {gender: 1}})
+    |                                      ^
+  2 |
+
+contactData> db.contacts.dropIndex({"dob.age": 1, gender: 1})
+{ nIndexesWas: 2, ok: 1 }
+contactData> db.contacts.getIndexes()
+[ { v: 2, key: { _id: 1 }, name: '_id_' } ]
+contactData> db.contacts.createIndex({"dob.age": 1},{partialFilterExpression: {}})
+dob.age_1
+contactData> db.contacts.dropIndex({"dob.age": 1})
+{ nIndexesWas: 2, ok: 1 }
+contactData> db.contacts.createIndex({"dob.age": 1},{partialFilterExpression: {gender: "male"}})
+dob.age_1
+contactData> db.contacts.find({"dob.age": {$gt: 60}})
+[
+  {
+    _id: ObjectId('6793219828bec88fd56b3f89'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'madeleine', last: 'till' },
+    location: {
+      street: 'im winkel 166',
+      city: 'villingen-schwenningen',
+      state: 'baden-württemberg',
+      postcode: 32227,
+      coordinates: { latitude: '83.3998', longitude: '-172.3753' },
+      timezone: {
+        offset: '+5:30',
+        description: 'Bombay, Calcutta, Madras, New Delhi'
+      }
+    },
+    email: 'madeleine.till@example.com',
+    login: {
+      uuid: 'e70766b6-9d4f-419f-85c5-efc3c42db023',
+      username: 'goldencat450',
+      password: 'panthers',
+      salt: 'mHOsDM43',
+      md5: 'a97539f5d7b6c7302d3f3c1dd1d389b5',
+      sha1: 'a991dd190a83856b04d41a5e64bc41b5728b6903',
+      sha256: 'bd123b2b2aae61c6e8d3449bb14c6a032b4860275da781f8ffc73f5500e667bd'
+    },
+    dob: { date: '1954-05-01T02:34:40Z', age: 64 },
+    registered: { date: '2008-06-14T03:14:37Z', age: 10 },
+    phone: '0209-9573743',
+    cell: '0173-1226290',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/27.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/27.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/27.jpg'
+    },
+    nat: 'DE'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3f8e'),
+    gender: 'female',
+    name: { title: 'miss', first: 'shona', last: 'kemperman' },
+    location: {
+      street: '2685 adriaen van ostadelaan',
+      city: 'giessenlanden',
+      state: 'noord-brabant',
+      postcode: 57798,
+      coordinates: { latitude: '-14.4912', longitude: '-8.5570' },
+      timezone: { offset: '-12:00', description: 'Eniwetok, Kwajalein' }
+    },
+    email: 'shona.kemperman@example.com',
+    login: {
+      uuid: '45d4a86e-c007-45af-9489-49ff77c4905c',
+      username: 'bluetiger298',
+      password: 'xander',
+      salt: 'ANHBICA9',
+      md5: '56560a9b266dac51c04c43a9a845b7af',
+      sha1: '419f27be45ebb9635904e61c7e865ce13d963f63',
+      sha256: '10e7dab700ebd2b0edfced679f2cd4e4f67d2f65711d7af62e04d282b65a4161'
+    },
+    dob: { date: '1948-04-23T03:40:22Z', age: 70 },
+    registered: { date: '2003-12-29T05:37:33Z', age: 14 },
+    phone: '(132)-806-7647',
+    cell: '(766)-268-3084',
+    id: { name: 'BSN', value: '99563655' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/14.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/14.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/14.jpg'
+    },
+    nat: 'NL'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3f90'),
+    gender: 'female',
+    name: { title: 'miss', first: 'mestan', last: 'kaplangı' },
+    location: {
+      street: '2575 abanoz sk',
+      city: 'elazığ',
+      state: 'kırşehir',
+      postcode: 48715,
+      coordinates: { latitude: '25.1614', longitude: '43.9085' },
+      timezone: {
+        offset: '+4:00',
+        description: 'Abu Dhabi, Muscat, Baku, Tbilisi'
+      }
+    },
+    email: 'mestan.kaplangı@example.com',
+    login: {
+      uuid: '1c449a8b-db88-4754-aae5-b66e0338a479',
+      username: 'bigelephant762',
+      password: 'patty',
+      salt: 'n2sxEnSR',
+      md5: '6f6904b481cb51f2e068fad23ceffa73',
+      sha1: '276e8c992cf366ff06c868290a164a2727cc1d41',
+      sha256: '14a2d569e3ac745afcb07991b61e95e8c85d9e04c1f8725163e466284f4a5900'
+    },
+    dob: { date: '1951-12-17T20:03:33Z', age: 66 },
+    registered: { date: '2006-04-05T12:24:26Z', age: 12 },
+    phone: '(729)-603-0876',
+    cell: '(250)-580-1253',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/42.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/42.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/42.jpg'
+    },
+    nat: 'TR'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3f9e'),
+    gender: 'male',
+    name: { title: 'mr', first: 'alfred', last: 'jensen' },
+    location: {
+      street: '9046 østervænget',
+      city: 'fredeikssund',
+      state: 'midtjylland',
+      postcode: 41217,
+      coordinates: { latitude: '-84.5153', longitude: '149.2542' },
+      timezone: {
+        offset: '0:00',
+        description: 'Western Europe Time, London, Lisbon, Casablanca'
+      }
+    },
+    email: 'alfred.jensen@example.com',
+    login: {
+      uuid: '7c98d741-ac05-4ab8-80a4-931da8f10cdb',
+      username: 'browngorilla386',
+      password: 'good',
+      salt: '8MYPa5RU',
+      md5: 'bc1309ff26cb3244aad66d14f887a6c1',
+      sha1: '4b6d42a013e69e36dc7922d0fa520769e4929036',
+      sha256: 'c50182dcb91599580f722fadc1caee4ae78725a48668e24f057fb8a1d9b1e200'
+    },
+    dob: { date: '1957-06-28T13:29:32Z', age: 61 },
+    registered: { date: '2018-04-26T14:45:03Z', age: 0 },
+    phone: '63143258',
+    cell: '79862806',
+    id: { name: 'CPR', value: '813996-3008' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/94.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/94.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/94.jpg'
+    },
+    nat: 'DK'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3f9f'),
+    gender: 'female',
+    name: { title: 'ms', first: 'maya', last: 'macdonald' },
+    location: {
+      street: '100 george st',
+      city: 'winfield',
+      state: 'yukon',
+      postcode: 'K4Q 2U2',
+      coordinates: { latitude: '9.4191', longitude: '-102.1065' },
+      timezone: {
+        offset: '+9:00',
+        description: 'Tokyo, Seoul, Osaka, Sapporo, Yakutsk'
+      }
+    },
+    email: 'maya.macdonald@example.com',
+    login: {
+      uuid: '934e8a54-0d46-4cd7-accd-a0a67f19299b',
+      username: 'bigfish793',
+      password: 'kiss',
+      salt: 'IYteMQWZ',
+      md5: '6d975a2ef56a3f129949ee6133dca67e',
+      sha1: '22a304b1577abe6b303f016d4069f81c4aac814c',
+      sha256: 'da09a9dff1d93bc54044e89c18df814f1bc651331708834a310458a96145260c'
+    },
+    dob: { date: '1953-01-17T16:10:03Z', age: 65 },
+    registered: { date: '2009-10-08T16:00:18Z', age: 8 },
+    phone: '343-367-3594',
+    cell: '329-394-0526',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/73.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/73.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/73.jpg'
+    },
+    nat: 'CA'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fa3'),
+    gender: 'male',
+    name: { title: 'mr', first: 'lincoln', last: 'lewis' },
+    location: {
+      street: '8384 high street',
+      city: 'whangarei',
+      state: "hawke's bay",
+      postcode: 14855,
+      coordinates: { latitude: '-2.2081', longitude: '62.5954' },
+      timezone: {
+        offset: '-6:00',
+        description: 'Central Time (US & Canada), Mexico City'
+      }
+    },
+    email: 'lincoln.lewis@example.com',
+    login: {
+      uuid: '997a6fa7-75b9-4b3d-8ab8-686a641046a2',
+      username: 'ticklishtiger804',
+      password: 'markie',
+      salt: 'NfePDtuT',
+      md5: '04203f9f47bfac62440df395e683f028',
+      sha1: '395540221f6e6308e58580f180876f22124c9a0c',
+      sha256: '70a223d2a27f4a12ec4a99209bba528db9a0d712f416bc3ef73a2aabbbae45b2'
+    },
+    dob: { date: '1948-08-16T11:51:26Z', age: 70 },
+    registered: { date: '2016-10-14T19:57:42Z', age: 1 },
+    phone: '(161)-779-6350',
+    cell: '(660)-055-2689',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/75.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/75.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/75.jpg'
+    },
+    nat: 'NZ'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fae'),
+    gender: 'female',
+    name: { title: 'miss', first: 'elsie', last: 'sullivan' },
+    location: {
+      street: '8882 central st',
+      city: 'devonport',
+      state: 'tasmania',
+      postcode: 1802,
+      coordinates: { latitude: '2.9175', longitude: '-18.8868' },
+      timezone: {
+        offset: '-4:00',
+        description: 'Atlantic Time (Canada), Caracas, La Paz'
+      }
+    },
+    email: 'elsie.sullivan@example.com',
+    login: {
+      uuid: 'e6e361fc-7412-434b-92fb-0f417588980a',
+      username: 'brownelephant930',
+      password: 'walnut',
+      salt: 'QpIFbS9F',
+      md5: '715eda0767aca6941b47e955766b76e9',
+      sha1: '002b8e35bf0ee92d9a9f5e837cfee9ffdaf34aff',
+      sha256: 'd24b1a77c54fe92ddb989bb74464e7601506b527efb45ee6972f5f9de0285562'
+    },
+    dob: { date: '1946-05-15T06:22:30Z', age: 72 },
+    registered: { date: '2009-04-18T21:54:52Z', age: 9 },
+    phone: '09-7910-0569',
+    cell: '0486-471-663',
+    id: { name: 'TFN', value: '721909596' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/69.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/69.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/69.jpg'
+    },
+    nat: 'AU'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fb3'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'anaya', last: 'sangolt' },
+    location: {
+      street: 'oluf onsums vei 3798',
+      city: 'elverum',
+      state: 'oslo',
+      postcode: '5228',
+      coordinates: { latitude: '-43.9431', longitude: '-62.8704' },
+      timezone: {
+        offset: '+10:00',
+        description: 'Eastern Australia, Guam, Vladivostok'
+      }
+    },
+    email: 'anaya.sangolt@example.com',
+    login: {
+      uuid: '25ee1329-8199-4f98-b502-cc9bd08ff68d',
+      username: 'angrypanda603',
+      password: 'expert',
+      salt: 'LTnKy0B0',
+      md5: '6180c7a97a0511bad9d4109d8d97db6a',
+      sha1: '3f8af5c93cf5cb41803cbe941f9e0f606eeb9577',
+      sha256: '79fdb76f8cd50bb64b181e70b5470d898abf4e4bf10980ba84c9d22888442d75'
+    },
+    dob: { date: '1957-02-09T02:45:42Z', age: 61 },
+    registered: { date: '2015-02-26T12:41:18Z', age: 3 },
+    phone: '64808750',
+    cell: '92457213',
+    id: { name: 'FN', value: '09025740707' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/84.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/84.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/84.jpg'
+    },
+    nat: 'NO'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fb6'),
+    gender: 'male',
+    name: { title: 'mr', first: 'vilho', last: 'saarela' },
+    location: {
+      street: '1153 satakennankatu',
+      city: 'rusko',
+      state: 'northern savonia',
+      postcode: 83170,
+      coordinates: { latitude: '62.4539', longitude: '-67.0065' },
+      timezone: {
+        offset: '+8:00',
+        description: 'Beijing, Perth, Singapore, Hong Kong'
+      }
+    },
+    email: 'vilho.saarela@example.com',
+    login: {
+      uuid: '56ef4449-8595-4374-91fa-a481dbd50456',
+      username: 'bigkoala821',
+      password: '1005',
+      salt: 'ag0xkbII',
+      md5: 'cfcbbec97d47dcc95ac85d9f10e27ae9',
+      sha1: '586e3806cb0eebadf6180a38f94c05764f12db66',
+      sha256: '39672b300f4e00e437d4122f99b9342e515b4d06ecba8b346c78ccec2680bf3d'
+    },
+    dob: { date: '1954-02-20T14:31:35Z', age: 64 },
+    registered: { date: '2010-03-07T16:57:22Z', age: 8 },
+    phone: '06-484-237',
+    cell: '047-504-75-70',
+    id: { name: 'HETU', value: 'NaNNA423undefined' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/90.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/90.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/90.jpg'
+    },
+    nat: 'FI'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fb7'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'isobel', last: 'lewis' },
+    location: {
+      street: '2999 fraser street',
+      city: 'nelson',
+      state: 'southland',
+      postcode: 31241,
+      coordinates: { latitude: '-12.0354', longitude: '-36.1723' },
+      timezone: { offset: '-11:00', description: 'Midway Island, Samoa' }
+    },
+    email: 'isobel.lewis@example.com',
+    login: {
+      uuid: '93f6e608-5923-4794-8091-da1710600554',
+      username: 'blackduck464',
+      password: 'airwolf',
+      salt: 'hLH8bhVE',
+      md5: '1a09c2b46f6102adfa8cd260f30e5486',
+      sha1: 'b5ce104132ad30d64543fcdef30fd9086121a951',
+      sha256: '904004a3bdb59ad4e8bcfa2c01cf9a3081cba8957da16b483dc9f8b2ae91f467'
+    },
+    dob: { date: '1951-04-18T03:58:19Z', age: 67 },
+    registered: { date: '2016-02-08T13:45:26Z', age: 2 },
+    phone: '(105)-076-9099',
+    cell: '(134)-115-7068',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/37.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/37.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/37.jpg'
+    },
+    nat: 'NZ'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fba'),
+    gender: 'male',
+    name: { title: 'mr', first: 'julio', last: 'martin' },
+    location: {
+      street: '8525 parker rd',
+      city: 'warrnambool',
+      state: 'victoria',
+      postcode: 5104,
+      coordinates: { latitude: '61.8618', longitude: '-68.8352' },
+      timezone: {
+        offset: '+10:00',
+        description: 'Eastern Australia, Guam, Vladivostok'
+      }
+    },
+    email: 'julio.martin@example.com',
+    login: {
+      uuid: '4037ef36-5f9c-4a0e-bc63-653ffa636538',
+      username: 'browngoose330',
+      password: 'apollo13',
+      salt: 'M9mwvgR5',
+      md5: 'da8b1289c97d104b3219fbbdec1b2155',
+      sha1: '6f32c3670d8be73387177b8b39854927445aaefb',
+      sha256: 'e8af77373c33d226850c85fcbf0253254c122cbf02c8943568e85c627ce098ad'
+    },
+    dob: { date: '1956-02-23T05:47:13Z', age: 62 },
+    registered: { date: '2015-10-13T17:34:35Z', age: 2 },
+    phone: '02-3129-9559',
+    cell: '0474-284-226',
+    id: { name: 'TFN', value: '349776453' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/97.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/97.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/97.jpg'
+    },
+    nat: 'AU'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fbd'),
+    gender: 'male',
+    name: { title: 'mr', first: 'mathias', last: 'sørensen' },
+    location: {
+      street: '5362 egebjergvej',
+      city: 'bælum',
+      state: 'syddanmark',
+      postcode: 13205,
+      coordinates: { latitude: '20.0541', longitude: '97.0354' },
+      timezone: {
+        offset: '+5:00',
+        description: 'Ekaterinburg, Islamabad, Karachi, Tashkent'
+      }
+    },
+    email: 'mathias.sørensen@example.com',
+    login: {
+      uuid: 'fbefdfde-1214-4d2f-a439-7178e0bf9b00',
+      username: 'smallduck705',
+      password: 'twelve',
+      salt: 'MXHBaNmT',
+      md5: '446e6cc7b84b6074f90209475623bf27',
+      sha1: '87be1829460454afecf246dd0bb8aed3ca1b2616',
+      sha256: 'f43e3db16504a319ff6777c486061246071e3cda802a3973ae4288fe6b690600'
+    },
+    dob: { date: '1949-01-16T22:29:04Z', age: 69 },
+    registered: { date: '2009-02-14T03:29:37Z', age: 9 },
+    phone: '52827060',
+    cell: '43207994',
+    id: { name: 'CPR', value: '056794-1171' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/6.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/6.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/6.jpg'
+    },
+    nat: 'DK'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fc1'),
+    gender: 'male',
+    name: { title: 'mr', first: 'nicklas', last: 'sørensen' },
+    location: {
+      street: '1605 hobrovej',
+      city: 'bælum',
+      state: 'hovedstaden',
+      postcode: 80673,
+      coordinates: { latitude: '42.1130', longitude: '-98.0795' },
+      timezone: { offset: '-3:30', description: 'Newfoundland' }
+    },
+    email: 'nicklas.sørensen@example.com',
+    login: {
+      uuid: '709394ed-53d1-440b-8c48-fa5266cd7f03',
+      username: 'sadtiger625',
+      password: '1945',
+      salt: 'pNv8JeeQ',
+      md5: 'fd4570facdcf9b3875d15d3bda0ba47c',
+      sha1: 'c40d710cde3254113b2b8a31a2b281b46adf6a23',
+      sha256: '6be9c1df666445692c41b688afc8a19f77cfa517a1cffb963bb007fd318afd72'
+    },
+    dob: { date: '1955-09-14T19:31:39Z', age: 62 },
+    registered: { date: '2009-09-29T10:07:04Z', age: 8 },
+    phone: '63595350',
+    cell: '10534596',
+    id: { name: 'CPR', value: '517431-3080' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/47.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/47.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/47.jpg'
+    },
+    nat: 'DK'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fc2'),
+    gender: 'male',
+    name: { title: 'mr', first: 'adrian', last: 'fowler' },
+    location: {
+      street: '464 paddock way',
+      city: 'mckinney',
+      state: 'arkansas',
+      postcode: 96516,
+      coordinates: { latitude: '-8.1114', longitude: '-122.1404' },
+      timezone: {
+        offset: '-3:00',
+        description: 'Brazil, Buenos Aires, Georgetown'
+      }
+    },
+    email: 'adrian.fowler@example.com',
+    login: {
+      uuid: '7bd604e6-3514-4e90-9e51-ac9d91011e8b',
+      username: 'happykoala413',
+      password: 'style',
+      salt: '5nuBIntI',
+      md5: '270bc63dd7bd31333a61aa2c84ca954b',
+      sha1: '20093fa7eb42d2078bccde278b14e6179fce9132',
+      sha256: '7f0e507286732b09e037569fa296fe6bad9cc15cc0824aeebde1fbaeabea1bb0'
+    },
+    dob: { date: '1951-02-08T01:01:01Z', age: 67 },
+    registered: { date: '2014-11-26T01:38:11Z', age: 3 },
+    phone: '(074)-196-1098',
+    cell: '(212)-963-8756',
+    id: { name: 'SSN', value: '865-93-7479' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/14.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/14.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/14.jpg'
+    },
+    nat: 'US'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fca'),
+    gender: 'female',
+    name: { title: 'ms', first: 'kelya', last: 'philippe' },
+    location: {
+      street: '3688 quai chauveau',
+      city: 'avignon',
+      state: 'aisne',
+      postcode: 47002,
+      coordinates: { latitude: '2.4082', longitude: '153.9632' },
+      timezone: {
+        offset: '+4:00',
+        description: 'Abu Dhabi, Muscat, Baku, Tbilisi'
+      }
+    },
+    email: 'kelya.philippe@example.com',
+    login: {
+      uuid: '511bf094-e04a-415b-aa38-80bf8f34e06b',
+      username: 'purplebird756',
+      password: 'chichi',
+      salt: 'UWpBe3rC',
+      md5: 'b98a85e6d3174c702cd8519b152ec8c2',
+      sha1: 'bf8f0d11a1cbc07bd166098bd72ce57210c91686',
+      sha256: 'a7a3aae9af098534cab95b10ad67a1e7594e61fe58062d236f1ad7c76acc189c'
+    },
+    dob: { date: '1950-08-05T15:04:26Z', age: 68 },
+    registered: { date: '2016-07-08T13:22:38Z', age: 2 },
+    phone: '01-92-61-93-34',
+    cell: '06-06-75-63-58',
+    id: { name: 'INSEE', value: '2NNaN90767214 43' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/20.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/20.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/20.jpg'
+    },
+    nat: 'FR'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fd5'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'lea', last: 'margaret' },
+    location: {
+      street: '6686 3rd st',
+      city: 'grand falls',
+      state: 'yukon',
+      postcode: 'U3N 8B7',
+      coordinates: { latitude: '40.0719', longitude: '21.3568' },
+      timezone: { offset: '-8:00', description: 'Pacific Time (US & Canada)' }
+    },
+    email: 'lea.margaret@example.com',
+    login: {
+      uuid: '3cda7d0d-c80c-4378-8325-4268be540d41',
+      username: 'lazywolf219',
+      password: 'critter',
+      salt: 'Ck0aaFNY',
+      md5: 'bf8c5cee4ca4a63802887119b1122007',
+      sha1: 'fbd3998de447f88d0b08c315d391957f15a59af4',
+      sha256: 'df5d27621e2b03951b1e41e5b75e79a0aa4ab48e480ff762819cba0a131de2d9'
+    },
+    dob: { date: '1947-01-20T21:07:58Z', age: 71 },
+    registered: { date: '2007-09-27T13:27:21Z', age: 10 },
+    phone: '327-903-0126',
+    cell: '442-382-8891',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/64.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/64.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/64.jpg'
+    },
+    nat: 'CA'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fd6'),
+    gender: 'female',
+    name: { title: 'ms', first: 'thaïs', last: 'bertrand' },
+    location: {
+      street: "1758 place de l'abbé-basset",
+      city: 'saint-denis',
+      state: 'aisne',
+      postcode: 74709,
+      coordinates: { latitude: '-16.5203', longitude: '-83.0052' },
+      timezone: { offset: '+9:30', description: 'Adelaide, Darwin' }
+    },
+    email: 'thaïs.bertrand@example.com',
+    login: {
+      uuid: '9bc6f5a4-e795-4b78-901b-63326a15f9fa',
+      username: 'biggorilla218',
+      password: 'clowns',
+      salt: '8voY9kyp',
+      md5: 'c96f7ee9891d31d4306b771b0fa30fcd',
+      sha1: 'b734887c1221fa11994d76a9fe6d3e68b17ec6c2',
+      sha256: 'e200355fc00257f7b095650ac40fe12c7be54bedc2b22a1615f153a4e751de0a'
+    },
+    dob: { date: '1956-11-24T08:35:17Z', age: 61 },
+    registered: { date: '2016-09-17T19:24:28Z', age: 1 },
+    phone: '05-86-91-79-08',
+    cell: '06-55-69-88-07',
+    id: { name: 'INSEE', value: '2NNaN43827612 27' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/77.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/77.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/77.jpg'
+    },
+    nat: 'FR'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fd7'),
+    gender: 'female',
+    name: { title: 'miss', first: 'elizabeth', last: 'li' },
+    location: {
+      street: '5836 coronation avenue',
+      city: 'invercargill',
+      state: 'waikato',
+      postcode: 66651,
+      coordinates: { latitude: '50.7192', longitude: '-102.7020' },
+      timezone: {
+        offset: '+3:00',
+        description: 'Baghdad, Riyadh, Moscow, St. Petersburg'
+      }
+    },
+    email: 'elizabeth.li@example.com',
+    login: {
+      uuid: '3eab325d-74d1-4f3b-9a5a-142450ec1bb6',
+      username: 'orangebutterfly116',
+      password: 'momoney',
+      salt: 'pZz6d2Hi',
+      md5: '8fd1c5d1b2330b4ff18eec64cb0ca104',
+      sha1: 'ea9aab57d4a36b40465b93de1a3e08ed5c0af659',
+      sha256: '51c3b1f24ac0db905571ffe286cbc83490d21d88514cdf2d9577fa2ceddeb49f'
+    },
+    dob: { date: '1950-05-24T10:02:09Z', age: 68 },
+    registered: { date: '2013-11-17T04:28:34Z', age: 4 },
+    phone: '(034)-452-6621',
+    cell: '(398)-869-9834',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/66.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/66.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/66.jpg'
+    },
+    nat: 'NZ'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fda'),
+    gender: 'male',
+    name: { title: 'mr', first: 'larry', last: 'johnson' },
+    location: {
+      street: '6979 bruce st',
+      city: 'baltimore',
+      state: 'georgia',
+      postcode: 12056,
+      coordinates: { latitude: '11.6793', longitude: '-132.8939' },
+      timezone: { offset: '-2:00', description: 'Mid-Atlantic' }
+    },
+    email: 'larry.johnson@example.com',
+    login: {
+      uuid: '7bf0acde-e341-4d0d-a363-fdef780bf9b0',
+      username: 'silverzebra945',
+      password: '1950',
+      salt: 'foM4IIBQ',
+      md5: 'c8e14075894554f8b0b13b4aa8134698',
+      sha1: '316e9f642e954573f34367a13de3b4e67fe05d84',
+      sha256: '61492f37eb55beac254f318ddb4ac58d622e0807e622ec9ff1442d0f54028d48'
+    },
+    dob: { date: '1954-03-14T16:37:25Z', age: 64 },
+    registered: { date: '2010-11-22T05:06:33Z', age: 7 },
+    phone: '(964)-129-3195',
+    cell: '(829)-410-6409',
+    id: { name: 'SSN', value: '828-99-1439' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/90.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/90.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/90.jpg'
+    },
+    nat: 'US'
+  },
+  {
+    _id: ObjectId('6793219828bec88fd56b3fdc'),
+    gender: 'female',
+    name: { title: 'miss', first: 'eline', last: 'dupont' },
+    location: {
+      street: '7383 rue saint-georges',
+      city: 'amiens',
+      state: 'hauts-de-seine',
+      postcode: 28598,
+      coordinates: { latitude: '-25.0642', longitude: '-96.7924' },
+      timezone: { offset: '+7:00', description: 'Bangkok, Hanoi, Jakarta' }
+    },
+    email: 'eline.dupont@example.com',
+    login: {
+      uuid: '2af7be85-99ef-4f47-b93b-fdb2e21f1e46',
+      username: 'smallsnake535',
+      password: 'nana',
+      salt: 'olh0oYLJ',
+      md5: '0858a203f9ae9f7dc6127e207a45352a',
+      sha1: '0e24b4e342a4dc4b0bf8d8f68dfae8e267cb5c30',
+      sha256: '4633638e6f20c81c59e68df0d2d8e91a5e9dd58c34596cf9757089d6c1dcb016'
+    },
+    dob: { date: '1949-11-07T21:23:10Z', age: 68 },
+    registered: { date: '2003-07-08T07:24:55Z', age: 15 },
+    phone: '02-79-81-50-69',
+    cell: '06-69-00-52-24',
+    id: { name: 'INSEE', value: '2NNaN10525095 32' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/46.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/46.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/46.jpg'
+    },
+    nat: 'FR'
+  }
+]
+Type "it" for more
+contactData> db.contacts.explain().find({"dob.age": {$gt: 60}})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.contacts',
+    indexFilterSet: false,
+    parsedQuery: { 'dob.age': { '$gt': 60 } },
+    queryHash: '3545665C',
+    planCacheKey: 'DBA2A5BF',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'COLLSCAN',
+        planNodeId: 1,
+        filter: { 'dob.age': { '$gt': 60 } },
+        direction: 'forward'
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s5 env: { s2 = Nothing (SEARCH_META), s3 = 1737699356179 (NOW), s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB), s7 = 60 }',
+        stages: '[1] filter {traverseF(s4, lambda(l1.0) { traverseF(getField(l1.0, "age"), lambda(l2.0) { ((l2.0 > s7) ?: false) }, false) }, false)} \n' +
+          '[1] scan s5 s6 none none none none lowPriority [s4 = dob] @"1386acc8-29f7-4e97-985e-9abdda575be5" true false '
+      }
+    },
+    rejectedPlans: []
+  },
+  command: {
+    find: 'contacts',
+    filter: { 'dob.age': { '$gt': 60 } },
+    '$db': 'contactData'
+  },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> db.contacts.explain().find({"dob.age": {$gt: 60}, gender: "male"})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.contacts',
+    indexFilterSet: false,
+    parsedQuery: {
+      '$and': [ { gender: { '$eq': 'male' } }, { 'dob.age': { '$gt': 60 } } ]
+    },
+    queryHash: '95990E9F',
+    planCacheKey: 'E6CF55D8',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'FETCH',
+        planNodeId: 2,
+        inputStage: {
+          stage: 'IXSCAN',
+          planNodeId: 1,
+          keyPattern: { 'dob.age': 1 },
+          indexName: 'dob.age_1',
+          isMultiKey: false,
+          multiKeyPaths: { 'dob.age': [] },
+          isUnique: false,
+          isSparse: false,
+          isPartial: true,
+          indexVersion: 2,
+          direction: 'forward',
+          indexBounds: { 'dob.age': [ '(60, inf.0]' ] }
+        }
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s11 env: { s5 = KS(2B78FE04), s2 = Nothing (SEARCH_META), s10 = {"dob.age" : 1}, s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB), s6 = KS(33FFFFFFFFFFFFFFFFFE04), s3 = 1737699576667 (NOW) }',
+        stages: '[2] nlj inner [] [s4, s7, s8, s9, s10] \n' +
+          '    left \n' +
+          '        [1] cfilter {(exists(s5) && exists(s6))} \n' +
+          '        [1] ixseek s5 s6 s9 s4 s7 s8 [] @"1386acc8-29f7-4e97-985e-9abdda575be5" @"dob.age_1" true \n' +
+          '    right \n' +
+          '        [2] limit 1 \n' +
+          '        [2] seek s4 s11 s12 s7 s8 s9 s10 [] @"1386acc8-29f7-4e97-985e-9abdda575be5" true false \n'
+      }
+    },
+    rejectedPlans: []
+  },
+  command: {
+    find: 'contacts',
+    filter: { 'dob.age': { '$gt': 60 }, gender: 'male' },
+    '$db': 'contactData'
+  },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> db.users.insertMany([{name: "Max", email: "max@test.com"},{name: "Manuel"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('679331bf4299e22befd1c2c4'),
+    '1': ObjectId('679331bf4299e22befd1c2c5')
+  }
+}
+contactData> db.users.createIndex({email: 1})
+email_1
+contactData> db.users.dropIndex({email: 1})
+{ nIndexesWas: 2, ok: 1 }
+contactData> db.users.createIndex({email: 1},{unique: true})
+email_1
+contactData> db.users.insertOne({name: "Anna"})
+MongoServerError: E11000 duplicate key error collection: contactData.users index: email_1 dup key: { email: null }
+contactData> db.users.dropIndex({email: 1})
+{ nIndexesWas: 2, ok: 1 }
+contactData> db.users.createIndex({email: 1},{unique: true, partialFilterExpression: {email: {$exists: true}}})
+email_1
+contactData> db.users.insertOne({name: "Anna"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('679332ee4299e22befd1c2c7')
+}
+contactData> db.users.find()
+[
+  {
+    _id: ObjectId('679331bf4299e22befd1c2c4'),
+    name: 'Max',
+    email: 'max@test.com'
+  },
+  { _id: ObjectId('679331bf4299e22befd1c2c5'), name: 'Manuel' },
+  { _id: ObjectId('679332ee4299e22befd1c2c7'), name: 'Anna' }
+]
+contactData> db.users.insertOne({name: "Anna", email: "max@test.com"})
+MongoServerError: E11000 duplicate key error collection: contactData.users index: email_1 dup key: { email: "max@test.com" }
+contactData> db.sessions.insertOne({data: "fhdhadf", createdAt: new Date()})
+{
+  acknowledged: true,
+  insertedId: ObjectId('679333934299e22befd1c2c9')
+}
+contactData> db.sessions.find()
+[
+  {
+    _id: ObjectId('679333934299e22befd1c2c9'),
+    data: 'fhdhadf',
+    createdAt: ISODate('2025-01-24T06:30:43.637Z')
+  }
+]
+contactData> db.sessions.createIndex({createdAt: 1},{expireAfterSeconds: 10})
+createdAt_1
+contactData> db.sessions.find()
+
+contactData> db.customers.insertMany([{name: "Max", age: 29, salary: 3000},{name: "Manuel", age: 30, salary: 4000}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('679336084299e22befd1c2ca'),
+    '1': ObjectId('679336084299e22befd1c2cb')
+  }
+}
+contactData> db.customers.createIndex({name: 1})
+name_1
+contactData> db.customers.explain("executionStats").find({name: "Max"})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.customers',
+    indexFilterSet: false,
+    parsedQuery: { name: { '$eq': 'Max' } },
+    queryHash: '1AD872C6',
+    planCacheKey: '547874E3',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'FETCH',
+        planNodeId: 2,
+        inputStage: {
+          stage: 'IXSCAN',
+          planNodeId: 1,
+          keyPattern: { name: 1 },
+          indexName: 'name_1',
+          isMultiKey: false,
+          multiKeyPaths: { name: [] },
+          isUnique: false,
+          isSparse: false,
+          isPartial: false,
+          indexVersion: 2,
+          direction: 'forward',
+          indexBounds: { name: [ '["Max", "Max"]' ] }
+        }
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s11 env: { s2 = Nothing (SEARCH_META), s3 = 1737700944990 (NOW), s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB), s5 = KS(3C4D6178000104), s6 = KS(3C4D617800FE04), s10 = {"name" : 1} }',
+        stages: '[2] nlj inner [] [s4, s7, s8, s9, s10] \n' +
+          '    left \n' +
+          '        [1] cfilter {(exists(s5) && exists(s6))} \n' +
+          '        [1] ixseek s5 s6 s9 s4 s7 s8 [] @"a912058d-3872-4ff8-8202-6d766019723c" @"name_1" true \n' +
+          '    right \n' +
+          '        [2] limit 1 \n' +
+          '        [2] seek s4 s11 s12 s7 s8 s9 s10 [] @"a912058d-3872-4ff8-8202-6d766019723c" true false \n'
+      }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 1,
+    executionTimeMillis: 11,
+    totalKeysExamined: 1,
+    totalDocsExamined: 1,
+    executionStages: {
+      stage: 'nlj',
+      planNodeId: 2,
+      nReturned: 1,
+      executionTimeMillisEstimate: 10,
+      opens: 1,
+      closes: 1,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 1,
+      totalDocsExamined: 1,
+      totalKeysExamined: 1,
+      collectionScans: 0,
+      collectionSeeks: 1,
+      indexScans: 0,
+      indexSeeks: 1,
+      indexesUsed: [ 'name_1' ],
+      innerOpens: 1,
+      innerCloses: 1,
+      outerProjects: [],
+      outerCorrelated: [ Long('4'), Long('7'), Long('8'), Long('9'), Long('10') ],
+      outerStage: {
+        stage: 'cfilter',
+        planNodeId: 1,
+        nReturned: 1,
+        executionTimeMillisEstimate: 10,
+        opens: 1,
+        closes: 1,
+        saveState: 0,
+        restoreState: 0,
+        isEOF: 1,
+        numTested: 1,
+        filter: '(exists(s5) && exists(s6)) ',
+        inputStage: {
+          stage: 'ixseek',
+          planNodeId: 1,
+          nReturned: 1,
+          executionTimeMillisEstimate: 10,
+          opens: 1,
+          closes: 1,
+          saveState: 0,
+          restoreState: 0,
+          isEOF: 1,
+          indexName: 'name_1',
+          keysExamined: 1,
+          seeks: 1,
+          numReads: 2,
+          indexKeySlot: 9,
+          recordIdSlot: 4,
+          snapshotIdSlot: 7,
+          indexIdentSlot: 8,
+          outputSlots: [],
+          indexKeysToInclude: '00000000000000000000000000000000',
+          seekKeyLow: 's5 ',
+          seekKeyHigh: 's6 '
+        }
+      },
+      innerStage: {
+        stage: 'limit',
+        planNodeId: 2,
+        nReturned: 1,
+        executionTimeMillisEstimate: 0,
+        opens: 1,
+        closes: 1,
+        saveState: 0,
+        restoreState: 0,
+        isEOF: 1,
+        limit: 1,
+        inputStage: {
+          stage: 'seek',
+          planNodeId: 2,
+          nReturned: 1,
+          executionTimeMillisEstimate: 0,
+          opens: 1,
+          closes: 1,
+          saveState: 0,
+          restoreState: 0,
+          isEOF: 0,
+          numReads: 1,
+          recordSlot: 11,
+          recordIdSlot: 12,
+          seekKeySlot: 4,
+          snapshotIdSlot: 7,
+          indexIdentSlot: 8,
+          indexKeySlot: 9,
+          indexKeyPatternSlot: 10,
+          fields: [],
+          outputSlots: []
+        }
+      }
+    }
+  },
+  command: { find: 'customers', filter: { name: 'Max' }, '$db': 'contactData' },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> db.customers.explain("executionStats").find({name: "Max"},{_id: 0, name: 1})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.customers',
+    indexFilterSet: false,
+    parsedQuery: { name: { '$eq': 'Max' } },
+    queryHash: '1F788974',
+    planCacheKey: '55D9E17D',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'PROJECTION_COVERED',
+        planNodeId: 2,
+        transformBy: { _id: false, name: true },
+        inputStage: {
+          stage: 'IXSCAN',
+          planNodeId: 1,
+          keyPattern: { name: 1 },
+          indexName: 'name_1',
+          isMultiKey: false,
+          multiKeyPaths: { name: [] },
+          isUnique: false,
+          isSparse: false,
+          isPartial: false,
+          indexVersion: 2,
+          direction: 'forward',
+          indexBounds: { name: [ '["Max", "Max"]' ] }
+        }
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s8 env: { s6 = KS(3C4D6178000104), s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB), s7 = KS(3C4D617800FE04), s2 = Nothing (SEARCH_META), s3 = 1737701070623 (NOW) }',
+        stages: '[2] mkbson s8 [name = s4] true false \n' +
+          '[1] cfilter {(exists(s6) && exists(s7))} \n' +
+          '[1] ixseek s6 s7 none s5 none none [s4 = 0] @"a912058d-3872-4ff8-8202-6d766019723c" @"name_1" true '
+      }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 1,
+    executionTimeMillis: 2,
+    totalKeysExamined: 1,
+    totalDocsExamined: 0,
+    executionStages: {
+      stage: 'mkbson',
+      planNodeId: 2,
+      nReturned: 1,
+      executionTimeMillisEstimate: 0,
+      opens: 1,
+      closes: 1,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 1,
+      objSlot: 8,
+      fields: [],
+      projectFields: [ 'name' ],
+      projectSlots: [ Long('4') ],
+      forceNewObject: true,
+      returnOldObject: false,
+      inputStage: {
+        stage: 'cfilter',
+        planNodeId: 1,
+        nReturned: 1,
+        executionTimeMillisEstimate: 0,
+        opens: 1,
+        closes: 1,
+        saveState: 0,
+        restoreState: 0,
+        isEOF: 1,
+        numTested: 1,
+        filter: '(exists(s6) && exists(s7)) ',
+        inputStage: {
+          stage: 'ixseek',
+          planNodeId: 1,
+          nReturned: 1,
+          executionTimeMillisEstimate: 0,
+          opens: 1,
+          closes: 1,
+          saveState: 0,
+          restoreState: 0,
+          isEOF: 1,
+          indexName: 'name_1',
+          keysExamined: 1,
+          seeks: 1,
+          numReads: 2,
+          recordIdSlot: 5,
+          outputSlots: [ Long('4') ],
+          indexKeysToInclude: '00000000000000000000000000000001',
+          seekKeyLow: 's6 ',
+          seekKeyHigh: 's7 '
+        }
+      }
+    }
+  },
+  command: {
+    find: 'customers',
+    filter: { name: 'Max' },
+    projection: { _id: 0, name: 1 },
+    '$db': 'contactData'
+  },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> db.customers.getIndexes()
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  { v: 2, key: { name: 1 }, name: 'name_1' }
+]
+contactData> db.customers.createIndex({age: 1, name: 1})
+age_1_name_1
+contactData> db.customers.explain().find({name: "Max", age: 30})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.customers',
+    indexFilterSet: false,
+    parsedQuery: {
+      '$and': [ { age: { '$eq': 30 } }, { name: { '$eq': 'Max' } } ]
+    },
+    queryHash: '62947178',
+    planCacheKey: '470F6399',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'FETCH',
+        planNodeId: 2,
+        inputStage: {
+          stage: 'IXSCAN',
+          planNodeId: 1,
+          keyPattern: { age: 1, name: 1 },
+          indexName: 'age_1_name_1',
+          isMultiKey: false,
+          multiKeyPaths: { age: [], name: [] },
+          isUnique: false,
+          isSparse: false,
+          isPartial: false,
+          indexVersion: 2,
+          direction: 'forward',
+          indexBounds: { age: [ '[30, 30]' ], name: [ '["Max", "Max"]' ] }
+        }
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s11 env: { s6 = KS(2B3C3C4D617800FE04), s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB), s5 = KS(2B3C3C4D6178000104), s2 = Nothing (SEARCH_META), s3 = 1737701404089 (NOW), s10 = {"age" : 1, "name" : 1} }',
+        stages: '[2] nlj inner [] [s4, s7, s8, s9, s10] \n' +
+          '    left \n' +
+          '        [1] cfilter {(exists(s5) && exists(s6))} \n' +
+          '        [1] ixseek s5 s6 s9 s4 s7 s8 [] @"a912058d-3872-4ff8-8202-6d766019723c" @"age_1_name_1" true \n' +
+          '    right \n' +
+          '        [2] limit 1 \n' +
+          '        [2] seek s4 s11 s12 s7 s8 s9 s10 [] @"a912058d-3872-4ff8-8202-6d766019723c" true false \n'
+      }
+    },
+    rejectedPlans: [
+      {
+        queryPlan: {
+          stage: 'FETCH',
+          planNodeId: 2,
+          filter: { age: { '$eq': 30 } },
+          inputStage: {
+            stage: 'IXSCAN',
+            planNodeId: 1,
+            keyPattern: { name: 1 },
+            indexName: 'name_1',
+            isMultiKey: false,
+            multiKeyPaths: { name: [] },
+            isUnique: false,
+            isSparse: false,
+            isPartial: false,
+            indexVersion: 2,
+            direction: 'forward',
+            indexBounds: { name: [ '["Max", "Max"]' ] }
+          }
+        },
+        slotBasedPlan: {
+          slots: '$$RESULT=s11 env: { s6 = KS(3C4D617800FE04), s10 = {"name" : 1}, s14 = 30, s3 = 1737701404089 (NOW), s2 = Nothing (SEARCH_META), s5 = KS(3C4D6178000104), s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB) }',
+          stages: '[2] filter {traverseF(s13, lambda(l1.0) { ((l1.0 == s14) ?: false) }, false)} \n' +
+            '[2] nlj inner [] [s4, s7, s8, s9, s10] \n' +
+            '    left \n' +
+            '        [1] cfilter {(exists(s5) && exists(s6))} \n' +
+            '        [1] ixseek s5 s6 s9 s4 s7 s8 [] @"a912058d-3872-4ff8-8202-6d766019723c" @"name_1" true \n' +
+            '    right \n' +
+            '        [2] limit 1 \n' +
+            '        [2] seek s4 s11 s12 s7 s8 s9 s10 [s13 = age] @"a912058d-3872-4ff8-8202-6d766019723c" true false \n'
+        }
+      }
+    ]
+  },
+  command: {
+    find: 'customers',
+    filter: { name: 'Max', age: 30 },
+    '$db': 'contactData'
+  },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> db.customers.explain("allPlansExecution").find({name: "Max", age: 30})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.customers',
+    indexFilterSet: false,
+    parsedQuery: {
+      '$and': [ { age: { '$eq': 30 } }, { name: { '$eq': 'Max' } } ]
+    },
+    queryHash: '62947178',
+    planCacheKey: '470F6399',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'FETCH',
+        planNodeId: 2,
+        inputStage: {
+          stage: 'IXSCAN',
+          planNodeId: 1,
+          keyPattern: { age: 1, name: 1 },
+          indexName: 'age_1_name_1',
+          isMultiKey: false,
+          multiKeyPaths: { age: [], name: [] },
+          isUnique: false,
+          isSparse: false,
+          isPartial: false,
+          indexVersion: 2,
+          direction: 'forward',
+          indexBounds: { age: [ '[30, 30]' ], name: [ '["Max", "Max"]' ] }
+        }
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s11 env: { s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB), s10 = {"age" : 1, "name" : 1}, s2 = Nothing (SEARCH_META), s5 = KS(2B3C3C4D6178000104), s3 = 1737701851349 (NOW), s6 = KS(2B3C3C4D617800FE04) }',
+        stages: '[2] nlj inner [] [s4, s7, s8, s9, s10] \n' +
+          '    left \n' +
+          '        [1] cfilter {(exists(s5) && exists(s6))} \n' +
+          '        [1] ixseek s5 s6 s9 s4 s7 s8 [] @"a912058d-3872-4ff8-8202-6d766019723c" @"age_1_name_1" true \n' +
+          '    right \n' +
+          '        [2] limit 1 \n' +
+          '        [2] seek s4 s11 s12 s7 s8 s9 s10 [] @"a912058d-3872-4ff8-8202-6d766019723c" true false \n'
+      }
+    },
+    rejectedPlans: [
+      {
+        queryPlan: {
+          stage: 'FETCH',
+          planNodeId: 2,
+          filter: { age: { '$eq': 30 } },
+          inputStage: {
+            stage: 'IXSCAN',
+            planNodeId: 1,
+            keyPattern: { name: 1 },
+            indexName: 'name_1',
+            isMultiKey: false,
+            multiKeyPaths: { name: [] },
+            isUnique: false,
+            isSparse: false,
+            isPartial: false,
+            indexVersion: 2,
+            direction: 'forward',
+            indexBounds: { name: [ '["Max", "Max"]' ] }
+          }
+        },
+        slotBasedPlan: {
+          slots: '$$RESULT=s11 env: { s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB), s10 = {"name" : 1}, s2 = Nothing (SEARCH_META), s5 = KS(3C4D6178000104), s14 = 30, s3 = 1737701851349 (NOW), s6 = KS(3C4D617800FE04) }',
+          stages: '[2] filter {traverseF(s13, lambda(l1.0) { ((l1.0 == s14) ?: false) }, false)} \n' +
+            '[2] nlj inner [] [s4, s7, s8, s9, s10] \n' +
+            '    left \n' +
+            '        [1] cfilter {(exists(s5) && exists(s6))} \n' +
+            '        [1] ixseek s5 s6 s9 s4 s7 s8 [] @"a912058d-3872-4ff8-8202-6d766019723c" @"name_1" true \n' +
+            '    right \n' +
+            '        [2] limit 1 \n' +
+            '        [2] seek s4 s11 s12 s7 s8 s9 s10 [s13 = age] @"a912058d-3872-4ff8-8202-6d766019723c" true false \n'
+        }
+      }
+    ]
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 0,
+    executionTimeMillis: 1,
+    totalKeysExamined: 0,
+    totalDocsExamined: 0,
+    executionStages: {
+      stage: 'nlj',
+      planNodeId: 2,
+      nReturned: 0,
+      executionTimeMillisEstimate: 0,
+      opens: 1,
+      closes: 2,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 1,
+      totalDocsExamined: 0,
+      totalKeysExamined: 0,
+      collectionScans: 0,
+      collectionSeeks: 0,
+      indexScans: 0,
+      indexSeeks: 1,
+      indexesUsed: [ 'age_1_name_1' ],
+      innerOpens: 0,
+      innerCloses: 0,
+      outerProjects: [],
+      outerCorrelated: [ Long('4'), Long('7'), Long('8'), Long('9'), Long('10') ],
+      outerStage: {
+        stage: 'cfilter',
+        planNodeId: 1,
+        nReturned: 0,
+        executionTimeMillisEstimate: 0,
+        opens: 1,
+        closes: 2,
+        saveState: 0,
+        restoreState: 0,
+        isEOF: 1,
+        numTested: 1,
+        filter: '(exists(s5) && exists(s6)) ',
+        inputStage: {
+          stage: 'ixseek',
+          planNodeId: 1,
+          nReturned: 0,
+          executionTimeMillisEstimate: 0,
+          opens: 1,
+          closes: 1,
+          saveState: 0,
+          restoreState: 0,
+          isEOF: 1,
+          indexName: 'age_1_name_1',
+          keysExamined: 0,
+          seeks: 1,
+          numReads: 1,
+          indexKeySlot: 9,
+          recordIdSlot: 4,
+          snapshotIdSlot: 7,
+          indexIdentSlot: 8,
+          outputSlots: [],
+          indexKeysToInclude: '00000000000000000000000000000000',
+          seekKeyLow: 's5 ',
+          seekKeyHigh: 's6 '
+        }
+      },
+      innerStage: {
+        stage: 'limit',
+        planNodeId: 2,
+        nReturned: 0,
+        executionTimeMillisEstimate: 0,
+        opens: 0,
+        closes: 0,
+        saveState: 0,
+        restoreState: 0,
+        isEOF: 0,
+        limit: 1,
+        inputStage: {
+          stage: 'seek',
+          planNodeId: 2,
+          nReturned: 0,
+          executionTimeMillisEstimate: 0,
+          opens: 0,
+          closes: 0,
+          saveState: 0,
+          restoreState: 0,
+          isEOF: 0,
+          numReads: 0,
+          recordSlot: 11,
+          recordIdSlot: 12,
+          seekKeySlot: 4,
+          snapshotIdSlot: 7,
+          indexIdentSlot: 8,
+          indexKeySlot: 9,
+          indexKeyPatternSlot: 10,
+          fields: [],
+          outputSlots: []
+        }
+      }
+    },
+    allPlansExecution: [
+      {
+        nReturned: 0,
+        executionTimeMillisEstimate: 0,
+        totalKeysExamined: 0,
+        totalDocsExamined: 0,
+        score: 2.5002,
+        executionStages: {
+          stage: 'nlj',
+          planNodeId: 2,
+          nReturned: 0,
+          executionTimeMillisEstimate: 0,
+          opens: 1,
+          closes: 1,
+          saveState: 0,
+          restoreState: 0,
+          isEOF: 1,
+          totalDocsExamined: 0,
+          totalKeysExamined: 0,
+          collectionScans: 0,
+          collectionSeeks: 0,
+          indexScans: 0,
+          indexSeeks: 1,
+          indexesUsed: [ 'age_1_name_1' ],
+          innerOpens: 0,
+          innerCloses: 0,
+          outerProjects: [],
+          outerCorrelated: [ Long('4'), Long('7'), Long('8'), Long('9'), Long('10') ],
+          outerStage: {
+            stage: 'cfilter',
+            planNodeId: 1,
+            nReturned: 0,
+            executionTimeMillisEstimate: 0,
+            opens: 1,
+            closes: 1,
+            saveState: 0,
+            restoreState: 0,
+            isEOF: 1,
+            numTested: 1,
+            filter: '(exists(s5) && exists(s6)) ',
+            inputStage: {
+              stage: 'ixseek',
+              planNodeId: 1,
+              nReturned: 0,
+              executionTimeMillisEstimate: 0,
+              opens: 1,
+              closes: 1,
+              saveState: 0,
+              restoreState: 0,
+              isEOF: 1,
+              indexName: 'age_1_name_1',
+              keysExamined: 0,
+              seeks: 1,
+              numReads: 1,
+              indexKeySlot: 9,
+              recordIdSlot: 4,
+              snapshotIdSlot: 7,
+              indexIdentSlot: 8,
+              outputSlots: [],
+              indexKeysToInclude: '00000000000000000000000000000000',
+              seekKeyLow: 's5 ',
+              seekKeyHigh: 's6 '
+            }
+          },
+          innerStage: {
+            stage: 'limit',
+            planNodeId: 2,
+            nReturned: 0,
+            executionTimeMillisEstimate: 0,
+            opens: 0,
+            closes: 0,
+            saveState: 0,
+            restoreState: 0,
+            isEOF: 0,
+            limit: 1,
+            inputStage: {
+              stage: 'seek',
+              planNodeId: 2,
+              nReturned: 0,
+              executionTimeMillisEstimate: 0,
+              opens: 0,
+              closes: 0,
+              saveState: 0,
+              restoreState: 0,
+              isEOF: 0,
+              numReads: 0,
+              recordSlot: 11,
+              recordIdSlot: 12,
+              seekKeySlot: 4,
+              snapshotIdSlot: 7,
+              indexIdentSlot: 8,
+              indexKeySlot: 9,
+              indexKeyPatternSlot: 10,
+              fields: [],
+              outputSlots: []
+            }
+          }
+        }
+      },
+      {
+        nReturned: 0,
+        executionTimeMillisEstimate: 0,
+        totalKeysExamined: 1,
+        totalDocsExamined: 1,
+        score: 2.2502,
+        executionStages: {
+          stage: 'filter',
+          planNodeId: 2,
+          nReturned: 0,
+          executionTimeMillisEstimate: 0,
+          opens: 1,
+          closes: 2,
+          saveState: 0,
+          restoreState: 0,
+          isEOF: 1,
+          numTested: 1,
+          filter: 'traverseF(s13, lambda(l1.0) { ((l1.0 == s14) ?: false) }, false) ',
+          inputStage: {
+            stage: 'nlj',
+            planNodeId: 2,
+            nReturned: 1,
+            executionTimeMillisEstimate: 0,
+            opens: 1,
+            closes: 1,
+            saveState: 0,
+            restoreState: 0,
+            isEOF: 1,
+            totalDocsExamined: 1,
+            totalKeysExamined: 1,
+            collectionScans: 0,
+            collectionSeeks: 1,
+            indexScans: 0,
+            indexSeeks: 1,
+            indexesUsed: [ 'name_1' ],
+            innerOpens: 1,
+            innerCloses: 1,
+            outerProjects: [],
+            outerCorrelated: [ Long('4'), Long('7'), Long('8'), Long('9'), Long('10') ],
+            outerStage: {
+              stage: 'cfilter',
+              planNodeId: 1,
+              nReturned: 1,
+              executionTimeMillisEstimate: 0,
+              opens: 1,
+              closes: 1,
+              saveState: 0,
+              restoreState: 0,
+              isEOF: 1,
+              numTested: 1,
+              filter: '(exists(s5) && exists(s6)) ',
+              inputStage: {
+                stage: 'ixseek',
+                planNodeId: 1,
+                nReturned: 1,
+                executionTimeMillisEstimate: 0,
+                opens: 1,
+                closes: 1,
+                saveState: 0,
+                restoreState: 0,
+                isEOF: 1,
+                indexName: 'name_1',
+                keysExamined: 1,
+                seeks: 1,
+                numReads: 2,
+                indexKeySlot: 9,
+                recordIdSlot: 4,
+                snapshotIdSlot: 7,
+                indexIdentSlot: 8,
+                outputSlots: [],
+                indexKeysToInclude: '00000000000000000000000000000000',
+                seekKeyLow: 's5 ',
+                seekKeyHigh: 's6 '
+              }
+            },
+            innerStage: {
+              stage: 'limit',
+              planNodeId: 2,
+              nReturned: 1,
+              executionTimeMillisEstimate: 0,
+              opens: 1,
+              closes: 1,
+              saveState: 0,
+              restoreState: 0,
+              isEOF: 1,
+              limit: 1,
+              inputStage: {
+                stage: 'seek',
+                planNodeId: 2,
+                nReturned: 1,
+                executionTimeMillisEstimate: 0,
+                opens: 1,
+                closes: 1,
+                saveState: 0,
+                restoreState: 0,
+                isEOF: 0,
+                numReads: 1,
+                recordSlot: 11,
+                recordIdSlot: 12,
+                seekKeySlot: 4,
+                snapshotIdSlot: 7,
+                indexIdentSlot: 8,
+                indexKeySlot: 9,
+                indexKeyPatternSlot: 10,
+                fields: [ 'age' ],
+                outputSlots: [ Long('13') ]
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  command: {
+    find: 'customers',
+    filter: { name: 'Max', age: 30 },
+    '$db': 'contactData'
+  },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> show collections
+contacts
+customers
+hobbies
+persons
+sessions
+users
+contactData> db.contacts.drop()
+true
+contactData> db.contacts.drop()
+true
+contactData> show collections
+customers
+hobbies
+persons
+sessions
+users
+contactData> db.contacts.insertOne({name: "Max", hobbies: ["Cooking","Sports"], addresses: [{street: "Main Street"},{street: "Second Street"}]})
+{
+  acknowledged: true,
+  insertedId: ObjectId('67933ad84299e22befd1c2cc')
+}
+contactData> db.contacts.findOne()
+{
+  _id: ObjectId('67933ad84299e22befd1c2cc'),
+  name: 'Max',
+  hobbies: [ 'Cooking', 'Sports' ],
+  addresses: [ { street: 'Main Street' }, { street: 'Second Street' } ]
+}
+contactData> db.contacts.createIndex({hobbies: 1})
+hobbies_1
+contactData> db.contacts.findOne({hobbies: "Sports"})
+{
+  _id: ObjectId('67933ad84299e22befd1c2cc'),
+  name: 'Max',
+  hobbies: [ 'Cooking', 'Sports' ],
+  addresses: [ { street: 'Main Street' }, { street: 'Second Street' } ]
+}
+contactData> db.contacts.explain("executionStats").findOne({hobbies: "Sports"})
+TypeError: db.contacts.ex ... tats").findOne is not a function
+contactData> db.contacts.explain("executionStats").find({hobbies: "Sports"})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.contacts',
+    indexFilterSet: false,
+    parsedQuery: { hobbies: { '$eq': 'Sports' } },
+    queryHash: 'D852C073',
+    planCacheKey: '94F0990D',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'FETCH',
+        planNodeId: 2,
+        inputStage: {
+          stage: 'IXSCAN',
+          planNodeId: 1,
+          keyPattern: { hobbies: 1 },
+          indexName: 'hobbies_1',
+          isMultiKey: true,
+          multiKeyPaths: { hobbies: [ 'hobbies' ] },
+          isUnique: false,
+          isSparse: false,
+          isPartial: false,
+          indexVersion: 2,
+          direction: 'forward',
+          indexBounds: { hobbies: [ '["Sports", "Sports"]' ] }
+        }
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s11 env: { s2 = Nothing (SEARCH_META), s3 = 1737702239877 (NOW), s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB), s5 = KS(3C53706F727473000104), s6 = KS(3C53706F72747300FE04), s10 = {"hobbies" : 1} }',
+        stages: '[2] nlj inner [] [s4, s7, s8, s9, s10] \n' +
+          '    left \n' +
+          '        [1] unique [s4] \n' +
+          '        [1] cfilter {(exists(s5) && exists(s6))} \n' +
+          '        [1] ixseek s5 s6 s9 s4 s7 s8 [] @"855622f5-8ab8-44da-a63b-1888ff72abbf" @"hobbies_1" true \n' +
+          '    right \n' +
+          '        [2] limit 1 \n' +
+          '        [2] seek s4 s11 s12 s7 s8 s9 s10 [] @"855622f5-8ab8-44da-a63b-1888ff72abbf" true false \n'
+      }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 1,
+    executionTimeMillis: 0,
+    totalKeysExamined: 1,
+    totalDocsExamined: 1,
+    executionStages: {
+      stage: 'nlj',
+      planNodeId: 2,
+      nReturned: 1,
+      executionTimeMillisEstimate: 0,
+      opens: 1,
+      closes: 1,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 1,
+      totalDocsExamined: 1,
+      totalKeysExamined: 1,
+      collectionScans: 0,
+      collectionSeeks: 1,
+      indexScans: 0,
+      indexSeeks: 1,
+      indexesUsed: [ 'hobbies_1' ],
+      innerOpens: 1,
+      innerCloses: 1,
+      outerProjects: [],
+      outerCorrelated: [ Long('4'), Long('7'), Long('8'), Long('9'), Long('10') ],
+      outerStage: {
+        stage: 'unique',
+        planNodeId: 1,
+        nReturned: 1,
+        executionTimeMillisEstimate: 0,
+        opens: 1,
+        closes: 1,
+        saveState: 0,
+        restoreState: 0,
+        isEOF: 1,
+        dupsTested: 1,
+        dupsDropped: 0,
+        keySlots: [ Long('4') ],
+        inputStage: {
+          stage: 'cfilter',
+          planNodeId: 1,
+          nReturned: 1,
+          executionTimeMillisEstimate: 0,
+          opens: 1,
+          closes: 1,
+          saveState: 0,
+          restoreState: 0,
+          isEOF: 1,
+          numTested: 1,
+          filter: '(exists(s5) && exists(s6)) ',
+          inputStage: {
+            stage: 'ixseek',
+            planNodeId: 1,
+            nReturned: 1,
+            executionTimeMillisEstimate: 0,
+            opens: 1,
+            closes: 1,
+            saveState: 0,
+            restoreState: 0,
+            isEOF: 1,
+            indexName: 'hobbies_1',
+            keysExamined: 1,
+            seeks: 1,
+            numReads: 2,
+            indexKeySlot: 9,
+            recordIdSlot: 4,
+            snapshotIdSlot: 7,
+            indexIdentSlot: 8,
+            outputSlots: [],
+            indexKeysToInclude: '00000000000000000000000000000000',
+            seekKeyLow: 's5 ',
+            seekKeyHigh: 's6 '
+          }
+        }
+      },
+      innerStage: {
+        stage: 'limit',
+        planNodeId: 2,
+        nReturned: 1,
+        executionTimeMillisEstimate: 0,
+        opens: 1,
+        closes: 1,
+        saveState: 0,
+        restoreState: 0,
+        isEOF: 1,
+        limit: 1,
+        inputStage: {
+          stage: 'seek',
+          planNodeId: 2,
+          nReturned: 1,
+          executionTimeMillisEstimate: 0,
+          opens: 1,
+          closes: 1,
+          saveState: 0,
+          restoreState: 0,
+          isEOF: 0,
+          numReads: 1,
+          recordSlot: 11,
+          recordIdSlot: 12,
+          seekKeySlot: 4,
+          snapshotIdSlot: 7,
+          indexIdentSlot: 8,
+          indexKeySlot: 9,
+          indexKeyPatternSlot: 10,
+          fields: [],
+          outputSlots: []
+        }
+      }
+    }
+  },
+  command: {
+    find: 'contacts',
+    filter: { hobbies: 'Sports' },
+    '$db': 'contactData'
+  },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> db.contacts.createIndex({addresses: 1})
+addresses_1
+contactData> db.contacts.explain("executionStats").find({street: "Main street"})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.contacts',
+    indexFilterSet: false,
+    parsedQuery: { street: { '$eq': 'Main street' } },
+    queryHash: '39693B9E',
+    planCacheKey: '23DC791D',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'COLLSCAN',
+        planNodeId: 1,
+        filter: { street: { '$eq': 'Main street' } },
+        direction: 'forward'
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s5 env: { s2 = Nothing (SEARCH_META), s3 = 1737702481283 (NOW), s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB), s7 = "Main street" }',
+        stages: '[1] filter {traverseF(s4, lambda(l1.0) { ((l1.0 == s7) ?: false) }, false)} \n' +
+          '[1] scan s5 s6 none none none none lowPriority [s4 = street] @"855622f5-8ab8-44da-a63b-1888ff72abbf" true false '
+      }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 0,
+    executionTimeMillis: 1,
+    totalKeysExamined: 0,
+    totalDocsExamined: 1,
+    executionStages: {
+      stage: 'filter',
+      planNodeId: 1,
+      nReturned: 0,
+      executionTimeMillisEstimate: 0,
+      opens: 1,
+      closes: 1,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 1,
+      numTested: 1,
+      filter: 'traverseF(s4, lambda(l1.0) { ((l1.0 == s7) ?: false) }, false) ',
+      inputStage: {
+        stage: 'scan',
+        planNodeId: 1,
+        nReturned: 1,
+        executionTimeMillisEstimate: 0,
+        opens: 1,
+        closes: 1,
+        saveState: 0,
+        restoreState: 0,
+        isEOF: 1,
+        numReads: 1,
+        recordSlot: 5,
+        recordIdSlot: 6,
+        fields: [ 'street' ],
+        outputSlots: [ Long('4') ]
+      }
+    }
+  },
+  command: {
+    find: 'contacts',
+    filter: { street: 'Main street' },
+    '$db': 'contactData'
+  },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> db.contacts.explain("executionStats").find({addresses: {street: "Main street"}})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.contacts',
+    indexFilterSet: false,
+    parsedQuery: { addresses: { '$eq': { street: 'Main street' } } },
+    queryHash: '55209E9F',
+    planCacheKey: 'E6786C35',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'FETCH',
+        planNodeId: 2,
+        inputStage: {
+          stage: 'IXSCAN',
+          planNodeId: 1,
+          keyPattern: { addresses: 1 },
+          indexName: 'addresses_1',
+          isMultiKey: true,
+          multiKeyPaths: { addresses: [ 'addresses' ] },
+          isUnique: false,
+          isSparse: false,
+          isPartial: false,
+          indexVersion: 2,
+          direction: 'forward',
+          indexBounds: {
+            addresses: [
+              '[{ street: "Main street" }, { street: "Main street" }]'
+            ]
+          }
+        }
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s9 env: { s8 = {"addresses" : 1}, s2 = Nothing (SEARCH_META), s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB), s3 = 1737702562352 (NOW) }',
+        stages: '[2] nlj inner [] [s4, s5, s6, s7, s8] \n' +
+          '    left \n' +
+          '        [1] unique [s4] \n' +
+          '        [1] ixseek KS(463C737472656574003C4D61696E2073747265657400000104) KS(463C737472656574003C4D61696E207374726565740000FE04) s7 s4 s5 s6 [] @"855622f5-8ab8-44da-a63b-1888ff72abbf" @"addresses_1" true \n' +
+          '    right \n' +
+          '        [2] limit 1 \n' +
+          '        [2] seek s4 s9 s10 s5 s6 s7 s8 [] @"855622f5-8ab8-44da-a63b-1888ff72abbf" true false \n'
+      }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 0,
+    executionTimeMillis: 24,
+    totalKeysExamined: 0,
+    totalDocsExamined: 0,
+    executionStages: {
+      stage: 'nlj',
+      planNodeId: 2,
+      nReturned: 0,
+      executionTimeMillisEstimate: 24,
+      opens: 1,
+      closes: 1,
+      saveState: 1,
+      restoreState: 1,
+      isEOF: 1,
+      totalDocsExamined: 0,
+      totalKeysExamined: 0,
+      collectionScans: 0,
+      collectionSeeks: 0,
+      indexScans: 0,
+      indexSeeks: 1,
+      indexesUsed: [ 'addresses_1' ],
+      innerOpens: 0,
+      innerCloses: 0,
+      outerProjects: [],
+      outerCorrelated: [ Long('4'), Long('5'), Long('6'), Long('7'), Long('8') ],
+      outerStage: {
+        stage: 'unique',
+        planNodeId: 1,
+        nReturned: 0,
+        executionTimeMillisEstimate: 24,
+        opens: 1,
+        closes: 1,
+        saveState: 1,
+        restoreState: 1,
+        isEOF: 1,
+        dupsTested: 0,
+        dupsDropped: 0,
+        keySlots: [ Long('4') ],
+        inputStage: {
+          stage: 'ixseek',
+          planNodeId: 1,
+          nReturned: 0,
+          executionTimeMillisEstimate: 24,
+          opens: 1,
+          closes: 1,
+          saveState: 1,
+          restoreState: 1,
+          isEOF: 1,
+          indexName: 'addresses_1',
+          keysExamined: 0,
+          seeks: 1,
+          numReads: 1,
+          indexKeySlot: 7,
+          recordIdSlot: 4,
+          snapshotIdSlot: 5,
+          indexIdentSlot: 6,
+          outputSlots: [],
+          indexKeysToInclude: '00000000000000000000000000000000',
+          seekKeyLow: 'KS(463C737472656574003C4D61696E2073747265657400000104) ',
+          seekKeyHigh: 'KS(463C737472656574003C4D61696E207374726565740000FE04) '
+        }
+      },
+      innerStage: {
+        stage: 'limit',
+        planNodeId: 2,
+        nReturned: 0,
+        executionTimeMillisEstimate: 0,
+        opens: 0,
+        closes: 0,
+        saveState: 1,
+        restoreState: 1,
+        isEOF: 0,
+        limit: 1,
+        inputStage: {
+          stage: 'seek',
+          planNodeId: 2,
+          nReturned: 0,
+          executionTimeMillisEstimate: 0,
+          opens: 0,
+          closes: 0,
+          saveState: 1,
+          restoreState: 1,
+          isEOF: 0,
+          numReads: 0,
+          recordSlot: 9,
+          recordIdSlot: 10,
+          seekKeySlot: 4,
+          snapshotIdSlot: 5,
+          indexIdentSlot: 6,
+          indexKeySlot: 7,
+          indexKeyPatternSlot: 8,
+          fields: [],
+          outputSlots: []
+        }
+      }
+    }
+  },
+  command: {
+    find: 'contacts',
+    filter: { addresses: { street: 'Main street' } },
+    '$db': 'contactData'
+  },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> db.contacts.createIndex({"addresses.street": 1})
+addresses.street_1
+contactData> db.contacts.explain("executionStats").find({addresses: {street: "Main street"}
+contactData> db.contacts.explain("executionStats").find({"addresses.street": "Main street"})
+{
+  explainVersion: '2',
+  queryPlanner: {
+    namespace: 'contactData.contacts',
+    indexFilterSet: false,
+    parsedQuery: { 'addresses.street': { '$eq': 'Main street' } },
+    queryHash: '383A1CC0',
+    planCacheKey: '9E347817',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      queryPlan: {
+        stage: 'FETCH',
+        planNodeId: 2,
+        inputStage: {
+          stage: 'IXSCAN',
+          planNodeId: 1,
+          keyPattern: { 'addresses.street': 1 },
+          indexName: 'addresses.street_1',
+          isMultiKey: true,
+          multiKeyPaths: { 'addresses.street': [ 'addresses' ] },
+          isUnique: false,
+          isSparse: false,
+          isPartial: false,
+          indexVersion: 2,
+          direction: 'forward',
+          indexBounds: { 'addresses.street': [ '["Main street", "Main street"]' ] }
+        }
+      },
+      slotBasedPlan: {
+        slots: '$$RESULT=s11 env: { s1 = TimeZoneDatabase(Antarctica/South_Pole...Asia/Sakhalin) (timeZoneDB), s10 = {"addresses.street" : 1}, s2 = Nothing (SEARCH_META), s5 = KS(3C4D61696E20737472656574000104), s3 = 1737702657213 (NOW), s6 = KS(3C4D61696E2073747265657400FE04) }',
+        stages: '[2] nlj inner [] [s4, s7, s8, s9, s10] \n' +
+          '    left \n' +
+          '        [1] unique [s4] \n' +
+          '        [1] cfilter {(exists(s5) && exists(s6))} \n' +
+          '        [1] ixseek s5 s6 s9 s4 s7 s8 [] @"855622f5-8ab8-44da-a63b-1888ff72abbf" @"addresses.street_1" true \n' +
+          '    right \n' +
+          '        [2] limit 1 \n' +
+          '        [2] seek s4 s11 s12 s7 s8 s9 s10 [] @"855622f5-8ab8-44da-a63b-1888ff72abbf" true false \n'
+      }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 0,
+    executionTimeMillis: 18,
+    totalKeysExamined: 0,
+    totalDocsExamined: 0,
+    executionStages: {
+      stage: 'nlj',
+      planNodeId: 2,
+      nReturned: 0,
+      executionTimeMillisEstimate: 18,
+      opens: 1,
+      closes: 1,
+      saveState: 1,
+      restoreState: 1,
+      isEOF: 1,
+      totalDocsExamined: 0,
+      totalKeysExamined: 0,
+      collectionScans: 0,
+      collectionSeeks: 0,
+      indexScans: 0,
+      indexSeeks: 1,
+      indexesUsed: [ 'addresses.street_1' ],
+      innerOpens: 0,
+      innerCloses: 0,
+      outerProjects: [],
+      outerCorrelated: [ Long('4'), Long('7'), Long('8'), Long('9'), Long('10') ],
+      outerStage: {
+        stage: 'unique',
+        planNodeId: 1,
+        nReturned: 0,
+        executionTimeMillisEstimate: 18,
+        opens: 1,
+        closes: 1,
+        saveState: 1,
+        restoreState: 1,
+        isEOF: 1,
+        dupsTested: 0,
+        dupsDropped: 0,
+        keySlots: [ Long('4') ],
+        inputStage: {
+          stage: 'cfilter',
+          planNodeId: 1,
+          nReturned: 0,
+          executionTimeMillisEstimate: 18,
+          opens: 1,
+          closes: 1,
+          saveState: 1,
+          restoreState: 1,
+          isEOF: 1,
+          numTested: 1,
+          filter: '(exists(s5) && exists(s6)) ',
+          inputStage: {
+            stage: 'ixseek',
+            planNodeId: 1,
+            nReturned: 0,
+            executionTimeMillisEstimate: 18,
+            opens: 1,
+            closes: 1,
+            saveState: 1,
+            restoreState: 1,
+            isEOF: 1,
+            indexName: 'addresses.street_1',
+            keysExamined: 0,
+            seeks: 1,
+            numReads: 1,
+            indexKeySlot: 9,
+            recordIdSlot: 4,
+            snapshotIdSlot: 7,
+            indexIdentSlot: 8,
+            outputSlots: [],
+            indexKeysToInclude: '00000000000000000000000000000000',
+            seekKeyLow: 's5 ',
+            seekKeyHigh: 's6 '
+          }
+        }
+      },
+      innerStage: {
+        stage: 'limit',
+        planNodeId: 2,
+        nReturned: 0,
+        executionTimeMillisEstimate: 0,
+        opens: 0,
+        closes: 0,
+        saveState: 1,
+        restoreState: 1,
+        isEOF: 0,
+        limit: 1,
+        inputStage: {
+          stage: 'seek',
+          planNodeId: 2,
+          nReturned: 0,
+          executionTimeMillisEstimate: 0,
+          opens: 0,
+          closes: 0,
+          saveState: 1,
+          restoreState: 1,
+          isEOF: 0,
+          numReads: 0,
+          recordSlot: 11,
+          recordIdSlot: 12,
+          seekKeySlot: 4,
+          snapshotIdSlot: 7,
+          indexIdentSlot: 8,
+          indexKeySlot: 9,
+          indexKeyPatternSlot: 10,
+          fields: [],
+          outputSlots: []
+        }
+      }
+    }
+  },
+  command: {
+    find: 'contacts',
+    filter: { 'addresses.street': 'Main street' },
+    '$db': 'contactData'
+  },
+  serverInfo: {
+    host: 'AporvGoyal',
+    port: 27017,
+    version: '7.0.4',
+    gitVersion: '38f3e37057a43d2e9f41a39142681a76062d582e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeEngine'
+  },
+  ok: 1
+}
+contactData> db.contacts.createIndex({name: 1, hobbies: 1})
+name_1_hobbies_1
+contactData> db.contacts.explain("executionStats").find({"addresses.street": "Main street"}
+contactData> db.contacts.createIndex({addresses: 1, hobbies: 1})
+MongoServerError: Index build failed: 10d5ea2c-81d0-41eb-b050-25c773d590e3: Collection contactData.contacts ( 855622f5-8ab8-44da-a63b-1888ff72abbf ) :: caused by :: cannot index parallel arrays [hobbies] [addresses]
+contactData>
+
+contactData>
+
+contactData> db.products.insertMany([{title: "A book", description: "This is an awesome book about an artist"}, {title: "A Red T-Shirt", description: "This Red T-Shirt is awesome"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('67933efc4299e22befd1c2cd'),
+    '1': ObjectId('67933efc4299e22befd1c2ce')
+  }
+}
+contactData> db.products.find()
+[
+  {
+    _id: ObjectId('67933efc4299e22befd1c2cd'),
+    title: 'A book',
+    description: 'This is an awesome book about an artist'
+  },
+  {
+    _id: ObjectId('67933efc4299e22befd1c2ce'),
+    title: 'A Red T-Shirt',
+    description: 'This Red T-Shirt is awesome'
+  }
+]
+contactData> db.products.createIndex({description: 1})
+description_1
+contactData> db.products.dropIndex({description: 1})
+{ nIndexesWas: 2, ok: 1 }
+contactData> db.products.dropIndex({description:
+contactData> db.products.createIndex({description: "text"})
+description_text
+contactData> db.products.find({$text: {$search: "awesome"}})
+[
+  {
+    _id: ObjectId('67933efc4299e22befd1c2cd'),
+    title: 'A book',
+    description: 'This is an awesome book about an artist'
+  },
+  {
+    _id: ObjectId('67933efc4299e22befd1c2ce'),
+    title: 'A Red T-Shirt',
+    description: 'This Red T-Shirt is awesome'
+  }
+]
+contactData> db.products.find({$text: {$search: "book"}})
+[
+  {
+    _id: ObjectId('67933efc4299e22befd1c2cd'),
+    title: 'A book',
+    description: 'This is an awesome book about an artist'
+  }
+]
+contactData> db.products.find({$text: {$search: "red book"}})
+[
+  {
+    _id: ObjectId('67933efc4299e22befd1c2cd'),
+    title: 'A book',
+    description: 'This is an awesome book about an artist'
+  },
+  {
+    _id: ObjectId('67933efc4299e22befd1c2ce'),
+    title: 'A Red T-Shirt',
+    description: 'This Red T-Shirt is awesome'
+  }
+]
+contactData> db.products.find({$text: {$search: "\"red book\""}})
+
+contactData> db.products.find({$text: {$search: "\"awesome book\""}})
+[
+  {
+    _id: ObjectId('67933efc4299e22befd1c2cd'),
+    title: 'A book',
+    description: 'This is an awesome book about an artist'
+  }
+]
+contactData> db.products.find({$text: {$search: "\"awesome t-shirt\""},{score: {$meta: "textScore"}}})
+Uncaught:
+SyntaxError: Unexpected token (1:58)
+
+> 1 | db.products.find({$text: {$search: "\"awesome t-shirt\""},{score: {$meta: "textScore"}}})
+    |                                                           ^
+  2 |
+
+contactData> db.products.find({$text: {$search: "\"awesome t-shirt\""}},{score: {$meta: "textScore"}})
+
+contactData> db.products.find({$text: {$search: "awesome t-shirt"}},{score: {$meta: "textScore"}})
+[
+  {
+    _id: ObjectId('67933efc4299e22befd1c2cd'),
+    title: 'A book',
+    description: 'This is an awesome book about an artist',
+    score: 0.6666666666666666
+  },
+  {
+    _id: ObjectId('67933efc4299e22befd1c2ce'),
+    title: 'A Red T-Shirt',
+    description: 'This Red T-Shirt is awesome',
+    score: 1.875
+  }
+]
+contactData> db.products.find({$text: {$search: "awesome t-shirt"}}).sort({score: -1})
+[
+  {
+    _id: ObjectId('67933efc4299e22befd1c2cd'),
+    title: 'A book',
+    description: 'This is an awesome book about an artist'
+  },
+  {
+    _id: ObjectId('67933efc4299e22befd1c2ce'),
+    title: 'A Red T-Shirt',
+    description: 'This Red T-Shirt is awesome'
+  }
+]
+contactData> db.products.find({$text: {$search: "awesome t-shirt"}},{score: {$meta: "textScore"}}).pretty()
+[
+  {
+    _id: ObjectId('67933efc4299e22befd1c2cd'),
+    title: 'A book',
+    description: 'This is an awesome book about an artist',
+    score: 0.6666666666666666
+  },
+  {
+    _id: ObjectId('67933efc4299e22befd1c2ce'),
+    title: 'A Red T-Shirt',
+    description: 'This Red T-Shirt is awesome',
+    score: 1.875
+  }
+]
+contactData> db.products.find({$text: {$search: "awesome t-shirt"}},{score: {$meta: "textScore"}}).pretty(
+contactData> db.products.find({$text: {$search: "awesome t-shirt"}}).sort({score:{$meta: "textScore"}})
+[
+  {
+    _id: ObjectId('67933efc4299e22befd1c2ce'),
+    title: 'A Red T-Shirt',
+    description: 'This Red T-Shirt is awesome'
+  },
+  {
+    _id: ObjectId('67933efc4299e22befd1c2cd'),
+    title: 'A book',
+    description: 'This is an awesome book about an artist'
+  }
+]
+contactData> db.products.getIndexes()
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  {
+    v: 2,
+    key: { _fts: 'text', _ftsx: 1 },
+    name: 'description_text',
+    weights: { description: 1 },
+    default_language: 'english',
+    language_override: 'language',
+    textIndexVersion: 3
+  }
+]
+contactData> db.products.createIndex({title: "text"})
+MongoServerError: An equivalent index already exists with a different name and options. Requested index: { v: 2, key: { _fts: "text", _ftsx: 1 }, name: "title_text", weights: { title: 1 }, default_language: "english", language_override: "language", textIndexVersion: 3 }, existing index: { v: 2, key: { _fts: "text", _ftsx: 1 }, name: "description_text", weights: { description: 1 }, default_language: "english", language_override: "language", textIndexVersion: 3 }
+contactData> db.products.dropIndex({title: "text"})
+MongoshInternalError: can't find index with key: { title: "text" }
+contactData> db.products.dropIndex("description_text")
+{ nIndexesWas: 2, ok: 1 }
+contactData> db.products.getIndexes()
+[ { v: 2, key: { _id: 1 }, name: '_id_' } ]
+contactData> db.products.dropIndex({title: "text", description: "text"})
+MongoshInternalError: can't find index with key: { title: "text", description: "text" }
+contactData> db.products.createIndex({title: "text", description: "text"})
+title_text_description_text
+contactData> db.products.insertOne({title: "A Ship", description: "Floats perfectly"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('679343864299e22befd1c2cf')
+}
+contactData> db.products.find({$text: {$search: "Ship"}})
+[
+  {
+    _id: ObjectId('679343864299e22befd1c2cf'),
+    title: 'A Ship',
+    description: 'Floats perfectly'
+  }
+]
+contactData> db.products.find({$text: {$search: "awesome"}})
+[
+  {
+    _id: ObjectId('67933efc4299e22befd1c2cd'),
+    title: 'A book',
+    description: 'This is an awesome book about an artist'
+  },
+  {
+    _id: ObjectId('67933efc4299e22befd1c2ce'),
+    title: 'A Red T-Shirt',
+    description: 'This Red T-Shirt is awesome'
+  }
+]
+contactData> db.products.find({$text: {$search: "awesome -t-shirt"}})
+[
+  {
+    _id: ObjectId('67933efc4299e22befd1c2cd'),
+    title: 'A book',
+    description: 'This is an awesome book about an artist'
+  }
+]
+contactData> db.products.getIndexes()
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  {
+    v: 2,
+    key: { _fts: 'text', _ftsx: 1 },
+    name: 'title_text_description_text',
+    weights: { description: 1, title: 1 },
+    default_language: 'english',
+    language_override: 'language',
+    textIndexVersion: 3
+  }
+]
+contactData> db.products.dropIndex("title_text_description_text")
+{ nIndexesWas: 2, ok: 1 }
+contactData> db.products.createIndex({title: "text", description: "text"},{default_language: "english", weights: {title: 1, description: 10}})
+title_text_description_text
+contactData> db.products.find()
+[
+  {
+    _id: ObjectId('67933efc4299e22befd1c2cd'),
+    title: 'A book',
+    description: 'This is an awesome book about an artist'
+  },
+  {
+    _id: ObjectId('67933efc4299e22befd1c2ce'),
+    title: 'A Red T-Shirt',
+    description: 'This Red T-Shirt is awesome'
+  },
+  {
+    _id: ObjectId('679343864299e22befd1c2cf'),
+    title: 'A Ship',
+    description: 'Floats perfectly'
+  }
+]
+contactData> db.products.find({$text: {$search: "awesome"}})
+[
+  {
+    _id: ObjectId('67933efc4299e22befd1c2cd'),
+    title: 'A book',
+    description: 'This is an awesome book about an artist'
+  },
+  {
+    _id: ObjectId('67933efc4299e22befd1c2ce'),
+    title: 'A Red T-Shirt',
+    description: 'This Red T-Shirt is awesome'
+  }
+]
+contactData> db.products.find({$text: {$search: "red"}},{score: {$meta: "textScore"}})
+[
+  {
+    _id: ObjectId('67933efc4299e22befd1c2ce'),
+    title: 'A Red T-Shirt',
+    description: 'This Red T-Shirt is awesome',
+    score: 6.916666666666667
+  }
+]
+contactData> db.products.getIndexes()
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  {
+    v: 2,
+    key: { _fts: 'text', _ftsx: 1 },
+    name: 'title_text_description_text',
+    weights: { description: 10, title: 1 },
+    default_language: 'english',
+    language_override: 'language',
+    textIndexVersion: 3
+  }
+]
+contactData> db.products.dropIndex("title_text_description_text")
+{ nIndexesWas: 2, ok: 1 }
+contactData> db.products.find({$text: {$search: "red"}},{score: {$meta: "textScore"}})
+MongoServerError: text index required for $text query
+contactData> db.products.find({$text:
+contactData> db.products.createIndex({title: "text", description: "text"},{default_language: "english"})
+title_text_description_text
+contactData> db.products.find({$text: {$search: "red"}},{score: {$meta: "textScore"}})
+[
+  {
+    _id: ObjectId('67933efc4299e22befd1c2ce'),
+    title: 'A Red T-Shirt',
+    description: 'This Red T-Shirt is awesome',
+    score: 1.2916666666666665
+  }
+]
+contactData> mongo credit-rating.js
+Uncaught:
+SyntaxError: Missing semicolon. (1:5)
+
+> 1 | mongo credit-rating.js
+    |      ^
+  2 |
+
+contactData> mongo credit-rating.js;
+Uncaught:
+SyntaxError: Missing semicolon. (1:5)
+
+> 1 | mongo credit-rating.js;
+    |      ^
+  2 |
+
+contactData> mongo credit-rating.js;
+Uncaught:
+SyntaxError: Missing semicolon. (1:5)
+
+> 1 | mongo credit-rating.js;
+    |      ^
+  2 |
+
+contactData> mongod credit-rating.js
+Uncaught:
+SyntaxError: Missing semicolon. (1:6)
+
+> 1 | mongod credit-rating.js
+    |       ^
+  2 |
+
+contactData>

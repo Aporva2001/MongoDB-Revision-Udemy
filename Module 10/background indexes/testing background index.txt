@@ -1,0 +1,36 @@
+Please enter a MongoDB connection string (Default: mongodb://localhost/):
+
+Current Mongosh Log ID: 67934c129c4f28f577c41fe2
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.1
+Using MongoDB:          7.0.4
+Using Mongosh:          2.1.1
+mongosh 2.3.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-01-21T12:38:39.330+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use credit
+switched to db credit
+credit> show collections
+ratings
+credit> db.collections.findOne()
+null
+credit> db.ratings.findOne()
+{
+  _id: ObjectId('67934897bae1f9eeb80dbbc3'),
+  person_id: 1,
+  score: 4.195736256055471,
+  age: 65
+}
+credit> db.ratings.findOne()
+{
+  _id: ObjectId('67934897bae1f9eeb80dbbc3'),
+  person_id: 1,
+  score: 4.195736256055471,
+  age: 65
+}
+credit> db.ratings.findOne()
