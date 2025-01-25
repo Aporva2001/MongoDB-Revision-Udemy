@@ -1,0 +1,274 @@
+Please enter a MongoDB connection string (Default: mongodb://localhost/):
+
+Current Mongosh Log ID: 679477637b91259eaee7ddc6
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.1
+Using MongoDB:          7.0.4
+Using Mongosh:          2.1.1
+mongosh 2.3.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-01-21T12:38:39.330+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use awesomeplaces
+switched to db awesomeplaces
+awesomeplaces> db.places.insertOne({name: "California Academy of Sciences", location: {type: "Point", coordinates: []}})
+
+awesomeplaces> db.places.insertOne({name: "California Academy of Sciences", location: {type: "Point", coordinates: [-122.4686696, 37.7698688]}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('679478667b91259eaee7ddc7')
+}
+awesomeplaces> db.places.findOne()
+{
+  _id: ObjectId('679478667b91259eaee7ddc7'),
+  name: 'California Academy of Sciences',
+  location: { type: 'Point', coordinates: [ -122.4686696, 37.7698688 ] }
+}
+awesomeplaces> db.places.findOne({location: {$near: {$geometry: {type: "Point", coordinates: [-122.4686696, 37.7698688]}}}})
+Uncaught:
+MongoServerError: error processing query: ns=awesomeplaces.places limit=1Tree: GEONEAR  field=location maxdist=1.79769e+308 isNearSphere=0
+Sort: {}
+Proj: {}
+ planner returned error :: caused by :: unable to find index for $geoNear query
+awesomeplaces> db.places.createIndex({location: "2dsphere"})
+location_2dsphere
+awesomeplaces> db.places.findOne({location: {$near: {$geometry: {type: "Point", coordinates: [-122.4686696, 37.7698688]}}}})
+{
+  _id: ObjectId('679478667b91259eaee7ddc7'),
+  name: 'California Academy of Sciences',
+  location: { type: 'Point', coordinates: [ -122.4686696, 37.7698688 ] }
+}
+awesomeplaces> db.places.findOne({location: {$near: {$geometry: {type: "Point", coordinates: [-122.4686696, 37.7698688]}, $maxDistance: 30, $minDistance: 10}}})
+null
+awesomeplaces> db.places.findOne({location: {$near: {$geometry: {type: "Point", coordinates: [-122.4686696, 37.7698688]}, $maxDistance: 200, $minDistance: 10}}})
+null
+awesomeplaces> db.places.findOne({location: {$near: {$geometry: {type: "Point", coordinates: [-122.4686696, 37.7698688]}, $maxDistance: 400, $minDistance: 10}}})
+null
+awesomeplaces> db.places.findOne({location: {$near: {$geometry: {type: "Point", coordinates: [-122.4686696, 37.7698688]}, $maxDistance: 10000, $minDistance: 10}}})
+null
+awesomeplaces> db.places.findOne({location: {$near: {$geometry: {type: "Point", coordinates: [-122.4686696, 37.7698688]}, $maxDistance: 500, $minDistance: 10}}})
+null
+awesomeplaces> db.places.findOne({location: {$near: {$geometry: {type: "Point", coordinates: [-122.4686696, 37.7698688]}, $maxDistance: 600, $minDistance: 10}}})
+null
+awesomeplaces> db.places.find({location: {$near: {$geometry: {type: "Point", coordinates: [-122.4686696, 37.7698688]}, $maxDistance: 600, $minDistance: 10}}})
+
+awesomeplaces> db.places.find({location: {$near: {$geometry: {type: "Point", coordinates: [-122.4686696, 37.7698688]}, $maxDistance: 600}}})
+[
+  {
+    _id: ObjectId('679478667b91259eaee7ddc7'),
+    name: 'California Academy of Sciences',
+    location: { type: 'Point', coordinates: [ -122.4686696, 37.7698688 ] }
+  }
+]
+awesomeplaces> db.places.insertOne({name: "Conservatory of Flowers", location: {type: "Point", coordinates: [-122.464692, ]}})
+awesomeplaces> db.places.find({location: {$near: {$geometry: {type: "Point", coordinates: [-122.4686696, 37.7698688]}, $maxDistance: 600}}})
+awesomeplaces>  db.places.insertOne({name: "Conservatory of Flowers", location: {type: "Point", coordinates: [-122.464692,37.7717304 ]}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('67947d0d7b91259eaee7ddc8')
+}
+awesomeplaces> db.places.insertOne({name: "Golden Gate Park East", location: {type: "Point", coordinates: [-122.4606634, 37.7696395]}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('67947da57b91259eaee7ddc9')
+}
+awesomeplaces> db.places.insertOne({name: "Nopa", location: {type: "Point", coordinates: [-122.4501554, 37.7751786]}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('67947e147b91259eaee7ddca')
+}
+awesomeplaces> db.places.find()
+[
+  {
+    _id: ObjectId('679478667b91259eaee7ddc7'),
+    name: 'California Academy of Sciences',
+    location: { type: 'Point', coordinates: [ -122.4686696, 37.7698688 ] }
+  },
+  {
+    _id: ObjectId('67947d0d7b91259eaee7ddc8'),
+    name: 'Conservatory of Flowers',
+    location: { type: 'Point', coordinates: [ -122.464692, 37.7717304 ] }
+  },
+  {
+    _id: ObjectId('67947da57b91259eaee7ddc9'),
+    name: 'Golden Gate Park East',
+    location: { type: 'Point', coordinates: [ -122.4606634, 37.7696395 ] }
+  },
+  {
+    _id: ObjectId('67947e147b91259eaee7ddca'),
+    name: 'Nopa',
+    location: { type: 'Point', coordinates: [ -122.4501554, 37.7751786 ] }
+  }
+]
+awesomeplaces> const p1= [-122.45302,37.77498]
+
+awesomeplaces> p1
+[ -122.45302, 37.77498 ]
+awesomeplaces> const p2= [-122.45295,37.76636]
+
+awesomeplaces> p2
+[ -122.45295, 37.76636 ]
+awesomeplaces> const p3= [-122.46646,37.76637]
+
+awesomeplaces> p3
+[ -122.46646, 37.76637 ]
+awesomeplaces> const p4= [-122.46806, 37.77254]
+
+awesomeplaces> p4
+[ -122.46806, 37.77254 ]
+awesomeplaces> db.places.find({location: {$geoWithin: {$geometry: {type: "Polygon", coordinates: [[p1,p2,p3,p4,p1]]}}}})
+
+[
+  {
+    _id: ObjectId('67947d0d7b91259eaee7ddc8'),
+    name: 'Conservatory of Flowers',
+    location: { type: 'Point', coordinates: [ -122.464692, 37.7717304 ] }
+  },
+  {
+    _id: ObjectId('67947da57b91259eaee7ddc9'),
+    name: 'Golden Gate Park East',
+    location: { type: 'Point', coordinates: [ -122.4606634, 37.7696395 ] }
+  }
+]
+awesomeplaces> db.areas.insertOne({name: "Golden Gate Park", area: {type: "Polygon", coordinates: [[p1,p2,p3,p4,p1]]}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6794834a7b91259eaee7ddcb')
+}
+awesomeplaces> db.areas.findOne()
+{
+  _id: ObjectId('6794834a7b91259eaee7ddcb'),
+  name: 'Golden Gate Park',
+  area: {
+    type: 'Polygon',
+    coordinates: [
+      [
+        [ -122.45302, 37.77498 ],
+        [ -122.45295, 37.76636 ],
+        [ -122.46646, 37.76637 ],
+        [ -122.46806, 37.77254 ],
+        [ -122.45302, 37.77498 ]
+      ]
+    ]
+  }
+}
+awesomeplaces> db.areas.createIndex({area: "2dsphere"})
+area_2dsphere
+awesomeplaces> db.areas.find({$geoIntersects: {$geometry: {type: "Point", coordinates: []}}})
+MongoServerError: unknown top level operator: $geoIntersects. If you have a field name that starts with a '$' symbol, consider using $getField or $setField.
+awesomeplaces> const p1= [-122.45494, 37.77484]
+
+awesomeplaces> p1
+[ -122.45494, 37.77484 ]
+awesomeplaces> const p2= [-122.45314, 37.76643]
+
+awesomeplaces> p2
+[ -122.45314, 37.76643 ]
+awesomeplaces> const p3= [-122.51048, 37.76432]
+
+awesomeplaces> p3
+[ -122.51048, 37.76432 ]
+awesomeplaces> const p4= [-122.51091, 37.77144]
+
+awesomeplaces> p4
+[ -122.51091, 37.77144 ]
+awesomeplaces> db.places.find({location: {$geoWithin: {$geometry: {type: "Polygon", coordinates: [[p1,p2,p3,p4]]}}}})
+MongoServerError: Loop is not closed, first vertex does not equal last vertex: [ [ -122.45494, 37.77484 ], [ -122.45314, 37.76643 ], [ -122.51048, 37.76432 ], [ -122.51091, 37.77144 ] ]
+awesomeplaces> db.places.find({location: {$geoWithin: {$geometry: {type: "Polygon", coordinates: [[p1,p2,p3,p4,p1]]}}}})
+
+[
+  {
+    _id: ObjectId('679478667b91259eaee7ddc7'),
+    name: 'California Academy of Sciences',
+    location: { type: 'Point', coordinates: [ -122.4686696, 37.7698688 ] }
+  },
+  {
+    _id: ObjectId('67947d0d7b91259eaee7ddc8'),
+    name: 'Conservatory of Flowers',
+    location: { type: 'Point', coordinates: [ -122.464692, 37.7717304 ] }
+  },
+  {
+    _id: ObjectId('67947da57b91259eaee7ddc9'),
+    name: 'Golden Gate Park East',
+    location: { type: 'Point', coordinates: [ -122.4606634, 37.7696395 ] }
+  }
+]
+awesomeplaces> db.areas.insertOne({name: "Golden Gate Park", area: {type: "Polygon", coordinates: [[p1,p2,p3,p4,p1]]}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('679486ad7b91259eaee7ddcc')
+}
+awesomeplaces> db.areas.dropIndex("area_2dsphere")
+{ nIndexesWas: 2, ok: 1 }
+awesomeplaces> db.areas.createIndex({area: "2dsphere"})
+area_2dsphere
+awesomeplaces> db.areas.find({$geoIntersects: {$geometry: {type: "Point", coordinates: [-122.47965, 37.76958]}}})
+MongoServerError: unknown top level operator: $geoIntersects. If you have a field name that starts with a '$' symbol, consider using $getField or $setField.
+awesomeplaces> db.areas.find({area: {$geoIntersects: {$geometry: {type: "Point", coordinates: [-122.47965, 37.76958]}}}})
+[
+  {
+    _id: ObjectId('679486ad7b91259eaee7ddcc'),
+    name: 'Golden Gate Park',
+    area: {
+      type: 'Polygon',
+      coordinates: [
+        [
+          [ -122.45494, 37.77484 ],
+          [ -122.45314, 37.76643 ],
+          [ -122.51048, 37.76432 ],
+          [ -122.51091, 37.77144 ],
+          [ -122.45494, 37.77484 ]
+        ]
+      ]
+    }
+  }
+]
+awesomeplaces> db.areas.find({area: {$geoIntersects: {$geometry: {type: "Point", coordinates: [-122.49467,37.78206]}}}})
+
+
+awesomeplaces> db.places.find()
+[
+  {
+    _id: ObjectId('679478667b91259eaee7ddc7'),
+    name: 'California Academy of Sciences',
+    location: { type: 'Point', coordinates: [ -122.4686696, 37.7698688 ] }
+  },
+  {
+    _id: ObjectId('67947d0d7b91259eaee7ddc8'),
+    name: 'Conservatory of Flowers',
+    location: { type: 'Point', coordinates: [ -122.464692, 37.7717304 ] }
+  },
+  {
+    _id: ObjectId('67947da57b91259eaee7ddc9'),
+    name: 'Golden Gate Park East',
+    location: { type: 'Point', coordinates: [ -122.4606634, 37.7696395 ] }
+  },
+  {
+    _id: ObjectId('67947e147b91259eaee7ddca'),
+    name: 'Nopa',
+    location: { type: 'Point', coordinates: [ -122.4501554, 37.7751786 ] }
+  }
+]
+awesomeplaces> db.places.find({location: {$geoWithin: {$centerSphere: [[-122.46747, 37.77304], 1/6378.1]}}})
+[
+  {
+    _id: ObjectId('679478667b91259eaee7ddc7'),
+    name: 'California Academy of Sciences',
+    location: { type: 'Point', coordinates: [ -122.4686696, 37.7698688 ] }
+  },
+  {
+    _id: ObjectId('67947d0d7b91259eaee7ddc8'),
+    name: 'Conservatory of Flowers',
+    location: { type: 'Point', coordinates: [ -122.464692, 37.7717304 ] }
+  },
+  {
+    _id: ObjectId('67947da57b91259eaee7ddc9'),
+    name: 'Golden Gate Park East',
+    location: { type: 'Point', coordinates: [ -122.4606634, 37.7696395 ] }
+  }
+]
+awesomeplaces>
