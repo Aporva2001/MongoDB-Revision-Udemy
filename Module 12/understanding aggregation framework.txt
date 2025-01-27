@@ -1,0 +1,4849 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Development\MongoDB\Module 12> mongoimport .\persons.json -d analytics -c persons --jsonArray --drop
+2025-01-27T11:27:02.903+0530    connected to: mongodb://localhost/
+2025-01-27T11:27:02.905+0530    dropping: analytics.persons
+2025-01-27T11:27:03.190+0530    5000 document(s) imported successfully. 0 document(s) failed to import.
+PS C:\Development\MongoDB\Module 12>
+
+
+ease enter a MongoDB connection string (Default: mongodb://localhost/):
+
+Current Mongosh Log ID: 67971fc6fd2e1e48f7c4ffb7
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.1
+Using MongoDB:          7.0.4
+Using Mongosh:          2.1.1
+mongosh 2.3.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-01-21T12:38:39.330+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use analytics
+switched to db analytics
+analytics> show collections
+
+analytics> db.persons.find()
+
+analytics> show dbs
+SportData        72.00 KiB
+admin            40.00 KiB
+awesomeplaces   200.00 KiB
+blog            112.00 KiB
+boxOffice        80.00 KiB
+carData          80.00 KiB
+cityData         80.00 KiB
+companyData      72.00 KiB
+config           60.00 KiB
+contactData     616.00 KiB
+credit            8.63 MiB
+finnancialData   40.00 KiB
+flights         116.00 KiB
+goodplaces      132.00 KiB
+hospital         88.00 KiB
+local            72.00 KiB
+movieData       192.00 KiB
+patients         72.00 KiB
+rop               2.81 MiB
+shop            128.00 KiB
+support          88.00 KiB
+test             12.00 KiB
+analytics> show dbs
+SportData        72.00 KiB
+admin            40.00 KiB
+analytics         8.00 KiB
+awesomeplaces   200.00 KiB
+blog            112.00 KiB
+boxOffice        80.00 KiB
+carData          80.00 KiB
+cityData         80.00 KiB
+companyData      72.00 KiB
+config           60.00 KiB
+contactData     616.00 KiB
+credit            8.63 MiB
+finnancialData   40.00 KiB
+flights         116.00 KiB
+goodplaces      132.00 KiB
+hospital         88.00 KiB
+local            72.00 KiB
+movieData       192.00 KiB
+patients         72.00 KiB
+rop               2.81 MiB
+shop            128.00 KiB
+support          88.00 KiB
+test             12.00 KiB
+analytics> show collections
+persons
+analytics> db.persons.findOne()
+{
+  _id: ObjectId('6797202eda1d6b269503583f'),
+  gender: 'male',
+  name: { title: 'mr', first: 'elijah', last: 'lewis' },
+  location: {
+    street: '2623 paddock way',
+    city: 'virginia beach',
+    state: 'wyoming',
+    postcode: 54880,
+    coordinates: { latitude: '-42.6128', longitude: '-18.5996' },
+    timezone: { offset: '+3:30', description: 'Tehran' }
+  },
+  email: 'elijah.lewis@example.com',
+  login: {
+    uuid: '2292b7c7-a9bf-4341-abbd-c5841444ab6e',
+    username: 'angrygorilla267',
+    password: 'toonarmy',
+    salt: 'DUtMcvWR',
+    md5: '258eaa742373ee70976d53d1b84d4764',
+    sha1: '62f168f38fa3f6efbd815b58518775d3c6cf0080',
+    sha256: 'a4ab496047b9de7df39adbdabfecc813b8da428087029c94c2b748cef092f85e'
+  },
+  dob: { date: '1986-03-29T06:40:18Z', age: 32 },
+  registered: { date: '2007-12-24T10:32:11Z', age: 10 },
+  phone: '(187)-486-3727',
+  cell: '(986)-974-0857',
+  id: { name: 'SSN', value: '127-66-9786' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/57.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/57.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/57.jpg'
+  },
+  nat: 'US'
+}
+analytics> db.persons.aggregate([
+... {$match: {gender: "female"}}
+... ])
+[
+  {
+    _id: ObjectId('6797202eda1d6b2695035842'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'olav', last: 'oehme' },
+    location: {
+      street: 'gartenstraße 64',
+      city: 'nastätten',
+      state: 'mecklenburg-vorpommern',
+      postcode: 93640,
+      coordinates: { latitude: '-52.8348', longitude: '-67.5738' },
+      timezone: {
+        offset: '-3:00',
+        description: 'Brazil, Buenos Aires, Georgetown'
+      }
+    },
+    email: 'olav.oehme@example.com',
+    login: {
+      uuid: '2608c05c-8951-4aee-bcd2-f598c80f32bb',
+      username: 'heavypeacock371',
+      password: 'silent',
+      salt: 'E6R29k0e',
+      md5: '587f4392dc06a9fb69a52eae94fd32f2',
+      sha1: '82eba68b1fe2407281da5787b9b89505c663b587',
+      sha256: '304034638901015d8a7b2fd43530fffc4c7d621ccfab98de935d9c8387198796'
+    },
+    dob: { date: '1960-11-28T23:07:18Z', age: 57 },
+    registered: { date: '2011-05-31T00:24:05Z', age: 7 },
+    phone: '0748-6607336',
+    cell: '0176-5787554',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/6.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/6.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/6.jpg'
+    },
+    nat: 'DE'
+  },
+  {
+    _id: ObjectId('6797202eda1d6b2695035843'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'madeleine', last: 'till' },
+    location: {
+      street: 'im winkel 166',
+      city: 'villingen-schwenningen',
+      state: 'baden-württemberg',
+      postcode: 32227,
+      coordinates: { latitude: '83.3998', longitude: '-172.3753' },
+      timezone: {
+        offset: '+5:30',
+        description: 'Bombay, Calcutta, Madras, New Delhi'
+      }
+    },
+    email: 'madeleine.till@example.com',
+    login: {
+      uuid: 'e70766b6-9d4f-419f-85c5-efc3c42db023',
+      username: 'goldencat450',
+      password: 'panthers',
+      salt: 'mHOsDM43',
+      md5: 'a97539f5d7b6c7302d3f3c1dd1d389b5',
+      sha1: 'a991dd190a83856b04d41a5e64bc41b5728b6903',
+      sha256: 'bd123b2b2aae61c6e8d3449bb14c6a032b4860275da781f8ffc73f5500e667bd'
+    },
+    dob: { date: '1954-05-01T02:34:40Z', age: 64 },
+    registered: { date: '2008-06-14T03:14:37Z', age: 10 },
+    phone: '0209-9573743',
+    cell: '0173-1226290',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/27.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/27.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/27.jpg'
+    },
+    nat: 'DE'
+  },
+  {
+    _id: ObjectId('6797202eda1d6b2695035844'),
+    gender: 'female',
+    name: { title: 'ms', first: 'louise', last: 'graham' },
+    location: {
+      street: '5108 south street',
+      city: 'cashel',
+      state: 'galway',
+      postcode: 45802,
+      coordinates: { latitude: '35.5726', longitude: '148.0944' },
+      timezone: { offset: '+2:00', description: 'Kaliningrad, South Africa' }
+    },
+    email: 'louise.graham@example.com',
+    login: {
+      uuid: '062c592e-c6eb-44c3-beda-fb71e9c13bba',
+      username: 'whitekoala325',
+      password: 'harry',
+      salt: 'OjIRb3hP',
+      md5: 'fc32be9814936026c62bb21bb4a029cd',
+      sha1: '6350de80d1be4af1e7b2a498962f69993082126c',
+      sha256: 'abc804d7d87f0fd1a058b8db7acdf1d62e0b80412e282c427173c466040b29d1'
+    },
+    dob: { date: '1971-01-21T20:36:16Z', age: 47 },
+    registered: { date: '2002-10-19T17:05:42Z', age: 15 },
+    phone: '011-434-7405',
+    cell: '081-010-7792',
+    id: { name: 'PPS', value: '9774048T' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/59.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/59.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/59.jpg'
+    },
+    nat: 'IE'
+  },
+  {
+    _id: ObjectId('6797202eda1d6b2695035845'),
+    gender: 'female',
+    name: { title: 'miss', first: 'shona', last: 'kemperman' },
+    location: {
+      street: '2685 adriaen van ostadelaan',
+      city: 'giessenlanden',
+      state: 'noord-brabant',
+      postcode: 57798,
+      coordinates: { latitude: '-14.4912', longitude: '-8.5570' },
+      timezone: { offset: '-12:00', description: 'Eniwetok, Kwajalein' }
+    },
+    email: 'shona.kemperman@example.com',
+    login: {
+      uuid: '45d4a86e-c007-45af-9489-49ff77c4905c',
+      username: 'bluetiger298',
+      password: 'xander',
+      salt: 'ANHBICA9',
+      md5: '56560a9b266dac51c04c43a9a845b7af',
+      sha1: '419f27be45ebb9635904e61c7e865ce13d963f63',
+      sha256: '10e7dab700ebd2b0edfced679f2cd4e4f67d2f65711d7af62e04d282b65a4161'
+    },
+    dob: { date: '1948-04-23T03:40:22Z', age: 70 },
+    registered: { date: '2003-12-29T05:37:33Z', age: 14 },
+    phone: '(132)-806-7647',
+    cell: '(766)-268-3084',
+    id: { name: 'BSN', value: '99563655' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/14.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/14.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/14.jpg'
+    },
+    nat: 'NL'
+  },
+  {
+    _id: ObjectId('6797202eda1d6b2695035847'),
+    gender: 'female',
+    name: { title: 'miss', first: 'mestan', last: 'kaplangı' },
+    location: {
+      street: '2575 abanoz sk',
+      city: 'elazığ',
+      state: 'kırşehir',
+      postcode: 48715,
+      coordinates: { latitude: '25.1614', longitude: '43.9085' },
+      timezone: {
+        offset: '+4:00',
+        description: 'Abu Dhabi, Muscat, Baku, Tbilisi'
+      }
+    },
+    email: 'mestan.kaplangı@example.com',
+    login: {
+      uuid: '1c449a8b-db88-4754-aae5-b66e0338a479',
+      username: 'bigelephant762',
+      password: 'patty',
+      salt: 'n2sxEnSR',
+      md5: '6f6904b481cb51f2e068fad23ceffa73',
+      sha1: '276e8c992cf366ff06c868290a164a2727cc1d41',
+      sha256: '14a2d569e3ac745afcb07991b61e95e8c85d9e04c1f8725163e466284f4a5900'
+    },
+    dob: { date: '1951-12-17T20:03:33Z', age: 66 },
+    registered: { date: '2006-04-05T12:24:26Z', age: 12 },
+    phone: '(729)-603-0876',
+    cell: '(250)-580-1253',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/42.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/42.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/42.jpg'
+    },
+    nat: 'TR'
+  },
+  {
+    _id: ObjectId('6797202eda1d6b2695035848'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'katie', last: 'welch' },
+    location: {
+      street: '3356 highfield road',
+      city: 'dunboyne',
+      state: 'dublin city',
+      postcode: 99090,
+      coordinates: { latitude: '71.9851', longitude: '135.9359' },
+      timezone: {
+        offset: '-3:00',
+        description: 'Brazil, Buenos Aires, Georgetown'
+      }
+    },
+    email: 'katie.welch@example.com',
+    login: {
+      uuid: 'a4262643-0ff9-4c5c-a452-34a4f0dc8d52',
+      username: 'blackbear565',
+      password: 'beatles1',
+      salt: '2lGmdNiv',
+      md5: 'f411d7f4bd8ec68c9def4701572509a6',
+      sha1: '802e286cef20c0ed2575cce82553a5749570b356',
+      sha256: '2688e7f41e9bbf81ea719b916c9a0abc6fb6e75351289d972759e60fb2ed35c6'
+    },
+    dob: { date: '1990-10-14T05:02:12Z', age: 27 },
+    registered: { date: '2007-12-21T20:44:40Z', age: 10 },
+    phone: '011-694-3254',
+    cell: '081-184-0215',
+    id: { name: 'PPS', value: '4743256T' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/88.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/88.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/88.jpg'
+    },
+    nat: 'IE'
+  },
+  {
+    _id: ObjectId('6797202eda1d6b269503584a'),
+    gender: 'female',
+    name: { title: 'miss', first: 'sandra', last: 'lorenzo' },
+    location: {
+      street: '7814 avenida de andalucía',
+      city: 'pamplona',
+      state: 'la rioja',
+      postcode: 47467,
+      coordinates: { latitude: '-88.6846', longitude: '-83.3326' },
+      timezone: { offset: '-10:00', description: 'Hawaii' }
+    },
+    email: 'sandra.lorenzo@example.com',
+    login: {
+      uuid: '04986a86-976f-4f3e-b112-244e0aca7cba',
+      username: 'orangegorilla209',
+      password: 'viking',
+      salt: 'v1Igycsr',
+      md5: 'f57648fcee958b878f636a48ad24839a',
+      sha1: '4001ff4031172172aaf46e27b60691be99feed2a',
+      sha256: 'fd287a853407637110e5df4749cab043391c2b2442aa6e218bde7b5aa5563366'
+    },
+    dob: { date: '1975-03-23T17:01:45Z', age: 43 },
+    registered: { date: '2017-12-13T21:16:35Z', age: 0 },
+    phone: '911-571-659',
+    cell: '674-415-588',
+    id: { name: 'DNI', value: '87273544-J' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/72.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/72.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/72.jpg'
+    },
+    nat: 'ES'
+  },
+  {
+    _id: ObjectId('6797202eda1d6b269503584b'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'پریا', last: 'پارسا' },
+    location: {
+      street: '2889 اجاره دار',
+      city: 'بوشهر',
+      state: 'خراسان جنوبی',
+      postcode: 32528,
+      coordinates: { latitude: '4.6625', longitude: '34.1689' },
+      timezone: {
+        offset: '+3:00',
+        description: 'Baghdad, Riyadh, Moscow, St. Petersburg'
+      }
+    },
+    email: 'پریا.پارسا@example.com',
+    login: {
+      uuid: '75c0d4dd-3a88-42dd-a7ad-5d39b0d8b4b1',
+      username: 'orangesnake137',
+      password: '1031',
+      salt: 'NRy5mtiy',
+      md5: '76aac038463dbbed95cb107811879981',
+      sha1: '7013f5d075efcfc35b1cb18298bd7e81db566af2',
+      sha256: '6a2792cf9c0386679eb2ca357bcae567907bcfad0d400a56d4c3dd55203d8c61'
+    },
+    dob: { date: '1962-01-10T05:26:30Z', age: 56 },
+    registered: { date: '2015-03-20T08:41:37Z', age: 3 },
+    phone: '053-06884781',
+    cell: '0993-557-5092',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/52.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/52.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/52.jpg'
+    },
+    nat: 'IR'
+  },
+  {
+    _id: ObjectId('6797202eda1d6b269503584d'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'gonca', last: 'alnıaçık' },
+    location: {
+      street: '7115 istiklal cd',
+      city: 'sakarya',
+      state: 'muğla',
+      postcode: 61085,
+      coordinates: { latitude: '88.1818', longitude: '130.0105' },
+      timezone: {
+        offset: '-5:00',
+        description: 'Eastern Time (US & Canada), Bogota, Lima'
+      }
+    },
+    email: 'gonca.alnıaçık@example.com',
+    login: {
+      uuid: '2830a251-208d-45e0-9f66-3872d703287b',
+      username: 'organicpanda295',
+      password: 'phillies',
+      salt: 'CPA0ODBu',
+      md5: '2ecc7a3c283961ca2f2fdcb46dd3f4a4',
+      sha1: '27cd0890760248faf6d77ebefda8bc12ce7e26f2',
+      sha256: '058a0c02aae03686ca24d838faa705e53bd24443bc5397ca560d5f5a25e44fc3'
+    },
+    dob: { date: '1988-11-08T00:18:59Z', age: 29 },
+    registered: { date: '2015-03-18T02:22:49Z', age: 3 },
+    phone: '(754)-546-4300',
+    cell: '(246)-176-8953',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/66.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/66.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/66.jpg'
+    },
+    nat: 'TR'
+  },
+  {
+    _id: ObjectId('6797202eda1d6b269503584e'),
+    gender: 'female',
+    name: { title: 'miss', first: 'anne', last: 'ruiz' },
+    location: {
+      street: '5523 cackson st',
+      city: 'devonport',
+      state: 'northern territory',
+      postcode: 9797,
+      coordinates: { latitude: '-84.1572', longitude: '78.0207' },
+      timezone: {
+        offset: '+9:00',
+        description: 'Tokyo, Seoul, Osaka, Sapporo, Yakutsk'
+      }
+    },
+    email: 'anne.ruiz@example.com',
+    login: {
+      uuid: '7ee5ffa7-ea97-40a4-a476-3d4673bba13b',
+      username: 'happyrabbit405',
+      password: '1qaz2wsx',
+      salt: 'I2cXRgLP',
+      md5: '7e660dcb6162f659f0cc658cf0d0722e',
+      sha1: '4bf5521bb7e22092df2f3d0c9e09d7530ab95fc6',
+      sha256: 'b658ea12176845a7e0c344dcc8ca7e11bdda1bb5601b4e13c9425ecf33820702'
+    },
+    dob: { date: '1982-10-09T12:10:42Z', age: 35 },
+    registered: { date: '2016-09-06T20:51:12Z', age: 2 },
+    phone: '06-1601-9518',
+    cell: '0479-884-985',
+    id: { name: 'TFN', value: '987210251' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/51.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/51.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/51.jpg'
+    },
+    nat: 'AU'
+  },
+  {
+    _id: ObjectId('6797202eda1d6b269503584f'),
+    gender: 'female',
+    name: { title: 'miss', first: 'maeva', last: 'grewal' },
+    location: {
+      street: '9148 brock rd',
+      city: 'shelbourne',
+      state: 'québec',
+      postcode: 'O8H 9F7',
+      coordinates: { latitude: '-13.9479', longitude: '-48.3596' },
+      timezone: {
+        offset: '+11:00',
+        description: 'Magadan, Solomon Islands, New Caledonia'
+      }
+    },
+    email: 'maeva.grewal@example.com',
+    login: {
+      uuid: '38a6bd71-1c0a-4c65-9816-044f8619fc22',
+      username: 'bluekoala192',
+      password: 'horton',
+      salt: '35WAs1sb',
+      md5: 'ff8a456c0e851045c4d4c572be3c6a2d',
+      sha1: '862813403bb6beeba403b9e6947e8df38b86c8b2',
+      sha256: 'd9b03703f625a592ee43d93a664e6d9c448c4147f6e77562571fc92b133ab338'
+    },
+    dob: { date: '1972-04-23T04:31:25Z', age: 46 },
+    registered: { date: '2012-01-24T03:04:47Z', age: 6 },
+    phone: '282-026-0240',
+    cell: '842-037-3131',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/29.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/29.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/29.jpg'
+    },
+    nat: 'CA'
+  },
+  {
+    _id: ObjectId('6797202eda1d6b2695035850'),
+    gender: 'female',
+    name: { title: 'miss', first: 'maeva', last: 'wilson' },
+    location: {
+      street: '4962 36th ave',
+      city: 'jasper',
+      state: 'northwest territories',
+      postcode: 'U0A 4J6',
+      coordinates: { latitude: '-31.6359', longitude: '111.3806' },
+      timezone: {
+        offset: '+9:00',
+        description: 'Tokyo, Seoul, Osaka, Sapporo, Yakutsk'
+      }
+    },
+    email: 'maeva.wilson@example.com',
+    login: {
+      uuid: '8f2d499c-6a7e-4606-8c58-211fdb880c31',
+      username: 'smallgoose815',
+      password: 'weston',
+      salt: 'TyL1q8hK',
+      md5: 'bcedea61753320688ea27be01982556d',
+      sha1: '9e075df851fdaf292170d8e0a92c19ee37fba0f2',
+      sha256: '6f022405c6a384de3ab5cfc98cccdd97570e5b412046d05dfb79c23ae37612fa'
+    },
+    dob: { date: '1962-08-11T20:51:07Z', age: 56 },
+    registered: { date: '2016-10-03T10:02:55Z', age: 1 },
+    phone: '727-218-6012',
+    cell: '443-382-6538',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/96.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/96.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/96.jpg'
+    },
+    nat: 'CA'
+  },
+  {
+    _id: ObjectId('6797202eda1d6b2695035851'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'aya', last: 'liland' },
+    location: {
+      street: 'olav nygards veg 1791',
+      city: 'sigerfjord',
+      state: 'trøndelag',
+      postcode: '7864',
+      coordinates: { latitude: '-88.4983', longitude: '-104.3451' },
+      timezone: {
+        offset: '-5:00',
+        description: 'Eastern Time (US & Canada), Bogota, Lima'
+      }
+    },
+    email: 'aya.liland@example.com',
+    login: {
+      uuid: '80060b57-a1d1-4e54-afd2-9574109b8a51',
+      username: 'bigleopard842',
+      password: 'summers',
+      salt: 'ZDeNt44y',
+      md5: 'bff572b29319a86443150126fa98746c',
+      sha1: '726f00762aeff28a346f2b8bbeea601742a825f7',
+      sha256: 'f626dd80e8716f182c9fac453d58b472706f5429b48e8348448b19db5fa20e9b'
+    },
+    dob: { date: '1973-08-26T00:11:58Z', age: 45 },
+    registered: { date: '2013-05-05T05:44:54Z', age: 5 },
+    phone: '32343880',
+    cell: '98392867',
+    id: { name: 'FN', value: '26087347329' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/34.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/34.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/34.jpg'
+    },
+    nat: 'NO'
+  },
+  {
+    _id: ObjectId('6797202eda1d6b2695035853'),
+    gender: 'female',
+    name: { title: 'ms', first: 'signe', last: 'rasmussen' },
+    location: {
+      street: '3635 koldingvej',
+      city: 'ryslinge',
+      state: 'sjælland',
+      postcode: 44840,
+      coordinates: { latitude: '18.2563', longitude: '14.0142' },
+      timezone: { offset: '+4:30', description: 'Kabul' }
+    },
+    email: 'signe.rasmussen@example.com',
+    login: {
+      uuid: '687099d9-b4bd-4881-8657-90abd559844f',
+      username: 'sadpeacock229',
+      password: 'baggio',
+      salt: 'J1WBRau1',
+      md5: '2b0824d7f90452cc93a879aaf717fa40',
+      sha1: 'd7fc48d34816bccf8cac0c532b06e37e65974759',
+      sha256: '2388d9162c447e163fdaaf94fb99bc5ca42a93de167d82eed59e296f8d1de8dd'
+    },
+    dob: { date: '1983-05-20T21:26:44Z', age: 35 },
+    registered: { date: '2010-09-30T04:08:40Z', age: 7 },
+    phone: '46945447',
+    cell: '97293211',
+    id: { name: 'CPR', value: '082246-7576' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/5.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/5.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/5.jpg'
+    },
+    nat: 'DK'
+  },
+  {
+    _id: ObjectId('6797202eda1d6b2695035854'),
+    gender: 'female',
+    name: { title: 'mademoiselle', first: 'delia', last: 'durand' },
+    location: {
+      street: '6735 rue abel-hovelacque',
+      city: 'fontaines-sur-grandson',
+      state: 'appenzell ausserrhoden',
+      postcode: 6137,
+      coordinates: { latitude: '-65.0877', longitude: '-90.4049' },
+      timezone: { offset: '+2:00', description: 'Kaliningrad, South Africa' }
+    },
+    email: 'delia.durand@example.com',
+    login: {
+      uuid: '6c4ea050-eca4-4809-8024-96a98f655553',
+      username: 'purplebear663',
+      password: 'sparky1',
+      salt: 'rzU1EPXV',
+      md5: 'a9198f953f34daf7b461b6065734d13b',
+      sha1: '43c50f99742937b3ddd3f9ec0863924741b408c9',
+      sha256: '63da5442d2a4d2ca02e0b3bb138e28760aa732258e35de102c8fd652c48721ea'
+    },
+    dob: { date: '1966-08-03T09:22:41Z', age: 52 },
+    registered: { date: '2009-05-28T19:09:24Z', age: 9 },
+    phone: '(166)-728-8912',
+    cell: '(301)-529-4162',
+    id: { name: 'AVS', value: '756.5746.5832.39' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/91.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/91.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/91.jpg'
+    },
+    nat: 'CH'
+  },
+  {
+    _id: ObjectId('6797202eda1d6b2695035856'),
+    gender: 'female',
+    name: { title: 'ms', first: 'maya', last: 'macdonald' },
+    location: {
+      street: '100 george st',
+      city: 'winfield',
+      state: 'yukon',
+      postcode: 'K4Q 2U2',
+      coordinates: { latitude: '9.4191', longitude: '-102.1065' },
+      timezone: {
+        offset: '+9:00',
+        description: 'Tokyo, Seoul, Osaka, Sapporo, Yakutsk'
+      }
+    },
+    email: 'maya.macdonald@example.com',
+    login: {
+      uuid: '934e8a54-0d46-4cd7-accd-a0a67f19299b',
+      username: 'bigfish793',
+      password: 'kiss',
+      salt: 'IYteMQWZ',
+      md5: '6d975a2ef56a3f129949ee6133dca67e',
+      sha1: '22a304b1577abe6b303f016d4069f81c4aac814c',
+      sha256: 'da09a9dff1d93bc54044e89c18df814f1bc651331708834a310458a96145260c'
+    },
+    dob: { date: '1953-01-17T16:10:03Z', age: 65 },
+    registered: { date: '2009-10-08T16:00:18Z', age: 8 },
+    phone: '343-367-3594',
+    cell: '329-394-0526',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/73.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/73.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/73.jpg'
+    },
+    nat: 'CA'
+  },
+  {
+    _id: ObjectId('6797202eda1d6b2695035857'),
+    gender: 'female',
+    name: { title: 'miss', first: 'monica', last: 'hart' },
+    location: {
+      street: '2801 e sandy lake rd',
+      city: 'seattle',
+      state: 'alabama',
+      postcode: 21117,
+      coordinates: { latitude: '-26.1520', longitude: '146.2648' },
+      timezone: { offset: '-9:00', description: 'Alaska' }
+    },
+    email: 'monica.hart@example.com',
+    login: {
+      uuid: 'aa185cb7-5263-4f3d-9d25-ec2affee638c',
+      username: 'goldenbird983',
+      password: 'kyle',
+      salt: 'eV1rmYSw',
+      md5: '43813b31306b063b72a680d95bbe7412',
+      sha1: '51256ec56c70b2c3381c02ed1d0f23dc69887248',
+      sha256: 'a539ceaeb6a2055bf41cff3f33193065b3f0452122185f2154f397b2f61cbfe6'
+    },
+    dob: { date: '1969-10-22T08:07:25Z', age: 48 },
+    registered: { date: '2009-04-08T20:54:55Z', age: 9 },
+    phone: '(957)-810-1345',
+    cell: '(685)-189-1125',
+    id: { name: 'SSN', value: '353-24-6860' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/20.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/20.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/20.jpg'
+    },
+    nat: 'US'
+  },
+  {
+    _id: ObjectId('6797202eda1d6b2695035859'),
+    gender: 'female',
+    name: { title: 'miss', first: 'leah', last: 'long' },
+    location: {
+      street: '9879 manor road',
+      city: 'inverness',
+      state: 'borders',
+      postcode: 'NC87 8JA',
+      coordinates: { latitude: '-16.6496', longitude: '98.4584' },
+      timezone: {
+        offset: '+5:00',
+        description: 'Ekaterinburg, Islamabad, Karachi, Tashkent'
+      }
+    },
+    email: 'leah.long@example.com',
+    login: {
+      uuid: '5be892a0-2e83-4ece-9e7e-e9fcb311382f',
+      username: 'goldenduck128',
+      password: 'gotyoass',
+      salt: 'uKjub9QW',
+      md5: 'f55dfd7daaf3e4fcdecf275e1a660703',
+      sha1: 'd3fa32fda57aa5b4a3e7291b922f28e995169af0',
+      sha256: '5f58a489f5433c2f47d3b44f297f95912118f0b0274e28248d5218724e99445f'
+    },
+    dob: { date: '1988-12-12T08:20:04Z', age: 29 },
+    registered: { date: '2012-08-24T20:59:29Z', age: 6 },
+    phone: '01944 850764',
+    cell: '0767-833-499',
+    id: { name: 'NINO', value: 'BP 59 55 63 A' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/51.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/51.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/51.jpg'
+    },
+    nat: 'GB'
+  },
+  {
+    _id: ObjectId('6797202eda1d6b269503585a'),
+    gender: 'female',
+    name: { title: 'madame', first: 'andreia', last: 'arnaud' },
+    location: {
+      street: '7425 route de genas',
+      city: "l'abbaye",
+      state: 'schwyz',
+      postcode: 7441,
+      coordinates: { latitude: '-67.6434', longitude: '59.5703' },
+      timezone: { offset: '-12:00', description: 'Eniwetok, Kwajalein' }
+    },
+    email: 'andreia.arnaud@example.com',
+    login: {
+      uuid: '6f647090-766c-4708-920c-bf4fcc617d15',
+      username: 'organicgoose539',
+      password: 'bestbuy',
+      salt: '2g7xpk8Z',
+      md5: 'e032913bb9e7c0504cff46efa0cf01cd',
+      sha1: 'ffaa47cdc0891dfcbea3e4076999235c49635576',
+      sha256: '6e392bc95c930bb6e828b814a3ba554e0eebcdbd0505346f81995be8ec774b4f'
+    },
+    dob: { date: '1960-01-31T05:16:10Z', age: 58 },
+    registered: { date: '2003-10-19T20:41:13Z', age: 14 },
+    phone: '(563)-009-4755',
+    cell: '(842)-068-0366',
+    id: { name: 'AVS', value: '756.5206.2620.86' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/3.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/3.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/3.jpg'
+    },
+    nat: 'CH'
+  },
+  {
+    _id: ObjectId('6797202eda1d6b269503585d'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'ece', last: 'balcı' },
+    location: {
+      street: '1576 anafartalar cd',
+      city: 'bingöl',
+      state: 'aydın',
+      postcode: 35826,
+      coordinates: { latitude: '84.5070', longitude: '-81.2020' },
+      timezone: {
+        offset: '-6:00',
+        description: 'Central Time (US & Canada), Mexico City'
+      }
+    },
+    email: 'ece.balcı@example.com',
+    login: {
+      uuid: 'f58ddda5-6ab6-49dc-bb05-d1bb2b807af7',
+      username: 'sadtiger972',
+      password: 'valkyrie',
+      salt: 'WGDZpoLV',
+      md5: 'c119f0c9f5caeba0b0b9d7ed2baf3128',
+      sha1: 'aa9926cab6af7a5e861b209ac60bd45b3a02b4eb',
+      sha256: '9ced1f3b85ca271a13868b5fb7ac6cd7fe8bc56a26056e1f5b11e5246bdab356'
+    },
+    dob: { date: '1989-10-09T18:35:35Z', age: 28 },
+    registered: { date: '2018-02-11T03:58:41Z', age: 0 },
+    phone: '(901)-028-1992',
+    cell: '(264)-145-9079',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/79.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/79.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/79.jpg'
+    },
+    nat: 'TR'
+  }
+]
+Type "it" for more
+analytics> db.persons.aggregate([
+...     {$match: {$gender: "female"}}
+...     {$group: {_id: {state: "$location.state"}, totalPersons: {$sum: 1}}}
+Uncaught:
+SyntaxError: Unexpected token, expected "," (3:4)
+
+  1 | db.persons.aggregate([
+  2 |     {$match: {$gender: "female"}}
+> 3 |     {$group: {_id: {state: "$location.state"}, totalPersons: {$sum: 1}}}
+    |     ^
+  4 |
+
+analytics> ])db.persons.aggregate([
+Uncaught:
+SyntaxError: Unexpected token (1:0)
+
+> 1 | ])db.persons.aggregate([
+    | ^
+  2 |
+
+analytics>     {$match: {$gender: "female"}}
+female
+analytics>     {$group: {_id: {state: "$location.state"}, totalPersons: {$sum: 1}}}
+... ])
+Uncaught:
+SyntaxError: Unexpected token (1:45)
+
+> 1 |     {$group: {_id: {state: "$location.state"}, totalPersons: {$sum: 1}}}
+    |                                              ^
+  2 | ])
+  3 |
+
+analytics> db.persons.aggregate([
+...     {$match: {$gender: "female"}}
+...     {$group: {_id: {state: "$location.state"}, totalPersons: {$sum: 1}}}
+Uncaught:
+SyntaxError: Unexpected token, expected "," (3:4)
+
+  1 | db.persons.aggregate([
+  2 |     {$match: {$gender: "female"}}
+> 3 |     {$group: {_id: {state: "$location.state"}, totalPersons: {$sum: 1}}}
+    |     ^
+  4 |
+
+analytics>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+analytics> db.persons.aggregate([
+...     {$match: {$gender: "female"}}
+...     {$group: {_id: {state: "$location.state"}, totalPersons: {$sum: 1}}}
+Uncaught:
+SyntaxError: Unexpected token, expected "," (3:4)
+
+  1 | db.persons.aggregate([
+  2 |     {$match: {$gender: "female"}}
+> 3 |     {$group: {_id: {state: "$location.state"}, totalPersons: {$sum: 1}}}
+    |     ^
+  4 |
+
+analytics> db.persons.aggregate([ {$match: {$gender: "female"}} {$group: {_id: {state: "$location.state"}, totalPersons: {$sum: 1}}}])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:53)
+
+> 1 | db.persons.aggregate([ {$match: {$gender: "female"}} {$group: {_id: {state: "$location.state"}, totalPersons: {$sum: 1}}}])
+    |                                                      ^
+  2 |
+
+analytics>
+
+analytics> db.persons.aggregate([
+...     {$match: {$gender: "female"}}
+...     {$group: {_id: {state: "$location.state"}, totalPersons: {$sum: 1}}}
+Uncaught:
+SyntaxError: Unexpected token, expected "," (3:4)
+
+  1 | db.persons.aggregate([
+  2 |     {$match: {$gender: "female"}}
+> 3 |     {$group: {_id: {state: "$location.state"}, totalPersons: {$sum: 1}}}
+    |     ^
+  4 |
+
+analytics> db.persons.aggregate([
+...     {$match: {$gender: "female"}}
+...     {$group: {_id: {state: "$location.state"}, totalPersons: {$sum: 1}}}
+Uncaught:
+SyntaxError: Unexpected token, expected "," (3:4)
+
+  1 | db.persons.aggregate([
+  2 |     {$match: {$gender: "female"}}
+> 3 |     {$group: {_id: {state: "$location.state"}, totalPersons: {$sum: 1}}}
+    |     ^
+  4 |
+
+analytics> ])
+Uncaught:
+SyntaxError: Unexpected token (1:0)
+
+> 1 | ])
+    | ^
+  2 |
+
+analytics> db.persons.aggregate([
+...     {$match: {$gender: "female"}},
+...     {$group: {_id: {state: "$location.state"}, totalPersons: {$sum: 1}}}
+... ])
+MongoServerError: unknown top level operator: $gender. If you have a field name that starts with a '$' symbol, consider using $getField or $setField.
+analytics> db.persons.aggregate([ { $match: { gender: "female" } }, { $group: { _id: { state: "$location.state" }, totalPersons: { $sum: 1 } } }] )
+[
+  { _id: { state: 'gwynedd county' }, totalPersons: 3 },
+  { _id: { state: 'vermont' }, totalPersons: 4 },
+  { _id: { state: 'mardin' }, totalPersons: 3 },
+  { _id: { state: 'west sussex' }, totalPersons: 2 },
+  { _id: { state: 'haute-saône' }, totalPersons: 2 },
+  { _id: { state: 'finland proper' }, totalPersons: 11 },
+  { _id: { state: 'hessen' }, totalPersons: 11 },
+  { _id: { state: 'tennessee' }, totalPersons: 3 },
+  { _id: { state: 'durham' }, totalPersons: 1 },
+  { _id: { state: 'خراسان رضوی' }, totalPersons: 10 },
+  { _id: { state: 'rheinland-pfalz' }, totalPersons: 8 },
+  { _id: { state: 'gelderland' }, totalPersons: 16 },
+  { _id: { state: 'کهگیلویه و بویراحمد' }, totalPersons: 8 },
+  { _id: { state: 'minnesota' }, totalPersons: 2 },
+  { _id: { state: 'aveyron' }, totalPersons: 1 },
+  { _id: { state: 'mississippi' }, totalPersons: 2 },
+  { _id: { state: 'montana' }, totalPersons: 3 },
+  { _id: { state: 'lothian' }, totalPersons: 1 },
+  { _id: { state: "côtes-d'armor" }, totalPersons: 1 },
+  { _id: { state: 'elazığ' }, totalPersons: 4 }
+]
+Type "it" for more
+analytics> db.persons.aggregate([
+...     {$match: {$gender: "female"}},
+...     {$group: {_id: {state: "$location.state"}, totalPersons: {$sum: 1}}},
+...     {$sort: {totalPersons: -1}}
+... ])
+MongoServerError: unknown top level operator: $gender. If you have a field name that starts with a '$' symbol, consider using $getField or $setField.
+analytics> db.persons.aggregate([
+...     {$match: {gender: "female"}},
+...     {$group: {_id: {state: "$location.state"}, totalPersons: {$sum: 1}}},
+...     {$sort: {totalPersons: -1}}
+... ])
+[
+  { _id: { state: 'midtjylland' }, totalPersons: 33 },
+  { _id: { state: 'nordjylland' }, totalPersons: 27 },
+  { _id: { state: 'new south wales' }, totalPersons: 24 },
+  { _id: { state: 'syddanmark' }, totalPersons: 24 },
+  { _id: { state: 'australian capital territory' }, totalPersons: 24 },
+  { _id: { state: 'south australia' }, totalPersons: 22 },
+  { _id: { state: 'danmark' }, totalPersons: 21 },
+  { _id: { state: 'hovedstaden' }, totalPersons: 21 },
+  { _id: { state: 'overijssel' }, totalPersons: 20 },
+  { _id: { state: 'queensland' }, totalPersons: 20 },
+  { _id: { state: 'sjælland' }, totalPersons: 19 },
+  { _id: { state: 'nova scotia' }, totalPersons: 17 },
+  { _id: { state: 'gelderland' }, totalPersons: 16 },
+  { _id: { state: 'canterbury' }, totalPersons: 16 },
+  { _id: { state: 'yukon' }, totalPersons: 16 },
+  { _id: { state: 'northwest territories' }, totalPersons: 16 },
+  { _id: { state: 'bayern' }, totalPersons: 15 },
+  { _id: { state: 'tasmania' }, totalPersons: 15 },
+  { _id: { state: 'northern territory' }, totalPersons: 15 },
+  { _id: { state: 'limburg' }, totalPersons: 14 }
+]
+Type "it" for more
+analytics> db.persons.findOne()
+{
+  _id: ObjectId('6797202eda1d6b269503583f'),
+  gender: 'male',
+  name: { title: 'mr', first: 'elijah', last: 'lewis' },
+  location: {
+    street: '2623 paddock way',
+    city: 'virginia beach',
+    state: 'wyoming',
+    postcode: 54880,
+    coordinates: { latitude: '-42.6128', longitude: '-18.5996' },
+    timezone: { offset: '+3:30', description: 'Tehran' }
+  },
+  email: 'elijah.lewis@example.com',
+  login: {
+    uuid: '2292b7c7-a9bf-4341-abbd-c5841444ab6e',
+    username: 'angrygorilla267',
+    password: 'toonarmy',
+    salt: 'DUtMcvWR',
+    md5: '258eaa742373ee70976d53d1b84d4764',
+    sha1: '62f168f38fa3f6efbd815b58518775d3c6cf0080',
+    sha256: 'a4ab496047b9de7df39adbdabfecc813b8da428087029c94c2b748cef092f85e'
+  },
+  dob: { date: '1986-03-29T06:40:18Z', age: 32 },
+  registered: { date: '2007-12-24T10:32:11Z', age: 10 },
+  phone: '(187)-486-3727',
+  cell: '(986)-974-0857',
+  id: { name: 'SSN', value: '127-66-9786' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/57.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/57.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/57.jpg'
+  },
+  nat: 'US'
+}
+analytics> db.persons.aggregate([
+...     {$match: {"dob.age": {$gt: 50}}},
+...     {$group: {_id: {gender: "$gender"}}, totalPersons: {$sum: 1}, averageAge: {$avg: "$dob.age"}}
+...     {$sort: {totalPersons: -1}}
+Uncaught:
+SyntaxError: Unexpected token, expected "," (4:4)
+
+  2 |     {$match: {"dob.age": {$gt: 50}}},
+  3 |     {$group: {_id: {gender: "$gender"}}, totalPersons: {$sum: 1}, averageAge: {$avg: "$dob.age"}}
+> 4 |     {$sort: {totalPersons: -1}}
+    |     ^
+  5 |
+
+analytics> ])
+analytics> db.persons.aggregate([ {$match: {"dob.age": {$gt: 50}}}, {$group: {_id: {gender: "$gender"}}, totalPersons: {$sum: 1}, averageAge: {$avg: "$dob.age"}} {$sort: {totalPersons: -1}}
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:151)
+
+> 1 | db.persons.aggregate([ {$match: {"dob.age": {$gt: 50}}}, {$group: {_id: {gender: "$gender"}}, totalPersons: {$sum: 1}, averageAge: {$avg: "$dob.age"}} {$sort: {totalPersons: -1}}
+    |
+ ^
+  2 |
+
+analytics> db.persons.aggregate([
+...     {$match: {"dob.age": {$gt: 50}}},
+...     {$group: {_id: {gender: "$gender"}}, totalPersons: {$sum: 1}, averageAge: {$avg: "$dob.age"}},
+...     {$sort: {totalPersons: -1}}
+... ])
+MongoServerError: A pipeline stage specification object must contain exactly one field.
+analytics> db.persons.aggregate([
+...     {$match: {"dob.age": {$gt: 50}}},
+...     {$group: {_id: {gender: "$gender"}, totalPersons: {$sum: 1}, averageAge: {$avg: "$dob.age"}}},
+...     {$sort: {totalPersons: -1}}
+... ])
+[
+  {
+    _id: { gender: 'female' },
+    totalPersons: 1125,
+    averageAge: 61.90577777777778
+  },
+  {
+    _id: { gender: 'male' },
+    totalPersons: 1079,
+    averageAge: 62.066728452270624
+  }
+]
+analytics> db.persons.aggregate([
+...     {$project: {_id: 0, gender: 1, fullName: {$concat: ["Hello", "World"]}}}
+... ])
+[
+  { gender: 'male', fullName: 'HelloWorld' },
+  { gender: 'male', fullName: 'HelloWorld' },
+  { gender: 'male', fullName: 'HelloWorld' },
+  { gender: 'female', fullName: 'HelloWorld' },
+  { gender: 'female', fullName: 'HelloWorld' },
+  { gender: 'female', fullName: 'HelloWorld' },
+  { gender: 'female', fullName: 'HelloWorld' },
+  { gender: 'male', fullName: 'HelloWorld' },
+  { gender: 'female', fullName: 'HelloWorld' },
+  { gender: 'female', fullName: 'HelloWorld' },
+  { gender: 'male', fullName: 'HelloWorld' },
+  { gender: 'female', fullName: 'HelloWorld' },
+  { gender: 'female', fullName: 'HelloWorld' },
+  { gender: 'male', fullName: 'HelloWorld' },
+  { gender: 'female', fullName: 'HelloWorld' },
+  { gender: 'female', fullName: 'HelloWorld' },
+  { gender: 'female', fullName: 'HelloWorld' },
+  { gender: 'female', fullName: 'HelloWorld' },
+  { gender: 'female', fullName: 'HelloWorld' },
+  { gender: 'male', fullName: 'HelloWorld' }
+]
+Type "it" for more
+analytics> db.persons.aggregate([
+...     {$project: {_id: 0, gender: 1, fullName: {$concat: ["$name.first", "$name.last"]}}}
+... ])
+[
+  { gender: 'male', fullName: 'elijahlewis' },
+  { gender: 'male', fullName: 'zacharylo' },
+  { gender: 'male', fullName: 'carljacobs' },
+  { gender: 'female', fullName: 'olavoehme' },
+  { gender: 'female', fullName: 'madeleinetill' },
+  { gender: 'female', fullName: 'louisegraham' },
+  { gender: 'female', fullName: 'shonakemperman' },
+  { gender: 'male', fullName: 'isolinoviana' },
+  { gender: 'female', fullName: 'mestankaplangı' },
+  { gender: 'female', fullName: 'katiewelch' },
+  { gender: 'male', fullName: 'بنیامینسالاری' },
+  { gender: 'female', fullName: 'sandralorenzo' },
+  { gender: 'female', fullName: 'پریاپارسا' },
+  { gender: 'male', fullName: 'victorpedersen' },
+  { gender: 'female', fullName: 'goncaalnıaçık' },
+  { gender: 'female', fullName: 'anneruiz' },
+  { gender: 'female', fullName: 'maevagrewal' },
+  { gender: 'female', fullName: 'maevawilson' },
+  { gender: 'female', fullName: 'ayaliland' },
+  { gender: 'male', fullName: 'vincentküper' }
+]
+Type "it" for more
+analytics> db.persons.aggregate([
+...     {$project: {_id: 0, gender: 1, fullName: {$concat: ["$name.first", " ", "$name.last"]}}}
+... ])
+[
+  { gender: 'male', fullName: 'elijah lewis' },
+  { gender: 'male', fullName: 'zachary lo' },
+  { gender: 'male', fullName: 'carl jacobs' },
+  { gender: 'female', fullName: 'olav oehme' },
+  { gender: 'female', fullName: 'madeleine till' },
+  { gender: 'female', fullName: 'louise graham' },
+  { gender: 'female', fullName: 'shona kemperman' },
+  { gender: 'male', fullName: 'isolino viana' },
+  { gender: 'female', fullName: 'mestan kaplangı' },
+  { gender: 'female', fullName: 'katie welch' },
+  { gender: 'male', fullName: 'بنیامین سالاری' },
+  { gender: 'female', fullName: 'sandra lorenzo' },
+  { gender: 'female', fullName: 'پریا پارسا' },
+  { gender: 'male', fullName: 'victor pedersen' },
+  { gender: 'female', fullName: 'gonca alnıaçık' },
+  { gender: 'female', fullName: 'anne ruiz' },
+  { gender: 'female', fullName: 'maeva grewal' },
+  { gender: 'female', fullName: 'maeva wilson' },
+  { gender: 'female', fullName: 'aya liland' },
+  { gender: 'male', fullName: 'vincent küper' }
+]
+Type "it" for more
+analytics> db.persons.aggregate([
+...     {$project: {_id: 0, gender: 1, fullName: {$concat: [{$toUpper: "$name.first"}, " ", {$toUpper: "$name.last"}]}}}
+... ])
+[
+  { gender: 'male', fullName: 'ELIJAH LEWIS' },
+  { gender: 'male', fullName: 'ZACHARY LO' },
+  { gender: 'male', fullName: 'CARL JACOBS' },
+  { gender: 'female', fullName: 'OLAV OEHME' },
+  { gender: 'female', fullName: 'MADELEINE TILL' },
+  { gender: 'female', fullName: 'LOUISE GRAHAM' },
+  { gender: 'female', fullName: 'SHONA KEMPERMAN' },
+  { gender: 'male', fullName: 'ISOLINO VIANA' },
+  { gender: 'female', fullName: 'MESTAN KAPLANGı' },
+  { gender: 'female', fullName: 'KATIE WELCH' },
+  { gender: 'male', fullName: 'بنیامین سالاری' },
+  { gender: 'female', fullName: 'SANDRA LORENZO' },
+  { gender: 'female', fullName: 'پریا پارسا' },
+  { gender: 'male', fullName: 'VICTOR PEDERSEN' },
+  { gender: 'female', fullName: 'GONCA ALNıAçıK' },
+  { gender: 'female', fullName: 'ANNE RUIZ' },
+  { gender: 'female', fullName: 'MAEVA GREWAL' },
+  { gender: 'female', fullName: 'MAEVA WILSON' },
+  { gender: 'female', fullName: 'AYA LILAND' },
+  { gender: 'male', fullName: 'VINCENT KüPER' }
+]
+Type "it" for more
+analytics> db.persons.aggregate([
+...   {
+...     {$project: {_id: 0, name: 1, email: 1, location: {type: "Point", coordinates: [
+Uncaught:
+SyntaxError: Unexpected token (3:4)
+
+  1 | db.persons.aggregate([
+  2 |   {
+> 3 |     {$project: {_id: 0, name: 1, email: 1, location: {type: "Point", coordinates: [
+    |     ^
+  4 |
+
+analytics>         "$location.coordinates.longitude", "$location.coordinates.latitude"
+$location.coordinates.latitude
+analytics>     ]}}},
+Uncaught:
+SyntaxError: Unexpected token (1:4)
+
+> 1 |     ]}}},
+    |     ^
+  2 |
+
+analytics>
+
+analytics>     {$project: {
+...       gender: 1,
+...       email: 1,
+...       location: 1,
+...       fullName: {
+...         $concat: [{ $toUpper: "$name.first" }, " ", { $toUpper: "$name.last" }],
+...       },
+...     },
+...   }
+... },
+Uncaught:
+SyntaxError: Missing semicolon. (3:11)
+
+  1 |     {$project: {
+  2 |       gender: 1,
+> 3 |       email: 1,
+    |            ^
+  4 |       location: 1,
+  5 |       fullName: {
+  6 |         $concat: [{ $toUpper: "$name.first" }, " ", { $toUpper: "$name.last" }],
+
+analytics> ]);
+Uncaught:
+SyntaxError: Unexpected token (1:0)
+
+> 1 | ]);
+    | ^
+  2 |
+
+analytics> db.persons.aggregate([
+...   {
+...     {$project: {_id: 0, name: 1, email: 1, location: {type: "Point", coordinates: [
+Uncaught:
+SyntaxError: Unexpected token (3:4)
+
+  1 | db.persons.aggregate([
+  2 |   {
+> 3 |     {$project: {_id: 0, name: 1, email: 1, location: {type: "Point", coordinates: [
+    |     ^
+  4 |
+
+analytics>         "$location.coordinates.longitude", "$location.coordinates.latitude"
+$location.coordinates.latitude
+analytics>     ]}}},
+Uncaught:
+SyntaxError: Unexpected token (1:4)
+
+> 1 |     ]}}},
+    |     ^
+  2 |
+
+analytics>
+
+analytics>     {$project: {
+...       gender: 1,
+...       email: 1,
+...       location: 1,
+...       fullName: {
+...         $concat: [{ $toUpper: "$name.first" }, " ", { $toUpper: "$name.last" }],
+...       },
+...     },
+...   }
+... },
+Uncaught:
+SyntaxError: Missing semicolon. (3:11)
+
+  1 |     {$project: {
+  2 |       gender: 1,
+> 3 |       email: 1,
+    |            ^
+  4 |       location: 1,
+  5 |       fullName: {
+  6 |         $concat: [{ $toUpper: "$name.first" }, " ", { $toUpper: "$name.last" }],
+
+analytics> ]);
+Uncaught:
+SyntaxError: Unexpected token (1:0)
+
+> 1 | ]);
+    | ^
+  2 |
+
+analytics> db.persons.aggregate([
+...   {
+...     {$project: {_id: 0, name: 1, email: 1, location: {type: "Point", coordinates: [
+Uncaught:
+SyntaxError: Unexpected token (3:4)
+
+  1 | db.persons.aggregate([
+  2 |   {
+> 3 |     {$project: {_id: 0, name: 1, email: 1, location: {type: "Point", coordinates: [
+    |     ^
+  4 |
+
+analytics>         "$location.coordinates.longitude", "$location.coordinates.latitude"
+$location.coordinates.latitude
+analytics>     ]}}},
+Uncaught:
+SyntaxError: Unexpected token (1:4)
+
+> 1 |     ]}}},
+    |     ^
+  2 |
+
+analytics>
+
+analytics>     {$project: {
+...       gender: 1,
+...       email: 1,
+...       location: 1,
+...       fullName: {
+...         $concat: [{ $toUpper: "$name.first" }, " ", { $toUpper: "$name.last" }],
+...       },
+...     },
+...   }
+... },
+Uncaught:
+SyntaxError: Missing semicolon. (3:11)
+
+  1 |     {$project: {
+  2 |       gender: 1,
+> 3 |       email: 1,
+    |            ^
+  4 |       location: 1,
+  5 |       fullName: {
+  6 |         $concat: [{ $toUpper: "$name.first" }, " ", { $toUpper: "$name.last" }],
+
+analytics> ]);
+Uncaught:
+SyntaxError: Unexpected token (1:0)
+
+> 1 | ]);
+    | ^
+  2 |
+
+analytics> db.persons.aggregate([
+...     {$project: {_id: 0, name: 1, email: 1, location: {type: "Point", coordinates: [
+...         "$location.coordinates.longitude", "$location.coordinates.latitude" ]}}
+...     },
+...
+...     {$project: {
+...       gender: 1,
+...       email: 1,
+...       location: 1,
+...       fullName: {
+...         $concat: [{ $toUpper: "$name.first" }, " ", { $toUpper: "$name.last" }],
+...       },
+...     },
+...   }
+...
+... ]);
+[
+  {
+    location: { type: 'Point', coordinates: [ '-18.5996', '-42.6128' ] },
+    email: 'elijah.lewis@example.com',
+    fullName: 'ELIJAH LEWIS'
+  },
+  {
+    location: { type: 'Point', coordinates: [ '-70.2264', '76.4507' ] },
+    email: 'zachary.lo@example.com',
+    fullName: 'ZACHARY LO'
+  },
+  {
+    location: { type: 'Point', coordinates: [ '-154.6037', '-29.6721' ] },
+    email: 'carl.jacobs@example.com',
+    fullName: 'CARL JACOBS'
+  },
+  {
+    location: { type: 'Point', coordinates: [ '-67.5738', '-52.8348' ] },
+    email: 'olav.oehme@example.com',
+    fullName: 'OLAV OEHME'
+  },
+  {
+    location: { type: 'Point', coordinates: [ '-172.3753', '83.3998' ] },
+    email: 'madeleine.till@example.com',
+    fullName: 'MADELEINE TILL'
+  },
+  {
+    location: { type: 'Point', coordinates: [ '148.0944', '35.5726' ] },
+    email: 'louise.graham@example.com',
+    fullName: 'LOUISE GRAHAM'
+  },
+  {
+    location: { type: 'Point', coordinates: [ '-8.5570', '-14.4912' ] },
+    email: 'shona.kemperman@example.com',
+    fullName: 'SHONA KEMPERMAN'
+  },
+  {
+    location: { type: 'Point', coordinates: [ '101.5995', '78.8545' ] },
+    email: 'isolino.viana@example.com',
+    fullName: 'ISOLINO VIANA'
+  },
+  {
+    location: { type: 'Point', coordinates: [ '43.9085', '25.1614' ] },
+    email: 'mestan.kaplangı@example.com',
+    fullName: 'MESTAN KAPLANGı'
+  },
+  {
+    location: { type: 'Point', coordinates: [ '135.9359', '71.9851' ] },
+    email: 'katie.welch@example.com',
+    fullName: 'KATIE WELCH'
+  },
+  {
+    location: { type: 'Point', coordinates: [ '-90.9499', '21.3388' ] },
+    email: 'بنیامین.سالاری@example.com',
+    fullName: 'بنیامین سالاری'
+  },
+  {
+    location: { type: 'Point', coordinates: [ '-83.3326', '-88.6846' ] },
+    email: 'sandra.lorenzo@example.com',
+    fullName: 'SANDRA LORENZO'
+  },
+  {
+    location: { type: 'Point', coordinates: [ '34.1689', '4.6625' ] },
+    email: 'پریا.پارسا@example.com',
+    fullName: 'پریا پارسا'
+  },
+  {
+    location: { type: 'Point', coordinates: [ '-31.0208', '-29.8113' ] },
+    email: 'victor.pedersen@example.com',
+    fullName: 'VICTOR PEDERSEN'
+  },
+  {
+    location: { type: 'Point', coordinates: [ '130.0105', '88.1818' ] },
+    email: 'gonca.alnıaçık@example.com',
+    fullName: 'GONCA ALNıAçıK'
+  },
+  {
+    location: { type: 'Point', coordinates: [ '78.0207', '-84.1572' ] },
+    email: 'anne.ruiz@example.com',
+    fullName: 'ANNE RUIZ'
+  },
+  {
+    location: { type: 'Point', coordinates: [ '-48.3596', '-13.9479' ] },
+    email: 'maeva.grewal@example.com',
+    fullName: 'MAEVA GREWAL'
+  },
+  {
+    location: { type: 'Point', coordinates: [ '111.3806', '-31.6359' ] },
+    email: 'maeva.wilson@example.com',
+    fullName: 'MAEVA WILSON'
+  },
+  {
+    location: { type: 'Point', coordinates: [ '-104.3451', '-88.4983' ] },
+    email: 'aya.liland@example.com',
+    fullName: 'AYA LILAND'
+  },
+  {
+    location: { type: 'Point', coordinates: [ '80.9269', '17.4101' ] },
+    email: 'vincent.küper@example.com',
+    fullName: 'VINCENT KüPER'
+  }
+]
+Type "it" for more
+analytics> db.persons.aggregate([
+...   {
+...     $project: {
+...       _id: 0,
+...       name: 1,
+...       email: 1,
+...       location: {
+...         type: "Point",
+...         coordinates: [
+...           {$convert: { input: "$location.coordinates.longitude", to: "double"} },
+...           {$convert: { input: "$location.coordinates.latitude", to: "double"} }
+...         ],
+...       },
+...     },
+...   },
+...
+...   {
+...     $project: {
+...       gender: 1,
+...       email: 1,
+...       location: 1,
+...       fullName: {
+...         $concat: [{ $toUpper: "$name.first" }, " ", { $toUpper: "$name.last" }],
+...       },
+...     },
+...   },
+... ]);
+[
+  {
+    location: { type: 'Point', coordinates: [ -18.5996, -42.6128 ] },
+    email: 'elijah.lewis@example.com',
+    fullName: 'ELIJAH LEWIS'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -70.2264, 76.4507 ] },
+    email: 'zachary.lo@example.com',
+    fullName: 'ZACHARY LO'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -154.6037, -29.6721 ] },
+    email: 'carl.jacobs@example.com',
+    fullName: 'CARL JACOBS'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -67.5738, -52.8348 ] },
+    email: 'olav.oehme@example.com',
+    fullName: 'OLAV OEHME'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -172.3753, 83.3998 ] },
+    email: 'madeleine.till@example.com',
+    fullName: 'MADELEINE TILL'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 148.0944, 35.5726 ] },
+    email: 'louise.graham@example.com',
+    fullName: 'LOUISE GRAHAM'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -8.557, -14.4912 ] },
+    email: 'shona.kemperman@example.com',
+    fullName: 'SHONA KEMPERMAN'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 101.5995, 78.8545 ] },
+    email: 'isolino.viana@example.com',
+    fullName: 'ISOLINO VIANA'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 43.9085, 25.1614 ] },
+    email: 'mestan.kaplangı@example.com',
+    fullName: 'MESTAN KAPLANGı'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 135.9359, 71.9851 ] },
+    email: 'katie.welch@example.com',
+    fullName: 'KATIE WELCH'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -90.9499, 21.3388 ] },
+    email: 'بنیامین.سالاری@example.com',
+    fullName: 'بنیامین سالاری'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -83.3326, -88.6846 ] },
+    email: 'sandra.lorenzo@example.com',
+    fullName: 'SANDRA LORENZO'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 34.1689, 4.6625 ] },
+    email: 'پریا.پارسا@example.com',
+    fullName: 'پریا پارسا'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -31.0208, -29.8113 ] },
+    email: 'victor.pedersen@example.com',
+    fullName: 'VICTOR PEDERSEN'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 130.0105, 88.1818 ] },
+    email: 'gonca.alnıaçık@example.com',
+    fullName: 'GONCA ALNıAçıK'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 78.0207, -84.1572 ] },
+    email: 'anne.ruiz@example.com',
+    fullName: 'ANNE RUIZ'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -48.3596, -13.9479 ] },
+    email: 'maeva.grewal@example.com',
+    fullName: 'MAEVA GREWAL'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 111.3806, -31.6359 ] },
+    email: 'maeva.wilson@example.com',
+    fullName: 'MAEVA WILSON'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -104.3451, -88.4983 ] },
+    email: 'aya.liland@example.com',
+    fullName: 'AYA LILAND'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 80.9269, 17.4101 ] },
+    email: 'vincent.küper@example.com',
+    fullName: 'VINCENT KüPER'
+  }
+]
+Type "it" for more
+analytics> db.persons.aggregate([
+...   {
+...     $project: {
+...       _id: 0,
+...       name: 1,
+...       email: 1,
+...       location: {
+...         type: "Point",
+...         coordinates: [
+...           {$convert: { input: "$location.coordinates.longitude", to: "double"} },
+...           {$convert: { input: "$location.coordinates.latitude", to: "double"} }
+...         ],
+...       },
+...       DOB: "$dob.date",
+...       age: "$dob.age"
+...     },
+...   },
+...
+...   {
+...     $project: {
+...       gender: 1,
+...       email: 1,
+...       location: 1,
+...       DOB:1,
+...       age:1,
+...       fullName: {
+...         $concat: [{ $toUpper: "$name.first" }, " ", { $toUpper: "$name.last" }],
+...       },
+...     },
+...   },
+... ]);
+[
+  {
+    location: { type: 'Point', coordinates: [ -18.5996, -42.6128 ] },
+    email: 'elijah.lewis@example.com',
+    DOB: '1986-03-29T06:40:18Z',
+    age: 32,
+    fullName: 'ELIJAH LEWIS'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -70.2264, 76.4507 ] },
+    email: 'zachary.lo@example.com',
+    DOB: '1988-10-17T03:45:04Z',
+    age: 29,
+    fullName: 'ZACHARY LO'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -154.6037, -29.6721 ] },
+    email: 'carl.jacobs@example.com',
+    DOB: '1984-09-30T01:20:26Z',
+    age: 33,
+    fullName: 'CARL JACOBS'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -67.5738, -52.8348 ] },
+    email: 'olav.oehme@example.com',
+    DOB: '1960-11-28T23:07:18Z',
+    age: 57,
+    fullName: 'OLAV OEHME'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -172.3753, 83.3998 ] },
+    email: 'madeleine.till@example.com',
+    DOB: '1954-05-01T02:34:40Z',
+    age: 64,
+    fullName: 'MADELEINE TILL'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 148.0944, 35.5726 ] },
+    email: 'louise.graham@example.com',
+    DOB: '1971-01-21T20:36:16Z',
+    age: 47,
+    fullName: 'LOUISE GRAHAM'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -8.557, -14.4912 ] },
+    email: 'shona.kemperman@example.com',
+    DOB: '1948-04-23T03:40:22Z',
+    age: 70,
+    fullName: 'SHONA KEMPERMAN'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 101.5995, 78.8545 ] },
+    email: 'isolino.viana@example.com',
+    DOB: '1959-03-22T14:53:41Z',
+    age: 59,
+    fullName: 'ISOLINO VIANA'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 43.9085, 25.1614 ] },
+    email: 'mestan.kaplangı@example.com',
+    DOB: '1951-12-17T20:03:33Z',
+    age: 66,
+    fullName: 'MESTAN KAPLANGı'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 135.9359, 71.9851 ] },
+    email: 'katie.welch@example.com',
+    DOB: '1990-10-14T05:02:12Z',
+    age: 27,
+    fullName: 'KATIE WELCH'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -90.9499, 21.3388 ] },
+    email: 'بنیامین.سالاری@example.com',
+    DOB: '1984-03-10T22:12:43Z',
+    age: 34,
+    fullName: 'بنیامین سالاری'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -83.3326, -88.6846 ] },
+    email: 'sandra.lorenzo@example.com',
+    DOB: '1975-03-23T17:01:45Z',
+    age: 43,
+    fullName: 'SANDRA LORENZO'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 34.1689, 4.6625 ] },
+    email: 'پریا.پارسا@example.com',
+    DOB: '1962-01-10T05:26:30Z',
+    age: 56,
+    fullName: 'پریا پارسا'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -31.0208, -29.8113 ] },
+    email: 'victor.pedersen@example.com',
+    DOB: '1959-02-19T23:56:23Z',
+    age: 59,
+    fullName: 'VICTOR PEDERSEN'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 130.0105, 88.1818 ] },
+    email: 'gonca.alnıaçık@example.com',
+    DOB: '1988-11-08T00:18:59Z',
+    age: 29,
+    fullName: 'GONCA ALNıAçıK'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 78.0207, -84.1572 ] },
+    email: 'anne.ruiz@example.com',
+    DOB: '1982-10-09T12:10:42Z',
+    age: 35,
+    fullName: 'ANNE RUIZ'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -48.3596, -13.9479 ] },
+    email: 'maeva.grewal@example.com',
+    DOB: '1972-04-23T04:31:25Z',
+    age: 46,
+    fullName: 'MAEVA GREWAL'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 111.3806, -31.6359 ] },
+    email: 'maeva.wilson@example.com',
+    DOB: '1962-08-11T20:51:07Z',
+    age: 56,
+    fullName: 'MAEVA WILSON'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -104.3451, -88.4983 ] },
+    email: 'aya.liland@example.com',
+    DOB: '1973-08-26T00:11:58Z',
+    age: 45,
+    fullName: 'AYA LILAND'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 80.9269, 17.4101 ] },
+    email: 'vincent.küper@example.com',
+    DOB: '1970-02-18T12:38:36Z',
+    age: 48,
+    fullName: 'VINCENT KüPER'
+  }
+]
+Type "it" for more
+analytics> db.persons.aggregate([
+...   {
+...     $project: {
+...       _id: 0,
+...       name: 1,
+...       email: 1,
+...       location: {
+...         type: "Point",
+...         coordinates: [
+...           {$convert: { input: "$location.coordinates.longitude", to: "double"} },
+...           {$convert: { input: "$location.coordinates.latitude", to: "double"} }
+...         ],
+...       },
+...       dateOfBirth: {$convert: {input: "$dob.age", to: "date"}},
+...       age: "$dob.age"
+...     },
+...   },
+...
+...   {
+...     $project: {
+...       gender: 1,
+...       email: 1,
+...       location: 1,
+...       DOB:1,
+...       age:1,
+...       fullName: {
+...         $concat: [{ $toUpper: "$name.first" }, " ", { $toUpper: "$name.last" }],
+...       },
+...     },
+...   },
+... ]);
+MongoServerError: PlanExecutor error during aggregation :: caused by :: Unsupported conversion from int to date in $convert with no onError value
+analytics> db.persons.aggregate([
+...   {
+...     $project: {
+...       _id: 0,
+...       name: 1,
+...       email: 1,
+...       location: {
+...         type: "Point",
+...         coordinates: [
+...           {$convert: { input: "$location.coordinates.longitude", to: "double"} },
+...           {$convert: { input: "$location.coordinates.latitude", to: "double"} }
+...         ],
+...       },
+...       dateOfBirth: {$convert: {input: "$dob.date", to: "date", on}},
+...       age: "$dob.age"
+...     },
+...   },
+...
+...   {
+...     $project: {
+...       gender: 1,
+...       email: 1,
+...       location: 1,
+...       DOB:1,
+...       age:1,
+...       fullName: {
+...         $concat: [{ $toUpper: "$name.first" }, " ", { $toUpper: "$name.last" }],
+...       },
+...     },
+...   },
+... ]);
+ReferenceError: on is not defined
+analytics> db.persons.aggregate([
+...   {
+...     $project: {
+...       _id: 0,
+...       name: 1,
+...       email: 1,
+...       location: {
+...         type: "Point",
+...         coordinates: [
+...           {$convert: { input: "$location.coordinates.longitude", to: "double"} },
+...           {$convert: { input: "$location.coordinates.latitude", to: "double"} }
+...         ],
+...       },
+...       dateOfBirth: {$convert: {input: "$dob.date", to: "date"}},
+...       age: "$dob.age"
+...     },
+...   },
+...
+...   {
+...     $project: {
+...       gender: 1,
+...       email: 1,
+...       location: 1,
+...       DOB:1,
+...       age:1,
+...       fullName: {
+...         $concat: [{ $toUpper: "$name.first" }, " ", { $toUpper: "$name.last" }],
+...       },
+...     },
+...   },
+... ]);
+[
+  {
+    location: { type: 'Point', coordinates: [ -18.5996, -42.6128 ] },
+    email: 'elijah.lewis@example.com',
+    age: 32,
+    fullName: 'ELIJAH LEWIS'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -70.2264, 76.4507 ] },
+    email: 'zachary.lo@example.com',
+    age: 29,
+    fullName: 'ZACHARY LO'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -154.6037, -29.6721 ] },
+    email: 'carl.jacobs@example.com',
+    age: 33,
+    fullName: 'CARL JACOBS'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -67.5738, -52.8348 ] },
+    email: 'olav.oehme@example.com',
+    age: 57,
+    fullName: 'OLAV OEHME'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -172.3753, 83.3998 ] },
+    email: 'madeleine.till@example.com',
+    age: 64,
+    fullName: 'MADELEINE TILL'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 148.0944, 35.5726 ] },
+    email: 'louise.graham@example.com',
+    age: 47,
+    fullName: 'LOUISE GRAHAM'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -8.557, -14.4912 ] },
+    email: 'shona.kemperman@example.com',
+    age: 70,
+    fullName: 'SHONA KEMPERMAN'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 101.5995, 78.8545 ] },
+    email: 'isolino.viana@example.com',
+    age: 59,
+    fullName: 'ISOLINO VIANA'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 43.9085, 25.1614 ] },
+    email: 'mestan.kaplangı@example.com',
+    age: 66,
+    fullName: 'MESTAN KAPLANGı'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 135.9359, 71.9851 ] },
+    email: 'katie.welch@example.com',
+    age: 27,
+    fullName: 'KATIE WELCH'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -90.9499, 21.3388 ] },
+    email: 'بنیامین.سالاری@example.com',
+    age: 34,
+    fullName: 'بنیامین سالاری'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -83.3326, -88.6846 ] },
+    email: 'sandra.lorenzo@example.com',
+    age: 43,
+    fullName: 'SANDRA LORENZO'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 34.1689, 4.6625 ] },
+    email: 'پریا.پارسا@example.com',
+    age: 56,
+    fullName: 'پریا پارسا'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -31.0208, -29.8113 ] },
+    email: 'victor.pedersen@example.com',
+    age: 59,
+    fullName: 'VICTOR PEDERSEN'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 130.0105, 88.1818 ] },
+    email: 'gonca.alnıaçık@example.com',
+    age: 29,
+    fullName: 'GONCA ALNıAçıK'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 78.0207, -84.1572 ] },
+    email: 'anne.ruiz@example.com',
+    age: 35,
+    fullName: 'ANNE RUIZ'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -48.3596, -13.9479 ] },
+    email: 'maeva.grewal@example.com',
+    age: 46,
+    fullName: 'MAEVA GREWAL'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 111.3806, -31.6359 ] },
+    email: 'maeva.wilson@example.com',
+    age: 56,
+    fullName: 'MAEVA WILSON'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -104.3451, -88.4983 ] },
+    email: 'aya.liland@example.com',
+    age: 45,
+    fullName: 'AYA LILAND'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 80.9269, 17.4101 ] },
+    email: 'vincent.küper@example.com',
+    age: 48,
+    fullName: 'VINCENT KüPER'
+  }
+]
+Type "it" for more
+analytics> db.persons.aggregate([
+...   {
+...     $project: {
+...       _id: 0,
+...       name: 1,
+...       email: 1,
+...       location: {
+...         type: "Point",
+...         coordinates: [
+...           {$convert: { input: "$location.coordinates.longitude", to: "double"} },
+...           {$convert: { input: "$location.coordinates.latitude", to: "double"} }
+...         ],
+...       },
+...       dateOfBirth: {$convert: {input: "$dob.date", to: "date"}},
+...       age: "$dob.age"
+...     },
+...   },
+...
+...   {
+...     $project: {
+...       gender: 1,
+...       email: 1,
+...       location: 1,
+...       dateOfBirth:1,
+...       age:1,
+...       fullName: {
+...         $concat: [{ $toUpper: "$name.first" }, " ", { $toUpper: "$name.last" }],
+...       },
+...     },
+...   },
+... ]);
+[
+  {
+    location: { type: 'Point', coordinates: [ -18.5996, -42.6128 ] },
+    email: 'elijah.lewis@example.com',
+    dateOfBirth: ISODate('1986-03-29T06:40:18.000Z'),
+    age: 32,
+    fullName: 'ELIJAH LEWIS'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -70.2264, 76.4507 ] },
+    email: 'zachary.lo@example.com',
+    dateOfBirth: ISODate('1988-10-17T03:45:04.000Z'),
+    age: 29,
+    fullName: 'ZACHARY LO'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -154.6037, -29.6721 ] },
+    email: 'carl.jacobs@example.com',
+    dateOfBirth: ISODate('1984-09-30T01:20:26.000Z'),
+    age: 33,
+    fullName: 'CARL JACOBS'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -67.5738, -52.8348 ] },
+    email: 'olav.oehme@example.com',
+    dateOfBirth: ISODate('1960-11-28T23:07:18.000Z'),
+    age: 57,
+    fullName: 'OLAV OEHME'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -172.3753, 83.3998 ] },
+    email: 'madeleine.till@example.com',
+    dateOfBirth: ISODate('1954-05-01T02:34:40.000Z'),
+    age: 64,
+    fullName: 'MADELEINE TILL'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 148.0944, 35.5726 ] },
+    email: 'louise.graham@example.com',
+    dateOfBirth: ISODate('1971-01-21T20:36:16.000Z'),
+    age: 47,
+    fullName: 'LOUISE GRAHAM'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -8.557, -14.4912 ] },
+    email: 'shona.kemperman@example.com',
+    dateOfBirth: ISODate('1948-04-23T03:40:22.000Z'),
+    age: 70,
+    fullName: 'SHONA KEMPERMAN'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 101.5995, 78.8545 ] },
+    email: 'isolino.viana@example.com',
+    dateOfBirth: ISODate('1959-03-22T14:53:41.000Z'),
+    age: 59,
+    fullName: 'ISOLINO VIANA'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 43.9085, 25.1614 ] },
+    email: 'mestan.kaplangı@example.com',
+    dateOfBirth: ISODate('1951-12-17T20:03:33.000Z'),
+    age: 66,
+    fullName: 'MESTAN KAPLANGı'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 135.9359, 71.9851 ] },
+    email: 'katie.welch@example.com',
+    dateOfBirth: ISODate('1990-10-14T05:02:12.000Z'),
+    age: 27,
+    fullName: 'KATIE WELCH'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -90.9499, 21.3388 ] },
+    email: 'بنیامین.سالاری@example.com',
+    dateOfBirth: ISODate('1984-03-10T22:12:43.000Z'),
+    age: 34,
+    fullName: 'بنیامین سالاری'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -83.3326, -88.6846 ] },
+    email: 'sandra.lorenzo@example.com',
+    dateOfBirth: ISODate('1975-03-23T17:01:45.000Z'),
+    age: 43,
+    fullName: 'SANDRA LORENZO'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 34.1689, 4.6625 ] },
+    email: 'پریا.پارسا@example.com',
+    dateOfBirth: ISODate('1962-01-10T05:26:30.000Z'),
+    age: 56,
+    fullName: 'پریا پارسا'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -31.0208, -29.8113 ] },
+    email: 'victor.pedersen@example.com',
+    dateOfBirth: ISODate('1959-02-19T23:56:23.000Z'),
+    age: 59,
+    fullName: 'VICTOR PEDERSEN'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 130.0105, 88.1818 ] },
+    email: 'gonca.alnıaçık@example.com',
+    dateOfBirth: ISODate('1988-11-08T00:18:59.000Z'),
+    age: 29,
+    fullName: 'GONCA ALNıAçıK'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 78.0207, -84.1572 ] },
+    email: 'anne.ruiz@example.com',
+    dateOfBirth: ISODate('1982-10-09T12:10:42.000Z'),
+    age: 35,
+    fullName: 'ANNE RUIZ'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -48.3596, -13.9479 ] },
+    email: 'maeva.grewal@example.com',
+    dateOfBirth: ISODate('1972-04-23T04:31:25.000Z'),
+    age: 46,
+    fullName: 'MAEVA GREWAL'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 111.3806, -31.6359 ] },
+    email: 'maeva.wilson@example.com',
+    dateOfBirth: ISODate('1962-08-11T20:51:07.000Z'),
+    age: 56,
+    fullName: 'MAEVA WILSON'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -104.3451, -88.4983 ] },
+    email: 'aya.liland@example.com',
+    dateOfBirth: ISODate('1973-08-26T00:11:58.000Z'),
+    age: 45,
+    fullName: 'AYA LILAND'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 80.9269, 17.4101 ] },
+    email: 'vincent.küper@example.com',
+    dateOfBirth: ISODate('1970-02-18T12:38:36.000Z'),
+    age: 48,
+    fullName: 'VINCENT KüPER'
+  }
+]
+Type "it" for more
+analytics> db.persons.aggregate([
+...   {
+...     $project: {
+...       _id: 0,
+...       name: 1,
+...       email: 1,
+...       location: {
+...         type: "Point",
+...         coordinates: [
+...           {$convert: { input: "$location.coordinates.longitude", to: "double"} },
+...           {$convert: { input: "$location.coordinates.latitude", to: "double"} }
+...         ],
+...       },
+...       dateOfBirth: {$toDate:"$dob.date"},
+...       age: "$dob.age"
+...     },
+...   },
+...
+...   {
+...     $project: {
+...       gender: 1,
+...       email: 1,
+...       location: 1,
+...       dateOfBirth:1,
+...       age:1,
+...       fullName: {
+...         $concat: [{ $toUpper: "$name.first" }, " ", { $toUpper: "$name.last" }],
+...       },
+...     },
+...   },
+... ]);
+[
+  {
+    location: { type: 'Point', coordinates: [ -18.5996, -42.6128 ] },
+    email: 'elijah.lewis@example.com',
+    dateOfBirth: ISODate('1986-03-29T06:40:18.000Z'),
+    age: 32,
+    fullName: 'ELIJAH LEWIS'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -70.2264, 76.4507 ] },
+    email: 'zachary.lo@example.com',
+    dateOfBirth: ISODate('1988-10-17T03:45:04.000Z'),
+    age: 29,
+    fullName: 'ZACHARY LO'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -154.6037, -29.6721 ] },
+    email: 'carl.jacobs@example.com',
+    dateOfBirth: ISODate('1984-09-30T01:20:26.000Z'),
+    age: 33,
+    fullName: 'CARL JACOBS'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -67.5738, -52.8348 ] },
+    email: 'olav.oehme@example.com',
+    dateOfBirth: ISODate('1960-11-28T23:07:18.000Z'),
+    age: 57,
+    fullName: 'OLAV OEHME'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -172.3753, 83.3998 ] },
+    email: 'madeleine.till@example.com',
+    dateOfBirth: ISODate('1954-05-01T02:34:40.000Z'),
+    age: 64,
+    fullName: 'MADELEINE TILL'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 148.0944, 35.5726 ] },
+    email: 'louise.graham@example.com',
+    dateOfBirth: ISODate('1971-01-21T20:36:16.000Z'),
+    age: 47,
+    fullName: 'LOUISE GRAHAM'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -8.557, -14.4912 ] },
+    email: 'shona.kemperman@example.com',
+    dateOfBirth: ISODate('1948-04-23T03:40:22.000Z'),
+    age: 70,
+    fullName: 'SHONA KEMPERMAN'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 101.5995, 78.8545 ] },
+    email: 'isolino.viana@example.com',
+    dateOfBirth: ISODate('1959-03-22T14:53:41.000Z'),
+    age: 59,
+    fullName: 'ISOLINO VIANA'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 43.9085, 25.1614 ] },
+    email: 'mestan.kaplangı@example.com',
+    dateOfBirth: ISODate('1951-12-17T20:03:33.000Z'),
+    age: 66,
+    fullName: 'MESTAN KAPLANGı'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 135.9359, 71.9851 ] },
+    email: 'katie.welch@example.com',
+    dateOfBirth: ISODate('1990-10-14T05:02:12.000Z'),
+    age: 27,
+    fullName: 'KATIE WELCH'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -90.9499, 21.3388 ] },
+    email: 'بنیامین.سالاری@example.com',
+    dateOfBirth: ISODate('1984-03-10T22:12:43.000Z'),
+    age: 34,
+    fullName: 'بنیامین سالاری'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -83.3326, -88.6846 ] },
+    email: 'sandra.lorenzo@example.com',
+    dateOfBirth: ISODate('1975-03-23T17:01:45.000Z'),
+    age: 43,
+    fullName: 'SANDRA LORENZO'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 34.1689, 4.6625 ] },
+    email: 'پریا.پارسا@example.com',
+    dateOfBirth: ISODate('1962-01-10T05:26:30.000Z'),
+    age: 56,
+    fullName: 'پریا پارسا'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -31.0208, -29.8113 ] },
+    email: 'victor.pedersen@example.com',
+    dateOfBirth: ISODate('1959-02-19T23:56:23.000Z'),
+    age: 59,
+    fullName: 'VICTOR PEDERSEN'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 130.0105, 88.1818 ] },
+    email: 'gonca.alnıaçık@example.com',
+    dateOfBirth: ISODate('1988-11-08T00:18:59.000Z'),
+    age: 29,
+    fullName: 'GONCA ALNıAçıK'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 78.0207, -84.1572 ] },
+    email: 'anne.ruiz@example.com',
+    dateOfBirth: ISODate('1982-10-09T12:10:42.000Z'),
+    age: 35,
+    fullName: 'ANNE RUIZ'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -48.3596, -13.9479 ] },
+    email: 'maeva.grewal@example.com',
+    dateOfBirth: ISODate('1972-04-23T04:31:25.000Z'),
+    age: 46,
+    fullName: 'MAEVA GREWAL'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 111.3806, -31.6359 ] },
+    email: 'maeva.wilson@example.com',
+    dateOfBirth: ISODate('1962-08-11T20:51:07.000Z'),
+    age: 56,
+    fullName: 'MAEVA WILSON'
+  },
+  {
+    location: { type: 'Point', coordinates: [ -104.3451, -88.4983 ] },
+    email: 'aya.liland@example.com',
+    dateOfBirth: ISODate('1973-08-26T00:11:58.000Z'),
+    age: 45,
+    fullName: 'AYA LILAND'
+  },
+  {
+    location: { type: 'Point', coordinates: [ 80.9269, 17.4101 ] },
+    email: 'vincent.küper@example.com',
+    dateOfBirth: ISODate('1970-02-18T12:38:36.000Z'),
+    age: 48,
+    fullName: 'VINCENT KüPER'
+  }
+]
+Type "it" for more
+analytics> db.persons.aggregate([
+...   {
+...     $project: {
+...       _id: 0,
+...       name: 1,
+...       email: 1,
+...       location: {
+...         type: "Point",
+...         coordinates: [
+...           {$convert: { input: "$location.coordinates.longitude", to: "double"} },
+...           {$convert: { input: "$location.coordinates.latitude", to: "double"} }
+...         ],
+...       },
+...       birthdate: {$toDate:"$dob.date"},
+...       age: "$dob.age"
+...     },
+...   },
+...
+...   {
+...     $project: {
+...       gender: 1,
+...       email: 1,
+...       location: 1,
+...       birthdate:1,
+...       age:1,
+...       fullName: {
+...         $concat: [{ $toUpper: "$name.first" }, " ", { $toUpper: "$name.last" }],
+...       },
+...     },
+...   },
+...
+...   {$group: {_id: {birthYear: {$isoWeekYear: "$birthdate"}}, numPersons: {$sum : 1}}},
+... ]);
+[
+  { _id: { birthYear: Long('1957') }, numPersons: 82 },
+  { _id: { birthYear: Long('1995') }, numPersons: 101 },
+  { _id: { birthYear: Long('1952') }, numPersons: 85 },
+  { _id: { birthYear: Long('1948') }, numPersons: 100 },
+  { _id: { birthYear: Long('1958') }, numPersons: 101 },
+  { _id: { birthYear: Long('1976') }, numPersons: 105 },
+  { _id: { birthYear: Long('1986') }, numPersons: 93 },
+  { _id: { birthYear: Long('1951') }, numPersons: 79 },
+  { _id: { birthYear: Long('1988') }, numPersons: 89 },
+  { _id: { birthYear: Long('1983') }, numPersons: 99 },
+  { _id: { birthYear: Long('1969') }, numPersons: 78 },
+  { _id: { birthYear: Long('1955') }, numPersons: 113 },
+  { _id: { birthYear: Long('1949') }, numPersons: 91 },
+  { _id: { birthYear: Long('1967') }, numPersons: 104 },
+  { _id: { birthYear: Long('1997') }, numPersons: 52 },
+  { _id: { birthYear: Long('1987') }, numPersons: 92 },
+  { _id: { birthYear: Long('1984') }, numPersons: 93 },
+  { _id: { birthYear: Long('1966') }, numPersons: 92 },
+  { _id: { birthYear: Long('1959') }, numPersons: 93 },
+  { _id: { birthYear: Long('1989') }, numPersons: 93 }
+]
+Type "it" for more
+analytics> db.persons.aggregate([
+...   {
+...     $project: {
+...       _id: 0,
+...       name: 1,
+...       email: 1,
+...       location: {
+...         type: "Point",
+...         coordinates: [
+...           {$convert: { input: "$location.coordinates.longitude", to: "double"} },
+...           {$convert: { input: "$location.coordinates.latitude", to: "double"} }
+...         ],
+...       },
+...       birthdate: {$toDate:"$dob.date"},
+...       age: "$dob.age"
+...     },
+...   },
+...
+...   {
+...     $project: {
+...       gender: 1,
+...       email: 1,
+...       location: 1,
+...       birthdate:1,
+...       age:1,
+...       fullName: {
+...         $concat: [{ $toUpper: "$name.first" }, " ", { $toUpper: "$name.last" }],
+...       },
+...     },
+...   },
+...
+...   {$group: {_id: {birthYear: {$isoWeekYear: "$birthdate"}}, numPersons: {$sum : 1}}},
+...   {$sort: {numPersons: -1}},
+... ]);
+[
+  { _id: { birthYear: Long('1955') }, numPersons: 113 },
+  { _id: { birthYear: Long('1961') }, numPersons: 111 },
+  { _id: { birthYear: Long('1960') }, numPersons: 110 },
+  { _id: { birthYear: Long('1993') }, numPersons: 110 },
+  { _id: { birthYear: Long('1975') }, numPersons: 107 },
+  { _id: { birthYear: Long('1945') }, numPersons: 106 },
+  { _id: { birthYear: Long('1976') }, numPersons: 105 },
+  { _id: { birthYear: Long('1967') }, numPersons: 104 },
+  { _id: { birthYear: Long('1990') }, numPersons: 103 },
+  { _id: { birthYear: Long('1981') }, numPersons: 102 },
+  { _id: { birthYear: Long('1994') }, numPersons: 102 },
+  { _id: { birthYear: Long('1995') }, numPersons: 101 },
+  { _id: { birthYear: Long('1958') }, numPersons: 101 },
+  { _id: { birthYear: Long('1948') }, numPersons: 100 },
+  { _id: { birthYear: Long('1946') }, numPersons: 100 },
+  { _id: { birthYear: Long('1983') }, numPersons: 99 },
+  { _id: { birthYear: Long('1970') }, numPersons: 99 },
+  { _id: { birthYear: Long('1950') }, numPersons: 99 },
+  { _id: { birthYear: Long('1963') }, numPersons: 98 },
+  { _id: { birthYear: Long('1965') }, numPersons: 98 }
+]
+Type "it" for more
+analytics> db.friends.insertMany([
+...   {
+...     "name": "Max",
+...     "hobbies": ["Sports", "Cooking"],
+...     "age": 29,
+...     "examScores": [
+...       { "difficulty": 4, "score": 57.9 },
+...       { "difficulty": 6, "score": 62.1 },
+...       { "difficulty": 3, "score": 88.5 }
+...     ]
+...   },
+...   {
+...     "name": "Manu",
+...     "hobbies": ["Eating", "Data Analytics"],
+...     "age": 30,
+...     "examScores": [
+...       { "difficulty": 7, "score": 52.1 },
+...       { "difficulty": 2, "score": 74.3 },
+...       { "difficulty": 5, "score": 53.1 }
+...     ]
+...   },
+...   {
+...     "name": "Maria",
+...     "hobbies": ["Cooking", "Skiing"],
+...     "age": 29,
+...     "examScores": [
+...       { "difficulty": 3, "score": 75.1 },
+...       { "difficulty": 8, "score": 44.2 },
+...       { "difficulty": 6, "score": 61.5 }
+...     ]
+...   }
+... ]
+... )
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('67973d0efd2e1e48f7c4ffb8'),
+    '1': ObjectId('67973d0efd2e1e48f7c4ffb9'),
+    '2': ObjectId('67973d0efd2e1e48f7c4ffba')
+  }
+}
+analytics> db.friends.aggregate([
+...     {$group: {_id: {age: "$age", allHobbies: {$push: "$hobbies"}}}}
+... ])
+MongoServerError: Unrecognized expression '$push'
+analytics> db.friends.aggregate([
+...     {$group: {_id: {age: "$age" }, allHobbies: { $push: "$hobbies"}}}
+... ])
+[
+  { _id: { age: 30 }, allHobbies: [ [ 'Eating', 'Data Analytics' ] ] },
+  {
+    _id: { age: 29 },
+    allHobbies: [ [ 'Sports', 'Cooking' ], [ 'Cooking', 'Skiing' ] ]
+  }
+]
+analytics> db.friends.aggregate([
+...     {$unwind: "$hobbies"}
+... ])
+[
+  {
+    _id: ObjectId('67973d0efd2e1e48f7c4ffb8'),
+    name: 'Max',
+    hobbies: 'Sports',
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('67973d0efd2e1e48f7c4ffb8'),
+    name: 'Max',
+    hobbies: 'Cooking',
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('67973d0efd2e1e48f7c4ffb9'),
+    name: 'Manu',
+    hobbies: 'Eating',
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('67973d0efd2e1e48f7c4ffb9'),
+    name: 'Manu',
+    hobbies: 'Data Analytics',
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('67973d0efd2e1e48f7c4ffba'),
+    name: 'Maria',
+    hobbies: 'Cooking',
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  },
+  {
+    _id: ObjectId('67973d0efd2e1e48f7c4ffba'),
+    name: 'Maria',
+    hobbies: 'Skiing',
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> db.friends.aggregate([
+...     {$unwind: "$hobbies"},
+...     {$group: {_id: {age: "$age" }, allHobbies: { $push: "$hobbies"}}}
+... ])
+[
+  {
+    _id: { age: 29 },
+    allHobbies: [ 'Sports', 'Cooking', 'Cooking', 'Skiing' ]
+  },
+  { _id: { age: 30 }, allHobbies: [ 'Eating', 'Data Analytics' ] }
+]
+analytics> db.friends.aggregate([
+...     {$unwind: "$hobbies"},
+...     {$group: {_id: {age: "$age" }, allHobbies: { $addToSet: "$hobbies"}}}
+... ])
+[
+  { _id: { age: 29 }, allHobbies: [ 'Cooking', 'Skiing', 'Sports' ] },
+  { _id: { age: 30 }, allHobbies: [ 'Eating', 'Data Analytics' ] }
+]
+analytics> db.friends.aggregate([
+...     {$project: {_id: 0, examScore: {$slice: ["$examScores",1]}}}
+... ])
+[
+  { examScore: [ { difficulty: 4, score: 57.9 } ] },
+  { examScore: [ { difficulty: 7, score: 52.1 } ] },
+  { examScore: [ { difficulty: 3, score: 75.1 } ] }
+]
+analytics> db.friends.aggregate([
+...     {$project: {_id: 0, examScore: {$slice: ["$examScores",-2]}}}
+... ])
+[
+  {
+    examScore: [ { difficulty: 6, score: 62.1 }, { difficulty: 3, score: 88.5 } ]
+  },
+  {
+    examScore: [ { difficulty: 2, score: 74.3 }, { difficulty: 5, score: 53.1 } ]
+  },
+  {
+    examScore: [ { difficulty: 8, score: 44.2 }, { difficulty: 6, score: 61.5 } ]
+  }
+]
+analytics> db.friends.aggregate([
+...     {$project: {_id: 0, numScores: {$size: "$hobbies"}}}
+... ])
+[ { numScores: 2 }, { numScores: 2 }, { numScores: 2 } ]
+analytics> db.friends.aggregate([
+...     {$project: {_id: 0, numScores: {$size: "$examScores"}}}
+... ])
+[ { numScores: 3 }, { numScores: 3 }, { numScores: 3 } ]
+analytics> db.friends.aggregate([
+...     {$project: {_id: 0, scores: {$filter: {input: "$examScores", as: "sc", cond: {$gt: ["$$sc.score",60]}}}}}
+... ])
+[
+  {
+    scores: [ { difficulty: 6, score: 62.1 }, { difficulty: 3, score: 88.5 } ]
+  },
+  { scores: [ { difficulty: 2, score: 74.3 } ] },
+  {
+    scores: [ { difficulty: 3, score: 75.1 }, { difficulty: 6, score: 61.5 } ]
+  }
+]
+analytics> db.friends.find()
+[
+  {
+    _id: ObjectId('67973d0efd2e1e48f7c4ffb8'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('67973d0efd2e1e48f7c4ffb9'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('67973d0efd2e1e48f7c4ffba'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> db.friends.aggregate([
+...     {$unwind: "$examScores"},
+...     {$project: {_id: 0, name: 1, age: 1, score: "$examScores.score"}},
+...     {$sort: {score: -1}}
+...
+... ])
+[
+  { name: 'Max', age: 29, score: 88.5 },
+  { name: 'Maria', age: 29, score: 75.1 },
+  { name: 'Manu', age: 30, score: 74.3 },
+  { name: 'Max', age: 29, score: 62.1 },
+  { name: 'Maria', age: 29, score: 61.5 },
+  { name: 'Max', age: 29, score: 57.9 },
+  { name: 'Manu', age: 30, score: 53.1 },
+  { name: 'Manu', age: 30, score: 52.1 },
+  { name: 'Maria', age: 29, score: 44.2 }
+]
+analytics> db.friends.aggregate([
+...     {$unwind: "$examScores"},
+...     {$project: {_id: 0, name: 1, age: 1, score: "$examScores.score"}},
+...     {$sort: {score: -1}},
+...     {$group: {_id: "_id"}}
+... ])
+[ { _id: '_id' } ]
+analytics> db.friends.aggregate([
+...     {$unwind: "$examScores"},
+...     {$project: {_id: 0, name: 1, age: 1, score: "$examScores.score"}},
+...     {$sort: {score: -1}},
+...     {$group: {_id: "$_id"}}
+... ])
+[ { _id: null } ]
+analytics> db.friends.aggregate([
+...     {$unwind: "$examScores"},
+...     {$project: {_id: 1, name: 1, age: 1, score: "$examScores.score"}},
+...     {$sort: {score: -1}},
+...     {$group: {_id: "_id"}}
+... ])
+[ { _id: '_id' } ]
+analytics> db.friends.aggregate([
+...     {$unwind: "$examScores"},
+...     {$project: {_id: 1, name: 1, age: 1, score: "$examScores.score"}},
+...     {$sort: {score: -1}},
+...     {$group: {_id: "$_id"}}
+... ])
+[
+  { _id: ObjectId('67973d0efd2e1e48f7c4ffb8') },
+  { _id: ObjectId('67973d0efd2e1e48f7c4ffb9') },
+  { _id: ObjectId('67973d0efd2e1e48f7c4ffba') }
+]
+analytics> db.friends.aggregate([
+...     {$unwind: "$examScores"},
+...     {$project: {_id: 1, name: 1, age: 1, score: "$examScores.score"}},
+...     {$sort: {score: -1}},
+...     {$group: {_id: "$_id", maxScore: {$max: "$score"}}}
+... ])
+[
+  { _id: ObjectId('67973d0efd2e1e48f7c4ffb8'), maxScore: 88.5 },
+  { _id: ObjectId('67973d0efd2e1e48f7c4ffb9'), maxScore: 74.3 },
+  { _id: ObjectId('67973d0efd2e1e48f7c4ffba'), maxScore: 75.1 }
+]
+analytics> db.friends.aggregate([
+...     {$unwind: "$examScores"},
+...     {$project: {_id: 1, name: 1, age: 1, score: "$examScores.score"}},
+...     {$sort: {score: -1}},
+...     {$group: {_id: "$_id",name: {$first: "$name"}, maxScore: {$max: "$score"}}},
+...     {$sort: {maxScore: -1}}
+... ])
+[
+  {
+    _id: ObjectId('67973d0efd2e1e48f7c4ffb8'),
+    name: 'Max',
+    maxScore: 88.5
+  },
+  {
+    _id: ObjectId('67973d0efd2e1e48f7c4ffba'),
+    name: 'Maria',
+    maxScore: 75.1
+  },
+  {
+    _id: ObjectId('67973d0efd2e1e48f7c4ffb9'),
+    name: 'Manu',
+    maxScore: 74.3
+  }
+]
+analytics> db.persons.aggregate([
+...     {$bucket: {groupBy: "$dob.age", boundaries: [0,18,30,50,80,120], output: {
+...         numPersons: {$sum: 1},
+...         averageAge:{$avg: "$dob.age"},
+...         names: {$push:  "$name.first"}
+...     }}}
+... ])
+[
+  {
+    _id: 18,
+    numPersons: 868,
+    averageAge: 25.101382488479263,
+    names: [
+      'zachary',    'katie',       'gonca',          'leah',
+      'marius',     'ece',         'michael',        'enola',
+      'carlos',     'filipe',      'ella',           'sjef',
+      'kelya',      'jade',        'amalie',         'giuseppina',
+      'begüm',      'telma',       'peggy',          'سارا',
+      'carol',      'milo',        'زهرا',           'sofia',
+      'arttu',      'grace',       'peggy',          'annabelle',
+      'gitta',      'luke',        'ege',            'آوینا',
+      'eduardo',    'asher',       'eliott',         'volkan',
+      'alexander',  'ardian',      'consuelo',       'timothee',
+      'richard',    'minna',       'melvyn',         'eva',
+      'ross',       'jacob',       'asude',          'mattie',
+      'مریم',       'armando',     'elisa',          'zachary',
+      'susanne',    'celina',      'پارسا',          'zoneide',
+      'giesela',    'sofia',       'lorenzo',        'élsio',
+      'josefina',   'markus',      'aada',           'آنیتا',
+      'rene',       'arttu',       'saana',          'rose',
+      'eelis',      'julia',       'alma',           'mathew',
+      'میلاد',      'viviane',     'flora',          'ceylan',
+      'paula',      'alexander',   'sohan',          'louis',
+      'سارینا',     'othilie',     'theodor',        'kenan',
+      'olivier',    'joona',       'victor',         'jackson',
+      'sanjeev',    'عرشيا',       'guillaume',      'emily',
+      'donaldo',    'liesbeth',    'tugba',          'elisabeth',
+      'رهام',       'michael',     'loïc',           'bojan',
+      'domenica',   'sara',        'edda',           'eemil',
+      'same',       'matilda',     'leo',            'mahmoud',
+      'christian',  'brandon',     'mestan',         'lourdes',
+      'veeti',      'frankie',     'brooke',         'mary',
+      'anatole',    'efe',         'micheal',        'mariell',
+      'julia',      'cecilie',     'buse',           'robin',
+      'davide',     'marshall',    'lone',           'neil',
+      'gaël',       'sabrin',      'dora',           'tristan',
+      'guy',        'justiniano',  'murat',          'mathilde',
+      'sylvie',     'allen',       'ماهان',          'camila',
+      'leonard',    'philippe',    'nêuton',         'gail',
+      'caroline',   'begüm',       'charles',        'terra',
+      'fabrícia',   'jimmie',      'oliver',         'léane',
+      'leo',        'ambre',       'fatma',          'gökhan',
+      'johanne',    'florian',     'courtney',       'kasper',
+      'othelie',    'jessica',     'charles',        'nelleke',
+      'volkan',     'tony',        'sean',           'violet',
+      'anaïs',      'linnea',      'emilia',         'مریم',
+      'dany',       'deniz',       'nuria',          'callum',
+      'alisa',      'albin',       'joão',           'esteban',
+      'niilo',      'adam',        'fabien',         'melodie',
+      'kaya',       'laly',        'joëlle',         'sophie',
+      'devon',      'louise',      'paul',           'silja',
+      'roxane',     'britney',     'annelise',       'mary',
+      'محیا',       'harry',       'nevaeh',         'sabrin',
+      'jarle',      'marie-luise', 'gene',           'léon',
+      'dimitri',    'luca',        'eevi',           'alyssia',
+      'ljudmila',   'zackary',     'gonca',          'mathilde',
+      'doeke',      'guilhermina', 'aléxia',         'gerrita',
+      'aloïs',      'flora',       'victor',         'ryan',
+      'angus',      'ellen',       'dick',           'owen',
+      'petúnia',    'mark',        'leo',            'dimitri',
+      'josefa',     'caroline',    'asta',           'ester',
+      'vilma',      'morgane',     'آرتين',          'abigail',
+      'özsu',       'hildegart',   'isobel',         'mia',
+      'mestan',     'theodore',    'elouan',         'çetin',
+      'dano',       'نيما',        'seth',           'amber',
+      'gustavo',    'محمدطاها',    'emil',           'mélissa',
+      'ellen',      'sergio',      'elizabeth',      'lena',
+      'heine',      'kurt',        'isidoro',        'santiago',
+      'luukas',     'kenzo',       'hulya',          'scarlett',
+      'mandy',      'remie',       'neo',            'eva',
+      'julien',     'laly',        'elise',          'sara',
+      'livia',      'tuur',        'olivia',         'lisa',
+      'amelia',     'eliézer',     'peter',          'dan',
+      'brooke',     'francisco',   'roseneide',      'charlie',
+      'freja',      'arlo',        'عرشيا',          'clifford',
+      'jordan',     'juan',        'lester',         'franka',
+      'vanessa',    'frauke',      'pinja',          'donald',
+      'lisa',       'markus',      'lewis',          'timeo',
+      'ayşe',       'tracey',      'lukas',          'یسنا',
+      'harley',     'nolan',       'volkhard',       'rodney',
+      'سوگند',      'aurora',      'andrew',         'linnea',
+      'anna',       'nathan',      'gabrielle',      'sebastian',
+      'kriemhild',  'väinö',       'ceylan',         'adrien',
+      'dana',       'tara',        'helmi',          'mae',
+      'hasan',      'milla',       'stacy',          'madison',
+      'jesus',      'olenka',      'tymon',          'jacob',
+      'sofia',      'douglas',     'valdir',         'britte',
+      'vilde',      'ailo',        'hannah',         'irmtrud',
+      'heriberto',  'zenaide',     'payam',          'aubree',
+      'rose',       'sherry',      'alão',           'vincent',
+      'viola',      'sara',        'beatrice',       'milo',
+      'gordon',     'fábia',       'purificacion',   'madison',
+      'nora',       'wyatt',       'sissy',          'héloïse',
+      'william',    'luukas',      'michael',        'jacqueline',
+      'carlos',     'bonnie',      'ryan',           'matthew',
+      'yousif',     'rolf-peter',  'oskari',         'nadin',
+      'joanne',     'علی',         'kübra',          'candice',
+      'clara',      'melodie',     'medina',         'albert',
+      'jonathan',   'یاسمین',      'fernando',       'eeli',
+      'renato',     'lewis',       'maurice',        'pelle',
+      'سهیل',       'elsa',        'کوروش',          'julia',
+      'geza',       'ariane',      'annabelle',      'isabella',
+      'arben',      'isabella',    'soledad',        'theo',
+      'julia',      'ellen',       'malou',          'victoria',
+      'brayden',    'rosa',        'carolyn',        'stella',
+      'باران',      'cesar',       'nerea',          'eva',
+      'carolina',   'sami',        'hermine',        'patricia',
+      'cathy',      'mads',        'cléa',           'eleah',
+      'susie',      'josefine',    'alexis',         'michael',
+      'john',       'alexandra',   'aramis',         'darren',
+      'jano',       'matias',      'clayton',        'nicole',
+      'grazia',     'arnaud',      'christiaan',     'ramin',
+      'امیر',       'gordon',      'timoteüs',       'anton',
+      'victor',     'artur',       'emilie',         'victoria',
+      'philip',     'sarah',       'ingelore',       'lucy',
+      'liva',       'ariana',      'jacob',          'alfonso',
+      'roselei',    'maxime',      'ava',            'rolf',
+      'juliette',   'clara',       'hans-h.',        'monique',
+      'diana',      'maria',       'toby',           'syl',
+      'celine',     'علی رضا',     'بهار',           'isaac',
+      'bently',     'eva',         'علیرضا',         'آدرینا',
+      'liara',      'barbara',     'محمدمهدی',       'jordi',
+      'mathilde',   'deniz',       'naja',           'théodore',
+      'sofia',      'margarido',   'raymond',        'nelson',
+      'lia',        'george',      'gaël',           'gordon',
+      'frida',      'väinö',       'naja',           'olivia',
+      'ritthy',     'charlotte',   'hans-christian', 'owen',
+      'sasha',      'marlyse',     'addison',        'davut',
+      'dustin',     'isaiah',      'eugen',          'celestine',
+      'kathryn',    'emma',        'herma',          'aike',
+      'irmgard',    'joel',        'dean',           'samuel',
+      'celina',     'rosario',     'alexandre',      'samuel',
+      'josephine',  'sienna',      'penny',          'selma',
+      'meral',      'batur',       'devon',          'deniz',
+      'بردیا',      'abílio',      'abraham',        'rose',
+      'ivan',       'pål',         'یاسمن',          'abigail',
+      'oscar',      'jérémy',      'mélissa',        'sofia',
+      'lilja',      'larry',       'charlotte',      'marceau',
+      'anton',      'jack',        'theo',           'tobias',
+      'alma',       'bendik',      'gaspard',        'felix',
+      'oliver',     'loïs',        'enzo',           'valentin',
+      'hannah',     'isabella',    'nooa',           'julian',
+      'teresa',     'cristobal',   'norbert',        'brianna',
+      'leevi',      'melissa',     'rose',           'goran',
+      'aino',       'deniz',       'katrina',        'richard',
+      'susanna',    'clara',       'emma',           'janko',
+      'alejandra',  'amanda',      'gloria',         'fatma',
+      'oscar',      'sam',         'ceyhan',         'julia',
+      'martin',     'bernfried',   'blake',          'harrison',
+      'owen',       'josha',       'emile',          'chris',
+      'ruby',       'lola',        'mark',           'kerim',
+      'diane',      'väinö',       'ella',           'john',
+      'babür',      'marius',      'jimmy',          'یاسمین',
+      'justin',     'mona',        'heine',          'lycke',
+      'vincenza',   'valdemar',    'miriam',         'gabriel',
+      'gabriel',    'macit',       'anna',           'axelle',
+      'hermes',     'madison',     'hannah',         'alicia',
+      'nuria',      'rodrigo',     'farah',          'liva',
+      'benjamin',   'ingrid',      'olav',           'elias',
+      'علی رضا',    'craig',       'ingebjørg',      'wanda',
+      'fatma',      'harrison',    'emma',           'پرنیا',
+      'braxton',    'villads',     'redouane',       'oliver',
+      'oscar',      'adriana',     'vilja',          'ceylan',
+      'corinne',    'theda',       'seyfullah',      'maya',
+      'علیرضا',     'arttu',       'harper',         'liliano',
+      'پرنیا',      'marvin',      'luna',           'belinda',
+      'lenni',      'otto',        'francis',        'joanne',
+      'kristin',    'alfredo',     'dwayne',         'friedbert',
+      'melvin',     'raffaele',    'remedios',       'درسا',
+      'aiden',      'iina',        'ricardo',        'savannah',
+      'simone',     'zachary',     'angela',         'nada',
+      'kübra',      'emil',        'konsta',         'dan',
+      'carter',     'etienne',     'santina',        'venceslau',
+      'yaela',      'tristan',     'dylan',          'delores',
+      'حسین',       'alisa',       'odin',           'elina',
+      'roger',      'jayden',      'rainer',         'magrit',
+      'jedidja',    'adeline',     'benjamin',       'angus',
+      'clara',      'israel',      'clarence',       'estelle',
+      'florentine', 'طاها',        'jennie',         'asta',
+      'oğuzhan',    'önal',        'esat',           'villemo',
+      'ronja',      'leevi',       'tim',            'djalme',
+      'madison',    'aleksi',      'ahmet',          'ülkü',
+      'eléa',       'eliseu',      'mestan',         'bruni',
+      'olivia',     'murat',       'léandro',        'emma',
+      'léonard',    'madelen',     'susano',         'mehmet',
+      'addison',    'rachel',      'andre',          'connor',
+      'gerry',      'siiri',       'kerttu',         'amador',
+      'guillermo',  'evelyn',      'chloe',          'pieter-bas',
+      'madeleine',  'olivia',      'albert',         'mara',
+      'bobby',      'cathy',       'mae',            'iben',
+      'latife',     'marcus',      'hannah',         'jonas',
+      'samuel',     'christoffer', 'hilda',          'نازنین',
+      'beatriz',    'سهیل',        'margaux',        'jen',
+      'becky',      'ahmet',       'arnoldo',        'begüm',
+      'numan',      'jorge',       'tiziano',        'toby',
+      'alvaro',     'durmus',      'alex',           'shelly',
+      'kubra',      'annabelle',   'nathanja',       'remo',
+      'marius',     'tanise',      'anália',         'dener',
+      'noe',        'venla',       'tracy',          'ugo',
+      'aisha',      'zachary',     'محمد',           'سام',
+      'herrmann',   'ellen',       'حامد',           'daniel',
+      'derek',      'fillip',      'lucas',          'maria',
+      'eino',       'cathriona',   'morgan',         'رضا',
+      'amanda',     'allie',       'afşar',          'آنیتا',
+      'taeke',      'victoria',    'alois',          'مهرسا',
+      'kerstin',    'eevi',        'josse',          'giulia',
+      'sara',       'martha',      'thuy',           'amy',
+      'viola',      'germaine',    'aubree',         'بهار',
+      'christian',  'aino',        'fatma',          'anna',
+      'efe',        'louise',      'léane',          'alfred',
+      'franck',     'lourdes',     'becky',          'nanna',
+      'یلدا',       'keith',       'oliver',         'philip',
+      'selma',      'lidia',       'amina',          'noah',
+      'melvin',     'mélody',      'piero',          'angie',
+      'fatma',      'brooke',      'elizabeth',      'yasmijn',
+      'riley',      'laurie',      'nathan',         'elisabet',
+      'killian',    'johan',       'kaya',           'cecilie',
+      'rose',       'martin',      'albert',         'iman',
+      'nikolaj',    'mirelle',     'philippe',       'ilse',
+      'théodore',   'judy',        'vital',          'juliette'
+    ]
+  },
+  {
+    _id: 30,
+    numPersons: 1828,
+    averageAge: 39.4917943107221,
+    names: [
+      'elijah',        'carl',          'louise',      'بنیامین',
+      'sandra',        'anne',          'maeva',       'aya',
+      'vincent',       'signe',         'monica',      'florian',
+      'harvey',        'anaëlle',       'آرتين',       'joseph',
+      'emma',          'elsie',         'john',        'gideon',
+      'kristin',       'درسا',          'jolanthe',    'isobel',
+      'jesus',         'paula',         'nathan',      'nalan',
+      'zoey',          'oscar',         'ethan',       'isaac',
+      'cléo',          'egas',          'luca',        'noah',
+      'sara',          'chris',         'okan',        'abigail',
+      'urbana',        'sávio',         'eemil',       'hazel',
+      'ali',           'آرتين',         'melvin',      'noah',
+      'pytsje',        'susete',        'frida',       'nancy',
+      'coşkun',        'saana',         'dale',        'sidra',
+      'نازنین',        'nour',          'alissa',      'رضا',
+      'ellen',         'abigail',       'daphné',      'cristina',
+      'julia',         'suzy',          'cathelijn',   'paige',
+      'rose',          'آرمین',         'sarah',       'william',
+      'heinrich',      'celestine',     'marilou',     'ceyhan',
+      'pascal',        'lílian',        'mayon',       'leo',
+      'kelly',         'sofia',         'rejanete',    'martin',
+      'afet',          'alexa',         'ursina',      'phyllis',
+      'claire',        'hasan',         'alfredo',     'jay',
+      'nathaniel',     'بردیا',         'naja',        'ethan',
+      'davut',         'محمدپارسا',     'harry',       'mustafa',
+      'querijn',       'آرسین',         'hunter',      'edmee',
+      'javier',        'cildo',         'piero',       'lesa',
+      'majella',       'abdelhakim',    'حامد',        'lourdes',
+      'marina',        'colin',         'nicholas',    'aidan',
+      'jasper',        'angel',         'شایان',       'madelief',
+      'marie',         'rolf',          'jules',       'oya',
+      'mischa',        'مارال',         'mason',       'vedat',
+      'eren',          'howard',        'etienne',     'julia',
+      'حسین',          'oğuzhan',       'igor',        'simon',
+      'regina',        'sebastian',     'albert',      'jar',
+      'matteo',        'nicklas',       'درسا',        'dora',
+      'deniz',         'santiago',      'raul',        'kathrin',
+      'آیلین',         'هستی',          'ivano',       'stacy',
+      'barb',          'marvin',        'mar',         'levi',
+      'aino',          'ryder',         'moreno',      'olivia',
+      'mehmet',        'florian',       'tilda',       'aleksi',
+      'albert',        'katie',         'hans-ludwig', 'susie',
+      'diane',         'lloyd',         'anna',        'عباس',
+      'ege',           'aaron',         'gilles',      'tristan',
+      'samuel',        'herman',        'مهدي',        'vicki',
+      'jon',           'emma',          'carol',       'demie',
+      'karen',         'bob',           'emmi',        'gina',
+      'tyler',         'mason',         'arthur',      'elif',
+      'quint',         'frida',         'gloria',      'özsu',
+      'malou',         'یلدا',          'beatrice',    'ronja',
+      'wyatt',         'lillian',       'raquel',      'nathan',
+      'sarah',         'benito',        'matilde',     'ernest',
+      'rosa',          'justin',        'isaac',       'حسین',
+      'leah',          'peetu',         'glen',        'jimmy',
+      'ewald',         'jesus',         'miriam',      'abigail',
+      'laurie',        'پوریا',         'zaíro',       'zilan',
+      'michelle',      'marco',         'rasmus',      'jana',
+      'guy',           'maurice',       'lea',         'frida',
+      'آیلین',         'sonia',         'isabella',    'buse',
+      'oliver',        'marthe',        'eemil',       'آوینا',
+      'ella',          'joel',          'gesa',        'carter',
+      'claire',        'marjorie',      'gauke',       'martha',
+      'victoria',      'amaury',        'julius',      'german',
+      'samuel',        'artur',         'marie',       'mason',
+      'بیتا',          'flavie',        'shane',       'henry',
+      'johann',        'aubin',         'laura',       'اميرعلي',
+      'victor',        'julie',         'هلیا',        'alan',
+      'oskari',        'silke',         'eugene',      'joelci',
+      'lola',          'محمدعلی',       'georgia',     'angeles',
+      'nicolas',       'deniz',         'ariana',      'nicoline',
+      'turgo',         'simon',         'marilena',    'abigail',
+      'lærke',         'judith',        'anika',       'victor',
+      'nanna',         'hudson',        'rene',        'ceylan',
+      'ismael',        'daniel',        'amandine',    'alexei',
+      'anna',          'nelson',        'gottlieb',    'rachel',
+      'pihla',         'kübra',         'malou',       'nuria',
+      'rosa',          'kaleb',         'jessie',      'emmanuelle',
+      'kiara',         'roxanna',       'anthony',     'harriet',
+      'dan',           'norberto',      'sofia',       'lasse',
+      'leah',          'amy',           'emy',         'pihla',
+      'babür',         'ستایش',         'jayden',      'marzena',
+      'jarand',        'even',          'elling',      'esteban',
+      'marcus',        'ceyhan',        'sienna',      'kadir',
+      'jordan',        'vérter',        'anne',        'tara',
+      'leander',       'natalício',     'سورنا',       'raymond',
+      'encarnacion',   'احسان',         'henriette',   'florence',
+      'nicoline',      'آرتين',         'viviane',     'marcus',
+      'eloïse',        'marie',         'sasha',       'emile',
+      'mads',          'amrit',         'یلدا',        'eva',
+      'anne',          'earl',          'frank',       'sepp',
+      'aléxio',        'katrine',       'آوینا',       'dwight',
+      'remedios',      'alberte',       'zoe',         'nina',
+      'christopher',   'elisabete',     'penny',       'maëlyne',
+      'christopher',   'sophia',        'oskari',      'sindre',
+      'philip',        'kerttu',        'arttu',       'lenni',
+      'heather',       'ethan',         'kurt',        'hinderkien',
+      'estelle',       'aquila',        'andres',      'carole',
+      'zoe',           'carrie',        'alice',       'joan',
+      'valtteri',      'meral',         'laurenz',     'agostinho',
+      'zoe',           'mathias',       'sarah',       'anacleto',
+      'daniel',        'agathe',        'fernando',    'gonçala',
+      'alexander',     'oskari',        'zoe',         'tonya',
+      'kaylee',        'sofia',         'karen',       'pihla',
+      'ekaterina',     'eldana',        'osnaura',     'alma',
+      'melvin',        'jennifer',      'gül',         'felix',
+      'ayten',         'محیا',          'angie',       'ofélia',
+      'amelia',        'ceylan',        'jayden',      'olímpia',
+      'marie',         'dylan',         'judith',      'annina',
+      'غزل',           'dani',          'angela',      'albert',
+      'lucas or luke', 'nurullah',      'beatriz',     'yasemin',
+      'jacob',         'andreas',       'vincent',     'christian',
+      'emine',         'mariusz',       'یلدا',        'terra',
+      'yann',          'شایان',         'harley',      'valgi',
+      'benjamin',      'morena',        'lea',         'lydia',
+      'tyler',         'alexis',        'esat',        'indie',
+      'vera',          'علی رضا',       'alex',        'ceyhan',
+      'jen',           'simone',        'samantha',    'joona',
+      'bilal',         'sofie',         'charlie',     'helmi',
+      'hans-jochen',   'katherine',     'alexis',      'malthe',
+      'hassan',        'xavier',        'esther',      'laurie',
+      'noah',          'pedram',        'cristobal',   'lance',
+      'dean',          'rhonda',        'maëlys',      'کیمیا',
+      'miriam',        'carlos',        'ethan',       'tilde',
+      'hatice',        'terry',         'vincent',     'riley',
+      'matteo',        'christian',     'emma',        'curt',
+      'amanda',        'nora',          'lea',         'lis',
+      'anísia',        'cory',          'ece',         'anett',
+      'côme',          'emil',          'johanne',     'inge',
+      'louise',        'davut',         'lea',         'sofia',
+      'warner',        'wyatt',         'sulene',      'meral',
+      'danny',         'rosie',         'frederikke',  'özsu',
+      'brage',         'filippa',       'deann',       'emilia',
+      'dora',          'آدرین',         'justin',      'anni',
+      'matias',        'gabriel',       'meret',       'mackenzie',
+      'stefania',      'مانی',          'noe',         'ailin',
+      'celine',        'julia',         'emily',       'ryder',
+      'majida',        'james',         'jacob',       'nicoline',
+      'اميرعلي',       'lea',           'allie',       'iben',
+      'jared',         'meghan',        'judy',        'samantha',
+      'anne-rose',     'andrew',        'kristin',     'gina',
+      'کیانا',         'آرش',           'júlia',       'murat',
+      'lionne',        'marcelle',      'angel',       'hailey',
+      'diane',         'agnethe',       'lewis',       'jerôme',
+      'beatrice',      'maik',          'samuel',      'rintje',
+      'charlotte',     'howard',        'zoubeir',     'bobby',
+      'dionésia',      'aada',          'یسنا',        'wasim',
+      'sofia',         'maddison',      'mandy',       'sacha',
+      'vildan',        'nalan',         'cassandra',   'greta',
+      'rim',           'oğuzhan',       'michal',      'ype',
+      'samuel',        'milja',         'arnold',      'noah',
+      'emre',          'redouan',       'marianne',    'solomon',
+      'grace',         'indie',         'lilian',      'buse',
+      'anne',          'harold',        'isabella',    'léa',
+      'astrid',        'jennifer',      'آرمیتا',      'سپهر',
+      'نازنین',        'vildan',        'fradique',    'sebastian',
+      'craig',         'ben',           'bella',       'علی رضا',
+      'viivi',         'arthur',        'هلیا',        'avery',
+      'mario',         'diana',         'azeddine',    'beatrix',
+      'marc',          'derrick',       'jurema',      'donato',
+      'miro',          'zoe',           'jose',        'eevi',
+      'yvan',          'adalbert',      'doris',       'mahmut',
+      'brielle',       'deann',         'sienna',      'tomothy',
+      'logan',         'raquel',        'ellen',       'jenny',
+      'charlie',       'nicoline',      'fiona',       'erique',
+      'margaux',       'eileen',        'belinda',     'رها',
+      'evan',          'christoph',     'mark',        'ida',
+      'ege',           'dina',          'lucas',       'یسنا',
+      'liron',         'jackson',       'sandra',      'clinton',
+      'maëlia',        'angela',        'jennifer',    'مهدي',
+      'cengiz',        'کیمیا',         'harley',      'raimundo',
+      'millie',        'نيما',          'lusanne',     'olivia',
+      'rebekka',       'christian',     'latife',      'coşkun',
+      'rasmus',        'viviane',       'adrien',      'sean',
+      'paul',          'paul',          'leah',        'eetu',
+      'everalda',      'یاسمن',         'jaime',       'clara',
+      'amir',          'علیرضا',        'پارمیس',      'özsu',
+      'ethan',         'lucille',       'aleksi',      'zoe',
+      'jayden',        'viviane',       'sophia',      'سارا',
+      'onni',          'idelso',        'macit',       'kerstin',
+      'ingrid',        'valérie',       'jordi',       'sandra',
+      'noémie',        'marius',        'enrique',     'kimberly',
+      'patricia',      'brielle',       'nicky',       'milla',
+      'nuray',         'ceyhan',        'sølve',       'alexander',
+      'thelma',        'robin',         'jeffery',     'آریا',
+      'jonno',         'ayla',          'aymeric',     'alisa',
+      'lotti',         'julie',         'justin',      'محمدعلی',
+      'jorge',         'joan',          'brooke',      'emanuel',
+      'chad',          'isabelle',      'buse',        'jairo',
+      'hector',        'رونیکا',        'wayne',       'uriel',
+      'susanne',       'ethel',         'siegried',    'morena',
+      'eli',           'joar',          'diana',       'bárbaro',
+      'tiago',         'gabriel',       'begoña',      'calvin',
+      'juana',         'ashley',        'mark',        'kjetil',
+      'lucy',          'isabelle',      'debra',       'lumi',
+      'محیا',          'necati',        'julius',      'afşar',
+      'carter',        'luke',          'emma',        'carlo',
+      'kenan',         'sofia',         'burim',       'gonca',
+      'mathis',        'vicente',       'claudia',     'alan',
+      'ceyhan',        'tiffany',       'eurico',      'alejandro',
+      'مرسانا',        'alicia',        'chloe',       'cidélia',
+      'پریا',          'maddison',      'absalão',     'stella',
+      'astrid',        'liva',          'alvin',       'nathan',
+      'andresa',       'théodore',      'laurie',      'claire',
+      'virgil',        'lance',         'alexandros',  'áquila',
+      'jamie',         'owen',          'maurice',     'sebastian',
+      'هستی',          'luukas',        'väinö',       'zoe',
+      'brad',          'luca',          'ryan',        'zoé',
+      'cléo',          'arian',         'musa',        'naja',
+      'marianne',      'florence',      'louisa',      'ava',
+      'michal',        'tulay',         'debbie',      'corinna',
+      'lana',          'renée',         'konsta',      'cecil',
+      'barry',         'sandro',        'ashton',      'jessie',
+      'phoebe',        'پرهام',         'laura',       'ella',
+      'lucia',         'پارسا',         'elijah',      'onni',
+      'arturo',        'patricia',      'diogo',       'priscilla',
+      'madison',       'holdina',       'ege',         'franka',
+      'karoline',      'josefine',      'george',      'alexis',
+      'james',         'lenni',         'phoebe',      'andrea',
+      'junior',        'adham',         'samuel',      'roberta',
+      'hansje',        'angel',         'joseph',      'willibert',
+      'miguel',        'nojus',         'othilie',     'sine',
+      'dijana',        'ken',           'بردیا',       'krin',
+      'simon',         'daphné',        'ayşe',        'hans-friedrich',
+      'lydia',         'katrin',        'tammy',       'elena',
+      'manuela',       'lesa',          'آوینا',       'encarnacion',
+      'oskari',        'آریا',          'احسان',       'colleen',
+      'chad',          'kadir',         'peetu',       'abby',
+      'ezra',          'randy',         'wesley',      'rifat',
+      'carl',          'leana',         'leslie',      'jesus',
+      'nieves',        'eugene',        'sanja',       'leevi',
+      'noah',          'allysha',       'addison',     'esma',
+      'kiara',         'ahmet',         'erle',        'gudrun',
+      'mehmet',        'sophie',        'dora',        'karl heinz',
+      'anne-loes',     'tony',          'ana',         'elif',
+      'ivan',          'kayla',         'آوینا',       'elli',
+      'nikolaj',       'emilie',        'frederiek',   'noëlle',
+      'kate',          'nuria',         'endre',       'کیانا',
+      'nanna',         'کوروش',         'ebba',        'michelle',
+      'gerti',         'léane',         'محمدمهدی',    'joyce',
+      'beth',          'julia',         'luca',        'ashley',
+      'emma',          'gisèle',        'rafael',      'eugene',
+      'afşar',         'deborah',       'oğuzhan',     'erol',
+      'eren',          'محمدپارسا',     'emil',        'franklin',
+      'ava',           'marc',          'bertha',      'marcia',
+      'sophia',        'dylan',         'eivor',       'susanna',
+      'latoya',        'zênia',         'florent',     'هستی',
+      'lucas',         'mathew',        'théo',        'doris',
+      'marshall',      'marine',        'yvone',       'clayton',
+      'مارال',         'aloïs',         'german',      'angela',
+      'lorraine',      'virginia',      'nerea',       'harald',
+      'signe',         'anthony',       'emilia',      'دینا',
+      'شایان',         'lise',          'nellie',      'begüm',
+      'adna',          'lily',          'lynn',        'gamze',
+      'chloé',         'roope',         'begüm',       'justine',
+      'alisa',         'jenny',         'shelly',      'barry',
+      'latife',        'محمدعلی',       'mathys',      'ayşe',
+      'georgine',      'dylan',         'maelya',      'louise',
+      'lucas',         'سام',           'linnea',      'alvaro',
+      'felicíssimo',   'شایان',         'joana',       'agnes',
+      'çetin',         'zachary',       'eli',         'تارا',
+      'daniela',       'jesper',        'aapo',        'wayne',
+      'katrine',       'louis',         'noah',        'maria',
+      'orlando',       'julia',         'dogan',       'astrid',
+      'ava',           'wolf-dietrich', 'kristin',     'abbie',
+      'rasmus',        'ümit',          'megan',       'lucas',
+      'cecilie',       'juan',          'sophie',      'lia',
+      'hailey',        'leslie',        'teresa',      'deniz',
+      'aada',          'amanda',        'jason',       'terry',
+      'ana',           'raymonde',      'phillip',     'ömür',
+      'juan',          'niklas',        'leo',         'cornelia',
+      'john',          'tara',          'gianna',      'léa',
+      'delores',       'sean',          'ceyhun',      'lino',
+      'téo',           'adam',          'matteo',      'eugenio',
+      'carmela',       'lois',          'ilyès',       'nadia',
+      'batur',         'isabella',      'thomas',      'رها',
+      'bjørnar',       'rose',          'yolanda',     'calvin',
+      'roy',           'hildegard',     'georg',       'darlene',
+      'پارمیس',        'concepcion',    'jesualdo',    'alan',
+      'lydia',         'crystal',       'lara',        'kenan',
+      'ahmad',         'umut',          'herminia',    'ortrun',
+      'hans-peter',    'henoch',        'mateusz',     'vildan',
+      'adriana',       'alexander',     'melanie',     'clara',
+      'logan',         'angelina',      'deborah',     'curt',
+      'daniele',       'sophia',        'arnaud',      'eugenio',
+      'felipe',        'nerea',         'alan',        'coşkun',
+      'terrence',      'henning',       'rayn',        'noah',
+      'amelia',        'marianne',      'louis',       'batur',
+      'willy',         'peppi',         'sara',        'anthony',
+      'abigail',       'tony',          'florent',     'fredy',
+      'sofia',         'brandon',       'احسان',       'alison',
+      'ömür',          'sofia',         'barış',       'rico',
+      'freja',         'yasemin',       'miro',        'rosemerie',
+      'shahin',        'abigail',       'jeremy',      'irmingard',
+      'etienne',       'janet',         'jaime',       'frederikke',
+      'marianne',      'lila',          'önal',        'tilly',
+      'martin',        'jeremy',        'valtteri',    'janna',
+      'landon',        'egil',          'bruce',       'joan',
+      'emma',          'ines',          'aurore',      'amelija',
+      'seraya',        'fatih',         'tobias',      'rené',
+      'lotte',         'charlie',       'justine',     'tammy',
+      'ahmet',         'sune',          'gökay',       'mathis',
+      'sedef',         'هستی',          'luna',        'charlotte',
+      'efe',           'juho',          'rogério',     'emmy',
+      'آنیتا',         'cecil',         'vincent',     'clídio',
+      'jasmine',       'vicente',       'alma',        'louane',
+      'ستایش',         'laura',         'elizabeth',   'elsa',
+      'léonard',       'veronique',     'pilar',       'vedat',
+      'ava',           'livia',         'anni',        'larry',
+      'willi',         'adrião',        'susana',      'lena',
+      'violet',        'sonia',         'evelina',     'liam',
+      'camila',        'louane',        'levi',        'anette',
+      'alicia',        'morris',        'johanne',     'درسا',
+      'stefania',      'charèl',        'مهدي',        'ruby',
+      'avery',         'hugo',          'jacob',       'lucas',
+      'abigail',       'indie',         'julian',      'shirlei',
+      'alexandra',     'gilles',        'tony',        'cetin',
+      'madison',       'julie',         'jane',        'enni',
+      'ava',           'xavier',        'diana',       'izzie',
+      'alma',          'mikael',        'konsta',      'andreas',
+      'ray',           'tarjei',        'sheryl',      'acúrsio',
+      'lauriana',      'kailey',        'onni',        'dale',
+      'elisabet',      'david',         'arthur',      'dan',
+      'don',           'patriek',       'virgílio',    'ritthy',
+      'allie',         'zita',          'théodore',    'yesse',
+      'valdemar',      'agathe',        'lilo',        'leintje',
+      'lillian',       'tim',           'maren',       'hedwig',
+      'naomi',         'pablo',         'lisa',        'ines',
+      'didaco',        'megan',         'leanne',      'sinaida',
+      'valentina',     'julia',         'alexis',      'niilo',
+      'mandy',         'francisca',     'alice',       'karla',
+      'nikolas',       'gavin',         'elfi',        'kuzey',
+      'armand',        'kreszenz',      'علی',         'yvana',
+      'caitlin',       'karine',        'ege',         'ângelo',
+      'julian',        'samuel',        'benito',      'edouard',
+      'oscar',         'flávio',        'charlie',     'wayne',
+      'diana',         'joseph',        'cristina',    'heinz-otto',
+      'مهدي',          'iida',          'morgane',     'joris',
+      'anna',          'chiara',        'fride',       'raquel',
+      'enni',          'ilona',         'jesus',       'gunnar',
+      'alexander',     'billy',         'emma',        'meral',
+      'lucille',       'bahri',         'magnus',      'eeli',
+      'milla',         'noemie',        'gwendolynn',  'طاها',
+      'keila',         'alma',          'leevi',       'dawn',
+      'daniel',        'ava',           'emmi',        'emilie',
+      'hunter',        'mostafa',       'salih',       'sarra',
+      'yasemin',       'karl-peter',    'elliot',      'léonie',
+      'siglinde',      'ayşe',          'sasha',       'daniel',
+      'marthijn',      'christina',     'mohamed',     'kajus',
+      'پریا',          'david',         'melvin',      'benito',
+      'david',         'hamdi',         'ilona',       'utz',
+      'ella',          'julia',         'heimo',       'gerardo',
+      'alise',         'veneranda',     'everett',     'kadir',
+      'sam',           'melodie',       'bajram',      'sasha',
+      'آرمیتا',        'mia',           'vincent',     'mohammad',
+      'roope',         'dario',         'celestine',   'noémie',
+      'تارا',          'linda',         'eugenia',     'bertram',
+      'eduardo',       'noah',          'halil',       'hailey',
+      'morgane',       'درسا',          'barış',       'jose',
+      'ueli',          'kurt',          'liva',        'alexandra',
+      'begüm',         'virginia',      'alexandra',   'emma',
+      'matheus',       'gary',          'malik',       'signe',
+      'jesus',         'terje',         'oğuzhan',     'naomi',
+      'warren',        'cherina',       'emma',        'bertolino',
+      'scott',         'غزل',           'djoeke',      'otilie',
+      'esther',        'marliene',      'tomine',      'muriel',
+      'kenan',         'melinda',       'daniel',      'rasmus',
+      'aaron',         'orósio',        'آنیتا',       'meral',
+      'meral',         'madelene',      'jeannine',    'rafael',
+      'gabrielle',     'troy',          'malte',       'angie',
+      'lily',          'nicole',        'sara',        'salvador',
+      'ava',           'charles',       'آرمیتا',      'پرنیا',
+      'hugh',          'francesco',     'هستی',        'matthieu',
+      'nolan',         'kay',           'celina',      'tucha',
+      'ethan',         'caleb',         'josilaine',   'sienna',
+      'pihla',         'armando',       'lisa',        'scott',
+      'victor',        'nixon',         'madison',     'zara',
+      'پرنیا',         'aaron',         'مریم',        'ludovic',
+      'angelina',      'یاسمن',         'edward',      'lucila',
+      'eleanor',       'hailey',        'regina',      'hadrien',
+      'anisa',         'claude',        'alexis',      'jack',
+      'andres',        'olivia',        'مهدي',        'eva',
+      'gustavo',       'sara',          'alvaro',      'rayan',
+      'éveline',       'everdine',      'enzo',        'olivia',
+      'molly',         'eden',          'sébastien',   'lærke',
+      'vildan',        'luz',           'joona',       'nora',
+      'concepcion',    'samantha',      'annabelle',   'patric',
+      'len',           'ethel',         'ilan',        'مهدي',
+      'heinrich',      'daniel',        'helga',       'even',
+      'edward',        'otto',          'camilla',     'mathias',
+      'soham',         'renee',         'sara',        'insa',
+      'lucas',         'sophie',        'isabel',      'claude',
+      'mathis',        'olai',          'sverre',      'caitlin',
+      'german',        'adna',          'rosa',        'aida',
+      'rafael',        'ines',          'leah',        'estefânia',
+      'سورنا',         'christopher',   'zerina',      'alexander',
+      'becky',         'sam',           'آراد',        'tristan',
+      'linda',         'kevin',         'dylan',       'konsta',
+      'bernhard',      'sigve',         'pedro',       'victoria',
+      'alyssa',        'tyler',         'isaac',       'benjamin',
+      'naomi',         'enrique',       'milla',       'felix',
+      'andy',          'gerwin',        'hildegard',   'virginie',
+      'afşar',         'niklas',        'jeremy',      'livio',
+      'silke',         'leevi',         'sophie',      'andrew',
+      'brandon',       'میلاد',         'délano',      'alice',
+      'julia',         'veronica',      'basile',      'gustas',
+      'toni',          'silvia',        'zahra',       'victoria',
+      'mehmet',        'lillian',       'sofia',       'sheryl',
+      'karen',         'lucas or luke', 'eetu',        'jen',
+      'yusuf',         'eugenia',       'malcolm',     'albert',
+      'vera',          'raymond',       'maritta',     'ridwan',
+      'lia',           'آوینا',         'caspian',     'rose',
+      'aitor',         'lucienne',      'enrique',     'lilly',
+      'lauri',         'maeva',         'isaac',       'jaime',
+      'jacqueline',    'holly',         'ava',         'rebeca',
+      'sedef',         'massimiliano',  'allie',       'maja',
+      'charlene',      'sebastian',     'margherita',  'lloyd',
+      'ingmar',        'sueli',         'wallace',     'austin',
+      'elsa',          'christelle',    'semra',       'andrea',
+      'samantha',      'stephanie',     'rosalyn',     'gail',
+      'antonina',      'oya',           'savannah',    'nurdan',
+      'arne',          'luana',         'irene',       'lohana',
+      'lena',          'amandine',      'vicky',       'cherly',
+      'mustafa',       'floyd',         'sheila',      'estéban',
+      'محمد',          'phoenix',       'chad',        'miroslav',
+      'livio',         'andre',         'leonhard',    'mattie',
+      'sasa',          'elina',         'christian',   'natalie',
+      'emma',          'bela',          'chiara',      'rosário',
+      'mestan',        'wiljan',        'katie',       'anna',
+      'emily',         'آرسین',         'warren',      'sedef',
+      'cecil',         'bill',          'sienna',      'oskari',
+      'soledad',       'jayden',        'tanise',      'ülkü',
+      'querubim',      'harley',        'madison',     'olivia',
+      'babür',         'claudine',      'aubree',      'enzo',
+      'ross',          'raul',          'alex',        'rachel',
+      'villads',       'norah',         'leonie',      'floriana',
+      'charlie',       'ryan',          'eleanora',    'vanessa',
+      'evamaria',      'karl-georg',    'emilio',      'naja',
+      'jade',          'morena',        'kuzey',       'edwin',
+      'eetu',          'پرنیا',         'edvard',      'devon',
+      'lea',           'pierre-alain',  'harper',      'eugenia',
+      'grayson',       'mina',          'oscar',       'romano',
+      'stefanie',      'emmi',          'barış',       'lumi',
+      'izzie',         'cesar',         'leah',        'matthew',
+      'agnès',         'پرنیا',         'gökhan',      'victoria',
+      'kerttu',        'héloïse',       'ronja',       'bruce',
+      'mahamed',       'julianne',      'charles',     'julian',
+      'stephanie',     'daphné',        'angel',       'bodien',
+      'شایان',         'niesje',        'دینا',        'kaitlin',
+      'coşkun',        'کوروش',         'macit',       'sylvia',
+      'jar',           'suzy',          'lucile',      'ayşe',
+      'sophie',        'ariane',        'chiara',      'alex',
+      'door',          'eline',         'afet',        'louis',
+      'bryan',         'jules',         'lonnie',      'ezio',
+      'patrique',      'sophia',        'fatma',       'tracy',
+      'lloyd',         'marte',         'nicolay',     'eugen',
+      'adam',          'mason',         'sara',        'یلدا',
+      'alberto',       'timeo',         'elisabeth',   'constance'
+    ]
+  },
+  {
+    _id: 50,
+    numPersons: 2304,
+    averageAge: 61.46440972222222,
+    names: [
+      'olav',          'madeleine',    'shona',        'isolino',
+      'mestan',        'پریا',         'victor',       'maeva',
+      'delia',         'alfred',       'maya',         'andreia',
+      'alex',          'julio',        'isobel',       'luís',
+      'brian',         'elsie',        'vilho',        'lincoln',
+      'leonard',       'nicklas',      'mathias',      'mathilde',
+      'daniel',        'adrian',       'florence',     'gaudência',
+      'josefina',      'eik',          'sarah',        'anaya',
+      'wanner',        'kelya',        'melissa',      'lea',
+      'thaïs',         'elizabeth',    'larry',        'eline',
+      'beau',          'علی رضا',      'آرش',          'élisabeth',
+      'philip',        'konstantin',   'roswita',      'babür',
+      'clint',         'brayen',       'sigmund',      'clarice',
+      'pedro',         'leo',          'naomi',        'liesel',
+      'habacuc',       'rose',         'cacilda',      'charles',
+      'آدرین',         'konrad',       'sarah',        'rose',
+      'margit',        'storm',        'vijay',        'torben',
+      'فاطمه زهرا',    'julie',        'deniz',        'kathy',
+      'nicolas',       'محمدطاها',     'nathan',       'isabella',
+      'latife',        'martha',       'الینا',        'eliane',
+      'joseph',        'volkan',       'carole',       'chad',
+      'elizabeth',     'ruby',         'آیلین',        'alisa',
+      'پرنیا',         'keira',        'tim',          'phoenix',
+      'judith',        'milla',        'ernesto',      'lucas',
+      'pam',           'vincent',      'florence',     'miguel',
+      'علیرضا',        'alyssa',       'matthew',      'رهام',
+      'dustin',        'alex',         'jeanne',       'مهراد',
+      'tessa',         'virgil',       'luca',         'fabrícia',
+      'kübra',         'samuel',       'ceyhun',       'ceyhun',
+      'elias',         'رها',          'encarnacion',  'ana',
+      'justin',        'xavier',       'emilio',       'jeremiah',
+      'xavier',        'cosimo',       'yasir',        'rocio',
+      'elizabeth',     'رها',          'oliver',       'ahmet',
+      'sofia',         'eren',         'babür',        'viljami',
+      'محمدطاها',      'arthur',       'frank',        'cameron',
+      'jens-peter',    'klaus',        'malo',         'clara',
+      'eleanor',       'pippa',        'camila',       'oliver',
+      'adam',          'ceyhun',       'eva',          'anna',
+      'sam',           'درسا',         'teresa',       'julia',
+      'latife',        'ege',          'hidde',        'joachim',
+      'francis',       'natalia',      'jor',          'delmar',
+      'macit',         'katie',        'flenn',        'freya',
+      'andres',        'roswitha',     'benjamin',     'elijah',
+      'severino',      'brennan',      'gonca',        'jeltsje',
+      'albert',        'lilja',        'alieke',       'eva',
+      'jayden',        'kátia',        'kaya',         'madlen',
+      'sara',          'kajus',        'maxime',       'nelli',
+      'bértil',        'sebastian',    'louis',        'jonathan',
+      'eduardo',       'pedro',        'anisa',        'iida',
+      'rose',          'ismael',       'louis',        'juan',
+      'iina',          'bella',        'margrith',     'maeva',
+      'marie',         'arman',        'becky',        'amrita',
+      'maurice',       'roman',        'vanda',        'dominique',
+      'marin',         'sohan',        'alexa',        'jim',
+      'vincent',       'neea',         'niilo',        'théodore',
+      'ines',          'naja',         'madison',      'dean',
+      'anneli',        'emilie',       'rayan',        'vedat',
+      'tammy',         'scarlett',     'fernanda',     'dieter',
+      'gökhan',        'رهام',         'sandra',       'liam',
+      'stanislaus',    'alexander',    'maxime',       'roger',
+      'gregorio',      'clifton',      'leroy',        'harry',
+      'sascha',        'margie',       'martha',       'mathias',
+      'leonard',       'aubin',        'dwayne',       'andreas',
+      'aureliana',     'siril',        'angel',        'kari',
+      'tracy',         'flurina',      'martina',      'علی رضا',
+      'mia',           'loretta',      'charlotte',    'lauren',
+      'antoine',       'akseli',       'gary',         'carl',
+      'besim',         'javier',       'claas',        'سپهر',
+      'lenny',         'beto',         'chaiane',      'diane',
+      'mary',          'nurdan',       'mandy',        'andressa',
+      'یاسمن',         'leónidas',     'latife',       'elya',
+      'filippa',       'august',       'crispim',      'vernon',
+      'rodrigo',       'kayla',        'ümit',         'nicklas',
+      'torje',         'marianna',     'juliette',     'tobias',
+      'harper',        'jordi',        'aleksi',       'lea',
+      'angela',        'teófilo',      'paige',        'niilo',
+      'beitske',       'dárcio',       'alfredo',      'zoe',
+      'domingo',       'lorenz',       'mathyn',       'karen',
+      'fatma',         'august',       'samu',         'herman',
+      'wendy',         'dexter',       'jeremy',       'babür',
+      'théo',          'پرهام',        'rene',         'toni',
+      'isolino',       'rosl',         'christian',    'giray',
+      'oliver',        'gabriel',      'ülkü',         'urs',
+      'luis',          'ilma',         'stephen',      'anniken',
+      'mirja',         'evelin',       'charlie',      'کیانا',
+      'noah',          'frederikke',   'rhonda',       'mia',
+      'tülay',         'aada',         'ilyès',        'mia',
+      'selma',         'lexi',         'عرشيا',        'phillip',
+      'joseph',        'livia',        'filippo',      'nilza',
+      'archie',        'julien',       'terje',        'okan',
+      'dália',         'daniela',      'janet',        'renee',
+      'adnan',         'sasha',        'lukas',        'olivier',
+      'یسنا',          'harro',        'arlete',       'leta',
+      'tatiana',       'luis',         'allie',        'النا',
+      'joseph',        'edwin',        'kylie',        'maria',
+      'zander',        'finn',         'micheal',      'ruben',
+      'pinja',         'maya',         'kasper',       'latife',
+      'sheryl',        'idris',        'کیمیا',        'maritte',
+      'yasemin',       'hailey',       'austin',       'mads',
+      'annewil',       'aubree',       'julia',        'joris',
+      'marcos',        'dania',        'alexander',    'lauren',
+      'kim',           'colin',        'lillian',      'onur',
+      'aurora',        'victoria',     'samuel',       'vedat',
+      'philip',        'thea',         'aníbal',       'francesca',
+      'richard',       'jon',          'آوین',         'nathaniel',
+      'dylan',         'devon',        'catherine',    'filip',
+      'jayden',        'wael',         'نیایش',        'mikkel',
+      'eleonore',      'leo',          'avery',        'عباس',
+      'samu',          'dian',         'ramon',        'barış',
+      'emmi',          'bértil',       'felix',        'dijana',
+      'rick',          'shawn',        'else',         'yasemin',
+      'margarita',     'sander',       'tony',         'connor',
+      'مهرسا',         'ernest',       'jimi',         'xavier',
+      'sarah-jane',    'teatske',      'dircenéia',    'hunter',
+      'amelia',        'mille',        'lois',         'lucy',
+      'iracilda',      'aino',         'aurora',       'teunisje',
+      'پریا',          'deniz',        'natali',       'jeanne',
+      'alexander',     'arijus',       'clara',        'ming',
+      'آیلین',         'petar',        'lillie',       'joel',
+      'georgine',      'kristin',      'soledad',      'hannelore',
+      'marie',         'lumi',         'debbie',       'serenity',
+      'jofre',         'veeti',        'elias',        'audun',
+      'don',           'benjamin',     'mikkel',       'nina',
+      'toine',         'marina',       'daniel',       'crystal',
+      'donna',         'ilona',        'mathilda',     'tony',
+      'william',       'ستایش',        'henry',        'nils',
+      'annabelle',     'mounir',       'ueli',         'samuel',
+      'ستایش',         'kayla',        'tina',         'kasper',
+      'kayla',         'nelli',        'naomi',        'lily',
+      'antoinette',    'natacha',      'cheyenne',     'coline',
+      'غزل',           'silene',       'marcus',       'janet',
+      'grace',         'lueli',        'alexander',    'carmen',
+      'nora',          'ryder',        'ستایش',        'oscar',
+      'emile',         'آنیتا',        'rosa',         'léo',
+      'indie',         'liliane',      'isabella',     'tess',
+      'santiago',      'väinö',        'elsa',         'mathew',
+      'kuzey',         'april',        'mustafa',      'matilda',
+      'imogen',        'یلدا',         'maëva',        'seamus',
+      'renso',         'nils',         'ritthy',       'elizabeth',
+      'luz',           'seth',         'hudson',       'carter',
+      'isabelle',      'elias',        'håkon',        'اميرمحمد',
+      'michal',        'heinz-jürgen', 'johanne',      'angelo',
+      'isabella',      'lucas',        'rebekka',      'oğuzhan',
+      'farhan',        'gerardo',      'alfred',       'julian',
+      'luka',          'jack',         'renso',        'lena',
+      'amy',           'latife',       'nina',         'johann',
+      'martina',       'francesca',    'noah',         'franklin',
+      'harry',         'becky',        'mehmet',       'robin',
+      'meral',         'paul',         'nixon',        'maroua',
+      'eva',           'pierre',       'kristina',     'nolan',
+      'lou',           'rick',         'alex',         'karl',
+      'ted',           'eugen',        'shawn',        'natálio',
+      'harold',        'luca',         'willow',       'gilberto',
+      'aria',          'oskar',        'andrea',       'enrique',
+      'isabelle',      'mackenzie',    'camila',       'aino',
+      'betina',        'matias',       'martin',       'babür',
+      'cassandre',     'bertram',      'rico',         'miguel',
+      'ida',           'محمدمهدی',     'sander',       'lauri',
+      'lawrence',      'sarah',        'courtney',     'jane',
+      'pedro',         'سوگند',        'hayrettin',    'deborah',
+      'anisa',         'پرنیا',        'andres',       'كيان',
+      'arjanne',       'asbjørn',      'lee',          'steve',
+      'دانیال',        'martha',       'heide-marie',  'esma',
+      'felix',         'rachel',       'noémie',       'nathaniel',
+      'witold',        'piper',        'jeremy',       'valdemar',
+      'silvano',       'armandino',    'mikael',       'justin',
+      'ali',           'ماهان',        'آرسین',        'amanda',
+      'flurina',       'hans-gerhard', 'layla',        'anton',
+      'isobel',        'yusuf',        'marcia',       'inès',
+      'peppi',         'mads',         'emilian',      'ceylan',
+      'isabelle',      'yusuf',        'misja',        'kai',
+      'martin',        'allie',        'nila',         'پارمیس',
+      'magnus',        'ömür',         'manon',        'josephien',
+      'ronnie',        'claro',        'kelly',        'mirjam',
+      'daniel',        'zarina',       'christoffer',  'jeffrey',
+      'jeremy',        'rogélio',      'josep',        'ivana',
+      'lewis',         'beau',         'noé',          'رونیکا',
+      'alex',          'kevin',        'tony',         'frida',
+      'alexandra',     'tess',         'eddie',        'jonathan',
+      'halima',        'addison',      'loiraci',      'kimberly',
+      'tyra',          'okan',         'imen',         'tobias',
+      'philip',        'sølve',        'katrina',      'ملینا',
+      'thomas',        'alyssa',       'enora',        'glaúcia',
+      'anne-loes',     'virginia',     'lieneke',      'wencke',
+      'kristen',       'محمدامين',     'rasmus',       'jack',
+      'judith',        'philip',       'maja',         'phoebe',
+      'koray',         'luna',         'sebastian',    'mariusz',
+      'kurt',          'violet',       'gavin',        'regina',
+      'alfred',        'brandy',       'basile',       'kerim',
+      'brittany',      'oona',         'elliot',       'marilena',
+      'clyde',         'kathy',        'andrea',       'torgeir',
+      'adrianne',      'adriza',       'jackson',      'savanna',
+      'emily',         'sylvester',    'lieke',        'baldemar',
+      'cecil',         'lily',         'anatole',      'oliver',
+      'sonia',         'niilo',        'noelle',       'بیتا',
+      'holly',         'javier',       'emanuele',     'kristin',
+      'pauline',       'anton',        'linnea',       'tyler',
+      'kübra',         'درسا',         'carol',        'becky',
+      'thekla',        'adem',         'laurie',       'abigail',
+      'carol',         'adam',         'آدرین',        'jasmine',
+      'sidra',         'alex',         'jelisa',       'harper',
+      'genesis',       'سوگند',        'cooper',       'alejandra',
+      'marsha',        'sadie',        'afet',         'caroline',
+      'luca',          'jason',        'basile',       'giulia',
+      'seth',          'lauren',       'ching',        'charlie',
+      'ceyhan',        'billy',        'carmine',      'آراد',
+      'julia',         'zenóbia',      'sienna',       'lila',
+      'dicky',         'linus',        'elmer',        'tjade',
+      'cassandra',     'mille',        'eli',          'margot',
+      'lívia',         'alexandre',    'leo',          'evita',
+      'تینا',          'aaron',        'jamie',        'nikolaj',
+      'thilo',         'سوگند',        'elliot',       'marie',
+      'luís',          'courtney',     'tilde',        'fatma',
+      'eugenia',       'benjamin',     'tilde',        'سام',
+      'fabio',         'meral',        'miro',         'munira',
+      'thea',          'otto',         'astrid',       'rachel',
+      'kimberly',      'eldirene',     'radwan',       'anton',
+      'samuel',        'emily',        'francisco',    'krystel',
+      'christina',     'edgar',        'sofia',        'johanne',
+      'nikodem',       'milja',        'virgil',       'lilja',
+      'thomas',        'otto',         'jean',         'vicki',
+      'ivy',           'daniela',      'kayla',        'cesar',
+      'jeremy',        'heinz-georg',  'alexis',       'chloe',
+      'sélène',        'francisco',    'ümit',         'roderich',
+      'tina',          'كيان',         'abigail',      'norma',
+      'scarlett',      'valentina',    'ceyhan',       'amy',
+      'albert',        'james',        'angus',        'ülkü',
+      'rania',         'olivia',       'remedios',     'firas',
+      'arnaud',        'minnie',       'florian',      'borja',
+      'élio',          'beatrice',     'anemoon',      'kevin',
+      'annabelle',     'maximillian',  'dora',         'milja',
+      'victoire',      'peter',        'wiebke',       'gökhan',
+      'ezra',          'vincent',      'robert',       'eli',
+      'carmen',        'sidra',        'flavie',       'sebastian',
+      'iina',          'katie',        'aleksej',      'mathis',
+      'theo',          'habacuc',      'lincoln',      'carter',
+      'blanca',        'bahar',        'isabella',     'terra',
+      'elisa',         'noel',         'väinö',        'olve',
+      'gracia',        'theodore',     'valdelaine',   'oscar',
+      'neusita',       'harriet',      'مهدي',         'arthur',
+      'nixon',         'josefina',     'lonnie',       'ruben',
+      'tilde',         'rosie',        'logan',        'carlos',
+      'simon',         'fabiane',      'clareana',     'viljami',
+      'joan',          'asia',         'maya',         'anne',
+      'mélina',        'leo',          'jonas',        'morgane',
+      'lilly',         'miro',         'avery',        'آدرینا',
+      'kaitlin',       'scarlett',     'kerttu',       'addison',
+      'jesus',         'mimi',         'miriam',       'amelia',
+      'charline',      'felix',        'eetu',         'elora',
+      'kelly',         'aleksi',       'afrim',        'lillian',
+      'teresa',        'siiri',        'ayşe',         'margaret',
+      'emma',          'christian',    'jurre',        'volkan',
+      'marius',        'isla',         'alfredo',      'aiden',
+      'adam',          'siiri',        'hilda',        'almuth',
+      'roxane',        'joshua',       'addison',      'margaux',
+      'rich',          'becky',        'marianne',     'gwendolyn',
+      'noah',          'serge',        'shane',        'ken',
+      'aiden',         'alisa',        'josefina',     'mariane',
+      'daisy',         'carter',       'isaac',        'rupert',
+      'rosibel',       'pamela',       'milja',        'رادین',
+      'henry',         'maximilian',   'freddy',       'maximilian',
+      'stevie',        'tilde',        'valdira',      'ayaan',
+      'debra',         'emmi',         'eli',          'lotta',
+      'عباس',          'minea',        'mikael',       'louis',
+      'ماهان',         'oliver',       'danielle',     'lucy',
+      'sakarias',      'ege',          'addison',      'fikria',
+      'fatma',         'rene',         'hugo',         'josefina',
+      'léonie',        'alano',        'john',         'özkan',
+      'josé',          'finn',         'flora',        'sander',
+      'justin',        'lyam',         'mathilde',     'carmine',
+      'beth',          'vanessa',      'mikkel',       'eddie',
+      'avery',         'olinda',       'niilo',        'phil',
+      'lino',          'beau',         'brooke',       'rita',
+      'olivia',        'marcia',       'morris',       'pauline',
+      'فاطمه زهرا',    'alisa',        'heine',        'carl',
+      'mason',         'بردیا',        'neea',         'hannah',
+      'line',          'krystian',     'mandy',        'sophie',
+      'heinz',         'nadine',       'ahmet',        'teja',
+      'brooke',        'meral',        'toby',         'cristobal',
+      'carlúcia',      'maxine',       'lily',         'martha',
+      'عباس',          'ryan',         'shadi',        'terry',
+      'ava',           'elenice',      'alban',        'bayram',
+      'felix',         'geoffrey',     'magnus',       'benjamin',
+      'peetu',         'بهار',         'davut',        'sigrun',
+      'mathew',        'dolores',      'melvin',       'anthony',
+      'melike',        'matthew',      'liam',         'fred',
+      'samir',         'ireen',        'vicki',        'anna',
+      'ece',           'charlotte',    'christopher',  'milo',
+      'suzanne',       'felipe',       'téo',          'tobias',
+      'gabrielle',     'آرمیتا',       'sarah',        'celia',
+      'morris',        'quinn',        'francisco',    'arlette',
+      'rosa',          'sofia',        'آدرین',        'diana',
+      'dwayne',        'peyton',       'arttu',        'kylian',
+      'gérard',        'emil',         'anna',         'sophia',
+      'ellen',         'amelia',       'شایان',        'veeti',
+      'baptiste',      'leonard',      'constance',    'maria',
+      'pilar',         'sophia',       'نيما',         'sebastian',
+      'herman',        'abigail',      'cipriano',     'lucas',
+      'anastasios',    'maëlys',       'florence',     'غزل',
+      'milla',         'emeline',      'chantall',     'chloe',
+      'aiden',         'sandra',       'caleb',        'volkan',
+      'pihla',         'aatu',         'پرنیا',        'rosalyn',
+      'andré',         'juliana',      'esther',       'francisco',
+      'marshall',      'ümit',         'lauren',       'luisa',
+      'emil',          'iker',         'lincoln',      'بهار',
+      'mahé',          'albert',       'علی رضا',      'eric',
+      'latife',        'eleanor',      'hans-gerhard', 'davut',
+      'nathan',        'emil',         'آدرینا',       'mathilde',
+      'kadir',         'isabelle',     'antoine',      'jonathan',
+      'arttu',         'montserrat',   'beryl',        'ella',
+      'ece',           'amelia',       'dominic',      'xénon',
+      'raquel',        'friedhilde',   'lyder',        'margarita',
+      'jessica',       'conrad',       'alexis',       'davut',
+      'zoraida',       'nalan',        'عسل',          'norman',
+      'hansruedi',     'marianne',     'sam',          'freke',
+      'erdal',         'harry',        'lily',         'önal',
+      'ariane',        'پارمیس',       'hayley',       'theo',
+      'caitlin',       'nikolaj',      'آراد',         'jesus',
+      'marica',        'اميرحسين',     'ellen',        'alberte',
+      'laura',         'ellie',        'okan',         'kathy',
+      'yasin',         'mariola',      'aloïs',        'norman',
+      'eemeli',        'mahé',         'olivier',      'angelica',
+      'zackary',       'ekkehard',     'mathis',       'bernice',
+      'jens',          'rolf-dieter',  'آراد',         'floriano',
+      'donna',         'emilia',       'christian',    'sarah',
+      'soham',         'christos',     'lorenz',       'naomi',
+      'madeleine',     'emilio',       'پرهام',        'juninho',
+      'owen',          'max',          'zoey',         'rasmus',
+      'chad',          'rasmus',       'hunter',       'afşar',
+      'olaí',          'kristin',      'alexis',       'omar',
+      'sophie',        'florence',     'brad',         'berta',
+      'bilal',         'ava',          'diana',        'elias',
+      'ulla',          'oskari',       'amanda',       'doris',
+      'lauri',         'salvador',     'logan',        'مهراد',
+      'bernard',       'levi',         'kürşat',       'adonilo',
+      'alberte',       'lumi',         'isabella',     'oscar',
+      'lorraine',      'susanna',      'آوینا',        'wisal',
+      'christy',       'sophia',       'roxane',       'afşar',
+      'leonora',       'theo',         'مهدیس',        'albin',
+      'marina',        'artur',        'olivia',       'brennan',
+      'stephen',       'francisco',    'alexandra',    'destin',
+      'victoria',      'christian',    'عسل',          'danja',
+      'storm',         'مانی',         'مرسانا',       'afşar',
+      'radi',          'darko',        'anas',         'yvonne',
+      'پرنیا',         'blake',        'rasmus',       'elvin',
+      'rebecca',       'patrick',      'enni',         'laura',
+      'kayla',         'howard',       'cory',         'yasemin',
+      'adriana',       'julia',        'ملینا',        'ayşe',
+      'anthony',       'celia',        'edward',       'سپهر',
+      'olivia',        'belen',        'bobby',        'تارا',
+      'neea',          'alexandra',    'jacey',        'lily',
+      'misty',         'susanna',      'martin',       'caroline',
+      'zoe',           'dan',          'latife',       'jeannine',
+      'sandra',        'philip',       'serenity',     'taylor',
+      'jade',          'کیانا',        'ella',         'sadie',
+      'ramon',         'adrien',       'allie',        'ralph',
+      'simon',         'marcus',       'rachel',       'filoteu',
+      'owen',          'justin',       'chris',        'dorothea',
+      'byron',         'margot',       'beverly',      'leah',
+      'flurin',        'margot',       'konsta',       'milton',
+      'naod',          'sibylle',      'lilja',        'emre',
+      'viivi',         'ines',         'donald',       'bella',
+      'alicia',        'یلدا',         'natão',        'eduardo',
+      'fatma',         'oliver',       'الینا',        'aiden',
+      'christoffer',   'louise',       'katrine',      'aino',
+      'طاها',          'isabelita',    'herbert',      'susie',
+      'alexandre',     'claudia',      'saana',        'olaídes',
+      'aafke',         'حسین',         'samuel',       'carl',
+      'ella',          'maeva',        'dale',         'vildan',
+      'zoe',           'charles',      'emilie',       'alicia',
+      'eva',           'nandielly',    'quinta',       'abbey',
+      'juul',          'tyler',        'ariane',       'gavin',
+      'تینا',          'ernest',       'roberto',      'nanna',
+      'yoshka',        'josefine',     'giray',        'tracey',
+      'julie',         'oya',          'eva',          'سینا',
+      'randall',       'حامد',         'غزل',          'gökhan',
+      'amparo',        'mason',        'britney',      'norma',
+      'nataniel',      'gonca',        'pablo',        'sam',
+      'kimberly',      'mila',         'hélèna',       'judy',
+      'felix',         'juliette',     'benjamin',     'فاطمه زهرا',
+      'zara',          'nicky',        'kelly',        'oya',
+      'edgar',         'latife',       'melinda',      'claas',
+      'elliot',        'cristian',     'fahrettin',    'dicky',
+      'عباس',          'albert',       'peyton',       'nur',
+      'peppi',         'gabriella',    'amelly',       'tessa',
+      'claire',        'thomas',       'emile',        'lauren',
+      'gina',          'ceylan',       'ملینا',        'isabella',
+      'justine',       'ryder',        'matthew',      'denise',
+      'پارمیس',        'andréa',       'ida',          'juho',
+      'christopher',   'patrice',      'miguel',       'ella',
+      'peppi',         'mateo',        'dan',          'sanni',
+      'solveig',       'carmim',       'phoenix',      'ceyhan',
+      'james',         'frederik',     'ella',         'gabe',
+      'adam',          'kimberly',     'alberte',      'christoffer',
+      'jack',          'leevi',        'sherri',       'fride',
+      'marie-louise',  'samuel',       'marvin',       'isabella',
+      'soledad',       'miguel',       'assunção',     'valentine',
+      'nidélia',       'suzy',         'wyatt',        'phoebe',
+      'sivert',        'hugo',         'teresa',       'benito',
+      'dursun',        'leo',          'gerrit',       'kuzey',
+      'juliette',      'remedios',     'mia',          'antonia',
+      'nella',         'leonardo',     'laszlo',       'david',
+      'aino',          'xavier',       'frank',        'damien',
+      'asta',          'christian',    'véronique',    'mona',
+      'allison',       'پارمیس',       'maria',        'ege',
+      'matt',          'heidi',        'veli',         'viljami',
+      'sonja',         'eddie',        'maëva',        'adelheid',
+      'marie',         'faith',        'noel',         'xavier',
+      'felix',         'peetu',        'باران',        'alão',
+      'abigail',       'bobby',        'aada',         'remy',
+      'luzio',         'elida',        'silje',        'ruby',
+      'nara',          'sérgio',       'oğuzhan',      'dominic',
+      'rosario',       'yolanda',      'mathis',       'alice',
+      'oliver',        'philippe',     'alyssa',       'notburga',
+      'evelyn',        'logan',        'kajus',        'محیا',
+      'clarisse',      'hans-hermann', 'پرهام',        'jimmy',
+      'lauranne',      'gabriel',      'kirk',         'debra',
+      'luukas',        'ملینا',        'aaya',         'afet',
+      'randy',         'michelle',     'meral',        'iida',
+      'simon',         'consuelo',     'regina',       'marianne',
+      'myrtle',        'marshall',     'teresa',       'victoria',
+      'noémie',        'hermitério',   'nour',         'venla',
+      'rosa',          'justin',       'carole',       'marielle',
+      'alpoim',        'clem',         'deniz',        'johanne',
+      'francisca',     'monika',       'joel',         'elaine',
+      'hans-ulrich',   'vicky',        'francisco',    'nikodem',
+      'jeppe',         'mikkel',       'jared',        'wayne',
+      'ahmet',         'juliette',     'maya',         'merigley',
+      'paulina',       'maëlyne',      'carina',       'sophia',
+      'jacqueline',    'gabriel',      'olga',         'flynn',
+      'زهرا',          'valdomiro',    'eevi',         'annette',
+      'inaya',         'marco',        'amável',       'elizabeth',
+      'isabel',        'elsa',         'مهراد',        'naël',
+      'annie',         'deniz',        'ellen',        'delmar',
+      'رها',           'gerald',       'william',      'پرهام',
+      'lucas or luke', 'max',          'oya',          'carter',
+      'aaron',         'annie',        'vedat',        'alfred',
+      'pinja',         'karla',        'zarco ',       'kuzey',
+      'adner',         'birgid',       'joe',          'evan',
+      'julio',         'alexandra',    'owen',         'amaal',
+      'رادین',         'christopher',  'lauro',        'baguandas',
+      'lucas',         'isla',         'vicki',        'rebecca',
+      'koray',         'antoinette',   'peetu',        'maddison',
+      'marinda',       'florence',     'wilko',        'dino',
+      'gene',          'gonçalo',      'kelly',        'alexandra',
+      'joseph',        'ece',          'پوریا',        'jeremy',
+      'jorge',         'kenan',        'sindre',       'joona',
+      'caleb',         'laurin',       'sharron',      'chester',
+      'sofia',         'sophie',       'isaac',        'mathilde',
+      'arttu',         'benjamin',     'gabriel',      'pierre',
+      'tilman',        'marino',       'lærke',        'linda',
+      'leyla',         'lenni',        'sadrudine',    'eduartino',
+      'juanita',       'مرسانا',       'sofia',        'chloé',
+      'tracy',         'étienne',      'milka',        'sebastian',
+      'astrid',        'elmer',        'markus',       'amira',
+      'رهام',          'édith',        'النا',         'gonca',
+      'sheryl',        'jocelyne',     'dan',          'ivan',
+      'amelia',        'jules',        'rosemary',     'storm',
+      'daniella',      'norah',        'amine',        'isaiah',
+      'helene',        'oscar',        'elena',        'betânia',
+      'eevi',          'marlies',      'summer',       'getúlio',
+      'josefine',      'eemil',        'angel',        'theodore',
+      'adna',          'traute',       'peter',        'louane',
+      'sedef',         'fernando',     'rene',         'mustafa',
+      'linnea',        'آرسین',        'diane',        'juliana',
+      'georgios',      'محمدطاها',     'regina',       'charles',
+      'vilma',         'rita',         'ella',         'alexis',
+      'leah',          'lucy',         'lonnie',       'aurelio',
+      'tasmira',       'mario',        'lola',         'noémie',
+      'emeline',       'antonius',     'carl',         'torjus',
+      'krin',          'mercedes',     'arian',        'saana',
+      'raymond',       'رونیکا',       'marine',       'kathy',
+      'erkan',         'elouan',       'abram',        'abdullahi',
+      'megan',         'emel',         'sophie',       'justin',
+      'austin',        'cody',         'frank',        'constâncio',
+      'ثنا',           'madalene',     'felix',        'felix',
+      'madison',       'phoebe',       'liam',         'isaac',
+      'andira',        'josephine',    'lillie',       'vicente',
+      'matthew',       'cain',         'nikolaj',      'abigail',
+      'elisa',         'silas',        'cindy',        'wilson',
+      'sofia',         'estácio',      'jean-pierre',  'salustiniano',
+      'nelli',         'zoe',          'marcus',       'selma',
+      'german',        'alison',       'timon',        'alexander',
+      'diane',         'عباس',         'victor',       'maurícia',
+      'pearl',         'zachary',      'benjamin',     'chloé',
+      'chloe',         'niilo',        'mara',         'marcus',
+      'thomas',        'cathy',        'till',         'beau',
+      'billy',         'brett',        'hazel',        'ramon',
+      'kate',          'louanne',      'ava',          'erich',
+      'hugh',          'آرمیتا',       'willie',       'cecilie',
+      'filippa',       'inara',        'یلدا',         'enni',
+      'مهرسا',         'stephen',      'margaret',     'clémence',
+      'oskar',         'jane',         'harper',       'sadie',
+      'ashley',        'pauline',      'نیایش',        'lotta',
+      'kenan',         'lígia',        'dorothea',     'ryan',
+      'marc',          'gregory',      'benjamin',     'کوروش',
+      'سپهر',          'carl-heinz',   'célio',        'andrea',
+      'mylan',         'jonathan',     'michele',      'rafael',
+      'dounia',        'elijah',       'magdalena',    'jesus',
+      'samantha',      'mimosa',       'jobst',        'carl',
+      'phyllis',       'charlie',      'aiden',        'herminia',
+      'lewis',         'claudia',      'ines',         'naomi',
+      'vicky',         'amelia',       'kristina',     'ryder',
+      'stjepan',       'anna',         'lucille',      'julia',
+      'gonca',         'lily',         'willow',       'suradj',
+      'begüm',         'umut',         'timmothy',     'aila',
+      'erundina',      'آرسین',        'valdemar',     'elli',
+      'leah',          'rembrandt',    'wanderleya',   'anaïs',
+      'erik',          'huibrecht',    'lewis',        'sofia',
+      'رضا',           'elliot',       'dylan',        'jackson',
+      'miriam',        'simone',       'jeremy',       'anton',
+      'angeles',       'agathe',       'magnus',       'cherly',
+      'julião',        'eeli',         'emilie',       'alina',
+      'leta',          'august',       'vêndel',       'katrina',
+      'ruben',         'higino',       'sebastian',    'nanna',
+      'alexis',        'izabel',       'paula',        'zilena',
+      'آوین',          'wart',         'jared',        'necati',
+      'paige',         'jo',           'frankie',      'viivi',
+      'maxence',       'minea',        'olof',         'niilo',
+      'meghan',        'sócrates',     'eléna',        'كيان',
+      'marcos',        'connie',       'ralf',         'امیر',
+      'joar',          'dominykas',    'avery',        'joan',
+      'silva',         'ronnie',       'nurdan',       'simon',
+      'hugo',          'georg',        'isabella',     'melina',
+      'نیایش',         'مارال',        'hector',       'romano',
+      'viljami',       'ieda',         'charlotte',    'perry',
+      'fredi',         'lesley',       'oya',          'lawrence',
+      'radha',         'anatole',      'sylvia',       'ملینا',
+      'ronja',         'jonathan',     'elif',         'felipe',
+      'german',        'james',        'ülkü',         'felecia',
+      'acelya',        'gaëtan',       'jacomijn',     'siiri',
+      'محمدامين',      'juliette',     'lesa',         'wayne',
+      'sofia',         'stefano',      'beatriz',      'nelson',
+      'tomothy',       'yaël',         'rosa',         'marialba',
+      'sebastian',     'filip',        'clara',        'mustafa',
+      'cynthia',       'amy',          'eino',         'violet',
+      'linda',         'lily',         'philip',       'sadie',
+      'ceyhan',        'rafael',       'michèle',      'sıla',
+      'carl',          'mickey',       'agatha',       'matteo',
+      'elif',          'astrid',       'laurine',      'are',
+      'kristina',      'nino',         'ashley',       'sônia',
+      'florence',      'madelène',     'alyssa',       'henry',
+      'helfried',      'lachlan',      'timothy',      'olivia',
+      'eevi',          'النا',         'beate',        'kathleen',
+      'mattis',        'marigje',      'veera',        'hans-h.',
+      'justin',        'veeti',        'jeremy',       'belen',
+      'murat',         'caroline',     'donald',       'randy',
+      'urte',          'anna',         'hector',       'alisa',
+      'elmar',         'vilho',        'iina',         'jeff',
+      'maike',         'nicolau',      'richard',      'cihangir',
+      'leo',           'ege',          'neo',          'siegried',
+      'marianna',      'anna-lena',    'araci',        'ülkü',
+      'ananias',       'eleanor',      'johan',        'ernesto',
+      'اميرعلي',       'liam',         'lucy',         'jacob',
+      'edward',        'kristin',      'hector',       'marcus',
+      'ülkü',          'çetin',        'riley',        'maëlle',
+      'melike',        'emmy',         'gabriele',     'jessica',
+      'ruben',         'jade',         'gonca',        'liesel',
+      'noah',          'arvin',        'پرهام',        'tino',
+      'frederikke',    'ada',          'heidi',        'jerome',
+      'laura',         'andy',         'dwight',       'shayenna',
+      'marcel',        'maia',         'charles',      'nihal',
+      'germano',       'adam',         'jânia',        'aleksi',
+      'ashley',        'wyatt',        'lucas',        'carmelo',
+      'tilde',         'آرمین',        'arian',        'bruce',
+      'karen',         'justin',       'jimi',         'neea',
+      'maëlle',        'adina',        'nicole',       'ashley',
+      'tina',          'victoria',     'corien',       'leo',
+      'nihal',         'gretchen',     'katherine',    'barış',
+      'igor',          'folkert',      'gládis',       'ella',
+      'alberto',       'charlie',      'kurt',         'max',
+      'louis',         'raymond',      'brian',        'erika',
+      'erin',          'chloe',        'diane',        'lotta',
+      'viljami',       'evelyn',       'wenke',        'پریا',
+      'louanne',       'oliver',       'oscar',        'maxime',
+      'olivier',       'jacob',        'lieselotte',   'liam'
+    ]
+  }
+]
+analytics> db.persons.aggregate([
+...     {$bucket: {groupBy: "$dob.age", boundaries: [0,18,30,50,80,120], output: {
+...         numPersons: {$sum: 1},
+...         averageAge:{$avg: "$dob.age"},
+...     }}}
+... ])
+[
+  { _id: 18, numPersons: 868, averageAge: 25.101382488479263 },
+  { _id: 30, numPersons: 1828, averageAge: 39.4917943107221 },
+  { _id: 50, numPersons: 2304, averageAge: 61.46440972222222 }
+]
+analytics> db.persons.aggregate([
+...     {
+...         $bucketAuto: {
+...             groupBy: "$dob.age",
+...             buckets: 5,
+...             output: {
+...                 numPersons: {$sum: 1},
+...                 averageAge:{$avg: "$dob.age"},
+...             }
+...         }
+...     }
+... ])
+[
+  {
+    _id: { min: 21, max: 32 },
+    numPersons: 1042,
+    averageAge: 25.99616122840691
+  },
+  {
+    _id: { min: 32, max: 43 },
+    numPersons: 1010,
+    averageAge: 36.97722772277228
+  },
+  {
+    _id: { min: 43, max: 54 },
+    numPersons: 1033,
+    averageAge: 47.98838334946757
+  },
+  {
+    _id: { min: 54, max: 65 },
+    numPersons: 1064,
+    averageAge: 58.99342105263158
+  },
+  {
+    _id: { min: 65, max: 74 },
+    numPersons: 851,
+    averageAge: 69.11515863689776
+  }
+]
+analytics> db.persons.aggregate([
+...     {$project: {_id: 0, name: 1, birthdate: {$toDate: "$dob.date"}}}
+... ])
+[
+  {
+    name: { title: 'mr', first: 'elijah', last: 'lewis' },
+    birthdate: ISODate('1986-03-29T06:40:18.000Z')
+  },
+  {
+    name: { title: 'mr', first: 'zachary', last: 'lo' },
+    birthdate: ISODate('1988-10-17T03:45:04.000Z')
+  },
+  {
+    name: { title: 'mr', first: 'carl', last: 'jacobs' },
+    birthdate: ISODate('1984-09-30T01:20:26.000Z')
+  },
+  {
+    name: { title: 'mrs', first: 'olav', last: 'oehme' },
+    birthdate: ISODate('1960-11-28T23:07:18.000Z')
+  },
+  {
+    name: { title: 'mrs', first: 'madeleine', last: 'till' },
+    birthdate: ISODate('1954-05-01T02:34:40.000Z')
+  },
+  {
+    name: { title: 'ms', first: 'louise', last: 'graham' },
+    birthdate: ISODate('1971-01-21T20:36:16.000Z')
+  },
+  {
+    name: { title: 'miss', first: 'shona', last: 'kemperman' },
+    birthdate: ISODate('1948-04-23T03:40:22.000Z')
+  },
+  {
+    name: { title: 'mr', first: 'isolino', last: 'viana' },
+    birthdate: ISODate('1959-03-22T14:53:41.000Z')
+  },
+  {
+    name: { title: 'miss', first: 'mestan', last: 'kaplangı' },
+    birthdate: ISODate('1951-12-17T20:03:33.000Z')
+  },
+  {
+    name: { title: 'mrs', first: 'katie', last: 'welch' },
+    birthdate: ISODate('1990-10-14T05:02:12.000Z')
+  },
+  {
+    name: { title: 'mr', first: 'بنیامین', last: 'سالاری' },
+    birthdate: ISODate('1984-03-10T22:12:43.000Z')
+  },
+  {
+    name: { title: 'miss', first: 'sandra', last: 'lorenzo' },
+    birthdate: ISODate('1975-03-23T17:01:45.000Z')
+  },
+  {
+    name: { title: 'mrs', first: 'پریا', last: 'پارسا' },
+    birthdate: ISODate('1962-01-10T05:26:30.000Z')
+  },
+  {
+    name: { title: 'mr', first: 'victor', last: 'pedersen' },
+    birthdate: ISODate('1959-02-19T23:56:23.000Z')
+  },
+  {
+    name: { title: 'mrs', first: 'gonca', last: 'alnıaçık' },
+    birthdate: ISODate('1988-11-08T00:18:59.000Z')
+  },
+  {
+    name: { title: 'miss', first: 'anne', last: 'ruiz' },
+    birthdate: ISODate('1982-10-09T12:10:42.000Z')
+  },
+  {
+    name: { title: 'miss', first: 'maeva', last: 'grewal' },
+    birthdate: ISODate('1972-04-23T04:31:25.000Z')
+  },
+  {
+    name: { title: 'miss', first: 'maeva', last: 'wilson' },
+    birthdate: ISODate('1962-08-11T20:51:07.000Z')
+  },
+  {
+    name: { title: 'mrs', first: 'aya', last: 'liland' },
+    birthdate: ISODate('1973-08-26T00:11:58.000Z')
+  },
+  {
+    name: { title: 'mr', first: 'vincent', last: 'küper' },
+    birthdate: ISODate('1970-02-18T12:38:36.000Z')
+  }
+]
+Type "it" for more
+analytics> db.persons.aggregate([
+...     {$project: {_id: 0, name: 1, birthdate: {$toDate: "$dob.date"}}},
+...     {$sort: {birthdate: 1}}
+... ])
+[
+  {
+    name: { title: 'mrs', first: 'victoria', last: 'hale' },
+    birthdate: ISODate('1944-09-07T15:52:50.000Z')
+  },
+  {
+    name: { title: 'mr', first: 'عباس', last: 'یاسمی' },
+    birthdate: ISODate('1944-09-12T07:49:20.000Z')
+  },
+  {
+    name: { title: 'miss', first: 'erundina', last: 'porto' },
+    birthdate: ISODate('1944-09-13T14:58:41.000Z')
+  },
+  {
+    name: { title: 'mr', first: 'پرهام', last: 'جعفری' },
+    birthdate: ISODate('1944-09-16T16:03:28.000Z')
+  },
+  {
+    name: { title: 'mr', first: 'eli', last: 'henry' },
+    birthdate: ISODate('1944-09-17T15:04:13.000Z')
+  },
+  {
+    name: { title: 'mr', first: 'kirk', last: 'brown' },
+    birthdate: ISODate('1944-09-18T11:03:05.000Z')
+  },
+  {
+    name: { title: 'miss', first: 'alexis', last: 'bélanger' },
+    birthdate: ISODate('1944-10-02T22:56:32.000Z')
+  },
+  {
+    name: { title: 'miss', first: 'gina', last: 'beck' },
+    birthdate: ISODate('1944-10-04T07:41:31.000Z')
+  },
+  {
+    name: { title: 'mr', first: 'sebastian', last: 'olsen' },
+    birthdate: ISODate('1944-10-13T15:29:05.000Z')
+  },
+  {
+    name: { title: 'miss', first: 'lucy', last: 'wilson' },
+    birthdate: ISODate('1944-10-25T16:27:56.000Z')
+  },
+  {
+    name: { title: 'ms', first: 'eva', last: 'murray' },
+    birthdate: ISODate('1944-10-29T02:05:56.000Z')
+  },
+  {
+    name: { title: 'madame', first: 'elena', last: 'chevalier' },
+    birthdate: ISODate('1944-10-31T02:56:40.000Z')
+  },
+  {
+    name: { title: 'miss', first: 'gretchen', last: 'schmidtke' },
+    birthdate: ISODate('1944-11-01T20:49:03.000Z')
+  },
+  {
+    name: { title: 'mr', first: 'joseph', last: 'thomas' },
+    birthdate: ISODate('1944-11-06T11:08:45.000Z')
+  },
+  {
+    name: { title: 'miss', first: 'sarah', last: 'lee' },
+    birthdate: ISODate('1944-11-07T07:53:47.000Z')
+  },
+  {
+    name: { title: 'mr', first: 'conrad', last: 'scheepbouwer' },
+    birthdate: ISODate('1944-11-08T02:15:17.000Z')
+  },
+  {
+    name: { title: 'mademoiselle', first: 'martina', last: 'charles' },
+    birthdate: ISODate('1944-11-08T07:38:49.000Z')
+  },
+  {
+    name: { title: 'miss', first: 'olga', last: 'blanco' },
+    birthdate: ISODate('1944-11-17T09:16:50.000Z')
+  },
+  {
+    name: { title: 'ms', first: 'elisa', last: 'morales' },
+    birthdate: ISODate('1944-11-22T22:51:47.000Z')
+  },
+  {
+    name: { title: 'mr', first: 'rafael', last: 'velasco' },
+    birthdate: ISODate('1944-11-27T07:12:20.000Z')
+  }
+]
+Type "it" for more
+analytics> db.persons.aggregate([
+...     {$project: {_id: 0, name: 1, birthdate: {$toDate: "$dob.date"}}},
+...     {$sort: {birthdate: 1}},
+...     {$limit: 10}
+... ])
+[
+  {
+    name: { title: 'mrs', first: 'victoria', last: 'hale' },
+    birthdate: ISODate('1944-09-07T15:52:50.000Z')
+  },
+  {
+    name: { title: 'mr', first: 'عباس', last: 'یاسمی' },
+    birthdate: ISODate('1944-09-12T07:49:20.000Z')
+  },
+  {
+    name: { title: 'miss', first: 'erundina', last: 'porto' },
+    birthdate: ISODate('1944-09-13T14:58:41.000Z')
+  },
+  {
+    name: { title: 'mr', first: 'پرهام', last: 'جعفری' },
+    birthdate: ISODate('1944-09-16T16:03:28.000Z')
+  },
+  {
+    name: { title: 'mr', first: 'eli', last: 'henry' },
+    birthdate: ISODate('1944-09-17T15:04:13.000Z')
+  },
+  {
+    name: { title: 'mr', first: 'kirk', last: 'brown' },
+    birthdate: ISODate('1944-09-18T11:03:05.000Z')
+  },
+  {
+    name: { title: 'miss', first: 'alexis', last: 'bélanger' },
+    birthdate: ISODate('1944-10-02T22:56:32.000Z')
+  },
+  {
+    name: { title: 'miss', first: 'gina', last: 'beck' },
+    birthdate: ISODate('1944-10-04T07:41:31.000Z')
+  },
+  {
+    name: { title: 'mr', first: 'sebastian', last: 'olsen' },
+    birthdate: ISODate('1944-10-13T15:29:05.000Z')
+  },
+  {
+    name: { title: 'miss', first: 'lucy', last: 'wilson' },
+    birthdate: ISODate('1944-10-25T16:27:56.000Z')
+  }
+]
+analytics> db.persons.aggregate([
+...     {$project: {_id: 0, name: {$concat: ["$name.first"," ", "$name.last"]}, birthdate: {$toDate: "$dob.date"}}},
+...     {$sort: {birthdate: 1}},
+...     {$limit: 10}
+... ])
+[
+  {
+    name: 'victoria hale',
+    birthdate: ISODate('1944-09-07T15:52:50.000Z')
+  },
+  {
+    name: 'عباس یاسمی',
+    birthdate: ISODate('1944-09-12T07:49:20.000Z')
+  },
+  {
+    name: 'erundina porto',
+    birthdate: ISODate('1944-09-13T14:58:41.000Z')
+  },
+  {
+    name: 'پرهام جعفری',
+    birthdate: ISODate('1944-09-16T16:03:28.000Z')
+  },
+  { name: 'eli henry', birthdate: ISODate('1944-09-17T15:04:13.000Z') },
+  {
+    name: 'kirk brown',
+    birthdate: ISODate('1944-09-18T11:03:05.000Z')
+  },
+  {
+    name: 'alexis bélanger',
+    birthdate: ISODate('1944-10-02T22:56:32.000Z')
+  },
+  { name: 'gina beck', birthdate: ISODate('1944-10-04T07:41:31.000Z') },
+  {
+    name: 'sebastian olsen',
+    birthdate: ISODate('1944-10-13T15:29:05.000Z')
+  },
+  {
+    name: 'lucy wilson',
+    birthdate: ISODate('1944-10-25T16:27:56.000Z')
+  }
+]
+analytics> db.persons.aggregate([
+...     {$project: {_id: 0, name: {$concat: ["$name.first"," ", "$name.last"]}, birthdate: {$toDate: "$dob.date"}}},
+...     {$sort: {birthdate: 1}},
+...     {$skip: 10},
+...     {$limit: 10}
+... ])
+[
+  {
+    name: 'eva murray',
+    birthdate: ISODate('1944-10-29T02:05:56.000Z')
+  },
+  {
+    name: 'elena chevalier',
+    birthdate: ISODate('1944-10-31T02:56:40.000Z')
+  },
+  {
+    name: 'gretchen schmidtke',
+    birthdate: ISODate('1944-11-01T20:49:03.000Z')
+  },
+  {
+    name: 'joseph thomas',
+    birthdate: ISODate('1944-11-06T11:08:45.000Z')
+  },
+  { name: 'sarah lee', birthdate: ISODate('1944-11-07T07:53:47.000Z') },
+  {
+    name: 'conrad scheepbouwer',
+    birthdate: ISODate('1944-11-08T02:15:17.000Z')
+  },
+  {
+    name: 'martina charles',
+    birthdate: ISODate('1944-11-08T07:38:49.000Z')
+  },
+  {
+    name: 'olga blanco',
+    birthdate: ISODate('1944-11-17T09:16:50.000Z')
+  },
+  {
+    name: 'elisa morales',
+    birthdate: ISODate('1944-11-22T22:51:47.000Z')
+  },
+  {
+    name: 'rafael velasco',
+    birthdate: ISODate('1944-11-27T07:12:20.000Z')
+  }
+]
+analytics> db.persons.aggregate([
+...     {$match: {gender: "male"}}
+...     {$project: {_id: 0, name: {$concat: ["$name.first"," ", "$name.last"]}, birthdate: {$toDate: "$dob.date"}}},
+Uncaught:
+SyntaxError: Unexpected token, expected "," (3:4)
+
+  1 | db.persons.aggregate([
+  2 |     {$match: {gender: "male"}}
+> 3 |     {$project: {_id: 0, name: {$concat: ["$name.first"," ", "$name.last"]}, birthdate: {$toDate: "$dob.date"}}},
+    |     ^
+  4 |
+
+analytics>     {$sort: {birthdate: 1}},
+...     {$skip: 10},
+...     {$limit: 10}
+... ])
+Uncaught:
+SyntaxError: Unexpected token (1:27)
+
+> 1 |     {$sort: {birthdate: 1}},
+    |                            ^
+  2 |     {$skip: 10},
+  3 |     {$limit: 10}
+  4 | ])
+
+analytics> db.persons.aggregate([
+...     {$match: {gender: "male"}}
+...     {$project: {_id: 0, name: {$concat: ["$name.first"," ", "$name.last"]}, birthdate: {$toDate: "$dob.date"}}},
+Uncaught:
+SyntaxError: Unexpected token, expected "," (3:4)
+
+  1 | db.persons.aggregate([
+  2 |     {$match: {gender: "male"}}
+> 3 |     {$project: {_id: 0, name: {$concat: ["$name.first"," ", "$name.last"]}, birthdate: {$toDate: "$dob.date"}}},
+    |     ^
+  4 |
+
+analytics>     {$sort: {birthdate: 1}},
+...     {$skip: 10},
+...     {$limit: 10}
+... ])
+Uncaught:
+SyntaxError: Unexpected token (1:27)
+
+> 1 |     {$sort: {birthdate: 1}},
+    |                            ^
+  2 |     {$skip: 10},
+  3 |     {$limit: 10}
+  4 | ])
+
+analytics> db.persons.aggregate([
+...     {$match: {gender: "male"}},
+...     {$project: {_id: 0, name: {$concat: ["$name.first"," ", "$name.last"]}, birthdate: {$toDate: "$dob.date"}}},
+...     {$sort: {birthdate: 1}},
+...     {$skip: 10},
+...     {$limit: 10}
+... ])
+[
+  {
+    name: 'pierre boyer',
+    birthdate: ISODate('1945-01-01T22:35:55.000Z')
+  },
+  {
+    name: 'emile noel',
+    birthdate: ISODate('1945-01-10T03:05:21.000Z')
+  },
+  {
+    name: 'torgeir apeland',
+    birthdate: ISODate('1945-01-13T17:04:33.000Z')
+  },
+  {
+    name: 'igor kvistad',
+    birthdate: ISODate('1945-01-17T22:13:14.000Z')
+  },
+  {
+    name: 'mariusz gabler',
+    birthdate: ISODate('1945-01-22T06:16:30.000Z')
+  },
+  {
+    name: 'lewis freeman',
+    birthdate: ISODate('1945-01-28T20:15:28.000Z')
+  },
+  {
+    name: 'theodore moore',
+    birthdate: ISODate('1945-02-10T03:34:29.000Z')
+  },
+  {
+    name: 'florian mercier',
+    birthdate: ISODate('1945-02-22T04:18:31.000Z')
+  },
+  {
+    name: 'dursun schellekens',
+    birthdate: ISODate('1945-02-22T07:28:00.000Z')
+  },
+  {
+    name: 'marcel rey',
+    birthdate: ISODate('1945-02-28T02:18:01.000Z')
+  }
+]
+analytics> db.persons.aggregate([
+...     {$match: {gender: "male"}},
+...     {$project: {_id: 0, gender: 1,name: {$concat: ["$name.first"," ", "$name.last"]}, birthdate: {$toDate: "$dob.date"}}},
+...     {$sort: {birthdate: 1}},
+...     {$skip: 10},
+...     {$limit: 10}
+... ])
+[
+  {
+    gender: 'male',
+    name: 'pierre boyer',
+    birthdate: ISODate('1945-01-01T22:35:55.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'emile noel',
+    birthdate: ISODate('1945-01-10T03:05:21.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'torgeir apeland',
+    birthdate: ISODate('1945-01-13T17:04:33.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'igor kvistad',
+    birthdate: ISODate('1945-01-17T22:13:14.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'mariusz gabler',
+    birthdate: ISODate('1945-01-22T06:16:30.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'lewis freeman',
+    birthdate: ISODate('1945-01-28T20:15:28.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'theodore moore',
+    birthdate: ISODate('1945-02-10T03:34:29.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'florian mercier',
+    birthdate: ISODate('1945-02-22T04:18:31.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'dursun schellekens',
+    birthdate: ISODate('1945-02-22T07:28:00.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'marcel rey',
+    birthdate: ISODate('1945-02-28T02:18:01.000Z')
+  }
+]
+analytics> db.persons.aggregate([
+...     {
+...       $project: {
+...         _id: 0,
+...         name: 1,
+...         email: 1,
+...         birthdate: { $toDate: '$dob.date' },
+...         age: "$dob.age",
+...         location: {
+...           type: 'Point',
+...           coordinates: [
+...             {
+...               $convert: {
+...                 input: '$location.coordinates.longitude',
+...                 to: 'double',
+...                 onError: 0.0,
+...                 onNull: 0.0
+...               }
+...             },
+...             {
+...               $convert: {
+...                 input: '$location.coordinates.latitude',
+...                 to: 'double',
+...                 onError: 0.0,
+...                 onNull: 0.0
+...               }
+...             }
+...           ]
+...         }
+...       }
+...     },
+...     {
+...       $project: {
+...         gender: 1,
+...         email: 1,
+...         location: 1,
+...         birthdate: 1,
+...         age: 1,
+...         fullName: {
+...           $concat: [
+...             { $toUpper: { $substrCP: ['$name.first', 0, 1] } },
+...             {
+...               $substrCP: [
+...                 '$name.first',
+...                 1,
+...                 { $subtract: [{ $strLenCP: '$name.first' }, 1] }
+...               ]
+...             },
+...             ' ',
+...             { $toUpper: { $substrCP: ['$name.last', 0, 1] } },
+...             {
+...               $substrCP: [
+...                 '$name.last',
+...                 1,
+...                 { $subtract: [{ $strLenCP: '$name.last' }, 1] }
+...               ]
+...             }
+...           ]
+...         }
+...       }
+...     },
+...     { $out: "transformedPersons" }
+...   ]).pretty();
+
+analytics>
+
+analytics>
+
+analytics> show collections
+friends
+persons
+transformedPersons
+analytics> db.transformedPersons.find()
+[
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6d2'),
+    location: { type: 'Point', coordinates: [ -18.5996, -42.6128 ] },
+    email: 'elijah.lewis@example.com',
+    birthdate: ISODate('1986-03-29T06:40:18.000Z'),
+    age: 32,
+    fullName: 'Elijah Lewis'
+  },
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6d3'),
+    location: { type: 'Point', coordinates: [ -70.2264, 76.4507 ] },
+    email: 'zachary.lo@example.com',
+    birthdate: ISODate('1988-10-17T03:45:04.000Z'),
+    age: 29,
+    fullName: 'Zachary Lo'
+  },
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6d4'),
+    location: { type: 'Point', coordinates: [ -154.6037, -29.6721 ] },
+    email: 'carl.jacobs@example.com',
+    birthdate: ISODate('1984-09-30T01:20:26.000Z'),
+    age: 33,
+    fullName: 'Carl Jacobs'
+  },
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6d5'),
+    location: { type: 'Point', coordinates: [ -67.5738, -52.8348 ] },
+    email: 'olav.oehme@example.com',
+    birthdate: ISODate('1960-11-28T23:07:18.000Z'),
+    age: 57,
+    fullName: 'Olav Oehme'
+  },
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6d6'),
+    location: { type: 'Point', coordinates: [ -172.3753, 83.3998 ] },
+    email: 'madeleine.till@example.com',
+    birthdate: ISODate('1954-05-01T02:34:40.000Z'),
+    age: 64,
+    fullName: 'Madeleine Till'
+  },
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6d7'),
+    location: { type: 'Point', coordinates: [ 148.0944, 35.5726 ] },
+    email: 'louise.graham@example.com',
+    birthdate: ISODate('1971-01-21T20:36:16.000Z'),
+    age: 47,
+    fullName: 'Louise Graham'
+  },
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6d8'),
+    location: { type: 'Point', coordinates: [ -8.557, -14.4912 ] },
+    email: 'shona.kemperman@example.com',
+    birthdate: ISODate('1948-04-23T03:40:22.000Z'),
+    age: 70,
+    fullName: 'Shona Kemperman'
+  },
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6d9'),
+    location: { type: 'Point', coordinates: [ 101.5995, 78.8545 ] },
+    email: 'isolino.viana@example.com',
+    birthdate: ISODate('1959-03-22T14:53:41.000Z'),
+    age: 59,
+    fullName: 'Isolino Viana'
+  },
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6da'),
+    location: { type: 'Point', coordinates: [ 43.9085, 25.1614 ] },
+    email: 'mestan.kaplangı@example.com',
+    birthdate: ISODate('1951-12-17T20:03:33.000Z'),
+    age: 66,
+    fullName: 'Mestan Kaplangı'
+  },
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6db'),
+    location: { type: 'Point', coordinates: [ 135.9359, 71.9851 ] },
+    email: 'katie.welch@example.com',
+    birthdate: ISODate('1990-10-14T05:02:12.000Z'),
+    age: 27,
+    fullName: 'Katie Welch'
+  },
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6dc'),
+    location: { type: 'Point', coordinates: [ -90.9499, 21.3388 ] },
+    email: 'بنیامین.سالاری@example.com',
+    birthdate: ISODate('1984-03-10T22:12:43.000Z'),
+    age: 34,
+    fullName: 'بنیامین سالاری'
+  },
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6dd'),
+    location: { type: 'Point', coordinates: [ -83.3326, -88.6846 ] },
+    email: 'sandra.lorenzo@example.com',
+    birthdate: ISODate('1975-03-23T17:01:45.000Z'),
+    age: 43,
+    fullName: 'Sandra Lorenzo'
+  },
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6de'),
+    location: { type: 'Point', coordinates: [ 34.1689, 4.6625 ] },
+    email: 'پریا.پارسا@example.com',
+    birthdate: ISODate('1962-01-10T05:26:30.000Z'),
+    age: 56,
+    fullName: 'پریا پارسا'
+  },
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6df'),
+    location: { type: 'Point', coordinates: [ -31.0208, -29.8113 ] },
+    email: 'victor.pedersen@example.com',
+    birthdate: ISODate('1959-02-19T23:56:23.000Z'),
+    age: 59,
+    fullName: 'Victor Pedersen'
+  },
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6e0'),
+    location: { type: 'Point', coordinates: [ 130.0105, 88.1818 ] },
+    email: 'gonca.alnıaçık@example.com',
+    birthdate: ISODate('1988-11-08T00:18:59.000Z'),
+    age: 29,
+    fullName: 'Gonca Alnıaçık'
+  },
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6e1'),
+    location: { type: 'Point', coordinates: [ 78.0207, -84.1572 ] },
+    email: 'anne.ruiz@example.com',
+    birthdate: ISODate('1982-10-09T12:10:42.000Z'),
+    age: 35,
+    fullName: 'Anne Ruiz'
+  },
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6e2'),
+    location: { type: 'Point', coordinates: [ -48.3596, -13.9479 ] },
+    email: 'maeva.grewal@example.com',
+    birthdate: ISODate('1972-04-23T04:31:25.000Z'),
+    age: 46,
+    fullName: 'Maeva Grewal'
+  },
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6e3'),
+    location: { type: 'Point', coordinates: [ 111.3806, -31.6359 ] },
+    email: 'maeva.wilson@example.com',
+    birthdate: ISODate('1962-08-11T20:51:07.000Z'),
+    age: 56,
+    fullName: 'Maeva Wilson'
+  },
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6e4'),
+    location: { type: 'Point', coordinates: [ -104.3451, -88.4983 ] },
+    email: 'aya.liland@example.com',
+    birthdate: ISODate('1973-08-26T00:11:58.000Z'),
+    age: 45,
+    fullName: 'Aya Liland'
+  },
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6e5'),
+    location: { type: 'Point', coordinates: [ 80.9269, 17.4101 ] },
+    email: 'vincent.küper@example.com',
+    birthdate: ISODate('1970-02-18T12:38:36.000Z'),
+    age: 48,
+    fullName: 'Vincent Küper'
+  }
+]
+Type "it" for more
+analytics> db.transformedPersons.createIndex({location: "2dsphere"})
+location_2dsphere
+analytics> db.transformedPersons.aggregate([
+...     {$geonear: {type: "Point", coordinates: [-104.4, -88.5]},
+...         maxDistance: 10000,
+...         num: 10,
+...         query: {gender: "female"},
+...         distanceField: "distance"
+...     }
+... ])
+MongoServerError: A pipeline stage specification object must contain exactly one field.
+analytics> db.transformedPersons.aggregate([
+...     {$geonear: {type: "Point", coordinates: [-104.4, -88.5]},
+...         maxDistance: 10000,
+...         num: 10,
+...         query: {age: {$gt: 30}},
+...         distanceField: "distance"
+...     }
+... ])
+MongoServerError: A pipeline stage specification object must contain exactly one field.
+analytics> db.transformedPersons.aggregate([
+...     {$geonear: {near: {type: "Point", coordinates: [-104.4, -88.5]},
+...         maxDistance: 10000,
+...         num: 10,
+...         query: {age: {$gt: 30}},
+...         distanceField: "distance"
+...     }
+... }
+... ])
+MongoServerError: Unrecognized pipeline stage name: '$geonear'
+analytics> db.transformedPersons.aggregate([
+...     {$geoNear: {near: {type: "Point", coordinates: [-104.4, -88.5]},
+...         maxDistance: 10000,
+...         num: 10,
+...         query: {age: {$gt: 30}},
+...         distanceField: "distance"
+...     }
+... }
+... ])
+MongoServerError: $geoNear no longer supports the 'num' parameter. Use a $limit stage instead.
+analytics> db.transformedPersons.aggregate([
+...     {$geoNear: {near: {type: "Point", coordinates: [-104.4, -88.5]},
+...         maxDistance: 10000,
+...         query: {age: {$gt: 30}},
+...         distanceField: "distance"
+...     }
+... },
+... {$limit: 10}
+... ])
+[
+  {
+    _id: ObjectId('67974e80093aff50e6c8a6e4'),
+    location: { type: 'Point', coordinates: [ -104.3451, -88.4983 ] },
+    email: 'aya.liland@example.com',
+    birthdate: ISODate('1973-08-26T00:11:58.000Z'),
+    age: 45,
+    fullName: 'Aya Liland',
+    distance: 247.85980045331385
+  }
+]
+analytics>
