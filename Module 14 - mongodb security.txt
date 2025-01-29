@@ -1,0 +1,995 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Development\MongoDB> mongod --auth
+{"t":{"$date":"2025-01-29T13:32:17.534+05:30"},"s":"I",  "c":"CONTROL",  "id":23285,   "ctx":"thread1","msg":"Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols 'none'"}
+{"t":{"$date":"2025-01-29T13:32:17.535+05:30"},"s":"I",  "c":"NETWORK",  "id":4915701, "ctx":"thread1","msg":"Initialized wire specification","attr":{"spec":{"incomingExternalClient":{"minWireVersion":0,"maxWireVersion":21},"incomingInternalClient":{"minWireVersion":0,"maxWireVersion":21},"outgoing":{"minWireVersion":6,"maxWireVersion":21},"isInternalClient":true}}}
+{"t":{"$date":"2025-01-29T13:32:17.535+05:30"},"s":"I",  "c":"NETWORK",  "id":4648602, "ctx":"thread1","msg":"Implicit TCP FastOpen in use."}
+{"t":{"$date":"2025-01-29T13:32:17.538+05:30"},"s":"I",  "c":"REPL",     "id":5123008, "ctx":"thread1","msg":"Successfully registered PrimaryOnlyService","attr":{"service":"TenantMigrationDonorService","namespace":"config.tenantMigrationDonors"}}
+{"t":{"$date":"2025-01-29T13:32:17.538+05:30"},"s":"I",  "c":"REPL",     "id":5123008, "ctx":"thread1","msg":"Successfully registered PrimaryOnlyService","attr":{"service":"TenantMigrationRecipientService","namespace":"config.tenantMigrationRecipients"}}
+{"t":{"$date":"2025-01-29T13:32:17.538+05:30"},"s":"I",  "c":"CONTROL",  "id":5945603, "ctx":"thread1","msg":"Multi threading initialized"}
+{"t":{"$date":"2025-01-29T13:32:17.538+05:30"},"s":"I",  "c":"TENANT_M", "id":7091600, "ctx":"thread1","msg":"Starting TenantMigrationAccessBlockerRegistry"}
+{"t":{"$date":"2025-01-29T13:32:17.540+05:30"},"s":"I",  "c":"CONTROL",  "id":4615611, "ctx":"initandlisten","msg":"MongoDB starting","attr":{"pid":28304,"port":27017,"dbPath":"C:/data/db/","architecture":"64-bit","host":"AporvGoyal"}}
+{"t":{"$date":"2025-01-29T13:32:17.540+05:30"},"s":"I",  "c":"CONTROL",  "id":23398,   "ctx":"initandlisten","msg":"Target operating system minimum version","attr":{"targetMinOS":"Windows 7/Windows Server 2008 R2"}}
+{"t":{"$date":"2025-01-29T13:32:17.540+05:30"},"s":"I",  "c":"CONTROL",  "id":23403,   "ctx":"initandlisten","msg":"Build Info","attr":{"buildInfo":{"version":"7.0.4","gitVersion":"38f3e37057a43d2e9f41a39142681a76062d582e","modules":[],"allocator":"tcmalloc","environment":{"distmod":"windows","distarch":"x86_64","target_arch":"x86_64"}}}}
+{"t":{"$date":"2025-01-29T13:32:17.540+05:30"},"s":"I",  "c":"CONTROL",  "id":51765,   "ctx":"initandlisten","msg":"Operating System","attr":{"os":{"name":"Microsoft Windows 10","version":"10.0 (build 22621)"}}}
+{"t":{"$date":"2025-01-29T13:32:17.540+05:30"},"s":"I",  "c":"CONTROL",  "id":21951,   "ctx":"initandlisten","msg":"Options set by command line","attr":{"options":{"security":{"authorization":"enabled"}}}}
+{"t":{"$date":"2025-01-29T13:32:17.542+05:30"},"s":"E",  "c":"CONTROL",  "id":20557,   "ctx":"initandlisten","msg":"DBException in initAndListen, terminating","attr":{"error":"NonExistentPath: Data directory C:\\data\\db\\ not found. Create the missing directory or specify another path using (1) the --dbpath command line option, or (2) by adding the 'storage.dbPath' option in the configuration file."}}
+{"t":{"$date":"2025-01-29T13:32:17.542+05:30"},"s":"I",  "c":"REPL",     "id":4784900, "ctx":"initandlisten","msg":"Stepping down the ReplicationCoordinator for shutdown","attr":{"waitTimeMillis":15000}}
+{"t":{"$date":"2025-01-29T13:32:17.542+05:30"},"s":"I",  "c":"REPL",     "id":4794602, "ctx":"initandlisten","msg":"Attempting to enter quiesce mode"}
+{"t":{"$date":"2025-01-29T13:32:17.542+05:30"},"s":"I",  "c":"-",        "id":6371601, "ctx":"initandlisten","msg":"Shutting down the FLE Crud thread pool"}
+{"t":{"$date":"2025-01-29T13:32:17.542+05:30"},"s":"I",  "c":"COMMAND",  "id":4784901, "ctx":"initandlisten","msg":"Shutting down the MirrorMaestro"}
+{"t":{"$date":"2025-01-29T13:32:17.542+05:30"},"s":"I",  "c":"SHARDING", "id":4784902, "ctx":"initandlisten","msg":"Shutting down the WaitForMajorityService"}
+{"t":{"$date":"2025-01-29T13:32:17.542+05:30"},"s":"I",  "c":"NETWORK",  "id":20562,   "ctx":"initandlisten","msg":"Shutdown: going to close listening sockets"}
+{"t":{"$date":"2025-01-29T13:32:17.543+05:30"},"s":"I",  "c":"NETWORK",  "id":4784905, "ctx":"initandlisten","msg":"Shutting down the global connection pool"}
+{"t":{"$date":"2025-01-29T13:32:17.543+05:30"},"s":"I",  "c":"CONTROL",  "id":4784906, "ctx":"initandlisten","msg":"Shutting down the FlowControlTicketholder"}
+{"t":{"$date":"2025-01-29T13:32:17.543+05:30"},"s":"I",  "c":"-",        "id":20520,   "ctx":"initandlisten","msg":"Stopping further Flow Control ticket acquisitions."}
+{"t":{"$date":"2025-01-29T13:32:17.543+05:30"},"s":"I",  "c":"NETWORK",  "id":4784918, "ctx":"initandlisten","msg":"Shutting down the ReplicaSetMonitor"}
+{"t":{"$date":"2025-01-29T13:32:17.543+05:30"},"s":"I",  "c":"SHARDING", "id":4784921, "ctx":"initandlisten","msg":"Shutting down the MigrationUtilExecutor"}
+{"t":{"$date":"2025-01-29T13:32:17.544+05:30"},"s":"I",  "c":"ASIO",     "id":22582,   "ctx":"MigrationUtil-TaskExecutor","msg":"Killing all outstanding egress activity."}
+{"t":{"$date":"2025-01-29T13:32:17.544+05:30"},"s":"I",  "c":"COMMAND",  "id":4784923, "ctx":"initandlisten","msg":"Shutting down the ServiceEntryPoint"}
+{"t":{"$date":"2025-01-29T13:32:17.544+05:30"},"s":"I",  "c":"CONTROL",  "id":4784928, "ctx":"initandlisten","msg":"Shutting down the TTL monitor"}
+{"t":{"$date":"2025-01-29T13:32:17.544+05:30"},"s":"I",  "c":"CONTROL",  "id":6278511, "ctx":"initandlisten","msg":"Shutting down the Change Stream Expired Pre-images Remover"}
+{"t":{"$date":"2025-01-29T13:32:17.544+05:30"},"s":"I",  "c":"CONTROL",  "id":4784929, "ctx":"initandlisten","msg":"Acquiring the global lock for shutdown"}
+{"t":{"$date":"2025-01-29T13:32:17.544+05:30"},"s":"I",  "c":"-",        "id":4784931, "ctx":"initandlisten","msg":"Dropping the scope cache for shutdown"}
+{"t":{"$date":"2025-01-29T13:32:17.545+05:30"},"s":"I",  "c":"CONTROL",  "id":20565,   "ctx":"initandlisten","msg":"Now exiting"}
+{"t":{"$date":"2025-01-29T13:32:17.545+05:30"},"s":"I",  "c":"CONTROL",  "id":23138,   "ctx":"initandlisten","msg":"Shutting down","attr":{"exitCode":100}}
+PS C:\Development\MongoDB> mongosh
+Current Mongosh Log ID: 6799e0aaa503c74204752652
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.1
+Using MongoDB:          7.0.4
+Using Mongosh:          2.1.1
+mongosh 2.3.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-01-21T12:38:39.330+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use admin
+switched to db admin
+admin> show collections
+products
+system.users
+system.version
+admin> db.products.drop()
+true
+admin> db.products.drop()
+true
+admin> db.getUser("max")
+{
+  _id: 'admin.max',
+  userId: UUID('c68f6ba0-93cf-4ef8-8a5d-804706105504'),
+  user: 'max',
+  db: 'admin',
+  roles: [ { role: 'userAdminAnyDatabase', db: 'admin' } ],
+  mechanisms: [ 'SCRAM-SHA-1', 'SCRAM-SHA-256' ]
+}
+admin> db.dropUser("max")
+{ ok: 1 }
+admin> db.getUser("max")
+null
+admin> db.createUser({user: "max", pwd: "max", roles: ["userAdminAnyDatabase"]})
+{ ok: 1 }
+admin> db.auth('max','max')
+{ ok: 1 }
+admin> db.createUser({user: "globalAdmin", pwd: "global", roles: ["dbAdminAnyDatabase"]})
+{ ok: 1 }
+admin> db.createUser({user: "dev", pwd: "dev", roles: [{role: "readWrite", db: "customers"}, {role: "readWrite", db: "sales"}]})
+{ ok: 1 }
+admin>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+admin>
+PS C:\Development\MongoDB> mongod -u max -p max --authenticationDatabase admin
+Error parsing command line: unrecognised option '-u'
+try 'C:\Program Files\MongoDB\Server\7.0\bin\mongod.exe --help' for more information
+PS C:\Development\MongoDB> mongosh -u max -p max --authenticationDatabase admin
+Current Mongosh Log ID: 6799e2e3bb1105ede1cbbd06
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&authSource=admin&appName=mongosh+2.1.1
+Using MongoDB:          7.0.4
+Using Mongosh:          2.1.1
+mongosh 2.3.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-01-21T12:38:39.330+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+test>
+PS C:\Development\MongoDB> mongosh -u globalAdmin -p admin --authenticationDatabase admin
+Current Mongosh Log ID: 6799e3229ca6b1bb33ce52ef
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&authSource=admin&appName=mongosh+2.1.1
+MongoServerError: Authentication failed.
+PS C:\Development\MongoDB> mongosh -u globalAdmin -p global --authenticationDatabase admin
+Current Mongosh Log ID: 6799e3387e205ce3b9668a41
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&authSource=admin&appName=mongosh+2.1.1
+Using MongoDB:          7.0.4
+Using Mongosh:          2.1.1
+mongosh 2.3.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-01-21T12:38:39.330+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs
+Numdatabase     184.00 KiB
+SportData        72.00 KiB
+admin           180.00 KiB
+analytics         3.38 MiB
+awesomeplaces   200.00 KiB
+blog            112.00 KiB
+boxOffice        80.00 KiB
+carData          80.00 KiB
+cityData         80.00 KiB
+companyData      72.00 KiB
+config           72.00 KiB
+contactData     616.00 KiB
+credit            8.63 MiB
+finnancialData   40.00 KiB
+flights         116.00 KiB
+goodplaces      132.00 KiB
+hospital         88.00 KiB
+local            72.00 KiB
+movieData       192.00 KiB
+patients         72.00 KiB
+rop               2.81 MiB
+shop             72.00 KiB
+support          88.00 KiB
+test             12.00 KiB
+test> use customers
+switched to db customers
+customers> db.createCollection("customerData")
+{ ok: 1 }
+customers> show collections
+customerData
+customers>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+customers>
+PS C:\Development\MongoDB> mongosh -u dev -p dev --authenticationDatabase admin
+Current Mongosh Log ID: 6799e3ab55cc04792196bcc6
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&authSource=admin&appName=mongosh+2.1.1
+Using MongoDB:          7.0.4
+Using Mongosh:          2.1.1
+mongosh 2.3.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-01-21T12:38:39.330+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use customers
+switched to db customers
+customers> show collections
+customerData
+customers> db.customerData.insertOne({name: "Max"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6799e3ee55cc04792196bcc7')
+}
+customers> use blog
+switched to db blog
+blog> db.posts.insertOne({name: "Does it works?"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6799e42155cc04792196bcc8')
+}
+blog>
+
+
+
+
+
+
+
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Development\MongoDB> mongod --auth
+{"t":{"$date":"2025-01-29T12:48:08.851+05:30"},"s":"I",  "c":"CONTROL",  "id":23285,   "ctx":"thread1","msg":"Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols 'none'"}
+{"t":{"$date":"2025-01-29T12:48:10.530+05:30"},"s":"I",  "c":"NETWORK",  "id":4915701, "ctx":"thread1","msg":"Initialized wire specification","attr":{"spec":{"incomingExternalClient":{"minWireVersion":0,"maxWireVersion":21},"incomingInternalClient":{"minWireVersion":0,"maxWireVersion":21},"outgoing":{"minWireVersion":6,"maxWireVersion":21},"isInternalClient":true}}}
+{"t":{"$date":"2025-01-29T12:48:10.532+05:30"},"s":"I",  "c":"NETWORK",  "id":4648602, "ctx":"thread1","msg":"Implicit TCP FastOpen in use."}
+{"t":{"$date":"2025-01-29T12:48:10.535+05:30"},"s":"I",  "c":"REPL",     "id":5123008, "ctx":"thread1","msg":"Successfully registered PrimaryOnlyService","attr":{"service":"TenantMigrationDonorService","namespace":"config.tenantMigrationDonors"}}
+{"t":{"$date":"2025-01-29T12:48:10.535+05:30"},"s":"I",  "c":"REPL",     "id":5123008, "ctx":"thread1","msg":"Successfully registered PrimaryOnlyService","attr":{"service":"TenantMigrationRecipientService","namespace":"config.tenantMigrationRecipients"}}
+{"t":{"$date":"2025-01-29T12:48:10.535+05:30"},"s":"I",  "c":"CONTROL",  "id":5945603, "ctx":"thread1","msg":"Multi threading initialized"}
+{"t":{"$date":"2025-01-29T12:48:10.535+05:30"},"s":"I",  "c":"TENANT_M", "id":7091600, "ctx":"thread1","msg":"Starting TenantMigrationAccessBlockerRegistry"}
+{"t":{"$date":"2025-01-29T12:48:10.536+05:30"},"s":"I",  "c":"CONTROL",  "id":4615611, "ctx":"initandlisten","msg":"MongoDB starting","attr":{"pid":32024,"port":27017,"dbPath":"C:/data/db/","architecture":"64-bit","host":"AporvGoyal"}}
+{"t":{"$date":"2025-01-29T12:48:10.536+05:30"},"s":"I",  "c":"CONTROL",  "id":23398,   "ctx":"initandlisten","msg":"Target operating system minimum version","attr":{"targetMinOS":"Windows 7/Windows Server 2008 R2"}}
+{"t":{"$date":"2025-01-29T12:48:10.537+05:30"},"s":"I",  "c":"CONTROL",  "id":23403,   "ctx":"initandlisten","msg":"Build Info","attr":{"buildInfo":{"version":"7.0.4","gitVersion":"38f3e37057a43d2e9f41a39142681a76062d582e","modules":[],"allocator":"tcmalloc","environment":{"distmod":"windows","distarch":"x86_64","target_arch":"x86_64"}}}}
+{"t":{"$date":"2025-01-29T12:48:10.537+05:30"},"s":"I",  "c":"CONTROL",  "id":51765,   "ctx":"initandlisten","msg":"Operating System","attr":{"os":{"name":"Microsoft Windows 10","version":"10.0 (build 22621)"}}}
+{"t":{"$date":"2025-01-29T12:48:10.537+05:30"},"s":"I",  "c":"CONTROL",  "id":21951,   "ctx":"initandlisten","msg":"Options set by command line","attr":{"options":{"security":{"authorization":"enabled"}}}}
+{"t":{"$date":"2025-01-29T12:48:10.539+05:30"},"s":"E",  "c":"CONTROL",  "id":20557,   "ctx":"initandlisten","msg":"DBException in initAndListen, terminating","attr":{"error":"NonExistentPath: Data directory C:\\data\\db\\ not found. Create the missing directory or specify another path using (1) the --dbpath command line option, or (2) by adding the 'storage.dbPath' option in the configuration file."}}
+{"t":{"$date":"2025-01-29T12:48:10.540+05:30"},"s":"I",  "c":"REPL",     "id":4784900, "ctx":"initandlisten","msg":"Stepping down the ReplicationCoordinator for shutdown","attr":{"waitTimeMillis":15000}}
+{"t":{"$date":"2025-01-29T12:48:10.542+05:30"},"s":"I",  "c":"REPL",     "id":4794602, "ctx":"initandlisten","msg":"Attempting to enter quiesce mode"}
+{"t":{"$date":"2025-01-29T12:48:10.542+05:30"},"s":"I",  "c":"-",        "id":6371601, "ctx":"initandlisten","msg":"Shutting down the FLE Crud thread pool"}
+{"t":{"$date":"2025-01-29T12:48:10.542+05:30"},"s":"I",  "c":"COMMAND",  "id":4784901, "ctx":"initandlisten","msg":"Shutting down the MirrorMaestro"}
+{"t":{"$date":"2025-01-29T12:48:10.542+05:30"},"s":"I",  "c":"SHARDING", "id":4784902, "ctx":"initandlisten","msg":"Shutting down the WaitForMajorityService"}
+{"t":{"$date":"2025-01-29T12:48:10.543+05:30"},"s":"I",  "c":"NETWORK",  "id":20562,   "ctx":"initandlisten","msg":"Shutdown: going to close listening sockets"}
+{"t":{"$date":"2025-01-29T12:48:10.543+05:30"},"s":"I",  "c":"NETWORK",  "id":4784905, "ctx":"initandlisten","msg":"Shutting down the global connection pool"}
+{"t":{"$date":"2025-01-29T12:48:10.543+05:30"},"s":"I",  "c":"CONTROL",  "id":4784906, "ctx":"initandlisten","msg":"Shutting down the FlowControlTicketholder"}
+{"t":{"$date":"2025-01-29T12:48:10.543+05:30"},"s":"I",  "c":"-",        "id":20520,   "ctx":"initandlisten","msg":"Stopping further Flow Control ticket acquisitions."}
+{"t":{"$date":"2025-01-29T12:48:10.544+05:30"},"s":"I",  "c":"NETWORK",  "id":4784918, "ctx":"initandlisten","msg":"Shutting down the ReplicaSetMonitor"}
+{"t":{"$date":"2025-01-29T12:48:10.544+05:30"},"s":"I",  "c":"SHARDING", "id":4784921, "ctx":"initandlisten","msg":"Shutting down the MigrationUtilExecutor"}
+{"t":{"$date":"2025-01-29T12:48:10.546+05:30"},"s":"I",  "c":"ASIO",     "id":22582,   "ctx":"MigrationUtil-TaskExecutor","msg":"Killing all outstanding egress activity."}
+{"t":{"$date":"2025-01-29T12:48:10.546+05:30"},"s":"I",  "c":"COMMAND",  "id":4784923, "ctx":"initandlisten","msg":"Shutting down the ServiceEntryPoint"}
+{"t":{"$date":"2025-01-29T12:48:10.547+05:30"},"s":"I",  "c":"CONTROL",  "id":4784928, "ctx":"initandlisten","msg":"Shutting down the TTL monitor"}
+{"t":{"$date":"2025-01-29T12:48:10.547+05:30"},"s":"I",  "c":"CONTROL",  "id":6278511, "ctx":"initandlisten","msg":"Shutting down the Change Stream Expired Pre-images Remover"}
+{"t":{"$date":"2025-01-29T12:48:10.547+05:30"},"s":"I",  "c":"CONTROL",  "id":4784929, "ctx":"initandlisten","msg":"Acquiring the global lock for shutdown"}
+{"t":{"$date":"2025-01-29T12:48:10.547+05:30"},"s":"I",  "c":"-",        "id":4784931, "ctx":"initandlisten","msg":"Dropping the scope cache for shutdown"}
+{"t":{"$date":"2025-01-29T12:48:10.547+05:30"},"s":"I",  "c":"CONTROL",  "id":20565,   "ctx":"initandlisten","msg":"Now exiting"}
+{"t":{"$date":"2025-01-29T12:48:10.548+05:30"},"s":"I",  "c":"CONTROL",  "id":23138,   "ctx":"initandlisten","msg":"Shutting down","attr":{"exitCode":100}}
+PS C:\Development\MongoDB> mongo
+mongo : The term 'mongo' is not recognized as the name of a cmdlet, function, script file, or operable program. Check
+the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ mongo
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (mongo:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Development\MongoDB> mongodb
+mongodb : The term 'mongodb' is not recognized as the name of a cmdlet, function, script file, or operable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ mongodb
++ ~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (mongodb:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Development\MongoDB> mongosh
+Current Mongosh Log ID: 6799d83bf31e3d691faae56a
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.1
+Using MongoDB:          7.0.4
+Using Mongosh:          2.1.1
+mongosh 2.3.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-01-21T12:38:39.330+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use admin
+switched to db admin
+admin> show dbs
+Numdatabase     184.00 KiB
+SportData        72.00 KiB
+admin           132.00 KiB
+analytics         3.38 MiB
+awesomeplaces   200.00 KiB
+blog            112.00 KiB
+boxOffice        80.00 KiB
+carData          80.00 KiB
+cityData         80.00 KiB
+companyData      72.00 KiB
+config           72.00 KiB
+contactData     616.00 KiB
+credit            8.63 MiB
+finnancialData   40.00 KiB
+flights         116.00 KiB
+goodplaces      132.00 KiB
+hospital         88.00 KiB
+local            72.00 KiB
+movieData       192.00 KiB
+patients         72.00 KiB
+rop               2.81 MiB
+shop            128.00 KiB
+support          88.00 KiB
+test             12.00 KiB
+admin> show collections
+system.users
+system.version
+admin> db.auth('asd','asd')
+MongoServerError: Authentication failed.
+admin> db.auth('max','asd')
+MongoServerError: Authentication failed.
+admin>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+admin>
+PS C:\Development\MongoDB> mongo -u max -p max
+mongo : The term 'mongo' is not recognized as the name of a cmdlet, function, script file, or operable program. Check
+the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ mongo -u max -p max
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (mongo:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Development\MongoDB> mongodb -u max -p max
+mongodb : The term 'mongodb' is not recognized as the name of a cmdlet, function, script file, or operable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ mongodb -u max -p max
++ ~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (mongodb:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Development\MongoDB> mongod -u max -p max
+Error parsing command line: unrecognised option '-u'
+try 'C:\Program Files\MongoDB\Server\7.0\bin\mongod.exe --help' for more information
+PS C:\Development\MongoDB> mongod --help
+Options:
+  --networkMessageCompressors arg (=snappy,zstd,zlib)
+                                        Comma-separated list of compressors to
+                                        use for network messages
+
+General options:
+  -h [ --help ]                         Show this usage information
+  --version                             Show version information
+  -f [ --config ] arg                   Configuration file specifying
+                                        additional options
+  --configExpand arg                    Process expansion directives in config
+                                        file (none, exec, rest)
+  --port arg                            Specify port number - 27017 by default
+  --ipv6                                Enable IPv6 support (disabled by
+                                        default)
+  --listenBacklog arg (=2147483647)     Set socket listen backlog size
+  --maxConns arg (=1000000)             Max number of simultaneous connections
+  --pidfilepath arg                     Full path to pidfile (if not set, no
+                                        pidfile is created)
+  --timeZoneInfo arg                    Full path to time zone info directory,
+                                        e.g. /usr/share/zoneinfo
+  -v [ --verbose ] [=arg(=v)]           Be more verbose (include multiple times
+                                        for more verbosity e.g. -vvvvv)
+  --quiet                               Quieter output
+  --logpath arg                         Log file to send write to instead of
+                                        stdout - has to be a file, not
+                                        directory
+  --logappend                           Append to logpath instead of
+                                        over-writing
+  --logRotate arg                       Set the log rotation behavior
+                                        (rename|reopen)
+  --timeStampFormat arg                 Desired format for timestamps in log
+                                        messages. One of iso8601-utc or
+                                        iso8601-local
+  --setParameter arg                    Set a configurable parameter
+  --bind_ip arg                         Comma separated list of ip addresses to
+                                        listen on - localhost by default
+  --bind_ip_all                         Bind to all ip addresses
+  --noauth                              Run without security
+  --transitionToAuth                    For rolling access control upgrade.
+                                        Attempt to authenticate over outgoing
+                                        connections and proceed regardless of
+                                        success. Accept incoming connections
+                                        with or without authentication.
+  --slowms arg (=100)                   Value of slow for profile and console
+                                        log
+  --slowOpSampleRate arg (=1)           Fraction of slow ops to include in the
+                                        profile and console log
+  --profileFilter arg                   Query predicate to control which
+                                        operations are logged and profiled
+  --auth                                Run with security
+  --clusterIpSourceAllowlist arg        Network CIDR specification of permitted
+                                        origin for `__system` access
+  --profile arg                         0=off 1=slow, 2=all
+  --cpu                                 Periodically show cpu and iowait
+                                        utilization
+  --sysinfo                             Print some diagnostic system
+                                        information
+  --noscripting                         Disable scripting engine
+  --notablescan                         Do not allow table scans
+  --keyFile arg                         Private key for cluster authentication
+  --clusterAuthMode arg                 Authentication mode used for cluster
+                                        authentication. Alternatives are
+                                        (keyFile|sendKeyFile|sendX509|x509)
+
+Replication options:
+  --oplogSize arg                       Size to use (in MB) for replication op
+                                        log. default is 5% of disk space (i.e.
+                                        large is good)
+
+Replica set options:
+  --replSet arg                         arg is <setname>[/<optionalseedhostlist
+                                        >]
+  --enableMajorityReadConcern [=arg(=1)] (=1)
+                                        Enables majority readConcern.
+                                        enableMajorityReadConcern=false is no
+                                        longer supported
+
+Serverless mode:
+  --serverless arg                      Serverless mode implies replication is
+                                        enabled, cannot be used with replSet or
+                                        replSetName.
+
+Sharding options:
+  --configsvr                           Declare this is a config db of a
+                                        cluster; default port 27019; default
+                                        dir /data/configdb
+  --shardsvr                            Declare this is a shard db of a
+                                        cluster; default port 27018
+
+Storage options:
+  --storageEngine arg                   What storage engine to use - defaults
+                                        to wiredTiger if no data files present
+  --dbpath arg                          Directory for datafiles - defaults to
+                                        \data\db\ which is C:\data\db\ based on
+                                        the current working drive
+  --directoryperdb                      Each database will be stored in a
+                                        separate directory
+  --syncdelay arg (=60)                 Seconds between disk syncs
+  --journalCommitInterval arg (=100)    how often to group/batch commit (ms)
+  --upgrade                             Upgrade db if needed
+  --repair                              Run repair on all dbs
+  --restore                             This should only be used when restoring
+                                        from a backup. Mongod will behave
+                                        differently by handling collections
+                                        with missing data files, allowing
+                                        database renames, skipping oplog
+                                        entries for collections not restored
+                                        and more.
+  --oplogMinRetentionHours arg (=0)     Minimum number of hours to preserve in
+                                        the oplog. Default is 0 (turned off).
+                                        Fractions are allowed (e.g. 1.5 hours)
+
+AWS IAM Options:
+  --awsIamSessionToken arg              AWS Session Token for temporary
+                                        credentials
+
+WiredTiger options:
+  --wiredTigerCacheSizeGB arg           Maximum amount of memory to allocate
+                                        for cache; Defaults to 1/2 of physical
+                                        RAM
+  --zstdDefaultCompressionLevel arg (=6)
+                                        Default compression level for zstandard
+                                        compressor
+  --wiredTigerJournalCompressor arg (=snappy)
+                                        Use a compressor for log records
+                                        [none|snappy|zlib|zstd]
+  --wiredTigerDirectoryForIndexes       Put indexes and data in different
+                                        directories
+  --wiredTigerCollectionBlockCompressor arg (=snappy)
+                                        Block compression algorithm for
+                                        collection data [none|snappy|zlib|zstd]
+  --wiredTigerIndexPrefixCompression arg (=1)
+                                        Use prefix compression on row-store
+                                        leaf pages
+
+TLS Options:
+  --tlsOnNormalPorts                    Use TLS on configured ports
+  --tlsMode arg                         Set the TLS operation mode
+                                        (disabled|allowTLS|preferTLS|requireTLS
+                                        )
+  --tlsCertificateKeyFile arg           Certificate and key file for TLS.
+                                        Certificate is presented in response to
+                                        inbound connections always. Certificate
+                                        is also presented for outbound
+                                        connections if tlsClusterFile is not
+                                        specified.
+  --tlsCertificateKeyFilePassword arg   Password to unlock key in the TLS
+                                        certificate key file
+  --tlsClusterFile arg                  Certificate and key file for internal
+                                        TLS authentication. Certificate is
+                                        presented on outbound connections if
+                                        specified.
+  --tlsClusterPassword arg              Internal authentication key file
+                                        password
+  --tlsCAFile arg                       Certificate Authority file for TLS.
+                                        Used to verify remote certificates
+                                        presented in response to outbound
+                                        connections. Also used to verify remote
+                                        certificates from inbound connections
+                                        if tlsClusterCAFile is not specified.
+  --tlsClusterCAFile arg                CA used for verifying remotes during
+                                        inbound connections
+  --tlsCRLFile arg                      Certificate Revocation List file for
+                                        TLS
+  --tlsDisabledProtocols arg            Comma separated list of TLS protocols
+                                        to disable [TLS1_0,TLS1_1,TLS1_2,TLS1_3
+                                        ]
+  --tlsAllowConnectionsWithoutCertificates
+                                        Allow client to connect without
+                                        presenting a certificate
+  --tlsAllowInvalidHostnames            Allow server certificates to provide
+                                        non-matching hostnames
+  --tlsAllowInvalidCertificates         Allow connections to servers with
+                                        invalid certificates
+  --tlsCertificateSelector arg          TLS Certificate in system store
+  --tlsClusterCertificateSelector arg   SSL/TLS Certificate in system store for
+                                        internal TLS authentication
+  --tlsLogVersions arg                  Comma separated list of TLS protocols
+                                        to log on connect [TLS1_0,TLS1_1,TLS1_2
+                                        ,TLS1_3]
+  --tlsClusterAuthX509ExtensionValue arg
+                                        If specified, clients who expect to be
+                                        regarded as cluster members must
+                                        present a valid X.509 certificate
+                                        containing an X.509 extension for OID
+                                        1.3.6.1.4.1.34601.2.1.2 which contains
+                                        the specified value.
+  --tlsClusterAuthX509Attributes arg    If specified, clients performing X.509
+                                        authentication must present a
+                                        certificate with a  subject name with
+                                        the exact attributes and values
+                                        provided in this config option to be
+                                        treated as peer cluster nodes.
+
+Windows Service Control Manager options:
+  --install                             Install Windows service
+  --remove                              Remove Windows service
+  --reinstall                           Reinstall Windows service (equivalent
+                                        to --remove followed by --install)
+  --serviceName arg                     Windows service name
+  --serviceDisplayName arg              Windows service display name
+  --serviceDescription arg              Windows service description
+  --serviceUser arg                     Account for service execution
+  --servicePassword arg                 Password used to authenticate
+                                        serviceUser
+
+PS C:\Development\MongoDB> mongo -u max -p max
+mongo : The term 'mongo' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a
+path was included, verify that the path is correct and try again.
+At line:1 char:1
++ mongo -u max -p max
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (mongo:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Development\MongoDB> mongosh -u max -p max
+Current Mongosh Log ID: 6799da4bd4c5fd8e124c160b
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.1
+Using MongoDB:          7.0.4
+Using Mongosh:          2.1.1
+mongosh 2.3.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-01-21T12:38:39.330+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+test>
+PS C:\Development\MongoDB> mongo -u max -p max
+mongo : The term 'mongo' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a
+path was included, verify that the path is correct and try again.
+At line:1 char:1
++ mongo -u max -p max
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (mongo:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Development\MongoDB> mongod -u max -p max
+Error parsing command line: unrecognised option '-u'
+try 'C:\Program Files\MongoDB\Server\7.0\bin\mongod.exe --help' for more information
+PS C:\Development\MongoDB> mongodb -u max -p max
+mongodb : The term 'mongodb' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if
+a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ mongodb -u max -p max
++ ~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (mongodb:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Development\MongoDB> mongod -u max -p max
+Error parsing command line: unrecognised option '-u'
+try 'C:\Program Files\MongoDB\Server\7.0\bin\mongod.exe --help' for more information
+PS C:\Development\MongoDB> mongod --help
+Options:
+  --networkMessageCompressors arg (=snappy,zstd,zlib)
+                                        Comma-separated list of compressors to
+                                        use for network messages
+
+General options:
+  -h [ --help ]                         Show this usage information
+  --version                             Show version information
+  -f [ --config ] arg                   Configuration file specifying
+                                        additional options
+  --configExpand arg                    Process expansion directives in config
+                                        file (none, exec, rest)
+  --port arg                            Specify port number - 27017 by default
+  --ipv6                                Enable IPv6 support (disabled by
+                                        default)
+  --listenBacklog arg (=2147483647)     Set socket listen backlog size
+  --maxConns arg (=1000000)             Max number of simultaneous connections
+  --pidfilepath arg                     Full path to pidfile (if not set, no
+                                        pidfile is created)
+  --timeZoneInfo arg                    Full path to time zone info directory,
+                                        e.g. /usr/share/zoneinfo
+  -v [ --verbose ] [=arg(=v)]           Be more verbose (include multiple times
+                                        for more verbosity e.g. -vvvvv)
+  --quiet                               Quieter output
+  --logpath arg                         Log file to send write to instead of
+                                        stdout - has to be a file, not
+                                        directory
+  --logappend                           Append to logpath instead of
+                                        over-writing
+  --logRotate arg                       Set the log rotation behavior
+                                        (rename|reopen)
+  --timeStampFormat arg                 Desired format for timestamps in log
+                                        messages. One of iso8601-utc or
+                                        iso8601-local
+  --setParameter arg                    Set a configurable parameter
+  --bind_ip arg                         Comma separated list of ip addresses to
+                                        listen on - localhost by default
+  --bind_ip_all                         Bind to all ip addresses
+  --noauth                              Run without security
+  --transitionToAuth                    For rolling access control upgrade.
+                                        Attempt to authenticate over outgoing
+                                        connections and proceed regardless of
+                                        success. Accept incoming connections
+                                        with or without authentication.
+  --slowms arg (=100)                   Value of slow for profile and console
+                                        log
+  --slowOpSampleRate arg (=1)           Fraction of slow ops to include in the
+                                        profile and console log
+  --profileFilter arg                   Query predicate to control which
+                                        operations are logged and profiled
+  --auth                                Run with security
+  --clusterIpSourceAllowlist arg        Network CIDR specification of permitted
+                                        origin for `__system` access
+  --profile arg                         0=off 1=slow, 2=all
+  --cpu                                 Periodically show cpu and iowait
+                                        utilization
+  --sysinfo                             Print some diagnostic system
+                                        information
+  --noscripting                         Disable scripting engine
+  --notablescan                         Do not allow table scans
+  --keyFile arg                         Private key for cluster authentication
+  --clusterAuthMode arg                 Authentication mode used for cluster
+                                        authentication. Alternatives are
+                                        (keyFile|sendKeyFile|sendX509|x509)
+
+Replication options:
+  --oplogSize arg                       Size to use (in MB) for replication op
+                                        log. default is 5% of disk space (i.e.
+                                        large is good)
+
+Replica set options:
+  --replSet arg                         arg is <setname>[/<optionalseedhostlist
+                                        >]
+  --enableMajorityReadConcern [=arg(=1)] (=1)
+                                        Enables majority readConcern.
+                                        enableMajorityReadConcern=false is no
+                                        longer supported
+
+Serverless mode:
+  --serverless arg                      Serverless mode implies replication is
+                                        enabled, cannot be used with replSet or
+                                        replSetName.
+
+Sharding options:
+  --configsvr                           Declare this is a config db of a
+                                        cluster; default port 27019; default
+                                        dir /data/configdb
+  --shardsvr                            Declare this is a shard db of a
+                                        cluster; default port 27018
+
+Storage options:
+  --storageEngine arg                   What storage engine to use - defaults
+                                        to wiredTiger if no data files present
+  --dbpath arg                          Directory for datafiles - defaults to
+                                        \data\db\ which is C:\data\db\ based on
+                                        the current working drive
+  --directoryperdb                      Each database will be stored in a
+                                        separate directory
+  --syncdelay arg (=60)                 Seconds between disk syncs
+  --journalCommitInterval arg (=100)    how often to group/batch commit (ms)
+  --upgrade                             Upgrade db if needed
+  --repair                              Run repair on all dbs
+  --restore                             This should only be used when restoring
+                                        from a backup. Mongod will behave
+                                        differently by handling collections
+                                        with missing data files, allowing
+                                        database renames, skipping oplog
+                                        entries for collections not restored
+                                        and more.
+  --oplogMinRetentionHours arg (=0)     Minimum number of hours to preserve in
+                                        the oplog. Default is 0 (turned off).
+                                        Fractions are allowed (e.g. 1.5 hours)
+
+WiredTiger options:
+  --wiredTigerCacheSizeGB arg           Maximum amount of memory to allocate
+                                        for cache; Defaults to 1/2 of physical
+                                        RAM
+  --zstdDefaultCompressionLevel arg (=6)
+                                        Default compression level for zstandard
+                                        compressor
+  --wiredTigerJournalCompressor arg (=snappy)
+                                        Use a compressor for log records
+                                        [none|snappy|zlib|zstd]
+  --wiredTigerDirectoryForIndexes       Put indexes and data in different
+                                        directories
+  --wiredTigerCollectionBlockCompressor arg (=snappy)
+                                        Block compression algorithm for
+                                        collection data [none|snappy|zlib|zstd]
+  --wiredTigerIndexPrefixCompression arg (=1)
+                                        Use prefix compression on row-store
+                                        leaf pages
+
+AWS IAM Options:
+  --awsIamSessionToken arg              AWS Session Token for temporary
+                                        credentials
+
+Windows Service Control Manager options:
+  --install                             Install Windows service
+  --remove                              Remove Windows service
+  --reinstall                           Reinstall Windows service (equivalent
+                                        to --remove followed by --install)
+  --serviceName arg                     Windows service name
+  --serviceDisplayName arg              Windows service display name
+  --serviceDescription arg              Windows service description
+  --serviceUser arg                     Account for service execution
+  --servicePassword arg                 Password used to authenticate
+                                        serviceUser
+
+TLS Options:
+  --tlsOnNormalPorts                    Use TLS on configured ports
+  --tlsMode arg                         Set the TLS operation mode
+                                        (disabled|allowTLS|preferTLS|requireTLS
+                                        )
+  --tlsCertificateKeyFile arg           Certificate and key file for TLS.
+                                        Certificate is presented in response to
+                                        inbound connections always. Certificate
+                                        is also presented for outbound
+                                        connections if tlsClusterFile is not
+                                        specified.
+  --tlsCertificateKeyFilePassword arg   Password to unlock key in the TLS
+                                        certificate key file
+  --tlsClusterFile arg                  Certificate and key file for internal
+                                        TLS authentication. Certificate is
+                                        presented on outbound connections if
+                                        specified.
+  --tlsClusterPassword arg              Internal authentication key file
+                                        password
+  --tlsCAFile arg                       Certificate Authority file for TLS.
+                                        Used to verify remote certificates
+                                        presented in response to outbound
+                                        connections. Also used to verify remote
+                                        certificates from inbound connections
+                                        if tlsClusterCAFile is not specified.
+  --tlsClusterCAFile arg                CA used for verifying remotes during
+                                        inbound connections
+  --tlsCRLFile arg                      Certificate Revocation List file for
+                                        TLS
+  --tlsDisabledProtocols arg            Comma separated list of TLS protocols
+                                        to disable [TLS1_0,TLS1_1,TLS1_2,TLS1_3
+                                        ]
+  --tlsAllowConnectionsWithoutCertificates
+                                        Allow client to connect without
+                                        presenting a certificate
+  --tlsAllowInvalidHostnames            Allow server certificates to provide
+                                        non-matching hostnames
+  --tlsAllowInvalidCertificates         Allow connections to servers with
+                                        invalid certificates
+  --tlsCertificateSelector arg          TLS Certificate in system store
+  --tlsClusterCertificateSelector arg   SSL/TLS Certificate in system store for
+                                        internal TLS authentication
+  --tlsLogVersions arg                  Comma separated list of TLS protocols
+                                        to log on connect [TLS1_0,TLS1_1,TLS1_2
+                                        ,TLS1_3]
+  --tlsClusterAuthX509ExtensionValue arg
+                                        If specified, clients who expect to be
+                                        regarded as cluster members must
+                                        present a valid X.509 certificate
+                                        containing an X.509 extension for OID
+                                        1.3.6.1.4.1.34601.2.1.2 which contains
+                                        the specified value.
+  --tlsClusterAuthX509Attributes arg    If specified, clients performing X.509
+                                        authentication must present a
+                                        certificate with a  subject name with
+                                        the exact attributes and values
+                                        provided in this config option to be
+                                        treated as peer cluster nodes.
+
+PS C:\Development\MongoDB> mongosh --help
+
+  $ mongosh [options] [db address] [file names (ending in .js or .mongodb)]
+
+  Options:
+
+    -h, --help                                 Show this usage information
+    -f, --file [arg]                           Load the specified mongosh script
+        --host [arg]                           Server to connect to
+        --port [arg]                           Port to connect to
+        --build-info                           Show build information
+        --version                              Show version information
+        --quiet                                Silence output from the shell during the connection process
+        --shell                                Run the shell after executing files
+        --nodb                                 Don't connect to mongod on startup - no 'db address' [arg] expected
+        --norc                                 Will not run the '.mongoshrc.js' file on start up
+        --eval [arg]                           Evaluate javascript
+        --json[=canonical|relaxed]             Print result of --eval as Extended JSON, including errors
+        --retryWrites[=true|false]             Automatically retry write operations upon transient network errors (Default: true)
+
+  Authentication Options:
+
+    -u, --username [arg]                       Username for authentication
+    -p, --password [arg]                       Password for authentication
+        --authenticationDatabase [arg]         User source (defaults to dbname)
+        --authenticationMechanism [arg]        Authentication mechanism
+        --awsIamSessionToken [arg]             AWS IAM Temporary Session Token ID
+        --gssapiServiceName [arg]              Service name to use when authenticating using GSSAPI/Kerberos
+        --sspiHostnameCanonicalization [arg]   Specify the SSPI hostname canonicalization (none or forward, available on Windows)
+        --sspiRealmOverride [arg]              Specify the SSPI server realm (available on Windows)
+
+  TLS Options:
+
+        --tls                                  Use TLS for all connections
+        --tlsCertificateKeyFile [arg]          PEM certificate/key file for TLS
+        --tlsCertificateKeyFilePassword [arg]  Password for key in PEM file for TLS
+        --tlsCAFile [arg]                      Certificate Authority file for TLS
+        --tlsAllowInvalidHostnames             Allow connections to servers with non-matching hostnames
+        --tlsAllowInvalidCertificates          Allow connections to servers with invalid certificates
+        --tlsCertificateSelector [arg]         TLS Certificate in system store (Windows and macOS only)
+        --tlsCRLFile [arg]                     Specifies the .pem file that contains the Certificate Revocation List
+        --tlsDisabledProtocols [arg]           Comma separated list of TLS protocols to disable [TLS1_0,TLS1_1,TLS1_2]
+        --tlsUseSystemCA                       Load the operating system trusted certificate list
+        --tlsFIPSMode                          Enable the system TLS library's FIPS mode
+
+  API version options:
+
+        --apiVersion [arg]                     Specifies the API version to connect with
+        --apiStrict                            Use strict API version mode
+        --apiDeprecationErrors                 Fail deprecated commands for the specified API version
+
+  FLE Options:
+
+        --awsAccessKeyId [arg]                 AWS Access Key for FLE Amazon KMS
+        --awsSecretAccessKey [arg]             AWS Secret Key for FLE Amazon KMS
+        --awsSessionToken [arg]                Optional AWS Session Token ID
+        --keyVaultNamespace [arg]              database.collection to store encrypted FLE parameters
+        --kmsURL [arg]                         Test parameter to override the URL of the KMS endpoint
+
+  DB Address Examples:
+
+        foo                                    Foo database on local machine
+        192.168.0.5/foo                        Foo database on 192.168.0.5 machine
+        192.168.0.5:9999/foo                   Foo database on 192.168.0.5 machine on port 9999
+        mongodb://192.168.0.5:9999/foo         Connection string URI can also be used
+
+  File Names:
+
+        A list of files to run. Files must end in .js and will exit after unless --shell is specified.
+
+  Examples:
+
+        Start mongosh using 'ships' database on specified connection string:
+        $ mongosh mongodb://192.168.0.5:9999/ships
+
+  For more information on usage: https://docs.mongodb.com/mongodb-shell.
+PS C:\Development\MongoDB> mongosh -u max -p asd
+Current Mongosh Log ID: 6799db1db5ec3bc4060f79e7
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.1
+MongoServerError: Authentication failed.
+PS C:\Development\MongoDB> mongosh -u max -p max  --authenticationDatabase admin
+Current Mongosh Log ID: 6799db39910d2fbfcfd6b17c
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&authSource=admin&appName=mongosh+2.1.1
+Using MongoDB:          7.0.4
+Using Mongosh:          2.1.1
+mongosh 2.3.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-01-21T12:38:39.330+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use shop
+switched to db shop
+shop> drop db
+Uncaught:
+SyntaxError: Missing semicolon. (1:4)
+
+> 1 | drop db
+    |     ^
+  2 |
+
+shop> drop database
+Uncaught:
+SyntaxError: Missing semicolon. (1:4)
+
+> 1 | drop database
+    |     ^
+  2 |
+
+shop> use test
+switched to db test
+test> drop shop
+Uncaught:
+SyntaxError: Missing semicolon. (1:4)
+
+> 1 | drop shop
+    |     ^
+  2 |
+
+test> drop db
+Uncaught:
+SyntaxError: Missing semicolon. (1:4)
+
+> 1 | drop db
+    |     ^
+  2 |
+
+test> use shop
+switched to db shop
+shop> db.dropDatabase()
+{ ok: 1, dropped: 'shop' }
+shop> use shop
+already on db shop
+shop> db.createUser({user: "appdev", pwd: "dev", roles: ["readWrite"]})
+{ ok: 1 }
+shop> db.auth('appdev','app')
+MongoServerError: Authentication failed.
+shop> db.auth('appdev','dev')
+{ ok: 1 }
+shop> db.products.insertOne({name: "Book"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6799dc7d910d2fbfcfd6b17d')
+}
+shop> use admin
+switched to db admin
+admin> db.products.insertOne({name: "Book"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6799dcc0910d2fbfcfd6b17e')
+}
+admin> use shop
+switched to db shop
+shop> db.products.insertOne({name: "Book"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6799dcca910d2fbfcfd6b17f')
+}
+shop> db.products.deleteMany({})
+{ acknowledged: true, deletedCount: 2 }
+shop> db.products.insertOne({name: "Book"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6799dce4910d2fbfcfd6b180')
+}
+shop> db.updateUser("appdev", roles: ['readWrite', {role: "readWrite", db: "blog"}])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:29)
+
+> 1 | db.updateUser("appdev", roles: ['readWrite', {role: "readWrite", db: "blog"}])
+    |                              ^
+  2 |
+
+shop> db.updateUser("appdev", {roles: ['readWrite', {role: "readWrite", db: "blog"}]})
+{ ok: 1 }
+shop> db.getUser("appdev")
+{
+  _id: 'shop.appdev',
+  userId: UUID('813320dc-d88a-4a6f-8f2d-09737aa2da1d'),
+  user: 'appdev',
+  db: 'shop',
+  roles: [
+    { role: 'readWrite', db: 'blog' },
+    { role: 'readWrite', db: 'shop' }
+  ],
+  mechanisms: [ 'SCRAM-SHA-1', 'SCRAM-SHA-256' ]
+}
+shop> db.logout()
+{ ok: 1 }
+shop> db.auth("appdev","dev")
+{ ok: 1 }
+shop> use blog
+switched to db blog
+blog> db.posts.insertOne({title: "This works!"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6799df2a910d2fbfcfd6b181')
+}
+blog>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+blog>
+PS C:\Development\MongoDB>
